@@ -67,7 +67,9 @@ def check_time_conflicts(it: Itinerary, req: TripRequest, rb: ResearchBundle, br
 
 
 def check_references(it: Itinerary, req: TripRequest, rb: ResearchBundle, br: BudgetReport | None) -> list[ValidationIssue]:
-    issues = []
+    issues: list[ValidationIssue] = []
+    if not (rb.hotels or rb.attractions or rb.restaurants):
+        return issues  # nothing retrieved (no-research ablation): references can't be verified in-graph
     if it.hotel_id and rb.hotel(it.hotel_id) is None:
         issues.append(ValidationIssue(code="unknown_hotel", message=f"酒店 {it.hotel_id} 不在检索结果中"))
     if req.hard.days > 1 and not it.hotel_id:
@@ -118,7 +120,12 @@ def check_dietary(it: Itinerary, req: TripRequest, rb: ResearchBundle, br: Budge
 def check_must_visit(it: Itinerary, req: TripRequest, rb: ResearchBundle, br: BudgetReport | None) -> list[ValidationIssue]:
     found = (rb.attraction(a.ref_id or "") for d in it.days for a in d.activities if a.kind == "attraction")
     visited = {x.name for x in found if x is not None}
-    return [ValidationIssue(code="must_visit", message=f"必去景点「{m}」未安排") for m in req.hard.must_visit if m not in visited]
+    titles = " ".join(a.title for d in it.days for a in d.activities if a.kind == "attraction")
+    return [
+        ValidationIssue(code="must_visit", message=f"必去景点「{m}」未安排")
+        for m in req.hard.must_visit
+        if m not in visited and m not in titles
+    ]
 
 
 def check_budget(it: Itinerary, req: TripRequest, rb: ResearchBundle, br: BudgetReport | None) -> list[ValidationIssue]:

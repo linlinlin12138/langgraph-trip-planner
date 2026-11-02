@@ -16,6 +16,7 @@ from langgraph.types import Command
 
 from trip_agents.config import get_settings
 from trip_agents.graph.deps import GraphOptions
+from trip_agents.observability.tracer import TraceRecorder
 from trip_agents.runtime import PlannerSession, create_planner
 
 st.set_page_config(page_title="Trip Agents", page_icon="🧭", layout="wide")
@@ -40,7 +41,8 @@ FAULTS = {
 
 def new_session(faults: set[str]) -> None:
     graph = create_planner(faults=faults, options=GraphOptions())
-    S.session = PlannerSession(graph)
+    S.tracer = TraceRecorder()  # callback-based: nodes don't know it exists
+    S.session = PlannerSession(graph, callbacks=[S.tracer])
     S.chat = []
     S.node_log = []
     S.interrupt = None
@@ -145,6 +147,27 @@ with right:
     st.subheader("🔎 执行轨迹")
     if S.node_log:
         st.markdown(" → ".join(f"`{n}`" for n in S.node_log))
+        waiting = S.interrupt["type"] if S.interrupt else None
+        st.caption(f"当前：{'等待用户（' + waiting + '）' if waiting else NODE_LABELS.get(S.node_log[-1], S.node_log[-1])}")
+    tr = S.tracer.trace
+    if tr.llm_calls:
+        c1, c2, c3 = st.columns(3)
+        c1.metric("LLM 调用", len(tr.llm_calls))
+        c2.metric("token（入/出）", f"{tr.input_tokens / 1000:.1f}k/{tr.output_tokens / 1000:.1f}k")
+        c3.metric("解析重试", tr.parse_failures)
+        per_node: dict[str, dict[str, float]] = {}
+        for c in tr.llm_calls:
+            d = per_node.setdefault(c.node, {"调用": 0, "token": 0, "LLM 耗时 ms": 0.0})
+            d["调用"] += 1
+            d["token"] += c.input_tokens + c.output_tokens
+            d["LLM 耗时 ms"] += c.latency_ms
+        for node, ms in tr.node_latency().items():
+            per_node.setdefault(node, {"调用": 0, "token": 0, "LLM 耗时 ms": 0.0})["节点耗时 ms"] = round(sum(ms), 1)
+        st.dataframe(pd.DataFrame(per_node).T.fillna(0), use_container_width=True)
+        if tr.cost_usd is None:
+            st.caption("费用：当前模型未配置单价（见 observability/pricing.py）")
+        else:
+            st.caption(f"估算费用：${tr.cost_usd:.5f} · 模型：{', '.join(sorted({c.model for c in tr.llm_calls}))}")
     calls = values.get("tool_calls", [])
     if calls:
         st.markdown(f"**工具调用 {len(calls)} 次**")

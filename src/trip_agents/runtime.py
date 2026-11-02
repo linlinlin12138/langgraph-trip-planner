@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 from datetime import date
 from typing import Any
 
+from langchain_core.callbacks import BaseCallbackHandler
 from langchain_core.messages import AIMessage, HumanMessage
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.types import Command
@@ -53,14 +54,21 @@ class Turn:
 
 
 class PlannerSession:
-    def __init__(self, graph: CompiledStateGraph[Any], thread_id: str | None = None, user_id: str = "demo-user") -> None:
+    def __init__(
+        self,
+        graph: CompiledStateGraph[Any],
+        thread_id: str | None = None,
+        user_id: str = "demo-user",
+        callbacks: list[BaseCallbackHandler] | None = None,
+    ) -> None:
         self.graph = graph
+        self.callbacks = callbacks or []
         self.thread_id = thread_id or uuid.uuid4().hex[:12]
         self.user_id = user_id
 
     @property
     def config(self) -> dict[str, Any]:
-        return {"configurable": {"thread_id": self.thread_id, "user_id": self.user_id}}
+        return {"configurable": {"thread_id": self.thread_id, "user_id": self.user_id}, "callbacks": self.callbacks}
 
     # ---------------------------------------------------------------- driving
     def stream(self, payload: Any) -> Iterator[tuple[str, dict[str, Any]]]:

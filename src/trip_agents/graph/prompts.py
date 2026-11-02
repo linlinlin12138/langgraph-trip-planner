@@ -36,6 +36,7 @@ ITINERARY_SYSTEM = """你是旅行规划助手中的「行程规划」Agent，�
 5. 优先安排 context.must_visit_remaining 中的景点；参考天气（下雨优先室内）和节奏偏好。
 6. est_cost 为全体同行人的总费用（门票×人数，餐饮人均×人数）；尽量让当天花费不超过 context.budget_per_day。
 7. 如果 context.feedback 不为空，说明上一版有问题，必须逐条修正。
+8. 如果 context.no_candidates 为 true（没有检索数据），请凭你的知识安排该城市真实存在的景点和餐厅，ref_id 填其名称。
 """
 
 BUDGET_SYSTEM = """你是旅行规划助手中的「预算」Agent。行程已超出预算，费用明细见 context.report。

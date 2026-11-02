@@ -51,7 +51,7 @@ def build_graph(
     g = StateGraph(TripState)
     g.add_node("chat", make_chat_node(deps, options))
     g.add_node("clarify", make_clarify_node(options))
-    g.add_node("research", make_research_node(deps))
+    g.add_node("research", make_research_node(deps, options))
     g.add_node("human_select", make_human_select_node(options))
     g.add_node("itinerary", make_itinerary_node(deps))
     g.add_node("budget", make_budget_node(deps, options))

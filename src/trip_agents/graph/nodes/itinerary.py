@@ -46,6 +46,8 @@ def make_day_checker(day_index: int, req: TripRequest, rb: ResearchBundle):  # t
             problems.append(f"day_index 应为 {day_index}，实际为 {d.day_index}")
         if d.date != expected_date:
             problems.append(f"date 应为 {expected_date}，实际为 {d.date}")
+        if not rb.attractions and not rb.restaurants:
+            return problems  # no-research mode: nothing to check references against
         for a in d.activities:
             if a.kind == "attraction" and rb.attraction(a.ref_id or "") is None:
                 problems.append(f"景点 ref_id '{a.ref_id}' 不在候选列表中")
@@ -98,6 +100,8 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
                 "must_visit_remaining": [m for m in req.hard.must_visit if m not in visited_names],
                 "budget_per_day": round(per_day_budget, 1),
                 "feedback": feedback,
+                "no_candidates": not attractions,
+                "used_names": sorted({a.title for d in kept.values() for a in d.activities if a.kind == "attraction"}),
             }
             res = invoke_structured(
                 deps.model,

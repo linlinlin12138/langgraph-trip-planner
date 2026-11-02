@@ -114,8 +114,11 @@ def extract_request(texts: list[str], today: date, current: dict[str, Any] | Non
         for pat, tier in _TIER_RULES:
             if re.search(pat, text):
                 r["hotel_tier"] = tier
+        bare = text
+        for alias in sorted(aliases, key=len, reverse=True):  # "天坛公园" must not count as interest "公园"
+            bare = bare.replace(alias, "")
         for pat, interest in _INTEREST_RULES:
-            if re.search(pat, text):
+            if re.search(pat, bare):
                 r.setdefault("interests", [])
                 if interest not in r["interests"]:
                     r["interests"].append(interest)
@@ -233,6 +236,8 @@ _PER_DAY = {"relaxed": 2, "moderate": 3, "packed": 4}
 
 
 def respond_plan_day(ctx: dict[str, Any], faults: set[str]) -> dict[str, Any]:
+    if ctx.get("no_candidates"):
+        return naive_day(ctx["request"]["hard"], ctx["day_index"], ctx["date"], set(ctx.get("used_names", [])))
     req = ctx["request"]
     hard, soft = req["hard"], req["soft"]
     n = hard["travelers"]
@@ -365,3 +370,95 @@ def respond_budget_advice(ctx: dict[str, Any]) -> dict[str, Any]:
     if rep["min_feasible_cost"] > rep["budget"]:
         tips.insert(0, f"即使选最便宜的组合也需约 {rep['min_feasible_cost']:.0f} 元，建议提高预算或缩短天数。")
     return {"suggestions": tips[:5] or ["当前方案已接近最省，建议适当提高预算。"]}
+
+
+# =========================================================================== no-retrieval planning
+# Emulates a model planning from "parametric knowledge": it knows the city's famous
+# places (the catalog) but not live prices / opening hours / dietary tags, so it
+# ignores them. This is what baseline and the no-research ablation are compared on.
+_NAIVE_SLOTS = [("09:00", "12:00"), ("13:30", "16:30"), ("19:30", "21:00")]
+
+
+def _catalog(city: str) -> dict[str, Any]:
+    return _load_all().get(city, {"hotels": [], "restaurants": [], "attractions": []})
+
+
+def naive_day(hard: dict[str, Any], day_index: int, day: str, used: set[str]) -> dict[str, Any]:
+    cat = _catalog(hard["destination"])
+    n = hard["travelers"]
+    must = [a for a in cat["attractions"] if a["name"] in hard.get("must_visit", []) and a["name"] not in used]
+    rest = sorted((a for a in cat["attractions"] if a["name"] not in used and a not in must), key=lambda a: -a["rating"])
+    picks = (must + rest)[:3]
+    rests = sorted(cat["restaurants"], key=lambda r: -r["rating"])
+    lunch, dinner = rests[(2 * day_index) % len(rests)], rests[(2 * day_index + 1) % len(rests)]
+    acts: list[dict[str, Any]] = []
+    for (s, e), a in zip(_NAIVE_SLOTS, picks, strict=False):
+        acts.append(
+            {
+                "start_time": s,
+                "end_time": e,
+                "kind": "attraction",
+                "title": a["name"],
+                "ref_id": a["name"],
+                "est_cost": a["ticket_price"] * n,
+            }
+        )
+        used.add(a["name"])
+    acts.append(
+        {
+            "start_time": "12:00",
+            "end_time": "13:30",
+            "kind": "meal",
+            "title": f"午餐：{lunch['name']}",
+            "ref_id": lunch["name"],
+            "est_cost": lunch["avg_price_per_person"] * n,
+        }
+    )
+    acts.append(
+        {
+            "start_time": "18:00",
+            "end_time": "19:30",
+            "kind": "meal",
+            "title": f"晚餐：{dinner['name']}",
+            "ref_id": dinner["name"],
+            "est_cost": dinner["avg_price_per_person"] * n,
+        }
+    )
+    acts.sort(key=lambda a: a["start_time"])
+    return {"day_index": day_index, "date": day, "theme": "、".join(p["name"] for p in picks), "activities": acts}
+
+
+def respond_baseline(messages: list[BaseMessage], ctx: dict[str, Any]) -> dict[str, Any]:
+    """Single-shot: read the raw request, emit a whole Itinerary, no tools, no checks."""
+    today = date.fromisoformat(ctx.get("today", date.today().isoformat()))
+    r = extract_request([ctx.get("request_text", "")], today, None)
+    city = r.get("destination") or next(iter(_load_all()))
+    start = date.fromisoformat(r.get("start_date") or today.isoformat())
+    hard = {"destination": city, "travelers": r.get("travelers", 1), "must_visit": r.get("must_visit", [])}
+    used: set[str] = set()
+    days = [naive_day(hard, i, (start + timedelta(days=i)).isoformat(), used) for i in range(int(r.get("days") or 1))]
+    hotels = sorted(_catalog(city)["hotels"], key=lambda h: -h["rating"])
+    return {"hotel_id": hotels[0]["name"] if hotels and len(days) > 1 else None, "days": days, "summary": ""}
+
+
+# =========================================================================== judge
+def respond_judge(ctx: dict[str, Any]) -> dict[str, Any]:
+    """Heuristic stand-in for the LLM judge (scores are NOT meaningful quality numbers)."""
+    soft, hard = ctx["request"]["soft"], ctx["request"]["hard"]
+    days = ctx["plan"]["days"]
+    attrs = [a for d in days for a in d["activities"] if a["kind"] == "attraction"]
+    cats = {a.get("category") for a in attrs if a.get("category")}
+    per_day = len(attrs) / max(1, hard["days"])
+    richness = min(95, 40 + 12 * per_day + 5 * len(cats))
+    interests = set(soft.get("interests", []))
+    match = sum(a.get("category") in interests for a in attrs) / len(attrs) if attrs and interests else 0.6
+    pace_ok = {"relaxed": per_day <= 2.2, "moderate": 1.5 <= per_day <= 3.5, "packed": per_day >= 2.5}[soft.get("pace", "moderate")]
+    preference = round(45 + 40 * match + (10 if pace_ok else -10))
+    violations = len(ctx.get("violations", []))
+    reasonable = max(10, 90 - 12 * violations)
+    return {
+        "richness": round(richness),
+        "preference_fit": max(0, min(100, preference)),
+        "reasonableness": reasonable,
+        "rationale": f"mock judge: {len(attrs)} attractions, interest match {match:.0%}, {violations} rule violations",
+    }

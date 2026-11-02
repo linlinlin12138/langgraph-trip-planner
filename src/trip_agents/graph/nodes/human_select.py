@@ -53,7 +53,7 @@ def make_human_select_node(options: GraphOptions):  # type: ignore[no-untyped-de
     def human_select(state: TripState) -> dict[str, Any]:
         rb, req = state["research"], state["request"]
         defaults = default_selection(req, rb)
-        if not options.human_in_loop:
+        if not options.human_in_loop or not (rb.hotels or rb.attractions or rb.restaurants):
             return {"selection": defaults, "status": "planning"}
         answer = interrupt(
             {

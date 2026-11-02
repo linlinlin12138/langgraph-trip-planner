@@ -1,0 +1,14 @@
+{
+ "n": 200,
+ "seed": 42,
+ "rewrite": "template",
+ "dev": 60,
+ "test": 140,
+ "difficulty": {
+  "easy": 70,
+  "medium": 80,
+  "hard": 50
+ },
+ "infeasible": 12,
+ "eval_today": "2026-11-02"
+}

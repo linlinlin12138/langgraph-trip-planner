@@ -23,7 +23,7 @@ from langchain_core.runnables import RunnableConfig
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 
-from trip_agents.graph.deps import AgentDeps
+from trip_agents.graph.deps import AgentDeps, GraphOptions
 from trip_agents.graph.prompts import RESEARCH_SYSTEM
 from trip_agents.graph.state import ToolCallRecord, TripState
 from trip_agents.llm.context import render_context
@@ -137,10 +137,13 @@ def assemble_bundle(results: list[dict[str, Any]], summary: str = "") -> Researc
     )
 
 
-def make_research_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
+def make_research_node(deps: AgentDeps, options: GraphOptions | None = None):  # type: ignore[no-untyped-def]
     sub = build_research_subgraph(deps)
+    enabled = options.enable_research if options else True
 
     def research(state: TripState, config: RunnableConfig) -> dict[str, Any]:
+        if not enabled:  # ablation: no retrieval, downstream agents rely on model knowledge
+            return {"research": ResearchBundle(notes="research disabled"), "tool_calls": [], "status": "awaiting_selection"}
         req = state["request"]
         system = RESEARCH_SYSTEM.format(max_rounds=deps.research_max_rounds_per_tool)
         ctx = render_context({"task": "research", "request": req.model_dump(mode="json")})
