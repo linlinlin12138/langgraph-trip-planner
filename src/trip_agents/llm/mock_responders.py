@@ -185,7 +185,7 @@ def respond_research(messages: list[BaseMessage], ctx: dict[str, Any], faults: s
     else:
         if "get_weather" in last and not last["get_weather"][1]:
             calls.append({"name": "get_weather", "args": {"city": city, "start_date": start.isoformat(), "end_date": end.isoformat()}})
-        h_args, h_ok, h_data = last["search_hotels"]
+        h_args, h_ok, _ = last["search_hotels"]
         hotels_found = [h for name, _, ok, d in hist if name == "search_hotels" and ok for h in d]
         if h_ok and not hotels_found:  # nothing matched in any round: relax progressively
             relaxed = {"city": city, "tier": h_args.get("tier"), "max_price_per_night": None}
@@ -272,8 +272,12 @@ def respond_plan_day(ctx: dict[str, Any], faults: set[str]) -> dict[str, Any]:
         if not is_must and a["recommended_hours"] > 5 and picked:
             continue
         picked.append(a)
-    day_attrs = [a for a in picked if a["category"] != "nightlife"]
-    evening = [a for a in picked if a["category"] == "nightlife"][:1]
+
+    def is_evening(a: dict[str, Any]) -> bool:
+        return bool(a["category"] == "nightlife" or _t(a["open_time"]) >= _t("17:00"))
+
+    day_attrs = [a for a in picked if not is_evening(a)]
+    evening = sorted((a for a in picked if is_evening(a)), key=lambda a: a["name"] not in must)[:1]
     day_attrs.sort(key=lambda a: (a["name"] not in must, _t(a["close_time"])))  # must-visits get the first slots
 
     rests = [r for r in ctx.get("restaurants", []) if diet <= set(r["dietary_tags"])] or ctx.get("restaurants", [])
