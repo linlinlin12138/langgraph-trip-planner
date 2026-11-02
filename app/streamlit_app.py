@@ -16,6 +16,7 @@ from langgraph.types import Command
 
 from trip_agents.config import get_settings
 from trip_agents.graph.deps import GraphOptions
+from trip_agents.memory.store import MemoryManager, sqlite_store
 from trip_agents.observability.tracer import TraceRecorder
 from trip_agents.runtime import PlannerSession, create_planner
 
@@ -39,10 +40,15 @@ FAULTS = {
 }
 
 
-def new_session(faults: set[str]) -> None:
-    graph = create_planner(faults=faults, options=GraphOptions())
+@st.cache_resource
+def memory_store() -> Any:
+    return sqlite_store(get_settings().store_db)
+
+
+def new_session(faults: set[str], user_id: str) -> None:
+    graph = create_planner(faults=faults, options=GraphOptions(), store=memory_store())
     S.tracer = TraceRecorder()  # callback-based: nodes don't know it exists
-    S.session = PlannerSession(graph, callbacks=[S.tracer])
+    S.session = PlannerSession(graph, user_id=user_id, callbacks=[S.tracer])
     S.chat = []
     S.node_log = []
     S.interrupt = None
@@ -66,9 +72,10 @@ with st.sidebar:
     st.caption(f"模型：`{cfg.llm_provider}` · 工具后端：`{cfg.tool_backend}`")
     if cfg.llm_provider == "mock":
         st.info("Mock 模式：规则模拟的模型，不调用任何外部 API；结果仅用于演示流程。")
+    user_id = st.text_input("用户 ID（长期记忆按用户隔离）", value="demo-user")
     chosen = {k for k, label in FAULTS.items() if st.checkbox(label, key=f"fault_{k}")}
-    if st.button("开始新规划", type="primary") or "session" not in S:
-        new_session(chosen)
+    if st.button("开始新规划", type="primary") or "session" not in S or S.session.user_id != user_id:
+        new_session(chosen, user_id)
     st.caption(f"thread_id: `{S.session.thread_id}`")
 
 left, mid, right = st.columns([1.1, 1.5, 1.0], gap="medium")
@@ -138,7 +145,7 @@ with mid:
                 run(S.session.stream, Command(resume={"confirmed": True}))
                 st.rerun()
         elif values.get("status") == "confirmed":
-            st.success("行程已确认。")
+            st.success("行程已确认，已更新长期记忆。")
     elif not intr:
         st.info("在左侧输入你的旅行需求开始。")
 
@@ -151,10 +158,10 @@ with right:
         st.caption(f"当前：{'等待用户（' + waiting + '）' if waiting else NODE_LABELS.get(S.node_log[-1], S.node_log[-1])}")
     tr = S.tracer.trace
     if tr.llm_calls:
-        c1, c2, c3 = st.columns(3)
-        c1.metric("LLM 调用", len(tr.llm_calls))
-        c2.metric("token（入/出）", f"{tr.input_tokens / 1000:.1f}k/{tr.output_tokens / 1000:.1f}k")
-        c3.metric("解析重试", tr.parse_failures)
+        st.markdown(
+            f"**LLM 调用** {len(tr.llm_calls)} 次 · **token** 入 {tr.input_tokens} / 出 {tr.output_tokens} · "
+            f"**解析重试** {tr.parse_failures} 次"
+        )
         per_node: dict[str, dict[str, float]] = {}
         for c in tr.llm_calls:
             d = per_node.setdefault(c.node, {"调用": 0, "token": 0, "LLM 耗时 ms": 0.0})
@@ -183,3 +190,21 @@ with right:
                 st.caption(f"  · {e.message}")
     for item in values.get("skipped_items", []):
         st.warning(f"跳过 {item.stage}/{item.item}：{item.errors[-1][:80]}")
+
+    st.subheader("🧠 长期记忆")
+    mm = MemoryManager(memory_store())
+    profile = mm.get_profile(S.session.user_id)
+    if profile and profile.describe():
+        for line in profile.describe():
+            st.markdown(f"- {line}")
+    else:
+        st.caption("暂无用户画像：确认一次行程后会提取你明确表达过的偏好。")
+    if values.get("memory_defaults"):
+        st.caption("本次沿用的记忆：" + "；".join(values["memory_defaults"].values()))
+    for note in values.get("memory_updates", []):
+        st.caption(f"✍️ {note}")
+    trips = mm.list_trips(S.session.user_id)
+    if trips:
+        with st.expander(f"历史行程摘要（{len(trips)} / 最多 {mm.max_trips}）"):
+            for t in trips:
+                st.markdown(f"- {t.describe()}")

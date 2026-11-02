@@ -11,6 +11,8 @@ CHAT_SYSTEM = """你是旅行规划助手中的「需求澄清」Agent。
 3. 软偏好：节奏 pace、住宿档次 hotel_tier、兴趣 interests、喜欢的菜系 cuisine_likes、其他备注 notes。
 4. 用户后面的发言可以修改前面的信息，以最新为准。
 5. context.current 是之前抽取的结果，在其基础上更新。
+6. 用户明确说这次没有忌口时 dietary_none=true；提到“像上次那样/和上次一样”时 refers_to_past_trip=true，
+   past_trip_hint 填其中提到的城市等线索。
 """
 
 RESEARCH_SYSTEM = """你是旅行规划助手中的「信息检索」Agent，采用 ReAct 方式工作：

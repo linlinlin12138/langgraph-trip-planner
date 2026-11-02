@@ -55,8 +55,10 @@ def format_validation_error(e: ValidationError) -> str:
 def get_backend(kind: str = "mock") -> ToolBackend:
     if kind == "mock":
         return MockBackend()
-    if kind == "real":  # pragma: no cover - wired up in M3
-        raise NotImplementedError("real backend arrives in M3")
+    if kind == "real":
+        from trip_agents.tools.real_backend import RealBackend
+
+        return RealBackend()
     raise ValueError(f"unknown tool backend {kind!r}")
 
 

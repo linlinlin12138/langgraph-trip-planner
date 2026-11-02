@@ -5,10 +5,13 @@ from __future__ import annotations
 from typing import Any
 
 from langchain_core.messages import AIMessage
+from langchain_core.runnables import RunnableConfig
 from langgraph.types import interrupt
 
-from trip_agents.graph.deps import GraphOptions
+from trip_agents.graph.deps import AgentDeps, GraphOptions
+from trip_agents.graph.nodes.chat import memory_manager
 from trip_agents.graph.state import TripState
+from trip_agents.memory.ops import remember_trip
 from trip_agents.schemas import FinalPlan
 from trip_agents.validation.rules import has_errors
 
@@ -41,13 +44,21 @@ def finalize(state: TripState) -> dict[str, Any]:
     return {"final": final, "status": "done", "messages": [AIMessage(content=message, name="finalize")]}
 
 
-def make_confirm_node(options: GraphOptions):  # type: ignore[no-untyped-def]
-    def confirm(state: TripState) -> dict[str, Any]:
-        if not options.human_in_loop:
+def make_confirm_node(deps: AgentDeps, options: GraphOptions):  # type: ignore[no-untyped-def]
+    def confirm(state: TripState, config: RunnableConfig) -> dict[str, Any]:
+        if options.human_in_loop:
+            answer = interrupt({"type": "confirm", "message": state["final"].message})
+            confirmed = bool(answer.get("confirmed")) if isinstance(answer, dict) else bool(answer)
+        else:
+            confirmed = True  # automated runs (evals) count as accepted
+        if not confirmed:
             return {}
-        answer = interrupt({"type": "confirm", "message": state["final"].message})
-        confirmed = bool(answer.get("confirmed")) if isinstance(answer, dict) else bool(answer)
-        # M3: on confirmation, extract long-term memory (profile + trip summary) here.
-        return {"status": "confirmed"} if confirmed else {}
+        mem = memory_manager(options)
+        if mem is None:
+            return {"status": "confirmed"}
+        thread_id = str((config.get("configurable") or {}).get("thread_id", "unknown"))
+        notes = remember_trip(mem, deps.model, dict(state), thread_id=thread_id, now=deps.clock(), config=config,
+                              max_retries=deps.structured_max_retries)  # fmt: skip
+        return {"status": "confirmed", "memory_updates": notes}
 
     return confirm

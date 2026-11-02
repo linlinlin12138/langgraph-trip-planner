@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Callable
 from datetime import date, datetime, time, timedelta
 from typing import Any
 
@@ -108,6 +109,12 @@ def extract_request(texts: list[str], today: date, current: dict[str, Any] | Non
                 r.setdefault("dietary_restrictions", [])
                 if tag not in r["dietary_restrictions"]:
                     r["dietary_restrictions"].append(tag)
+        if re.search(r"没有忌口|不忌口|没什么忌口|什么都吃", text):
+            r["dietary_none"], r["dietary_restrictions"] = True, []
+        if re.search(r"像上次|和上次|跟上次|同上次|上回那样", text):
+            r["refers_to_past_trip"] = True
+            if found:
+                r["past_trip_hint"] = found[0]
         for pat, pace in _PACE_RULES:
             if re.search(pat, text):
                 r["pace"] = pace
@@ -134,6 +141,51 @@ def respond_extract(messages: list[BaseMessage], ctx: dict[str, Any]) -> dict[st
     texts = [m.content for m in messages if isinstance(m, HumanMessage) and isinstance(m.content, str) and "<context>" not in m.content]
     today = date.fromisoformat(ctx.get("today", date.today().isoformat()))
     return extract_request(texts, today, ctx.get("current"))
+
+
+_COMPANION_RULES: list[tuple[str, Callable[[re.Match[str]], str]]] = [
+    (r"我和(女朋友|男朋友|老婆|老公|妻子|丈夫|对象|朋友|同事)", lambda m: m[1]),
+    (r"一家([三四五])口", lambda m: f"家人（{cn_to_int(m[1])}人）"),
+    (r"我一个人|独自|我自己", lambda m: "独自"),
+]
+_BUDGET_PHRASE = re.compile(r"(?:人均|总)?预算[^，。,；;]*?\d+(?:\.\d+)?\s*(?:万|千|k|K|元|块)?")
+
+
+def respond_profile(ctx: dict[str, Any]) -> dict[str, Any]:
+    """Rule-based preference extraction; every evidence string is a literal slice of user text."""
+    texts: list[str] = ctx.get("user_messages", [])
+    prefs: list[dict[str, Any]] = []
+    diets: list[str] = []
+    diet_evidence = None
+    for text in texts:
+        for pat, tag in _DIET_RULES:
+            if m := re.search(pat, text):
+                diets.append(tag)
+                diet_evidence = diet_evidence or m[0]
+        if m := re.search(r"没有忌口|不忌口|没什么忌口|什么都吃", text):
+            diets, diet_evidence = [], m[0]
+    if diet_evidence:
+        prefs.append({"field": "dietary_restrictions", "value": sorted(set(diets)), "evidence": diet_evidence})
+    for field, rules in (("pace", _PACE_RULES), ("hotel_tier", _TIER_RULES)):
+        last = None
+        for text in texts:
+            for pat, value in rules:
+                if m := re.search(pat, text):
+                    last = {"field": field, "value": value, "evidence": m[0]}
+        if last:
+            prefs.append(last)
+    for text in texts:
+        for pat, fn in _COMPANION_RULES:
+            if m := re.search(pat, text):
+                prefs.append({"field": "companions", "value": fn(m), "evidence": m[0]})
+                break
+    r = extract_request(texts, date.fromisoformat(ctx.get("today", "2026-01-01")), None)
+    if r.get("budget_total") and r.get("days"):
+        phrase = next((m[0] for t in texts if (m := _BUDGET_PHRASE.search(t))), None)
+        if phrase:
+            per = r["budget_total"] / (int(r.get("travelers", 1)) * int(r["days"]))
+            prefs.append({"field": "budget_per_person_per_day", "value": round(per, -1), "evidence": phrase})
+    return {"preferences": prefs}
 
 
 # =========================================================================== research

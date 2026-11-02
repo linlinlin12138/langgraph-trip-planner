@@ -88,6 +88,7 @@ class MockChatModel(BaseChatModel):
             "BudgetAdvice": lambda: R.respond_budget_advice(ctx),
             "Itinerary": lambda: R.respond_baseline(messages, ctx),
             "JudgeScores": lambda: R.respond_judge(ctx),
+            "ProfileExtraction": lambda: R.respond_profile(ctx),
         }
         fn = responders.get(schema.__name__)
         if fn is None:

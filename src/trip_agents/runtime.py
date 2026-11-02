@@ -15,12 +15,14 @@ from typing import Any
 from langchain_core.callbacks import BaseCallbackHandler
 from langchain_core.messages import AIMessage, HumanMessage
 from langgraph.graph.state import CompiledStateGraph
+from langgraph.store.base import BaseStore
 from langgraph.types import Command
 
 from trip_agents.config import get_settings
 from trip_agents.graph.builder import build_graph, sqlite_checkpointer
-from trip_agents.graph.deps import AgentDeps, GraphOptions, LocalToolExecutor
+from trip_agents.graph.deps import AgentDeps, GraphOptions, make_tool_executor
 from trip_agents.llm.factory import get_chat_model
+from trip_agents.memory.store import sqlite_store
 
 
 def create_planner(
@@ -30,14 +32,15 @@ def create_planner(
     faults: set[str] | None = None,
     options: GraphOptions | None = None,
     checkpoint_path: str | None = None,
+    store: BaseStore | None = None,
     today: date | None = None,
 ) -> CompiledStateGraph[Any]:
     s = get_settings()
     kwargs: dict[str, Any] = {"faults": set(faults)} if faults and (provider or s.llm_provider) == "mock" else {}
     llm = get_chat_model(provider, model, **kwargs)  # type: ignore[arg-type]
-    deps = AgentDeps(model=llm, tools=LocalToolExecutor(), today=today or date.today())
+    deps = AgentDeps(model=llm, tools=make_tool_executor(), today=today or date.today())
     cp = sqlite_checkpointer(checkpoint_path or s.checkpoint_db)
-    return build_graph(deps, options, checkpointer=cp)
+    return build_graph(deps, options, checkpointer=cp, store=store if store is not None else sqlite_store(s.store_db))
 
 
 @dataclass

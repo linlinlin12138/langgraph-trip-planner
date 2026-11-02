@@ -49,6 +49,9 @@ class TripState(TypedDict, total=False):
     missing_fields: list[str]
     clarify_rounds: int
     request: TripRequest  # set once all required fields are known
+    memory_defaults: dict[str, str]  # fields filled from long-term memory -> note shown to the user
+    defaults_pending: bool  # waiting for the user to confirm memory defaults
+    defaults_confirmed: bool
 
     # ---- research --------------------------------------------------------------
     research: ResearchBundle
@@ -72,3 +75,4 @@ class TripState(TypedDict, total=False):
 
     # ---- finalize ----------------------------------------------------------------------
     final: FinalPlan
+    memory_updates: list[str]  # written by confirm

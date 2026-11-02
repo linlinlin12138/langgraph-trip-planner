@@ -67,6 +67,10 @@ class RequestExtraction(BaseModel):
     interests: list[Interest] = Field(default_factory=list)
     cuisine_likes: list[str] = Field(default_factory=list)
     notes: str = ""
+    # memory hooks
+    dietary_none: bool = Field(default=False, description="用户明确表示这次没有饮食限制")
+    refers_to_past_trip: bool = Field(default=False, description="用户提到“像上次那样”等，引用过去的行程")
+    past_trip_hint: str | None = Field(default=None, description="引用过去行程时提到的线索，如城市名")
 
     def missing_required(self) -> list[str]:
         return [f for f in REQUIRED_FIELDS if getattr(self, f) is None]

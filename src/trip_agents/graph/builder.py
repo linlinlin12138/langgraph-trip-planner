@@ -57,7 +57,7 @@ def build_graph(
     g.add_node("budget", make_budget_node(deps, options))
     g.add_node("validate", validate)
     g.add_node("finalize", finalize)
-    g.add_node("confirm", make_confirm_node(options))
+    g.add_node("confirm", make_confirm_node(deps, options))
 
     g.add_edge(START, "chat")
     g.add_conditional_edges("chat", route_after_chat(options), ["clarify", "research", END])

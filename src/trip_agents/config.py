@@ -26,6 +26,8 @@ class Settings(BaseSettings):
 
     # --- tools ---------------------------------------------------------------
     tool_backend: Literal["mock", "real"] = "mock"
+    # mcp: Research discovers/calls tools through an MCP stdio server; local: in-process (faster, used by evals)
+    tool_transport: Literal["mcp", "local"] = "mcp"
 
     # --- agent behaviour -----------------------------------------------------
     max_revisions: int = Field(default=2, ge=0, description="Itinerary re-plan rounds after rule failures")

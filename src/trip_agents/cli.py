@@ -24,7 +24,7 @@ def _answer_interrupt(intr: dict[str, Any], auto: bool) -> Any:
     kind = intr["type"]
     if kind == "clarify":
         print(f"助手: {intr['question']}")
-        return input("你: ")
+        return "可以" if auto and intr.get("memory_defaults") and not intr.get("missing") else input("你: ")
     if kind == "select_candidates":
         d = intr["defaults"]
         print("\n候选酒店:")
@@ -56,10 +56,11 @@ def main() -> None:
     ap.add_argument("--auto", metavar="REQUEST", help="run non-interactively with this request")
     ap.add_argument("--thread", help="resume an existing thread id")
     ap.add_argument("--faults", default="", help="mock faults, comma separated (e.g. itinerary_overlap_once)")
+    ap.add_argument("--user", default="demo-user", help="user id for long-term memory")
     args = ap.parse_args()
 
     graph = create_planner(faults={f for f in args.faults.split(",") if f})
-    session = PlannerSession(graph, thread_id=args.thread)
+    session = PlannerSession(graph, thread_id=args.thread, user_id=args.user)
     print(f"thread_id = {session.thread_id}")
     intr = session.pending_interrupt() if args.thread else None
     if intr is None:
@@ -78,6 +79,8 @@ def main() -> None:
             for a in d.activities:
                 print(f"  {a.start_time:%H:%M}-{a.end_time:%H:%M} {a.title}  ¥{a.est_cost:.0f}")
         print("\n预算明细:", json.dumps([li.model_dump() for li in final.budget.lines], ensure_ascii=False))
+    for note in session.values.get("memory_updates", []):
+        print(f"[记忆] {note}")
 
 
 if __name__ == "__main__":
