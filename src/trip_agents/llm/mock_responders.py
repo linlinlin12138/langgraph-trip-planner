@@ -186,7 +186,8 @@ def respond_research(messages: list[BaseMessage], ctx: dict[str, Any], faults: s
         if "get_weather" in last and not last["get_weather"][1]:
             calls.append({"name": "get_weather", "args": {"city": city, "start_date": start.isoformat(), "end_date": end.isoformat()}})
         h_args, h_ok, h_data = last["search_hotels"]
-        if h_ok and not h_data:  # nothing matched: relax progressively
+        hotels_found = [h for name, _, ok, d in hist if name == "search_hotels" and ok for h in d]
+        if h_ok and not hotels_found:  # nothing matched in any round: relax progressively
             relaxed = {"city": city, "tier": h_args.get("tier"), "max_price_per_night": None}
             if h_args.get("max_price_per_night") is None:
                 relaxed["tier"] = None
@@ -201,7 +202,7 @@ def respond_research(messages: list[BaseMessage], ctx: dict[str, Any], faults: s
         if (set(hard["must_visit"]) - found or (a_ok and len(a_data) < days * 2)) and a_args.get("categories"):
             calls.append({"name": "search_attractions", "args": {"city": city, "categories": [], "limit": 15}})
         if not calls and "get_route" not in last:
-            hotels = h_data if h_ok and h_data else []
+            hotels = hotels_found
             attrs = a_data if a_ok and a_data else []
             if hotels and attrs:
                 calls.append({"name": "get_route", "args": {"city": city, "origin": hotels[0]["id"], "destination": attrs[0]["id"]}})
