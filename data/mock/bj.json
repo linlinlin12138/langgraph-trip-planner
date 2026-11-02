@@ -1,0 +1,558 @@
+{
+ "city": "北京",
+ "hotels": [
+  {
+   "id": "bj-h00",
+   "name": "西城精选酒店(虚构)",
+   "city": "北京",
+   "tier": "budget",
+   "price_per_night": 250.0,
+   "rating": 4.4,
+   "area": "西城",
+   "lat": 39.9273,
+   "lon": 116.3954
+  },
+  {
+   "id": "bj-h01",
+   "name": "东城快捷酒店(虚构)",
+   "city": "北京",
+   "tier": "budget",
+   "price_per_night": 240.0,
+   "rating": 4.9,
+   "area": "东城",
+   "lat": 39.9041,
+   "lon": 116.3811
+  },
+  {
+   "id": "bj-h02",
+   "name": "西城青年旅舍(虚构)",
+   "city": "北京",
+   "tier": "budget",
+   "price_per_night": 160.0,
+   "rating": 4.7,
+   "area": "西城",
+   "lat": 39.9333,
+   "lon": 116.4354
+  },
+  {
+   "id": "bj-h03",
+   "name": "东城花园酒店(虚构)",
+   "city": "北京",
+   "tier": "midrange",
+   "price_per_night": 550.0,
+   "rating": 4.8,
+   "area": "东城",
+   "lat": 39.9334,
+   "lon": 116.4017
+  },
+  {
+   "id": "bj-h04",
+   "name": "西城国际大酒店(虚构)",
+   "city": "北京",
+   "tier": "midrange",
+   "price_per_night": 650.0,
+   "rating": 4.5,
+   "area": "西城",
+   "lat": 39.9079,
+   "lon": 116.3893
+  },
+  {
+   "id": "bj-h05",
+   "name": "西城设计酒店(虚构)",
+   "city": "北京",
+   "tier": "midrange",
+   "price_per_night": 720.0,
+   "rating": 4.5,
+   "area": "西城",
+   "lat": 39.9184,
+   "lon": 116.4097
+  },
+  {
+   "id": "bj-h06",
+   "name": "西城公寓酒店(虚构)",
+   "city": "北京",
+   "tier": "midrange",
+   "price_per_night": 540.0,
+   "rating": 3.9,
+   "area": "西城",
+   "lat": 39.9394,
+   "lon": 116.4101
+  },
+  {
+   "id": "bj-h07",
+   "name": "东城宾馆(虚构)",
+   "city": "北京",
+   "tier": "luxury",
+   "price_per_night": 2110.0,
+   "rating": 4.1,
+   "area": "东城",
+   "lat": 39.9507,
+   "lon": 116.4046
+  },
+  {
+   "id": "bj-h08",
+   "name": "东城度假酒店(虚构)",
+   "city": "北京",
+   "tier": "luxury",
+   "price_per_night": 2120.0,
+   "rating": 4.0,
+   "area": "东城",
+   "lat": 39.9411,
+   "lon": 116.3968
+  },
+  {
+   "id": "bj-h09",
+   "name": "西城臻选酒店(虚构)",
+   "city": "北京",
+   "tier": "luxury",
+   "price_per_night": 1980.0,
+   "rating": 4.3,
+   "area": "西城",
+   "lat": 39.925,
+   "lon": 116.3897
+  }
+ ],
+ "restaurants": [
+  {
+   "id": "bj-r00",
+   "name": "东城京菜老店(虚构)",
+   "city": "北京",
+   "cuisine": "京菜",
+   "avg_price_per_person": 120.0,
+   "rating": 4.2,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "东城",
+   "lat": 39.9105,
+   "lon": 116.4189
+  },
+  {
+   "id": "bj-r01",
+   "name": "朝阳烤鸭食堂(虚构)",
+   "city": "北京",
+   "cuisine": "烤鸭",
+   "avg_price_per_person": 300.0,
+   "rating": 4.4,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "朝阳",
+   "lat": 39.9306,
+   "lon": 116.4219
+  },
+  {
+   "id": "bj-r02",
+   "name": "东城涮羊肉小馆(虚构)",
+   "city": "北京",
+   "cuisine": "涮羊肉",
+   "avg_price_per_person": 70.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "东城",
+   "lat": 39.9484,
+   "lon": 116.4183
+  },
+  {
+   "id": "bj-r03",
+   "name": "东城炸酱面酒家(虚构)",
+   "city": "北京",
+   "cuisine": "炸酱面",
+   "avg_price_per_person": 160.0,
+   "rating": 4.2,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "东城",
+   "lat": 39.9086,
+   "lon": 116.4085
+  },
+  {
+   "id": "bj-r04",
+   "name": "朝阳素斋坊(虚构)",
+   "city": "北京",
+   "cuisine": "素斋",
+   "avg_price_per_person": 120.0,
+   "rating": 4.4,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "朝阳",
+   "lat": 39.9402,
+   "lon": 116.3969
+  },
+  {
+   "id": "bj-r05",
+   "name": "西城粤菜私房菜(虚构)",
+   "city": "北京",
+   "cuisine": "粤菜",
+   "avg_price_per_person": 300.0,
+   "rating": 4.3,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "西城",
+   "lat": 39.9534,
+   "lon": 116.4356
+  },
+  {
+   "id": "bj-r06",
+   "name": "朝阳清真菜餐厅(虚构)",
+   "city": "北京",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 50.0,
+   "rating": 4.0,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "朝阳",
+   "lat": 39.9017,
+   "lon": 116.422
+  },
+  {
+   "id": "bj-r07",
+   "name": "朝阳京菜大排档(虚构)",
+   "city": "北京",
+   "cuisine": "京菜",
+   "avg_price_per_person": 160.0,
+   "rating": 4.5,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "朝阳",
+   "lat": 39.9237,
+   "lon": 116.3988
+  },
+  {
+   "id": "bj-r08",
+   "name": "东城烤鸭楼(虚构)",
+   "city": "北京",
+   "cuisine": "烤鸭",
+   "avg_price_per_person": 35.0,
+   "rating": 4.0,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "东城",
+   "lat": 39.9113,
+   "lon": 116.4187
+  },
+  {
+   "id": "bj-r09",
+   "name": "西城涮羊肉馆(虚构)",
+   "city": "北京",
+   "cuisine": "涮羊肉",
+   "avg_price_per_person": 160.0,
+   "rating": 4.5,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "西城",
+   "lat": 39.9396,
+   "lon": 116.435
+  },
+  {
+   "id": "bj-r10",
+   "name": "西城炸酱面老店(虚构)",
+   "city": "北京",
+   "cuisine": "炸酱面",
+   "avg_price_per_person": 90.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "西城",
+   "lat": 39.9497,
+   "lon": 116.4144
+  },
+  {
+   "id": "bj-r11",
+   "name": "朝阳素斋食堂(虚构)",
+   "city": "北京",
+   "cuisine": "素斋",
+   "avg_price_per_person": 50.0,
+   "rating": 4.6,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "朝阳",
+   "lat": 39.9313,
+   "lon": 116.3946
+  },
+  {
+   "id": "bj-r12",
+   "name": "西城粤菜小馆(虚构)",
+   "city": "北京",
+   "cuisine": "粤菜",
+   "avg_price_per_person": 220.0,
+   "rating": 4.9,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "西城",
+   "lat": 39.9487,
+   "lon": 116.3983
+  },
+  {
+   "id": "bj-r13",
+   "name": "东城清真菜酒家(虚构)",
+   "city": "北京",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 120.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_spicy"
+   ],
+   "area": "东城",
+   "lat": 39.9389,
+   "lon": 116.4259
+  },
+  {
+   "id": "bj-r14",
+   "name": "东城京菜坊(虚构)",
+   "city": "北京",
+   "cuisine": "京菜",
+   "avg_price_per_person": 300.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "东城",
+   "lat": 39.9576,
+   "lon": 116.4207
+  }
+ ],
+ "attractions": [
+  {
+   "id": "bj-a00",
+   "name": "故宫博物院",
+   "city": "北京",
+   "category": "history",
+   "ticket_price": 60,
+   "recommended_hours": 4,
+   "open_time": "08:30",
+   "close_time": "17:00",
+   "rating": 4.6,
+   "area": "东城",
+   "lat": 39.916,
+   "lon": 116.397
+  },
+  {
+   "id": "bj-a01",
+   "name": "天坛公园",
+   "city": "北京",
+   "category": "history",
+   "ticket_price": 34,
+   "recommended_hours": 2.5,
+   "open_time": "06:00",
+   "close_time": "21:00",
+   "rating": 4.9,
+   "area": "东城",
+   "lat": 39.882,
+   "lon": 116.407
+  },
+  {
+   "id": "bj-a02",
+   "name": "颐和园",
+   "city": "北京",
+   "category": "history",
+   "ticket_price": 30,
+   "recommended_hours": 3.5,
+   "open_time": "06:30",
+   "close_time": "18:00",
+   "rating": 4.5,
+   "area": "海淀",
+   "lat": 39.999,
+   "lon": 116.275
+  },
+  {
+   "id": "bj-a03",
+   "name": "八达岭长城",
+   "city": "北京",
+   "category": "history",
+   "ticket_price": 40,
+   "recommended_hours": 5,
+   "open_time": "07:30",
+   "close_time": "17:00",
+   "rating": 4.6,
+   "area": "延庆",
+   "lat": 40.359,
+   "lon": 116.02
+  },
+  {
+   "id": "bj-a04",
+   "name": "中国国家博物馆",
+   "city": "北京",
+   "category": "museum",
+   "ticket_price": 0,
+   "recommended_hours": 3,
+   "open_time": "09:00",
+   "close_time": "17:00",
+   "rating": 4.3,
+   "area": "东城",
+   "lat": 39.905,
+   "lon": 116.401
+  },
+  {
+   "id": "bj-a05",
+   "name": "景山公园",
+   "city": "北京",
+   "category": "nature",
+   "ticket_price": 2,
+   "recommended_hours": 1.5,
+   "open_time": "06:00",
+   "close_time": "21:00",
+   "rating": 4.2,
+   "area": "西城",
+   "lat": 39.925,
+   "lon": 116.396
+  },
+  {
+   "id": "bj-a06",
+   "name": "北海公园",
+   "city": "北京",
+   "category": "nature",
+   "ticket_price": 10,
+   "recommended_hours": 2,
+   "open_time": "06:30",
+   "close_time": "21:00",
+   "rating": 4.8,
+   "area": "西城",
+   "lat": 39.926,
+   "lon": 116.389
+  },
+  {
+   "id": "bj-a07",
+   "name": "南锣鼓巷",
+   "city": "北京",
+   "category": "culture",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "22:00",
+   "rating": 4.3,
+   "area": "东城",
+   "lat": 39.937,
+   "lon": 116.403
+  },
+  {
+   "id": "bj-a08",
+   "name": "798艺术区",
+   "city": "北京",
+   "category": "culture",
+   "ticket_price": 0,
+   "recommended_hours": 2.5,
+   "open_time": "10:00",
+   "close_time": "18:00",
+   "rating": 4.9,
+   "area": "朝阳",
+   "lat": 39.984,
+   "lon": 116.495
+  },
+  {
+   "id": "bj-a09",
+   "name": "什刹海",
+   "city": "北京",
+   "category": "nightlife",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "09:00",
+   "close_time": "23:30",
+   "rating": 4.9,
+   "area": "西城",
+   "lat": 39.94,
+   "lon": 116.385
+  },
+  {
+   "id": "bj-a10",
+   "name": "三里屯太古里",
+   "city": "北京",
+   "category": "shopping",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "10:00",
+   "close_time": "22:00",
+   "rating": 4.6,
+   "area": "朝阳",
+   "lat": 39.934,
+   "lon": 116.454
+  },
+  {
+   "id": "bj-a11",
+   "name": "王府井大街",
+   "city": "北京",
+   "category": "shopping",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "09:00",
+   "close_time": "22:00",
+   "rating": 4.9,
+   "area": "东城",
+   "lat": 39.914,
+   "lon": 116.411
+  },
+  {
+   "id": "bj-a12",
+   "name": "雍和宫",
+   "city": "北京",
+   "category": "culture",
+   "ticket_price": 25,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "16:30",
+   "rating": 4.8,
+   "area": "东城",
+   "lat": 39.948,
+   "lon": 116.417
+  },
+  {
+   "id": "bj-a13",
+   "name": "奥林匹克公园",
+   "city": "北京",
+   "category": "nature",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "06:00",
+   "close_time": "22:00",
+   "rating": 4.8,
+   "area": "朝阳",
+   "lat": 40.001,
+   "lon": 116.39
+  },
+  {
+   "id": "bj-a14",
+   "name": "簋街",
+   "city": "北京",
+   "category": "food",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "11:00",
+   "close_time": "23:30",
+   "rating": 4.6,
+   "area": "东城",
+   "lat": 39.941,
+   "lon": 116.421
+  }
+ ]
+}

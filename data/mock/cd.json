@@ -1,0 +1,547 @@
+{
+ "city": "成都",
+ "hotels": [
+  {
+   "id": "cd-h00",
+   "name": "锦江精选酒店(虚构)",
+   "city": "成都",
+   "tier": "budget",
+   "price_per_night": 230.0,
+   "rating": 4.8,
+   "area": "锦江",
+   "lat": 30.6846,
+   "lon": 104.0546
+  },
+  {
+   "id": "cd-h01",
+   "name": "成华快捷酒店(虚构)",
+   "city": "成都",
+   "tier": "budget",
+   "price_per_night": 240.0,
+   "rating": 4.1,
+   "area": "成华",
+   "lat": 30.6339,
+   "lon": 104.0543
+  },
+  {
+   "id": "cd-h02",
+   "name": "成华青年旅舍(虚构)",
+   "city": "成都",
+   "tier": "budget",
+   "price_per_night": 180.0,
+   "rating": 4.0,
+   "area": "成华",
+   "lat": 30.673,
+   "lon": 104.0285
+  },
+  {
+   "id": "cd-h03",
+   "name": "锦江花园酒店(虚构)",
+   "city": "成都",
+   "tier": "midrange",
+   "price_per_night": 420.0,
+   "rating": 4.8,
+   "area": "锦江",
+   "lat": 30.6777,
+   "lon": 104.0552
+  },
+  {
+   "id": "cd-h04",
+   "name": "青羊国际大酒店(虚构)",
+   "city": "成都",
+   "tier": "midrange",
+   "price_per_night": 510.0,
+   "rating": 3.8,
+   "area": "青羊",
+   "lat": 30.652,
+   "lon": 104.0797
+  },
+  {
+   "id": "cd-h05",
+   "name": "青羊设计酒店(虚构)",
+   "city": "成都",
+   "tier": "midrange",
+   "price_per_night": 540.0,
+   "rating": 4.3,
+   "area": "青羊",
+   "lat": 30.6339,
+   "lon": 104.0433
+  },
+  {
+   "id": "cd-h06",
+   "name": "武侯公寓酒店(虚构)",
+   "city": "成都",
+   "tier": "midrange",
+   "price_per_night": 390.0,
+   "rating": 4.2,
+   "area": "武侯",
+   "lat": 30.6494,
+   "lon": 104.0683
+  },
+  {
+   "id": "cd-h07",
+   "name": "武侯宾馆(虚构)",
+   "city": "成都",
+   "tier": "luxury",
+   "price_per_night": 1830.0,
+   "rating": 4.0,
+   "area": "武侯",
+   "lat": 30.6756,
+   "lon": 104.0762
+  },
+  {
+   "id": "cd-h08",
+   "name": "成华度假酒店(虚构)",
+   "city": "成都",
+   "tier": "luxury",
+   "price_per_night": 1120.0,
+   "rating": 4.0,
+   "area": "成华",
+   "lat": 30.65,
+   "lon": 104.0462
+  },
+  {
+   "id": "cd-h09",
+   "name": "锦江臻选酒店(虚构)",
+   "city": "成都",
+   "tier": "luxury",
+   "price_per_night": 1420.0,
+   "rating": 4.3,
+   "area": "锦江",
+   "lat": 30.6745,
+   "lon": 104.0642
+  }
+ ],
+ "restaurants": [
+  {
+   "id": "cd-r00",
+   "name": "成华川菜老店(虚构)",
+   "city": "成都",
+   "cuisine": "川菜",
+   "avg_price_per_person": 220.0,
+   "rating": 4.6,
+   "dietary_tags": [
+    "vegetarian"
+   ],
+   "area": "成华",
+   "lat": 30.663,
+   "lon": 104.0672
+  },
+  {
+   "id": "cd-r01",
+   "name": "青羊火锅食堂(虚构)",
+   "city": "成都",
+   "cuisine": "火锅",
+   "avg_price_per_person": 160.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_seafood"
+   ],
+   "area": "青羊",
+   "lat": 30.6764,
+   "lon": 104.0338
+  },
+  {
+   "id": "cd-r02",
+   "name": "武侯串串小馆(虚构)",
+   "city": "成都",
+   "cuisine": "串串",
+   "avg_price_per_person": 35.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "vegetarian"
+   ],
+   "area": "武侯",
+   "lat": 30.6515,
+   "lon": 104.0767
+  },
+  {
+   "id": "cd-r03",
+   "name": "青羊小吃酒家(虚构)",
+   "city": "成都",
+   "cuisine": "小吃",
+   "avg_price_per_person": 120.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_seafood",
+    "vegetarian"
+   ],
+   "area": "青羊",
+   "lat": 30.6891,
+   "lon": 104.0279
+  },
+  {
+   "id": "cd-r04",
+   "name": "锦江素斋坊(虚构)",
+   "city": "成都",
+   "cuisine": "素斋",
+   "avg_price_per_person": 120.0,
+   "rating": 4.4,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "锦江",
+   "lat": 30.6355,
+   "lon": 104.0706
+  },
+  {
+   "id": "cd-r05",
+   "name": "锦江粤菜私房菜(虚构)",
+   "city": "成都",
+   "cuisine": "粤菜",
+   "avg_price_per_person": 90.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "锦江",
+   "lat": 30.6775,
+   "lon": 104.0766
+  },
+  {
+   "id": "cd-r06",
+   "name": "成华清真菜餐厅(虚构)",
+   "city": "成都",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 70.0,
+   "rating": 4.3,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_spicy"
+   ],
+   "area": "成华",
+   "lat": 30.6563,
+   "lon": 104.0604
+  },
+  {
+   "id": "cd-r07",
+   "name": "锦江川菜大排档(虚构)",
+   "city": "成都",
+   "cuisine": "川菜",
+   "avg_price_per_person": 120.0,
+   "rating": 4.3,
+   "dietary_tags": [],
+   "area": "锦江",
+   "lat": 30.6604,
+   "lon": 104.0706
+  },
+  {
+   "id": "cd-r08",
+   "name": "武侯火锅楼(虚构)",
+   "city": "成都",
+   "cuisine": "火锅",
+   "avg_price_per_person": 160.0,
+   "rating": 4.4,
+   "dietary_tags": [],
+   "area": "武侯",
+   "lat": 30.6553,
+   "lon": 104.0353
+  },
+  {
+   "id": "cd-r09",
+   "name": "青羊串串馆(虚构)",
+   "city": "成都",
+   "cuisine": "串串",
+   "avg_price_per_person": 35.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "no_seafood",
+    "vegetarian"
+   ],
+   "area": "青羊",
+   "lat": 30.636,
+   "lon": 104.0657
+  },
+  {
+   "id": "cd-r10",
+   "name": "青羊小吃老店(虚构)",
+   "city": "成都",
+   "cuisine": "小吃",
+   "avg_price_per_person": 50.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "no_seafood"
+   ],
+   "area": "青羊",
+   "lat": 30.6333,
+   "lon": 104.0414
+  },
+  {
+   "id": "cd-r11",
+   "name": "锦江素斋食堂(虚构)",
+   "city": "成都",
+   "cuisine": "素斋",
+   "avg_price_per_person": 70.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "锦江",
+   "lat": 30.6529,
+   "lon": 104.0686
+  },
+  {
+   "id": "cd-r12",
+   "name": "成华粤菜小馆(虚构)",
+   "city": "成都",
+   "cuisine": "粤菜",
+   "avg_price_per_person": 35.0,
+   "rating": 4.5,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "成华",
+   "lat": 30.6375,
+   "lon": 104.033
+  },
+  {
+   "id": "cd-r13",
+   "name": "青羊清真菜酒家(虚构)",
+   "city": "成都",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 120.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_spicy"
+   ],
+   "area": "青羊",
+   "lat": 30.6783,
+   "lon": 104.0436
+  },
+  {
+   "id": "cd-r14",
+   "name": "锦江川菜坊(虚构)",
+   "city": "成都",
+   "cuisine": "川菜",
+   "avg_price_per_person": 35.0,
+   "rating": 4.5,
+   "dietary_tags": [
+    "no_seafood"
+   ],
+   "area": "锦江",
+   "lat": 30.6319,
+   "lon": 104.0675
+  }
+ ],
+ "attractions": [
+  {
+   "id": "cd-a00",
+   "name": "大熊猫繁育研究基地",
+   "city": "成都",
+   "category": "nature",
+   "ticket_price": 55,
+   "recommended_hours": 3.5,
+   "open_time": "07:30",
+   "close_time": "18:00",
+   "rating": 4.7,
+   "area": "成华",
+   "lat": 30.733,
+   "lon": 104.147
+  },
+  {
+   "id": "cd-a01",
+   "name": "宽窄巷子",
+   "city": "成都",
+   "category": "culture",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "09:00",
+   "close_time": "22:00",
+   "rating": 4.3,
+   "area": "青羊",
+   "lat": 30.67,
+   "lon": 104.054
+  },
+  {
+   "id": "cd-a02",
+   "name": "锦里",
+   "city": "成都",
+   "category": "food",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "22:30",
+   "rating": 4.8,
+   "area": "武侯",
+   "lat": 30.646,
+   "lon": 104.05
+  },
+  {
+   "id": "cd-a03",
+   "name": "武侯祠",
+   "city": "成都",
+   "category": "history",
+   "ticket_price": 50,
+   "recommended_hours": 2,
+   "open_time": "08:00",
+   "close_time": "18:00",
+   "rating": 4.8,
+   "area": "武侯",
+   "lat": 30.646,
+   "lon": 104.048
+  },
+  {
+   "id": "cd-a04",
+   "name": "杜甫草堂",
+   "city": "成都",
+   "category": "history",
+   "ticket_price": 50,
+   "recommended_hours": 2,
+   "open_time": "08:00",
+   "close_time": "18:00",
+   "rating": 4.6,
+   "area": "青羊",
+   "lat": 30.66,
+   "lon": 104.028
+  },
+  {
+   "id": "cd-a05",
+   "name": "都江堰",
+   "city": "成都",
+   "category": "history",
+   "ticket_price": 80,
+   "recommended_hours": 4,
+   "open_time": "08:00",
+   "close_time": "18:00",
+   "rating": 4.6,
+   "area": "都江堰",
+   "lat": 31.001,
+   "lon": 103.607
+  },
+  {
+   "id": "cd-a06",
+   "name": "青城山",
+   "city": "成都",
+   "category": "nature",
+   "ticket_price": 80,
+   "recommended_hours": 5,
+   "open_time": "08:00",
+   "close_time": "17:30",
+   "rating": 4.7,
+   "area": "都江堰",
+   "lat": 30.9,
+   "lon": 103.57
+  },
+  {
+   "id": "cd-a07",
+   "name": "春熙路",
+   "city": "成都",
+   "category": "shopping",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "10:00",
+   "close_time": "22:00",
+   "rating": 4.2,
+   "area": "锦江",
+   "lat": 30.657,
+   "lon": 104.081
+  },
+  {
+   "id": "cd-a08",
+   "name": "成都远洋太古里",
+   "city": "成都",
+   "category": "shopping",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "10:00",
+   "close_time": "22:00",
+   "rating": 4.3,
+   "area": "锦江",
+   "lat": 30.654,
+   "lon": 104.083
+  },
+  {
+   "id": "cd-a09",
+   "name": "四川博物院",
+   "city": "成都",
+   "category": "museum",
+   "ticket_price": 0,
+   "recommended_hours": 2.5,
+   "open_time": "09:00",
+   "close_time": "17:00",
+   "rating": 4.3,
+   "area": "青羊",
+   "lat": 30.66,
+   "lon": 104.035
+  },
+  {
+   "id": "cd-a10",
+   "name": "金沙遗址博物馆",
+   "city": "成都",
+   "category": "museum",
+   "ticket_price": 70,
+   "recommended_hours": 2.5,
+   "open_time": "08:00",
+   "close_time": "18:00",
+   "rating": 4.4,
+   "area": "青羊",
+   "lat": 30.681,
+   "lon": 104.012
+  },
+  {
+   "id": "cd-a11",
+   "name": "人民公园鹤鸣茶社",
+   "city": "成都",
+   "category": "culture",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "07:00",
+   "close_time": "21:00",
+   "rating": 4.5,
+   "area": "青羊",
+   "lat": 30.658,
+   "lon": 104.059
+  },
+  {
+   "id": "cd-a12",
+   "name": "九眼桥酒吧街",
+   "city": "成都",
+   "category": "nightlife",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "19:00",
+   "close_time": "23:30",
+   "rating": 4.3,
+   "area": "锦江",
+   "lat": 30.64,
+   "lon": 104.09
+  },
+  {
+   "id": "cd-a13",
+   "name": "建设路小吃街",
+   "city": "成都",
+   "category": "food",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "11:00",
+   "close_time": "23:00",
+   "rating": 4.8,
+   "area": "成华",
+   "lat": 30.676,
+   "lon": 104.104
+  },
+  {
+   "id": "cd-a14",
+   "name": "蜀风雅韵川剧",
+   "city": "成都",
+   "category": "culture",
+   "ticket_price": 260,
+   "recommended_hours": 1.5,
+   "open_time": "19:30",
+   "close_time": "21:30",
+   "rating": 4.6,
+   "area": "青羊",
+   "lat": 30.664,
+   "lon": 104.047
+  }
+ ]
+}

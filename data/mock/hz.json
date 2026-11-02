@@ -1,0 +1,557 @@
+{
+ "city": "杭州",
+ "hotels": [
+  {
+   "id": "hz-h00",
+   "name": "西湖精选酒店(虚构)",
+   "city": "杭州",
+   "tier": "budget",
+   "price_per_night": 270.0,
+   "rating": 4.4,
+   "area": "西湖",
+   "lat": 30.2181,
+   "lon": 120.1683
+  },
+  {
+   "id": "hz-h01",
+   "name": "拱墅快捷酒店(虚构)",
+   "city": "杭州",
+   "tier": "budget",
+   "price_per_night": 310.0,
+   "rating": 4.4,
+   "area": "拱墅",
+   "lat": 30.2678,
+   "lon": 120.1563
+  },
+  {
+   "id": "hz-h02",
+   "name": "上城青年旅舍(虚构)",
+   "city": "杭州",
+   "tier": "budget",
+   "price_per_night": 180.0,
+   "rating": 4.2,
+   "area": "上城",
+   "lat": 30.2217,
+   "lon": 120.1514
+  },
+  {
+   "id": "hz-h03",
+   "name": "上城花园酒店(虚构)",
+   "city": "杭州",
+   "tier": "midrange",
+   "price_per_night": 580.0,
+   "rating": 4.9,
+   "area": "上城",
+   "lat": 30.2159,
+   "lon": 120.1637
+  },
+  {
+   "id": "hz-h04",
+   "name": "西湖国际大酒店(虚构)",
+   "city": "杭州",
+   "tier": "midrange",
+   "price_per_night": 530.0,
+   "rating": 4.3,
+   "area": "西湖",
+   "lat": 30.2408,
+   "lon": 120.1245
+  },
+  {
+   "id": "hz-h05",
+   "name": "西湖设计酒店(虚构)",
+   "city": "杭州",
+   "tier": "midrange",
+   "price_per_night": 620.0,
+   "rating": 3.8,
+   "area": "西湖",
+   "lat": 30.2581,
+   "lon": 120.1181
+  },
+  {
+   "id": "hz-h06",
+   "name": "拱墅公寓酒店(虚构)",
+   "city": "杭州",
+   "tier": "midrange",
+   "price_per_night": 560.0,
+   "rating": 4.5,
+   "area": "拱墅",
+   "lat": 30.2407,
+   "lon": 120.1379
+  },
+  {
+   "id": "hz-h07",
+   "name": "西湖宾馆(虚构)",
+   "city": "杭州",
+   "tier": "luxury",
+   "price_per_night": 2180.0,
+   "rating": 4.1,
+   "area": "西湖",
+   "lat": 30.2541,
+   "lon": 120.1286
+  },
+  {
+   "id": "hz-h08",
+   "name": "拱墅度假酒店(虚构)",
+   "city": "杭州",
+   "tier": "luxury",
+   "price_per_night": 1500.0,
+   "rating": 4.2,
+   "area": "拱墅",
+   "lat": 30.27,
+   "lon": 120.1409
+  },
+  {
+   "id": "hz-h09",
+   "name": "上城臻选酒店(虚构)",
+   "city": "杭州",
+   "tier": "luxury",
+   "price_per_night": 1140.0,
+   "rating": 4.2,
+   "area": "上城",
+   "lat": 30.2478,
+   "lon": 120.132
+  }
+ ],
+ "restaurants": [
+  {
+   "id": "hz-r00",
+   "name": "上城杭帮菜老店(虚构)",
+   "city": "杭州",
+   "cuisine": "杭帮菜",
+   "avg_price_per_person": 300.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "上城",
+   "lat": 30.2556,
+   "lon": 120.1466
+  },
+  {
+   "id": "hz-r01",
+   "name": "拱墅面馆食堂(虚构)",
+   "city": "杭州",
+   "cuisine": "面馆",
+   "avg_price_per_person": 70.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "拱墅",
+   "lat": 30.2409,
+   "lon": 120.1124
+  },
+  {
+   "id": "hz-r02",
+   "name": "西湖素斋小馆(虚构)",
+   "city": "杭州",
+   "cuisine": "素斋",
+   "avg_price_per_person": 120.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "西湖",
+   "lat": 30.2454,
+   "lon": 120.1628
+  },
+  {
+   "id": "hz-r03",
+   "name": "西湖江浙菜酒家(虚构)",
+   "city": "杭州",
+   "cuisine": "江浙菜",
+   "avg_price_per_person": 50.0,
+   "rating": 4.3,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "西湖",
+   "lat": 30.2282,
+   "lon": 120.1243
+  },
+  {
+   "id": "hz-r04",
+   "name": "西湖茶点坊(虚构)",
+   "city": "杭州",
+   "cuisine": "茶点",
+   "avg_price_per_person": 90.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "西湖",
+   "lat": 30.2384,
+   "lon": 120.1329
+  },
+  {
+   "id": "hz-r05",
+   "name": "上城西餐私房菜(虚构)",
+   "city": "杭州",
+   "cuisine": "西餐",
+   "avg_price_per_person": 90.0,
+   "rating": 4.3,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "上城",
+   "lat": 30.2635,
+   "lon": 120.1585
+  },
+  {
+   "id": "hz-r06",
+   "name": "西湖清真菜餐厅(虚构)",
+   "city": "杭州",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 220.0,
+   "rating": 4.3,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "西湖",
+   "lat": 30.252,
+   "lon": 120.1147
+  },
+  {
+   "id": "hz-r07",
+   "name": "西湖杭帮菜大排档(虚构)",
+   "city": "杭州",
+   "cuisine": "杭帮菜",
+   "avg_price_per_person": 35.0,
+   "rating": 3.9,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "西湖",
+   "lat": 30.2214,
+   "lon": 120.1252
+  },
+  {
+   "id": "hz-r08",
+   "name": "拱墅面馆楼(虚构)",
+   "city": "杭州",
+   "cuisine": "面馆",
+   "avg_price_per_person": 300.0,
+   "rating": 3.9,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "拱墅",
+   "lat": 30.2624,
+   "lon": 120.1479
+  },
+  {
+   "id": "hz-r09",
+   "name": "拱墅素斋馆(虚构)",
+   "city": "杭州",
+   "cuisine": "素斋",
+   "avg_price_per_person": 300.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "拱墅",
+   "lat": 30.2442,
+   "lon": 120.153
+  },
+  {
+   "id": "hz-r10",
+   "name": "上城江浙菜老店(虚构)",
+   "city": "杭州",
+   "cuisine": "江浙菜",
+   "avg_price_per_person": 220.0,
+   "rating": 4.5,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "上城",
+   "lat": 30.2522,
+   "lon": 120.1634
+  },
+  {
+   "id": "hz-r11",
+   "name": "西湖茶点食堂(虚构)",
+   "city": "杭州",
+   "cuisine": "茶点",
+   "avg_price_per_person": 160.0,
+   "rating": 4.4,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "西湖",
+   "lat": 30.2614,
+   "lon": 120.1531
+  },
+  {
+   "id": "hz-r12",
+   "name": "拱墅西餐小馆(虚构)",
+   "city": "杭州",
+   "cuisine": "西餐",
+   "avg_price_per_person": 90.0,
+   "rating": 4.9,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "拱墅",
+   "lat": 30.2162,
+   "lon": 120.1491
+  },
+  {
+   "id": "hz-r13",
+   "name": "西湖清真菜酒家(虚构)",
+   "city": "杭州",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 220.0,
+   "rating": 4.2,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_spicy"
+   ],
+   "area": "西湖",
+   "lat": 30.2424,
+   "lon": 120.1632
+  },
+  {
+   "id": "hz-r14",
+   "name": "拱墅杭帮菜坊(虚构)",
+   "city": "杭州",
+   "cuisine": "杭帮菜",
+   "avg_price_per_person": 220.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "拱墅",
+   "lat": 30.2424,
+   "lon": 120.1132
+  }
+ ],
+ "attractions": [
+  {
+   "id": "hz-a00",
+   "name": "西湖",
+   "city": "杭州",
+   "category": "nature",
+   "ticket_price": 0,
+   "recommended_hours": 3,
+   "open_time": "06:00",
+   "close_time": "23:00",
+   "rating": 4.4,
+   "area": "西湖",
+   "lat": 30.243,
+   "lon": 120.15
+  },
+  {
+   "id": "hz-a01",
+   "name": "灵隐寺",
+   "city": "杭州",
+   "category": "culture",
+   "ticket_price": 75,
+   "recommended_hours": 2.5,
+   "open_time": "07:00",
+   "close_time": "17:30",
+   "rating": 4.3,
+   "area": "西湖",
+   "lat": 30.241,
+   "lon": 120.101
+  },
+  {
+   "id": "hz-a02",
+   "name": "雷峰塔",
+   "city": "杭州",
+   "category": "history",
+   "ticket_price": 40,
+   "recommended_hours": 1.5,
+   "open_time": "08:00",
+   "close_time": "20:00",
+   "rating": 4.6,
+   "area": "西湖",
+   "lat": 30.231,
+   "lon": 120.149
+  },
+  {
+   "id": "hz-a03",
+   "name": "西溪国家湿地公园",
+   "city": "杭州",
+   "category": "nature",
+   "ticket_price": 80,
+   "recommended_hours": 3,
+   "open_time": "08:30",
+   "close_time": "17:30",
+   "rating": 4.3,
+   "area": "西湖",
+   "lat": 30.27,
+   "lon": 120.063
+  },
+  {
+   "id": "hz-a04",
+   "name": "河坊街",
+   "city": "杭州",
+   "category": "food",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "22:00",
+   "rating": 4.3,
+   "area": "上城",
+   "lat": 30.244,
+   "lon": 120.169
+  },
+  {
+   "id": "hz-a05",
+   "name": "中国茶叶博物馆",
+   "city": "杭州",
+   "category": "museum",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "16:30",
+   "rating": 4.7,
+   "area": "西湖",
+   "lat": 30.234,
+   "lon": 120.128
+  },
+  {
+   "id": "hz-a06",
+   "name": "浙江省博物馆",
+   "city": "杭州",
+   "category": "museum",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "09:00",
+   "close_time": "17:00",
+   "rating": 4.4,
+   "area": "西湖",
+   "lat": 30.252,
+   "lon": 120.149
+  },
+  {
+   "id": "hz-a07",
+   "name": "宋城",
+   "city": "杭州",
+   "category": "culture",
+   "ticket_price": 320,
+   "recommended_hours": 4,
+   "open_time": "10:00",
+   "close_time": "21:00",
+   "rating": 4.8,
+   "area": "西湖",
+   "lat": 30.177,
+   "lon": 120.106
+  },
+  {
+   "id": "hz-a08",
+   "name": "九溪烟树",
+   "city": "杭州",
+   "category": "nature",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "06:00",
+   "close_time": "18:00",
+   "rating": 4.3,
+   "area": "西湖",
+   "lat": 30.207,
+   "lon": 120.124
+  },
+  {
+   "id": "hz-a09",
+   "name": "龙井村",
+   "city": "杭州",
+   "category": "nature",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "08:00",
+   "close_time": "18:00",
+   "rating": 4.6,
+   "area": "西湖",
+   "lat": 30.225,
+   "lon": 120.12
+  },
+  {
+   "id": "hz-a10",
+   "name": "南宋御街",
+   "city": "杭州",
+   "category": "history",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "22:00",
+   "rating": 4.4,
+   "area": "上城",
+   "lat": 30.249,
+   "lon": 120.171
+  },
+  {
+   "id": "hz-a11",
+   "name": "湖滨银泰in77",
+   "city": "杭州",
+   "category": "shopping",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "10:00",
+   "close_time": "22:00",
+   "rating": 4.7,
+   "area": "上城",
+   "lat": 30.256,
+   "lon": 120.163
+  },
+  {
+   "id": "hz-a12",
+   "name": "钱江新城灯光秀",
+   "city": "杭州",
+   "category": "nightlife",
+   "ticket_price": 0,
+   "recommended_hours": 1,
+   "open_time": "18:00",
+   "close_time": "23:00",
+   "rating": 4.6,
+   "area": "上城",
+   "lat": 30.244,
+   "lon": 120.214
+  },
+  {
+   "id": "hz-a13",
+   "name": "良渚博物院",
+   "city": "杭州",
+   "category": "museum",
+   "ticket_price": 0,
+   "recommended_hours": 2.5,
+   "open_time": "09:00",
+   "close_time": "17:00",
+   "rating": 4.6,
+   "area": "余杭",
+   "lat": 30.38,
+   "lon": 120.022
+  },
+  {
+   "id": "hz-a14",
+   "name": "拱宸桥",
+   "city": "杭州",
+   "category": "history",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "06:00",
+   "close_time": "22:00",
+   "rating": 4.9,
+   "area": "拱墅",
+   "lat": 30.318,
+   "lon": 120.141
+  }
+ ]
+}

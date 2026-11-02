@@ -1,0 +1,61 @@
+[project]
+name = "trip-agents"
+version = "0.1.0"
+description = "Multi-agent travel planner on LangGraph: ReAct research over MCP tools, human-in-the-loop, rule + LLM-judge evaluation."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain-core>=1.7.4",
+    "langgraph>=1.2.19",
+    "langgraph-checkpoint-sqlite>=3.1.3",
+    "pydantic>=2.14.2",
+    "pydantic-settings>=2.16.2",
+    "python-dotenv>=1.2.4",
+    "streamlit>=1.66.1",
+]
+
+[project.optional-dependencies]
+openai = [
+    "langchain-openai>=1.7.3",
+]
+anthropic = [
+    "langchain-anthropic>=1.7.8",
+]
+gemini = [
+    "langchain-google-genai>=4.4.2",
+]
+all = ["trip-agents[openai,anthropic,gemini]"]
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+]
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]  # full-width CJK punctuation in strings/comments is intentional
+
+[tool.mypy]
+python_version = "3.11"
+plugins = ["pydantic.mypy"]
+strict = true
+ignore_missing_imports = true
+files = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["trip_agents.llm.mock_responders"]
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

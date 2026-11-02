@@ -1,0 +1,553 @@
+{
+ "city": "上海",
+ "hotels": [
+  {
+   "id": "sh-h00",
+   "name": "静安精选酒店(虚构)",
+   "city": "上海",
+   "tier": "budget",
+   "price_per_night": 310.0,
+   "rating": 4.2,
+   "area": "静安",
+   "lat": 31.2378,
+   "lon": 121.4673
+  },
+  {
+   "id": "sh-h01",
+   "name": "静安快捷酒店(虚构)",
+   "city": "上海",
+   "tier": "budget",
+   "price_per_night": 230.0,
+   "rating": 4.3,
+   "area": "静安",
+   "lat": 31.2078,
+   "lon": 121.4826
+  },
+  {
+   "id": "sh-h02",
+   "name": "黄浦青年旅舍(虚构)",
+   "city": "上海",
+   "tier": "budget",
+   "price_per_night": 220.0,
+   "rating": 4.6,
+   "area": "黄浦",
+   "lat": 31.2545,
+   "lon": 121.5132
+  },
+  {
+   "id": "sh-h03",
+   "name": "静安花园酒店(虚构)",
+   "city": "上海",
+   "tier": "midrange",
+   "price_per_night": 680.0,
+   "rating": 4.0,
+   "area": "静安",
+   "lat": 31.2268,
+   "lon": 121.5025
+  },
+  {
+   "id": "sh-h04",
+   "name": "黄浦国际大酒店(虚构)",
+   "city": "上海",
+   "tier": "midrange",
+   "price_per_night": 430.0,
+   "rating": 3.8,
+   "area": "黄浦",
+   "lat": 31.2317,
+   "lon": 121.5132
+  },
+  {
+   "id": "sh-h05",
+   "name": "浦东设计酒店(虚构)",
+   "city": "上海",
+   "tier": "midrange",
+   "price_per_night": 710.0,
+   "rating": 4.6,
+   "area": "浦东",
+   "lat": 31.2474,
+   "lon": 121.4968
+  },
+  {
+   "id": "sh-h06",
+   "name": "静安公寓酒店(虚构)",
+   "city": "上海",
+   "tier": "midrange",
+   "price_per_night": 590.0,
+   "rating": 4.2,
+   "area": "静安",
+   "lat": 31.2372,
+   "lon": 121.4786
+  },
+  {
+   "id": "sh-h07",
+   "name": "浦东宾馆(虚构)",
+   "city": "上海",
+   "tier": "luxury",
+   "price_per_night": 1760.0,
+   "rating": 4.5,
+   "area": "浦东",
+   "lat": 31.2252,
+   "lon": 121.5017
+  },
+  {
+   "id": "sh-h08",
+   "name": "静安度假酒店(虚构)",
+   "city": "上海",
+   "tier": "luxury",
+   "price_per_night": 2050.0,
+   "rating": 4.5,
+   "area": "静安",
+   "lat": 31.2146,
+   "lon": 121.499
+  },
+  {
+   "id": "sh-h09",
+   "name": "徐汇臻选酒店(虚构)",
+   "city": "上海",
+   "tier": "luxury",
+   "price_per_night": 1220.0,
+   "rating": 4.2,
+   "area": "徐汇",
+   "lat": 31.2005,
+   "lon": 121.4588
+  }
+ ],
+ "restaurants": [
+  {
+   "id": "sh-r00",
+   "name": "浦东本帮菜老店(虚构)",
+   "city": "上海",
+   "cuisine": "本帮菜",
+   "avg_price_per_person": 300.0,
+   "rating": 4.5,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "浦东",
+   "lat": 31.2376,
+   "lon": 121.5114
+  },
+  {
+   "id": "sh-r01",
+   "name": "浦东生煎小笼食堂(虚构)",
+   "city": "上海",
+   "cuisine": "生煎小笼",
+   "avg_price_per_person": 35.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "浦东",
+   "lat": 31.2367,
+   "lon": 121.4812
+  },
+  {
+   "id": "sh-r02",
+   "name": "浦东粤菜小馆(虚构)",
+   "city": "上海",
+   "cuisine": "粤菜",
+   "avg_price_per_person": 70.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "浦东",
+   "lat": 31.1974,
+   "lon": 121.4971
+  },
+  {
+   "id": "sh-r03",
+   "name": "浦东日料酒家(虚构)",
+   "city": "上海",
+   "cuisine": "日料",
+   "avg_price_per_person": 300.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "浦东",
+   "lat": 31.2222,
+   "lon": 121.4939
+  },
+  {
+   "id": "sh-r04",
+   "name": "浦东素斋坊(虚构)",
+   "city": "上海",
+   "cuisine": "素斋",
+   "avg_price_per_person": 35.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "浦东",
+   "lat": 31.2134,
+   "lon": 121.5151
+  },
+  {
+   "id": "sh-r05",
+   "name": "黄浦西餐私房菜(虚构)",
+   "city": "上海",
+   "cuisine": "西餐",
+   "avg_price_per_person": 70.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "黄浦",
+   "lat": 31.253,
+   "lon": 121.5041
+  },
+  {
+   "id": "sh-r06",
+   "name": "徐汇清真菜餐厅(虚构)",
+   "city": "上海",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 50.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_spicy"
+   ],
+   "area": "徐汇",
+   "lat": 31.2319,
+   "lon": 121.5139
+  },
+  {
+   "id": "sh-r07",
+   "name": "浦东本帮菜大排档(虚构)",
+   "city": "上海",
+   "cuisine": "本帮菜",
+   "avg_price_per_person": 50.0,
+   "rating": 4.2,
+   "dietary_tags": [
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "浦东",
+   "lat": 31.2419,
+   "lon": 121.4927
+  },
+  {
+   "id": "sh-r08",
+   "name": "浦东生煎小笼楼(虚构)",
+   "city": "上海",
+   "cuisine": "生煎小笼",
+   "avg_price_per_person": 90.0,
+   "rating": 4.3,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "浦东",
+   "lat": 31.2208,
+   "lon": 121.4722
+  },
+  {
+   "id": "sh-r09",
+   "name": "黄浦粤菜馆(虚构)",
+   "city": "上海",
+   "cuisine": "粤菜",
+   "avg_price_per_person": 160.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "黄浦",
+   "lat": 31.2249,
+   "lon": 121.5133
+  },
+  {
+   "id": "sh-r10",
+   "name": "静安日料老店(虚构)",
+   "city": "上海",
+   "cuisine": "日料",
+   "avg_price_per_person": 35.0,
+   "rating": 4.6,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "静安",
+   "lat": 31.2483,
+   "lon": 121.476
+  },
+  {
+   "id": "sh-r11",
+   "name": "浦东素斋食堂(虚构)",
+   "city": "上海",
+   "cuisine": "素斋",
+   "avg_price_per_person": 50.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "浦东",
+   "lat": 31.2098,
+   "lon": 121.5148
+  },
+  {
+   "id": "sh-r12",
+   "name": "黄浦西餐小馆(虚构)",
+   "city": "上海",
+   "cuisine": "西餐",
+   "avg_price_per_person": 300.0,
+   "rating": 4.0,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "黄浦",
+   "lat": 31.2459,
+   "lon": 121.4836
+  },
+  {
+   "id": "sh-r13",
+   "name": "徐汇清真菜酒家(虚构)",
+   "city": "上海",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 35.0,
+   "rating": 4.7,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "徐汇",
+   "lat": 31.2189,
+   "lon": 121.4905
+  },
+  {
+   "id": "sh-r14",
+   "name": "浦东本帮菜坊(虚构)",
+   "city": "上海",
+   "cuisine": "本帮菜",
+   "avg_price_per_person": 160.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "浦东",
+   "lat": 31.212,
+   "lon": 121.5099
+  }
+ ],
+ "attractions": [
+  {
+   "id": "sh-a00",
+   "name": "外滩",
+   "city": "上海",
+   "category": "nightlife",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "06:00",
+   "close_time": "23:30",
+   "rating": 4.4,
+   "area": "黄浦",
+   "lat": 31.24,
+   "lon": 121.49
+  },
+  {
+   "id": "sh-a01",
+   "name": "豫园",
+   "city": "上海",
+   "category": "history",
+   "ticket_price": 40,
+   "recommended_hours": 2,
+   "open_time": "09:00",
+   "close_time": "16:30",
+   "rating": 4.5,
+   "area": "黄浦",
+   "lat": 31.227,
+   "lon": 121.492
+  },
+  {
+   "id": "sh-a02",
+   "name": "上海博物馆",
+   "city": "上海",
+   "category": "museum",
+   "ticket_price": 0,
+   "recommended_hours": 2.5,
+   "open_time": "09:00",
+   "close_time": "17:00",
+   "rating": 4.4,
+   "area": "黄浦",
+   "lat": 31.228,
+   "lon": 121.475
+  },
+  {
+   "id": "sh-a03",
+   "name": "东方明珠",
+   "city": "上海",
+   "category": "nightlife",
+   "ticket_price": 199,
+   "recommended_hours": 2,
+   "open_time": "09:00",
+   "close_time": "21:30",
+   "rating": 4.8,
+   "area": "浦东",
+   "lat": 31.24,
+   "lon": 121.5
+  },
+  {
+   "id": "sh-a04",
+   "name": "上海迪士尼乐园",
+   "city": "上海",
+   "category": "culture",
+   "ticket_price": 475,
+   "recommended_hours": 8,
+   "open_time": "09:00",
+   "close_time": "21:00",
+   "rating": 4.7,
+   "area": "浦东",
+   "lat": 31.144,
+   "lon": 121.657
+  },
+  {
+   "id": "sh-a05",
+   "name": "田子坊",
+   "city": "上海",
+   "category": "culture",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "10:00",
+   "close_time": "22:00",
+   "rating": 4.4,
+   "area": "黄浦",
+   "lat": 31.209,
+   "lon": 121.468
+  },
+  {
+   "id": "sh-a06",
+   "name": "新天地",
+   "city": "上海",
+   "category": "shopping",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "10:00",
+   "close_time": "23:00",
+   "rating": 4.8,
+   "area": "黄浦",
+   "lat": 31.22,
+   "lon": 121.475
+  },
+  {
+   "id": "sh-a07",
+   "name": "南京路步行街",
+   "city": "上海",
+   "category": "shopping",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "09:00",
+   "close_time": "22:00",
+   "rating": 4.2,
+   "area": "黄浦",
+   "lat": 31.235,
+   "lon": 121.478
+  },
+  {
+   "id": "sh-a08",
+   "name": "武康路",
+   "city": "上海",
+   "category": "culture",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "08:00",
+   "close_time": "22:00",
+   "rating": 4.8,
+   "area": "徐汇",
+   "lat": 31.206,
+   "lon": 121.437
+  },
+  {
+   "id": "sh-a09",
+   "name": "朱家角古镇",
+   "city": "上海",
+   "category": "history",
+   "ticket_price": 0,
+   "recommended_hours": 3.5,
+   "open_time": "08:30",
+   "close_time": "17:00",
+   "rating": 4.6,
+   "area": "青浦",
+   "lat": 31.108,
+   "lon": 121.055
+  },
+  {
+   "id": "sh-a10",
+   "name": "上海科技馆",
+   "city": "上海",
+   "category": "museum",
+   "ticket_price": 45,
+   "recommended_hours": 3,
+   "open_time": "09:00",
+   "close_time": "17:15",
+   "rating": 4.4,
+   "area": "浦东",
+   "lat": 31.218,
+   "lon": 121.544
+  },
+  {
+   "id": "sh-a11",
+   "name": "世纪公园",
+   "city": "上海",
+   "category": "nature",
+   "ticket_price": 10,
+   "recommended_hours": 2,
+   "open_time": "07:00",
+   "close_time": "18:00",
+   "rating": 4.8,
+   "area": "浦东",
+   "lat": 31.216,
+   "lon": 121.551
+  },
+  {
+   "id": "sh-a12",
+   "name": "静安寺",
+   "city": "上海",
+   "category": "culture",
+   "ticket_price": 50,
+   "recommended_hours": 1,
+   "open_time": "07:30",
+   "close_time": "17:00",
+   "rating": 4.8,
+   "area": "静安",
+   "lat": 31.224,
+   "lon": 121.446
+  },
+  {
+   "id": "sh-a13",
+   "name": "城隍庙小吃广场",
+   "city": "上海",
+   "category": "food",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "21:00",
+   "rating": 4.6,
+   "area": "黄浦",
+   "lat": 31.226,
+   "lon": 121.491
+  },
+  {
+   "id": "sh-a14",
+   "name": "上海中心观光厅",
+   "city": "上海",
+   "category": "nightlife",
+   "ticket_price": 180,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "22:00",
+   "rating": 4.8,
+   "area": "浦东",
+   "lat": 31.234,
+   "lon": 121.505
+  }
+ ]
+}

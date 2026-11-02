@@ -1,0 +1,553 @@
+{
+ "city": "西安",
+ "hotels": [
+  {
+   "id": "xa-h00",
+   "name": "莲湖精选酒店(虚构)",
+   "city": "西安",
+   "tier": "budget",
+   "price_per_night": 250.0,
+   "rating": 3.9,
+   "area": "莲湖",
+   "lat": 34.227,
+   "lon": 108.9311
+  },
+  {
+   "id": "xa-h01",
+   "name": "碑林快捷酒店(虚构)",
+   "city": "西安",
+   "tier": "budget",
+   "price_per_night": 220.0,
+   "rating": 3.9,
+   "area": "碑林",
+   "lat": 34.2211,
+   "lon": 108.9372
+  },
+  {
+   "id": "xa-h02",
+   "name": "雁塔青年旅舍(虚构)",
+   "city": "西安",
+   "tier": "budget",
+   "price_per_night": 250.0,
+   "rating": 4.8,
+   "area": "雁塔",
+   "lat": 34.2484,
+   "lon": 108.9786
+  },
+  {
+   "id": "xa-h03",
+   "name": "莲湖花园酒店(虚构)",
+   "city": "西安",
+   "tier": "midrange",
+   "price_per_night": 630.0,
+   "rating": 4.2,
+   "area": "莲湖",
+   "lat": 34.2315,
+   "lon": 108.9689
+  },
+  {
+   "id": "xa-h04",
+   "name": "雁塔国际大酒店(虚构)",
+   "city": "西安",
+   "tier": "midrange",
+   "price_per_night": 670.0,
+   "rating": 4.5,
+   "area": "雁塔",
+   "lat": 34.2334,
+   "lon": 108.9715
+  },
+  {
+   "id": "xa-h05",
+   "name": "碑林设计酒店(虚构)",
+   "city": "西安",
+   "tier": "midrange",
+   "price_per_night": 640.0,
+   "rating": 4.5,
+   "area": "碑林",
+   "lat": 34.2501,
+   "lon": 108.9561
+  },
+  {
+   "id": "xa-h06",
+   "name": "雁塔公寓酒店(虚构)",
+   "city": "西安",
+   "tier": "midrange",
+   "price_per_night": 470.0,
+   "rating": 4.8,
+   "area": "雁塔",
+   "lat": 34.2494,
+   "lon": 108.9779
+  },
+  {
+   "id": "xa-h07",
+   "name": "莲湖宾馆(虚构)",
+   "city": "西安",
+   "tier": "luxury",
+   "price_per_night": 1190.0,
+   "rating": 4.8,
+   "area": "莲湖",
+   "lat": 34.2307,
+   "lon": 108.9739
+  },
+  {
+   "id": "xa-h08",
+   "name": "新城度假酒店(虚构)",
+   "city": "西安",
+   "tier": "luxury",
+   "price_per_night": 2000.0,
+   "rating": 4.7,
+   "area": "新城",
+   "lat": 34.2257,
+   "lon": 108.9394
+  },
+  {
+   "id": "xa-h09",
+   "name": "雁塔臻选酒店(虚构)",
+   "city": "西安",
+   "tier": "luxury",
+   "price_per_night": 1900.0,
+   "rating": 4.5,
+   "area": "雁塔",
+   "lat": 34.2671,
+   "lon": 108.9538
+  }
+ ],
+ "restaurants": [
+  {
+   "id": "xa-r00",
+   "name": "新城陕菜老店(虚构)",
+   "city": "西安",
+   "cuisine": "陕菜",
+   "avg_price_per_person": 220.0,
+   "rating": 4.5,
+   "dietary_tags": [
+    "no_seafood"
+   ],
+   "area": "新城",
+   "lat": 34.2478,
+   "lon": 108.9527
+  },
+  {
+   "id": "xa-r01",
+   "name": "莲湖泡馍食堂(虚构)",
+   "city": "西安",
+   "cuisine": "泡馍",
+   "avg_price_per_person": 220.0,
+   "rating": 4.6,
+   "dietary_tags": [
+    "no_pork",
+    "no_spicy"
+   ],
+   "area": "莲湖",
+   "lat": 34.2102,
+   "lon": 108.956
+  },
+  {
+   "id": "xa-r02",
+   "name": "碑林面食小馆(虚构)",
+   "city": "西安",
+   "cuisine": "面食",
+   "avg_price_per_person": 35.0,
+   "rating": 4.2,
+   "dietary_tags": [
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "碑林",
+   "lat": 34.2459,
+   "lon": 108.9694
+  },
+  {
+   "id": "xa-r03",
+   "name": "碑林清真菜酒家(虚构)",
+   "city": "西安",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 70.0,
+   "rating": 4.1,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_spicy"
+   ],
+   "area": "碑林",
+   "lat": 34.2632,
+   "lon": 108.946
+  },
+  {
+   "id": "xa-r04",
+   "name": "碑林素斋坊(虚构)",
+   "city": "西安",
+   "cuisine": "素斋",
+   "avg_price_per_person": 120.0,
+   "rating": 4.8,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "碑林",
+   "lat": 34.2163,
+   "lon": 108.945
+  },
+  {
+   "id": "xa-r05",
+   "name": "新城火锅私房菜(虚构)",
+   "city": "西安",
+   "cuisine": "火锅",
+   "avg_price_per_person": 50.0,
+   "rating": 4.3,
+   "dietary_tags": [
+    "no_seafood"
+   ],
+   "area": "新城",
+   "lat": 34.2283,
+   "lon": 108.9592
+  },
+  {
+   "id": "xa-r06",
+   "name": "碑林西餐餐厅(虚构)",
+   "city": "西安",
+   "cuisine": "西餐",
+   "avg_price_per_person": 50.0,
+   "rating": 4.2,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "碑林",
+   "lat": 34.2098,
+   "lon": 108.9824
+  },
+  {
+   "id": "xa-r07",
+   "name": "莲湖陕菜大排档(虚构)",
+   "city": "西安",
+   "cuisine": "陕菜",
+   "avg_price_per_person": 300.0,
+   "rating": 4.3,
+   "dietary_tags": [
+    "no_seafood",
+    "vegetarian"
+   ],
+   "area": "莲湖",
+   "lat": 34.2266,
+   "lon": 108.9583
+  },
+  {
+   "id": "xa-r08",
+   "name": "莲湖泡馍楼(虚构)",
+   "city": "西安",
+   "cuisine": "泡馍",
+   "avg_price_per_person": 90.0,
+   "rating": 3.9,
+   "dietary_tags": [
+    "no_pork",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "莲湖",
+   "lat": 34.2382,
+   "lon": 108.9765
+  },
+  {
+   "id": "xa-r09",
+   "name": "雁塔面食馆(虚构)",
+   "city": "西安",
+   "cuisine": "面食",
+   "avg_price_per_person": 90.0,
+   "rating": 4.5,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "雁塔",
+   "lat": 34.2305,
+   "lon": 108.9836
+  },
+  {
+   "id": "xa-r10",
+   "name": "碑林清真菜老店(虚构)",
+   "city": "西安",
+   "cuisine": "清真菜",
+   "avg_price_per_person": 220.0,
+   "rating": 4.0,
+   "dietary_tags": [
+    "halal",
+    "no_pork",
+    "no_seafood",
+    "no_spicy"
+   ],
+   "area": "碑林",
+   "lat": 34.2552,
+   "lon": 108.9645
+  },
+  {
+   "id": "xa-r11",
+   "name": "莲湖素斋食堂(虚构)",
+   "city": "西安",
+   "cuisine": "素斋",
+   "avg_price_per_person": 220.0,
+   "rating": 3.9,
+   "dietary_tags": [
+    "no_pork",
+    "no_seafood",
+    "no_spicy",
+    "vegetarian"
+   ],
+   "area": "莲湖",
+   "lat": 34.2507,
+   "lon": 108.9285
+  },
+  {
+   "id": "xa-r12",
+   "name": "雁塔火锅小馆(虚构)",
+   "city": "西安",
+   "cuisine": "火锅",
+   "avg_price_per_person": 300.0,
+   "rating": 4.2,
+   "dietary_tags": [
+    "no_seafood"
+   ],
+   "area": "雁塔",
+   "lat": 34.2164,
+   "lon": 108.9802
+  },
+  {
+   "id": "xa-r13",
+   "name": "莲湖西餐酒家(虚构)",
+   "city": "西安",
+   "cuisine": "西餐",
+   "avg_price_per_person": 300.0,
+   "rating": 4.2,
+   "dietary_tags": [
+    "no_spicy"
+   ],
+   "area": "莲湖",
+   "lat": 34.2465,
+   "lon": 108.9495
+  },
+  {
+   "id": "xa-r14",
+   "name": "雁塔陕菜坊(虚构)",
+   "city": "西安",
+   "cuisine": "陕菜",
+   "avg_price_per_person": 300.0,
+   "rating": 4.3,
+   "dietary_tags": [],
+   "area": "雁塔",
+   "lat": 34.219,
+   "lon": 108.9392
+  }
+ ],
+ "attractions": [
+  {
+   "id": "xa-a00",
+   "name": "秦始皇帝陵博物院(兵马俑)",
+   "city": "西安",
+   "category": "history",
+   "ticket_price": 120,
+   "recommended_hours": 4,
+   "open_time": "08:30",
+   "close_time": "17:00",
+   "rating": 4.3,
+   "area": "临潼",
+   "lat": 34.385,
+   "lon": 109.279
+  },
+  {
+   "id": "xa-a01",
+   "name": "西安城墙",
+   "city": "西安",
+   "category": "history",
+   "ticket_price": 54,
+   "recommended_hours": 2.5,
+   "open_time": "08:00",
+   "close_time": "22:00",
+   "rating": 4.6,
+   "area": "碑林",
+   "lat": 34.259,
+   "lon": 108.947
+  },
+  {
+   "id": "xa-a02",
+   "name": "大雁塔",
+   "city": "西安",
+   "category": "history",
+   "ticket_price": 25,
+   "recommended_hours": 1.5,
+   "open_time": "08:00",
+   "close_time": "17:30",
+   "rating": 4.4,
+   "area": "雁塔",
+   "lat": 34.218,
+   "lon": 108.964
+  },
+  {
+   "id": "xa-a03",
+   "name": "陕西历史博物馆",
+   "city": "西安",
+   "category": "museum",
+   "ticket_price": 0,
+   "recommended_hours": 3,
+   "open_time": "09:00",
+   "close_time": "17:30",
+   "rating": 4.4,
+   "area": "雁塔",
+   "lat": 34.224,
+   "lon": 108.954
+  },
+  {
+   "id": "xa-a04",
+   "name": "回民街",
+   "city": "西安",
+   "category": "food",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "10:00",
+   "close_time": "23:00",
+   "rating": 4.4,
+   "area": "莲湖",
+   "lat": 34.265,
+   "lon": 108.94
+  },
+  {
+   "id": "xa-a05",
+   "name": "大唐不夜城",
+   "city": "西安",
+   "category": "nightlife",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "18:00",
+   "close_time": "23:30",
+   "rating": 4.3,
+   "area": "雁塔",
+   "lat": 34.211,
+   "lon": 108.966
+  },
+  {
+   "id": "xa-a06",
+   "name": "钟鼓楼",
+   "city": "西安",
+   "category": "history",
+   "ticket_price": 50,
+   "recommended_hours": 1.5,
+   "open_time": "08:30",
+   "close_time": "21:30",
+   "rating": 4.4,
+   "area": "碑林",
+   "lat": 34.261,
+   "lon": 108.943
+  },
+  {
+   "id": "xa-a07",
+   "name": "华清宫",
+   "city": "西安",
+   "category": "history",
+   "ticket_price": 120,
+   "recommended_hours": 3,
+   "open_time": "07:30",
+   "close_time": "18:00",
+   "rating": 4.8,
+   "area": "临潼",
+   "lat": 34.363,
+   "lon": 109.212
+  },
+  {
+   "id": "xa-a08",
+   "name": "大唐芙蓉园",
+   "city": "西安",
+   "category": "culture",
+   "ticket_price": 120,
+   "recommended_hours": 3,
+   "open_time": "09:00",
+   "close_time": "22:00",
+   "rating": 4.7,
+   "area": "雁塔",
+   "lat": 34.211,
+   "lon": 108.974
+  },
+  {
+   "id": "xa-a09",
+   "name": "西安碑林博物馆",
+   "city": "西安",
+   "category": "museum",
+   "ticket_price": 65,
+   "recommended_hours": 2,
+   "open_time": "08:00",
+   "close_time": "18:00",
+   "rating": 4.7,
+   "area": "碑林",
+   "lat": 34.255,
+   "lon": 108.953
+  },
+  {
+   "id": "xa-a10",
+   "name": "小雁塔",
+   "city": "西安",
+   "category": "history",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "09:00",
+   "close_time": "17:00",
+   "rating": 4.7,
+   "area": "碑林",
+   "lat": 34.24,
+   "lon": 108.937
+  },
+  {
+   "id": "xa-a11",
+   "name": "华山",
+   "city": "西安",
+   "category": "nature",
+   "ticket_price": 160,
+   "recommended_hours": 8,
+   "open_time": "07:00",
+   "close_time": "19:00",
+   "rating": 4.8,
+   "area": "华阴",
+   "lat": 34.478,
+   "lon": 110.09
+  },
+  {
+   "id": "xa-a12",
+   "name": "永兴坊",
+   "city": "西安",
+   "category": "food",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "10:00",
+   "close_time": "22:00",
+   "rating": 4.7,
+   "area": "新城",
+   "lat": 34.269,
+   "lon": 108.962
+  },
+  {
+   "id": "xa-a13",
+   "name": "赛格国际购物中心",
+   "city": "西安",
+   "category": "shopping",
+   "ticket_price": 0,
+   "recommended_hours": 2,
+   "open_time": "10:00",
+   "close_time": "22:00",
+   "rating": 4.4,
+   "area": "雁塔",
+   "lat": 34.233,
+   "lon": 108.947
+  },
+  {
+   "id": "xa-a14",
+   "name": "曲江池遗址公园",
+   "city": "西安",
+   "category": "nature",
+   "ticket_price": 0,
+   "recommended_hours": 1.5,
+   "open_time": "06:00",
+   "close_time": "22:00",
+   "rating": 4.8,
+   "area": "雁塔",
+   "lat": 34.205,
+   "lon": 108.981
+  }
+ ]
+}
