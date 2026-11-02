@@ -24,7 +24,12 @@ def default_selection(req: TripRequest, rb: ResearchBundle) -> Selection:
     nights = max(h.days - 1, 1)
     rooms = (h.travelers + 1) // 2
     cap = h.budget_total * 0.45 / nights / rooms
-    hotels = sorted(rb.hotels, key=lambda x: (s.hotel_tier is not None and x.tier != s.hotel_tier, x.price_per_night > cap, -x.rating))
+    # within budget first, then preferred tier, then rating; if nothing fits the budget, cheapest first
+    hotels = sorted(
+        rb.hotels,
+        key=lambda x: (x.price_per_night > cap, s.hotel_tier is not None and x.tier != s.hotel_tier,
+                       -x.rating if x.price_per_night <= cap else x.price_per_night),
+    )  # fmt: skip
     diet = set(h.dietary_restrictions)
     rests = sorted(rb.restaurants, key=lambda r: (not diet <= set(r.dietary_tags), -r.rating))
     must = set(h.must_visit)

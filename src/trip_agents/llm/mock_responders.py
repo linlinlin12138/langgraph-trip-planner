@@ -166,7 +166,7 @@ def respond_research(messages: list[BaseMessage], ctx: dict[str, Any], faults: s
 
     nights = max(days - 1, 1)
     rooms = (hard["travelers"] + 1) // 2
-    hotel_cap = round(hard["budget_total"] * 0.45 / nights / rooms, -1)
+    hotel_cap = ctx.get("hotel_budget_per_night") or round(hard["budget_total"] * 0.45 / nights / rooms, -1)
 
     calls: list[dict[str, Any]] = []
     if not hist:
@@ -192,6 +192,10 @@ def respond_research(messages: list[BaseMessage], ctx: dict[str, Any], faults: s
                 relaxed["tier"] = None
             if {k: v for k, v in relaxed.items() if v is not None} != h_args:
                 calls.append({"name": "search_hotels", "args": relaxed})
+        hotel_hist = [(a, d) for name, a, ok, d in hist if name == "search_hotels" and ok]
+        all_pricey = hotel_hist and all(h["price_per_night"] > hotel_cap for _, d in hotel_hist for h in d)
+        if all_pricey and all(a.get("tier") for a, _ in hotel_hist):  # budget beats tier preference
+            calls.append({"name": "search_hotels", "args": {"city": city, "max_price_per_night": hotel_cap}})
         a_args, a_ok, a_data = last["search_attractions"]
         found = {a["name"] for a in (a_data or [])} if a_ok else set()
         if (set(hard["must_visit"]) - found or (a_ok and len(a_data) < days * 2)) and a_args.get("categories"):
@@ -269,12 +273,14 @@ def respond_plan_day(ctx: dict[str, Any], faults: set[str]) -> dict[str, Any]:
         picked.append(a)
     day_attrs = [a for a in picked if a["category"] != "nightlife"]
     evening = [a for a in picked if a["category"] == "nightlife"][:1]
-    day_attrs.sort(key=lambda a: _t(a["close_time"]))
+    day_attrs.sort(key=lambda a: (a["name"] not in must, _t(a["close_time"])))  # must-visits get the first slots
 
     rests = [r for r in ctx.get("restaurants", []) if diet <= set(r["dietary_tags"])] or ctx.get("restaurants", [])
     used = set(ctx.get("used_restaurant_ids", []))
     rests = sorted(rests, key=lambda r: (r["id"] in used, -r["rating"]))
-    if tight or sum(r["avg_price_per_person"] for r in rests[:2]) * n > budget_per_day * 0.5:
+    if tight:  # over budget last round: cheapest first, repeats allowed
+        rests = sorted(rests, key=lambda r: r["avg_price_per_person"])
+    elif sum(r["avg_price_per_person"] for r in rests[:2]) * n > budget_per_day * 0.5:
         rests = sorted(rests, key=lambda r: (r["id"] in used, r["avg_price_per_person"]))
 
     acts: list[dict[str, Any]] = []
@@ -328,7 +334,7 @@ def respond_plan_day(ctx: dict[str, Any], faults: set[str]) -> dict[str, Any]:
         cursor = _add(start, minutes)
 
     lunch_r = rests[0] if rests else None
-    dinner_r = rests[1] if len(rests) > 1 else lunch_r
+    dinner_r = rests[1] if len(rests) > 1 and not tight else lunch_r
     if day_attrs:
         visit(day_attrs[0])
     meal("午餐", "11:30", 60, lunch_r)

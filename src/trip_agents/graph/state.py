@@ -61,6 +61,7 @@ class TripState(TypedDict, total=False):
     itinerary: Itinerary
     revision: int  # 0 = first draft
     skipped_items: Annotated[list[SkippedItem], operator.add]
+    adjustments: Annotated[list[str], operator.add]  # changes made on the user's behalf, surfaced in the final message
 
     # ---- budget ----------------------------------------------------------------
     budget: BudgetReport

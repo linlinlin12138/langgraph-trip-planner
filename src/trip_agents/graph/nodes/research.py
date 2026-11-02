@@ -27,7 +27,7 @@ from trip_agents.graph.deps import AgentDeps, GraphOptions
 from trip_agents.graph.prompts import RESEARCH_SYSTEM
 from trip_agents.graph.state import ToolCallRecord, TripState
 from trip_agents.llm.context import render_context
-from trip_agents.schemas import Attraction, Hotel, ResearchBundle, Restaurant, Route, WeatherDay
+from trip_agents.schemas import Attraction, Hotel, ResearchBundle, Restaurant, Route, TripRequest, WeatherDay
 
 
 class ResearchState(TypedDict, total=False):
@@ -109,6 +109,13 @@ def _obs_cache(state: ResearchState) -> list[str]:
     return [m.content if isinstance(m.content, str) else str(m.content) for m in state["messages"] if isinstance(m, ToolMessage)]
 
 
+def hotel_budget_per_night(req: TripRequest) -> float:
+    """Rule of thumb: at most ~45% of the total budget goes to lodging."""
+    nights = max(req.hard.days - 1, 1)
+    rooms = (req.hard.travelers + 1) // 2
+    return req.hard.budget_total * 0.45 / nights / rooms
+
+
 def assemble_bundle(results: list[dict[str, Any]], summary: str = "") -> ResearchBundle:
     hotels: dict[str, Hotel] = {}
     rests: dict[str, Restaurant] = {}
@@ -146,7 +153,8 @@ def make_research_node(deps: AgentDeps, options: GraphOptions | None = None):  #
             return {"research": ResearchBundle(notes="research disabled"), "tool_calls": [], "status": "awaiting_selection"}
         req = state["request"]
         system = RESEARCH_SYSTEM.format(max_rounds=deps.research_max_rounds_per_tool)
-        ctx = render_context({"task": "research", "request": req.model_dump(mode="json")})
+        ctx = render_context({"task": "research", "request": req.model_dump(mode="json"),
+                              "hotel_budget_per_night": round(hotel_budget_per_night(req), -1)})  # fmt: skip
         out = sub.invoke(
             {"messages": [SystemMessage(content=system), HumanMessage(content="请为以下需求检索信息：\n" + ctx)]},
             config={**config, "recursion_limit": 4 * deps.research_max_steps + 5},

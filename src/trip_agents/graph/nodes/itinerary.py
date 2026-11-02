@@ -65,6 +65,23 @@ def hotel_cost(req: TripRequest, rb: ResearchBundle, hotel_id: str | None) -> fl
     return h.price_per_night * (req.hard.days - 1) * ((req.hard.travelers + 1) // 2)
 
 
+def cheaper_hotel(req: TripRequest, rb: ResearchBundle, current: str | None, other_costs: float) -> str | None:
+    """Hard budget beats soft hotel preference.
+
+    * some hotel alone closes the gap -> best-rated such hotel (preferred tier first)
+    * none does, but lodging is the dominant cost -> cheapest hotel
+    * otherwise keep the hotel and let the day plans get cheaper
+    """
+    if req.hard.days <= 1 or not rb.hotels:
+        return current
+    fits = [h for h in rb.hotels if hotel_cost(req, rb, h.id) + other_costs <= req.hard.budget_total]
+    if fits:
+        return min(fits, key=lambda h: (req.soft.hotel_tier is not None and h.tier != req.soft.hotel_tier, -h.rating)).id
+    if hotel_cost(req, rb, current) > other_costs:
+        return min(rb.hotels, key=lambda h: h.price_per_night).id
+    return current
+
+
 def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
     def itinerary(state: TripState, config: RunnableConfig) -> dict[str, Any]:
         req, rb = state["request"], state["research"]
@@ -78,7 +95,16 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
         attractions = [a for a in rb.attractions if a.id in sel.attraction_ids]
         restaurants = [r for r in rb.restaurants if r.id in sel.restaurant_ids]
         weather = {w.date: w for w in rb.weather}
-        per_day_budget = (req.hard.budget_total - hotel_cost(req, rb, sel.hotel_id)) / req.hard.days
+        hotel_id = prev.hotel_id if prev else sel.hotel_id
+        adjustments: list[str] = []
+        budget = state.get("budget")
+        if prev is not None and budget is not None and any(i.code == "over_budget" for i in issues):
+            new_hotel = cheaper_hotel(req, rb, hotel_id, budget.total - hotel_cost(req, rb, hotel_id))
+            if new_hotel and new_hotel != hotel_id:
+                old, new = rb.hotel(hotel_id or ""), rb.hotel(new_hotel)
+                adjustments.append(f"为满足预算，酒店由「{old.name if old else hotel_id}」调整为「{new.name if new else new_hotel}」")
+                hotel_id = new_hotel
+        per_day_budget = (req.hard.budget_total - hotel_cost(req, rb, hotel_id)) / req.hard.days
         skipped: list[SkippedItem] = []
 
         for i in targets:
@@ -118,8 +144,8 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
             else:
                 skipped.append(SkippedItem(stage="itinerary", item=f"day{i}", errors=res.errors))
 
-        plan = Itinerary(hotel_id=sel.hotel_id, days=[kept[k] for k in sorted(kept)])
+        plan = Itinerary(hotel_id=hotel_id, days=[kept[k] for k in sorted(kept)])
         plan.summary = " / ".join(f"D{d.day_index + 1} {d.theme}" for d in plan.days)
-        return {"itinerary": plan, "revision": revision, "skipped_items": skipped}
+        return {"itinerary": plan, "revision": revision, "skipped_items": skipped, "adjustments": adjustments}
 
     return itinerary

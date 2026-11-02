@@ -20,6 +20,8 @@ def finalize(state: TripState) -> dict[str, Any]:
         f"行程已生成（修订 {state.get('revision', 0)} 次）：{it.summary}",
         f"预计总花费 {budget.total:.0f} 元 / 预算 {budget.budget:.0f} 元。",
     ]
+    if state.get("adjustments"):
+        lines.append("调整说明：" + "；".join(state["adjustments"]))
     if not budget.feasible:
         lines.append(f"注意：按现有候选，最低也需约 {budget.min_feasible_cost:.0f} 元，预算不足。")
     if not passed:
