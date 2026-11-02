@@ -134,15 +134,22 @@ def write_report(out: Path, meta: dict[str, Any], records: list[RunRecord]) -> P
 
 def compare(a: Path, b: Path) -> str:
     sa, sb = (json.loads((p / "summary.json").read_text(encoding="utf-8"))["metrics"] for p in (a, b))
+    ma, mb = (json.loads((p / "meta.json").read_text(encoding="utf-8")) for p in (a, b))
     lines = [f"# 对比：`{a.name}` (A) vs `{b.name}` (B)", ""]
+    if ma.get("mock") or mb.get("mock"):
+        lines += ["> ⚠️ 至少一次运行为 **MOCK 模式**：差异只反映代码 / mock 规划器的变化，不代表真实模型质量。", ""]
+    lines += ["| | A | B |", "|---|---|---|"]
+    for key in ("date", "git_commit", "model", "dataset", "n_samples", "repeats"):
+        lines.append(f"| {key} | {ma.get(key)} | {mb.get(key)} |")
+    lines.append("")
     for system in [s for s in sa if s in sb]:
         lines += [f"## {system}", "", "| 指标 | A | B | Δ (B−A) |", "|---|---|---|---|"]
         for k, (label, _) in METRICS.items():
-            ma, mb = sa[system][k]["mean"], sb[system][k]["mean"]
-            if ma is None and mb is None:
+            va, vb = sa[system][k]["mean"], sb[system][k]["mean"]
+            if va is None and vb is None:
                 continue
-            delta = "n/a" if ma is None or mb is None else (f"{(mb - ma) * 100:+.1f} pp" if k in PERCENT else f"{mb - ma:+.2f}")
-            lines.append(f"| {label} | {fmt(k, ma)} | {fmt(k, mb)} | {delta} |")
+            delta = "n/a" if va is None or vb is None else (f"{(vb - va) * 100:+.1f} pp" if k in PERCENT else f"{vb - va:+.2f}")
+            lines.append(f"| {label} | {fmt(k, va)} | {fmt(k, vb)} | {delta} |")
         lines.append("")
     return "\n".join(lines)
 
