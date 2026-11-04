@@ -42,7 +42,7 @@ def git_commit() -> str:
 
 def model_factory(provider: str, model: str | None, seed: int) -> Callable[[], BaseChatModel]:
     def make() -> BaseChatModel:
-        kwargs: dict[str, Any] = {"seed": seed} if provider == "openai" else {}
+        kwargs: dict[str, Any] = {"seed": seed} if provider in ("openai", "gemini") else {}
         return get_chat_model(provider, model, **kwargs)  # type: ignore[arg-type]
 
     return make

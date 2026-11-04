@@ -1,4 +1,4 @@
-.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-compare eval-memory test-react compare-react mcp-server
+.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-compare eval-memory test-react compare-react mcp-server check-provider
 
 install:
 	uv sync --all-extras
@@ -47,3 +47,7 @@ compare-react:
 
 mcp-server:
 	uv run python -m trip_agents.tools.mcp_server
+
+# make check-provider ARGS="--provider gemini --list-models"
+check-provider:
+	uv run python scripts/check_provider.py $(ARGS)

@@ -6,6 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
+from dotenv import load_dotenv
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -23,6 +24,9 @@ class Settings(BaseSettings):
     llm_model: str = ""
     llm_temperature: float = 0.2
     llm_timeout_s: float = 60.0
+    llm_max_retries: int = 6
+    # Gemini "thinking" models spend extra output tokens on reasoning; None = provider default, 0 = off
+    llm_thinking_budget: int | None = None
 
     # --- tools ---------------------------------------------------------------
     tool_backend: Literal["mock", "real"] = "mock"
@@ -49,4 +53,6 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
+    # Provider SDKs read keys from os.environ, so export .env there too (real env vars win).
+    load_dotenv(PROJECT_ROOT / ".env", override=False)
     return Settings()

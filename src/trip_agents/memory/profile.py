@@ -108,7 +108,8 @@ class UserProfile(BaseModel):
 # ----------------------------------------------------------------------------- LLM extraction output
 class ExtractedPreference(BaseModel):
     field: ProfileField
-    value: Any
+    # explicit union (not Any) so every provider's structured-output mode accepts the schema
+    value: list[str] | float | str
     evidence: str = Field(description="用户原话中的片段，必须逐字出现在用户消息里")
 
 

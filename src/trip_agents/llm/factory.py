@@ -7,6 +7,7 @@ change and the tracer callbacks work the same for every provider.
 
 from __future__ import annotations
 
+import os
 from typing import Any
 
 from langchain_core.language_models import BaseChatModel
@@ -50,7 +51,11 @@ def get_chat_model(
     if provider == "gemini":
         from langchain_google_genai import ChatGoogleGenerativeAI
 
-        return ChatGoogleGenerativeAI(model=model, temperature=temperature, timeout=s.llm_timeout_s, **kwargs)
+        key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY")
+        kwargs.setdefault("max_retries", s.llm_max_retries)  # free tier rate-limits aggressively; SDK backs off
+        if s.llm_thinking_budget is not None:
+            kwargs.setdefault("thinking_budget", s.llm_thinking_budget)
+        return ChatGoogleGenerativeAI(model=model, temperature=temperature, timeout=s.llm_timeout_s, google_api_key=key, **kwargs)
     raise ValueError(f"unknown provider {provider!r}")
 
 
