@@ -42,3 +42,17 @@ def test_llm_model_overrides_default(env: pytest.MonkeyPatch) -> None:
     env.setenv("GOOGLE_API_KEY", "k")
     env.setenv("LLM_MODEL", "gemini-3.5-flash-lite")
     assert get_chat_model("gemini").model.removeprefix("models/") == "gemini-3.5-flash-lite"  # type: ignore[attr-defined]
+
+
+def test_temperature_dropped_for_default_only_models() -> None:
+    from trip_agents.llm.factory import accepts_temperature, get_chat_model
+
+    assert accepts_temperature("openai", "gpt-4.1-mini")
+    assert accepts_temperature("openai", "gpt-5.4-mini")
+    for m in ("gpt-5", "gpt-5.5", "gpt-5.6-terra", "gpt-6-luna", "gpt-6.1-terra", "gpt-6.1-sol", "o3"):
+        assert not accepts_temperature("openai", m), m
+    assert accepts_temperature("anthropic", "claude-haiku-5-5")
+    assert not accepts_temperature("anthropic", "claude-sonnet-5-5")
+    assert accepts_temperature("gemini", "gemini-3.8-flash")
+    llm = get_chat_model("openai", "gpt-6.1-terra", temperature=0.0, api_key="sk-test")
+    assert getattr(llm, "temperature", "unset") is None

@@ -69,6 +69,12 @@ def gemini_api_key() -> str | None:
     return os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY") or None
 
 
+def anthropic_api_key() -> str | None:
+    """ANTHROPIC_API_KEY, falling back to CLAUDE_REWRITER_API_KEY (the name used for the rewriter's key)."""
+    get_settings()
+    return os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("CLAUDE_REWRITER_API_KEY") or None
+
+
 @lru_cache
 def get_settings() -> Settings:
     # Provider SDKs read keys from os.environ, so export .env there too (real env vars win).
