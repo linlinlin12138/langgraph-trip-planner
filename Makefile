@@ -1,4 +1,4 @@
-.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-compare
+.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-compare eval-memory test-react compare-react mcp-server
 
 install:
 	uv sync --all-extras
@@ -34,3 +34,16 @@ eval-dataset:
 # make eval-compare A=evals/runs/<a> B=evals/runs/<b>
 eval-compare:
 	uv run python -m trip_agents.evals.report $(A) $(B)
+
+eval-memory:
+	uv run python -m trip_agents.evals.memory_eval --n 30 --out docs/eval/mock_memory.md
+
+# ---- hand-written ReAct ------------------------------------------------------
+test-react:
+	uv run pytest react_from_scratch -rs
+
+compare-react:
+	uv run python -m react_from_scratch.compare --limit 20 $(ARGS)
+
+mcp-server:
+	uv run python -m trip_agents.tools.mcp_server

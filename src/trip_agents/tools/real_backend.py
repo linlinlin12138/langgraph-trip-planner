@@ -79,11 +79,17 @@ class RealBackend:
                 f"天气预报只覆盖未来 {FORECAST_HORIZON_DAYS} 天（从 {today.isoformat()} 起算），请基于季节常识规划或缩短日期范围"
             )
         lat, lon = self.geocode(inp.city)
-        data = self._get(FORECAST_URL, {
-            "latitude": lat, "longitude": lon, "timezone": "auto",
-            "daily": "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
-            "start_date": inp.start_date.isoformat(), "end_date": inp.end_date.isoformat(),
-        })  # fmt: skip
+        data = self._get(
+            FORECAST_URL,
+            {
+                "latitude": lat,
+                "longitude": lon,
+                "timezone": "auto",
+                "daily": "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
+                "start_date": inp.start_date.isoformat(),
+                "end_date": inp.end_date.isoformat(),
+            },
+        )
         d = data["daily"]
         rows = zip(
             d["time"], d["weather_code"], d["temperature_2m_max"], d["temperature_2m_min"], d["precipitation_probability_max"], strict=True

@@ -104,11 +104,22 @@ METRICS: dict[str, tuple[str, Metric]] = {
     "latency_p95_ms": ("端到端耗时 P95 (ms)", lambda rs: percentile([r.wall_ms for r in rs], 95)),
 }
 FAMILIES = {
-    "结果": ["completion_rate", "structure_ok", "hard_pass", "hallucination_rate", "extraction_acc", "infeasible_recall",
-             "infeasible_false_alarm", "judge_total", "judge_richness", "judge_preference", "judge_reasonable"],
+    "结果": [
+        "completion_rate",
+        "structure_ok",
+        "hard_pass",
+        "hallucination_rate",
+        "extraction_acc",
+        "infeasible_recall",
+        "infeasible_false_alarm",
+        "judge_total",
+        "judge_richness",
+        "judge_preference",
+        "judge_reasonable",
+    ],
     "过程": ["tool_precision", "tool_recall", "invalid_call_rate", "duplicate_call_rate", "research_steps", "revisions", "parse_failures"],
     "效率": ["llm_calls", "tokens", "cost_usd", "latency_mean_ms", "latency_p95_ms"],
-}  # fmt: skip
+}
 
 
 def summarize(records: Sequence[RunRecord]) -> dict[str, dict[str, float | None]]:

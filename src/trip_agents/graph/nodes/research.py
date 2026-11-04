@@ -153,8 +153,9 @@ def make_research_node(deps: AgentDeps, options: GraphOptions | None = None):  #
             return {"research": ResearchBundle(notes="research disabled"), "tool_calls": [], "status": "awaiting_selection"}
         req = state["request"]
         system = RESEARCH_SYSTEM.format(max_rounds=deps.research_max_rounds_per_tool)
-        ctx = render_context({"task": "research", "request": req.model_dump(mode="json"),
-                              "hotel_budget_per_night": round(hotel_budget_per_night(req), -1)})  # fmt: skip
+        ctx = render_context(
+            {"task": "research", "request": req.model_dump(mode="json"), "hotel_budget_per_night": round(hotel_budget_per_night(req), -1)}
+        )
         out = sub.invoke(
             {"messages": [SystemMessage(content=system), HumanMessage(content="请为以下需求检索信息：\n" + ctx)]},
             config={**config, "recursion_limit": 4 * deps.research_max_steps + 5},

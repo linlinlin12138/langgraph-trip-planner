@@ -87,8 +87,19 @@ def main() -> None:
     human = [h for _, h in pairs]
     default_r = spearman([sum(j[d] * DEFAULT_WEIGHTS[d] for d in DIMS) for j, _ in pairs], human)
     w, corr = fit(pairs)
-    print(json.dumps({"n": len(pairs), "default_weights": DEFAULT_WEIGHTS, "default_spearman": round(default_r, 3),
-                      "fitted_weights": w, "fitted_spearman": round(corr, 3)}, ensure_ascii=False, indent=1))  # fmt: skip
+    print(
+        json.dumps(
+            {
+                "n": len(pairs),
+                "default_weights": DEFAULT_WEIGHTS,
+                "default_spearman": round(default_r, 3),
+                "fitted_weights": w,
+                "fitted_spearman": round(corr, 3),
+            },
+            ensure_ascii=False,
+            indent=1,
+        )
+    )
 
 
 if __name__ == "__main__":

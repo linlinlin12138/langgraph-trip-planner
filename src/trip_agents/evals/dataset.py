@@ -85,8 +85,9 @@ def sample_constraints(rng: random.Random, difficulty: Difficulty, infeasible: b
         hotel_tier=rng.choice([None, None, "budget", "midrange", "luxury"]) if days > 1 else None,
         interests=rng.sample(INTERESTS, rng.randint(*spec["int"])),
     )
-    hard = HardConstraints(destination=city, start_date=start, days=days, budget_total=1, travelers=travelers,
-                           dietary_restrictions=diet, must_visit=must)  # fmt: skip
+    hard = HardConstraints(
+        destination=city, start_date=start, days=days, budget_total=1, travelers=travelers, dietary_restrictions=diet, must_visit=must
+    )
     req = TripRequest(hard=hard, soft=soft)
     if infeasible:
         budget = min_feasible_cost(req) * rng.uniform(0.4, 0.7)
@@ -106,13 +107,25 @@ def expected_tools(req: TripRequest) -> list[str]:
 # ----------------------------------------------------------------------------- rewriting
 _CN = "零一两三四五六七八九十"
 _PHRASES: dict[str, dict[str, Any]] = {
-    "diet": {"vegetarian": ["我吃素", "我是素食者"], "halal": ["需要清真餐", "吃清真"], "no_pork": ["不吃猪肉"],
-             "no_spicy": ["不能吃辣", "完全吃不了辣"], "no_seafood": ["海鲜过敏", "不吃海鲜"]},
+    "diet": {
+        "vegetarian": ["我吃素", "我是素食者"],
+        "halal": ["需要清真餐", "吃清真"],
+        "no_pork": ["不吃猪肉"],
+        "no_spicy": ["不能吃辣", "完全吃不了辣"],
+        "no_seafood": ["海鲜过敏", "不吃海鲜"],
+    },
     "pace": {"relaxed": ["节奏轻松点", "别太累"], "packed": ["行程紧凑一点", "想特种兵式多去几个地方"], "moderate": [""]},
     "tier": {"budget": ["住经济型就行", "住便宜点的"], "midrange": ["住舒适型酒店"], "luxury": ["想住高档一点的五星酒店"]},
-    "interest": {"history": "历史古迹", "nature": "自然风景", "museum": "博物馆", "food": "美食小吃", "shopping": "逛街购物",
-                 "nightlife": "夜景", "culture": "文化艺术"},
-}  # fmt: skip
+    "interest": {
+        "history": "历史古迹",
+        "nature": "自然风景",
+        "museum": "博物馆",
+        "food": "美食小吃",
+        "shopping": "逛街购物",
+        "nightlife": "夜景",
+        "culture": "文化艺术",
+    },
+}
 
 
 def _cn(n: int) -> str:
@@ -184,9 +197,19 @@ def build_dataset(n: int, seed: int, rewrite: Literal["template", "llm"] = "temp
         req = sample_constraints(srng, diff, i in infeasible_idx)
         text = template_rewrite(req, srng) if rewrite == "template" else llm_rewrite(req, model)
         mfc = min_feasible_cost(req)
-        samples.append(Sample(id=f"s{i:03d}", difficulty=diff, feasible=req.hard.budget_total >= mfc, gold=req,
-                              expected_tools=expected_tools(req), request_text=text, rewrite=rewrite,
-                              min_feasible_cost=mfc, typical_cost=typical_cost(req)))  # fmt: skip
+        samples.append(
+            Sample(
+                id=f"s{i:03d}",
+                difficulty=diff,
+                feasible=req.hard.budget_total >= mfc,
+                gold=req,
+                expected_tools=expected_tools(req),
+                request_text=text,
+                rewrite=rewrite,
+                min_feasible_cost=mfc,
+                typical_cost=typical_cost(req),
+            )
+        )
     return samples
 
 
@@ -235,9 +258,16 @@ def main() -> None:
     dev, test = split(samples, args.dev_ratio, args.seed)
     save(dev, args.out / "dev.jsonl")
     save(test, args.out / "test.jsonl")
-    meta = {"n": len(samples), "seed": args.seed, "rewrite": args.rewrite, "dev": len(dev), "test": len(test),
-            "difficulty": Counter(s.difficulty for s in samples), "infeasible": sum(not s.feasible for s in samples),
-            "eval_today": EVAL_TODAY.isoformat()}  # fmt: skip
+    meta = {
+        "n": len(samples),
+        "seed": args.seed,
+        "rewrite": args.rewrite,
+        "dev": len(dev),
+        "test": len(test),
+        "difficulty": Counter(s.difficulty for s in samples),
+        "infeasible": sum(not s.feasible for s in samples),
+        "eval_today": EVAL_TODAY.isoformat(),
+    }
     (args.out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1, default=dict), encoding="utf-8")
     print(json.dumps(meta, ensure_ascii=False, default=dict))
 

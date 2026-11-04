@@ -96,9 +96,11 @@ def test_cheaper_hotel_swap(world) -> None:  # type: ignore[no-untyped-def]
 
     req, rb = world
     common = {"city": "杭州", "area": "西湖", "lat": 30.2, "lon": 120.1}
-    rb.hotels = [Hotel(id="lux", name="L", tier="luxury", price_per_night=2000, rating=4.9, **common),
-                 Hotel(id="mid", name="M", tier="midrange", price_per_night=600, rating=4.6, **common),
-                 Hotel(id="cheap", name="C", tier="budget", price_per_night=200, rating=4.0, **common)]  # fmt: skip
+    rb.hotels = [
+        Hotel(id="lux", name="L", tier="luxury", price_per_night=2000, rating=4.9, **common),
+        Hotel(id="mid", name="M", tier="midrange", price_per_night=600, rating=4.6, **common),
+        Hotel(id="cheap", name="C", tier="budget", price_per_night=200, rating=4.0, **common),
+    ]
     req.hard.budget_total = 1500  # 2 days -> 1 night, 1 room
     assert cheaper_hotel(req, rb, "lux", other_costs=800) == "mid"  # best-rated that fits
     assert cheaper_hotel(req, rb, "lux", other_costs=1400) == "cheap"  # none fits, lodging dominates

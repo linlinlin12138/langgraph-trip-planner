@@ -14,8 +14,19 @@ from typing import Any
 from trip_agents.evals.metrics import FAMILIES, METRICS, node_latency, stability, summarize, violation_counts
 from trip_agents.evals.systems import SYSTEMS, RunRecord
 
-PERCENT = {"completion_rate", "structure_ok", "hard_pass", "hallucination_rate", "extraction_acc", "infeasible_recall",
-           "infeasible_false_alarm", "tool_precision", "tool_recall", "invalid_call_rate", "duplicate_call_rate"}  # fmt: skip
+PERCENT = {
+    "completion_rate",
+    "structure_ok",
+    "hard_pass",
+    "hallucination_rate",
+    "extraction_acc",
+    "infeasible_recall",
+    "infeasible_false_alarm",
+    "tool_precision",
+    "tool_recall",
+    "invalid_call_rate",
+    "duplicate_call_rate",
+}
 
 
 def fmt(key: str, mean: float | None, std: float | None = None, n_reps: float = 1) -> str:
@@ -58,19 +69,25 @@ def render(meta: dict[str, Any], summary: dict[str, Any], records: list[RunRecor
     systems = list(summary["metrics"])
     lines = [f"# 评测报告 · {meta['name']}", ""]
     if meta.get("mock"):
-        lines += ["> ⚠️ **MOCK 模式**：模型为规则模拟的 `MockChatModel`，Judge 为启发式打分。以下数字只验证评测流程能跑通，",
-                  "> **不代表任何真实模型的规划质量**；mock 是确定性的，稳定性指标恒为 1。", ""]  # fmt: skip
+        lines += [
+            "> ⚠️ **MOCK 模式**：模型为规则模拟的 `MockChatModel`，Judge 为启发式打分。以下数字只验证评测流程能跑通，",
+            "> **不代表任何真实模型的规划质量**；mock 是确定性的，稳定性指标恒为 1。",
+            "",
+        ]
     judge = meta.get("judge")
     lines += [
-        "| 项 | 值 |", "|---|---|",
-        f"| 日期 | {meta['date']} |", f"| git commit | `{meta['git_commit']}` |",
+        "| 项 | 值 |",
+        "|---|---|",
+        f"| 日期 | {meta['date']} |",
+        f"| git commit | `{meta['git_commit']}` |",
         f"| 模型 | {meta['provider']} / `{meta['model']}` |",
         f"| Judge | {judge['provider'] + ' / `' + judge['model'] + '`' if judge else '未启用'} |",
         f"| 工具后端 | {meta['tool_backend']} |",
         f"| 数据集 | `{meta['dataset']}`（{meta['n_samples']} 条） |",
         f"| 每组运行次数 | {meta['repeats']}（seed={meta['seed']}，表中为各次均值 ± 标准差） |",
-        f"| 记录数 | {len(records)} |", "",
-    ]  # fmt: skip
+        f"| 记录数 | {len(records)} |",
+        "",
+    ]
     for fam, keys in FAMILIES.items():
         header = " | ".join(f"{s}（{SYSTEMS[s].description}）" if s in SYSTEMS else s for s in systems)
         lines += [f"## {fam}指标", "", f"| 指标 | {header} |", "|---|" + "---|" * len(systems)]
@@ -91,8 +108,10 @@ def render(meta: dict[str, Any], summary: dict[str, Any], records: list[RunRecor
         st = summary["stability"][s]
         if not st["n_groups"]:
             continue
-        lines.append(f"| {s} | {fmt('structure_ok', st['outcome_agreement'])} | {fmt('x', st['plan_jaccard'])} | "
-                     f"{fmt('x', st['judge_std'])} | {st['n_groups']:.0f} |")  # fmt: skip
+        lines.append(
+            f"| {s} | {fmt('structure_ok', st['outcome_agreement'])} | {fmt('x', st['plan_jaccard'])} | "
+            f"{fmt('x', st['judge_std'])} | {st['n_groups']:.0f} |"
+        )
     if all(not summary["stability"][s]["n_groups"] for s in systems):
         lines.append("| （repeats=1，未计算） | | | | |")
     lines.append("")

@@ -57,8 +57,9 @@ def make_confirm_node(deps: AgentDeps, options: GraphOptions):  # type: ignore[n
         if mem is None:
             return {"status": "confirmed"}
         thread_id = str((config.get("configurable") or {}).get("thread_id", "unknown"))
-        notes = remember_trip(mem, deps.model, dict(state), thread_id=thread_id, now=deps.clock(), config=config,
-                              max_retries=deps.structured_max_retries)  # fmt: skip
+        notes = remember_trip(
+            mem, deps.model, dict(state), thread_id=thread_id, now=deps.clock(), config=config, max_retries=deps.structured_max_retries
+        )
         return {"status": "confirmed", "memory_updates": notes}
 
     return confirm

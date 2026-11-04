@@ -118,8 +118,15 @@ def run_one(
     rep: int = 0,
     judge_model: BaseChatModel | None = None,
 ) -> RunRecord:
-    rec = RunRecord(sample_id=sample.id, system=system.name, rep=rep, difficulty=sample.difficulty,
-                    feasible_gold=sample.feasible, completed=False, expected_tools=sample.expected_tools)  # fmt: skip
+    rec = RunRecord(
+        sample_id=sample.id,
+        system=system.name,
+        rep=rep,
+        difficulty=sample.difficulty,
+        feasible_gold=sample.feasible,
+        completed=False,
+        expected_tools=sample.expected_tools,
+    )
     tracer = TraceRecorder()
     itinerary: Itinerary | None = None
     t0 = time.perf_counter()
@@ -138,9 +145,15 @@ def run_one(
             rec.revisions = state.get("revision", 0)
         else:
             ctx = render_context({"task": "baseline_plan", "today": EVAL_TODAY.isoformat(), "request_text": sample.request_text})
-            res = invoke_structured(make_model(), Itinerary,
-                                    [SystemMessage(content=BASELINE_SYSTEM), HumanMessage(content=ctx + "\n\n" + sample.request_text)],
-                                    max_retries=1, stage="baseline", item="plan", config={"callbacks": [tracer]})  # fmt: skip
+            res = invoke_structured(
+                make_model(),
+                Itinerary,
+                [SystemMessage(content=BASELINE_SYSTEM), HumanMessage(content=ctx + "\n\n" + sample.request_text)],
+                max_retries=1,
+                stage="baseline",
+                item="plan",
+                config={"callbacks": [tracer]},
+            )
             itinerary = res.value
         rec.completed = True
     except Exception as e:  # a crash is a result, not a reason to abort the whole eval

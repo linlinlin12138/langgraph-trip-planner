@@ -56,10 +56,16 @@ def test_conflict_newest_wins_with_history() -> None:
 def _profile() -> UserProfile:
     p, _, _ = merge_profile(
         UserProfile(user_id="u"),
-        [pref("dietary_restrictions", ["halal"], "清真"), pref("pace", "relaxed", "轻松"), pref("companions", "家人（3人）", "一家三口"),
-         pref("budget_per_person_per_day", 500, "预算")],
-        user_texts=["一家三口 清真 轻松 预算"], thread_id="t", now=T0,
-    )  # fmt: skip
+        [
+            pref("dietary_restrictions", ["halal"], "清真"),
+            pref("pace", "relaxed", "轻松"),
+            pref("companions", "家人（3人）", "一家三口"),
+            pref("budget_per_person_per_day", 500, "预算"),
+        ],
+        user_texts=["一家三口 清真 轻松 预算"],
+        thread_id="t",
+        now=T0,
+    )
     return p
 
 
@@ -75,8 +81,17 @@ def test_defaults_fill_only_unstated_fields() -> None:
 
 
 def test_past_trip_beats_profile() -> None:
-    past = TripSummary(thread_id="old", created_at=T0, destination="杭州", start_date=date(2026, 5, 1), days=4, travelers=2,
-                       budget_total=8000, pace="moderate", interests=["nature"])  # fmt: skip
+    past = TripSummary(
+        thread_id="old",
+        created_at=T0,
+        destination="杭州",
+        start_date=date(2026, 5, 1),
+        days=4,
+        travelers=2,
+        budget_total=8000,
+        pace="moderate",
+        interests=["nature"],
+    )
     ex = RequestExtraction(start_date=date(2027, 1, 1), refers_to_past_trip=True)
     merged, applied = apply_memory_defaults(ex, _profile(), past)
     assert (merged.destination, merged.days, merged.travelers, merged.pace) == ("杭州", 4, 2, "moderate")

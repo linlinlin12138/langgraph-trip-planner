@@ -24,11 +24,18 @@ def handler(request: httpx.Request) -> httpx.Response:
         return httpx.Response(200, json={"results": [{"name": name, "latitude": 30.29, "longitude": 120.16}]})
     if host == "api.open-meteo.com":
         assert request.url.params["start_date"] == "2026-11-05"
-        return httpx.Response(200, json={"daily": {
-            "time": ["2026-11-05", "2026-11-06"], "weather_code": [0, 61],
-            "temperature_2m_max": [21.3, 17.0], "temperature_2m_min": [12.1, 11.4],
-            "precipitation_probability_max": [5, 80],
-        }})  # fmt: skip
+        return httpx.Response(
+            200,
+            json={
+                "daily": {
+                    "time": ["2026-11-05", "2026-11-06"],
+                    "weather_code": [0, 61],
+                    "temperature_2m_max": [21.3, 17.0],
+                    "temperature_2m_min": [12.1, 11.4],
+                    "precipitation_probability_max": [5, 80],
+                }
+            },
+        )
     if host == "router.project-osrm.org":
         assert path.startswith("/route/v1/driving/")
         return httpx.Response(200, json={"code": "Ok", "routes": [{"distance": 5300.0, "duration": 720.0}]})

@@ -81,13 +81,21 @@ def main(argv: list[str] | None = None) -> Path:
     judge_provider = args.judge_provider or args.provider
     judge_name = args.judge_model or DEFAULT_MODELS[judge_provider]
     meta = {
-        "name": name, "date": datetime.now().isoformat(timespec="seconds"), "git_commit": git_commit(),
+        "name": name,
+        "date": datetime.now().isoformat(timespec="seconds"),
+        "git_commit": git_commit(),
         "dataset": str(dataset_path.relative_to(PROJECT_ROOT) if dataset_path.is_relative_to(PROJECT_ROOT) else dataset_path),
-        "split": args.split, "n_samples": len(samples), "systems": [x.name for x in systems], "repeats": args.repeats,
-        "seed": args.seed, "provider": args.provider, "model": model_name, "tool_backend": s.tool_backend,
+        "split": args.split,
+        "n_samples": len(samples),
+        "systems": [x.name for x in systems],
+        "repeats": args.repeats,
+        "seed": args.seed,
+        "provider": args.provider,
+        "model": model_name,
+        "tool_backend": s.tool_backend,
         "judge": None if args.no_judge else {"provider": judge_provider, "model": judge_name},
         "mock": args.provider == "mock",
-    }  # fmt: skip
+    }
     (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 
     rec_path = out / "records.jsonl"

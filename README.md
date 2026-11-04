@@ -2,7 +2,7 @@
 
 基于 LangGraph 的多 Agent 旅行规划系统：Chat 澄清需求 → Research（ReAct 工具调用）→ 用户挑选候选（Human-in-the-loop）→ Itinerary 逐日规划 → Budget 核算 → 规则校验不通过则回退重排。
 
-> 🚧 开发中（M2 完成）。完整文档和设计说明会在 M4 补齐。
+> 🚧 开发中（M3 完成）。完整文档和设计说明会在 M4 补齐。
 
 ```mermaid
 flowchart LR
@@ -47,5 +47,5 @@ Mock 模式下，模型是一个规则模拟的 `BaseChatModel`，工具读取 `
 
 - [x] M1：State、4 个 Agent、mock 工具、LangGraph 编排（条件边回退 + 3 处 interrupt）、SQLite 中断恢复、最简 demo
 - [x] M2：轨迹记录（回调，不侵入业务代码）、200 条评测集、4 类指标、baseline 与消融、评测报告与对比
-- [ ] M3：MCP 工具层、长期记忆、手写 ReAct 脚手架与对比
+- [x] M3：MCP 工具层（Research 通过 MCP Client 发现和调用工具）、real 后端（Open-Meteo 天气 + OSRM 路线）、长期记忆（画像 + 历史摘要，SqliteStore）、手写 ReAct 脚手架与对比脚本
 - [ ] M4：README / DESIGN.md、demo 打磨、可选 Semantic Cache

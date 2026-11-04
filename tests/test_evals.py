@@ -36,18 +36,38 @@ def test_dataset_is_deterministic_stratified_and_labelled() -> None:
 
 
 def _gold() -> TripRequest:
-    return TripRequest(hard=HardConstraints(destination="杭州", start_date=date(2026, 12, 1), days=1, budget_total=2000, travelers=1,
-                                            dietary_restrictions=["vegetarian"], must_visit=["灵隐寺"]))  # fmt: skip
+    return TripRequest(
+        hard=HardConstraints(
+            destination="杭州",
+            start_date=date(2026, 12, 1),
+            days=1,
+            budget_total=2000,
+            travelers=1,
+            dietary_restrictions=["vegetarian"],
+            must_visit=["灵隐寺"],
+        )
+    )
 
 
 def test_world_eval_resolves_names_and_counts_hallucinations() -> None:
     w = world_bundle("杭州")
     veg = next(r for r in w.restaurants if "vegetarian" in r.dietary_tags)
-    it = Itinerary(hotel_id=None, days=[DayPlan(day_index=0, date=date(2026, 12, 1), activities=[
-        Activity(start_time=time(9), end_time=time(11), kind="attraction", title="灵隐寺", ref_id="灵隐寺", est_cost=75),
-        Activity(start_time=time(12), end_time=time(13), kind="meal", title="午餐", ref_id=veg.name, est_cost=50),
-        Activity(start_time=time(14), end_time=time(15), kind="attraction", title="不存在的景点", ref_id="杭州火星基地", est_cost=0),
-    ])])  # fmt: skip
+    it = Itinerary(
+        hotel_id=None,
+        days=[
+            DayPlan(
+                day_index=0,
+                date=date(2026, 12, 1),
+                activities=[
+                    Activity(start_time=time(9), end_time=time(11), kind="attraction", title="灵隐寺", ref_id="灵隐寺", est_cost=75),
+                    Activity(start_time=time(12), end_time=time(13), kind="meal", title="午餐", ref_id=veg.name, est_cost=50),
+                    Activity(
+                        start_time=time(14), end_time=time(15), kind="attraction", title="不存在的景点", ref_id="杭州火星基地", est_cost=0
+                    ),
+                ],
+            )
+        ],
+    )
     norm, total, unresolved = normalize_refs(it, w)
     assert norm.days[0].activities[0].ref_id == "hz-a01" and norm.days[0].activities[1].ref_id == veg.id
     assert (total, unresolved) == (3, 1)

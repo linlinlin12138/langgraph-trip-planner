@@ -107,10 +107,14 @@ def remember_trip(
     user_id = state.get("user_id") or "anonymous"
     texts = [m.content for m in state.get("messages", []) if isinstance(m, HumanMessage) and isinstance(m.content, str)]
     res = invoke_structured(
-        model, ProfileExtraction,
+        model,
+        ProfileExtraction,
         [SystemMessage(content=PROFILE_SYSTEM), HumanMessage(content=render_context({"task": "extract_profile", "user_messages": texts}))],
-        max_retries=max_retries, stage="memory", item="profile", config=config,
-    )  # fmt: skip
+        max_retries=max_retries,
+        stage="memory",
+        item="profile",
+        config=config,
+    )
     profile = mem.get_profile(user_id) or UserProfile(user_id=user_id)
     notes: list[str] = []
     if res.value is not None:

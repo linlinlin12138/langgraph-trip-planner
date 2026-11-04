@@ -146,6 +146,7 @@ def respond_extract(messages: list[BaseMessage], ctx: dict[str, Any]) -> dict[st
 _COMPANION_RULES: list[tuple[str, Callable[[re.Match[str]], str]]] = [
     (r"我和(女朋友|男朋友|老婆|老公|妻子|丈夫|对象|朋友|同事)", lambda m: m[1]),
     (r"一家([三四五])口", lambda m: f"家人（{cn_to_int(m[1])}人）"),
+    (r"我们(\d+|[两二三四五六])\s*个人", lambda m: f"同行（{cn_to_int(m[1])}人）"),
     (r"我一个人|独自|我自己", lambda m: "独自"),
 ]
 _BUDGET_PHRASE = re.compile(r"(?:人均|总)?预算[^，。,；;]*?\d+(?:\.\d+)?\s*(?:万|千|k|K|元|块)?")

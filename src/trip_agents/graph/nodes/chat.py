@@ -135,8 +135,14 @@ def make_chat_node(deps: AgentDeps, options: GraphOptions):  # type: ignore[no-u
 def make_clarify_node(options: GraphOptions):  # type: ignore[no-untyped-def]
     def clarify(state: TripState) -> dict[str, Any]:
         question = next((m.content for m in reversed(state["messages"]) if isinstance(m, AIMessage)), "")
-        answer = interrupt({"type": "clarify", "question": question, "missing": state.get("missing_fields", []),
-                            "memory_defaults": state.get("memory_defaults", {})})  # fmt: skip
+        answer = interrupt(
+            {
+                "type": "clarify",
+                "question": question,
+                "missing": state.get("missing_fields", []),
+                "memory_defaults": state.get("memory_defaults", {}),
+            }
+        )
         return {"messages": [HumanMessage(content=str(answer))], "clarify_rounds": state.get("clarify_rounds", 0) + 1}
 
     return clarify

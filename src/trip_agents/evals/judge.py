@@ -93,8 +93,9 @@ def weighted_total(s: JudgeScores, weights: dict[str, float] | None = None) -> f
     return round(sum(float(getattr(s, k)) * v for k, v in w.items()) / norm, 2)
 
 
-def judge_plan(model: BaseChatModel, it: Itinerary, gold: TripRequest, violations: list[str],
-               weights: dict[str, float] | None = None) -> JudgeResult:  # fmt: skip
+def judge_plan(
+    model: BaseChatModel, it: Itinerary, gold: TripRequest, violations: list[str], weights: dict[str, float] | None = None
+) -> JudgeResult:
     ctx = render_context(
         {"task": "judge", "request": gold.model_dump(mode="json"), "plan": render_plan(it, gold), "violations": violations}
     )

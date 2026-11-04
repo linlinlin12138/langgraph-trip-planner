@@ -20,8 +20,13 @@ from trip_agents.schemas.request import DietaryRestriction, HotelTier, Pace
 
 ProfileField = Literal["dietary_restrictions", "hotel_tier", "pace", "budget_per_person_per_day", "companions"]
 PROFILE_FIELDS: tuple[str, ...] = get_args(ProfileField)
-FIELD_LABELS = {"dietary_restrictions": "饮食禁忌", "hotel_tier": "住宿档次", "pace": "节奏",
-                "budget_per_person_per_day": "预算习惯（人均每天）", "companions": "同行人"}  # fmt: skip
+FIELD_LABELS = {
+    "dietary_restrictions": "饮食禁忌",
+    "hotel_tier": "住宿档次",
+    "pace": "节奏",
+    "budget_per_person_per_day": "预算习惯（人均每天）",
+    "companions": "同行人",
+}
 _VALIDATORS: dict[str, TypeAdapter[Any]] = {
     "dietary_restrictions": TypeAdapter(list[DietaryRestriction]),
     "hotel_tier": TypeAdapter(HotelTier),
@@ -30,12 +35,36 @@ _VALIDATORS: dict[str, TypeAdapter[Any]] = {
     "companions": TypeAdapter(str),
 }
 HISTORY_LIMIT = 5
-VALUE_LABELS = {"vegetarian": "素食", "halal": "清真", "no_pork": "不吃猪肉", "no_spicy": "不吃辣", "no_seafood": "不吃海鲜",
-                "relaxed": "轻松", "moderate": "适中", "packed": "紧凑", "budget": "经济型", "midrange": "舒适型", "luxury": "高档",
-                "history": "历史", "nature": "自然", "museum": "博物馆", "food": "美食", "shopping": "购物", "nightlife": "夜景",
-                "culture": "文化"}  # fmt: skip
-FIELD_NAMES = {"destination": "目的地", "days": "天数", "travelers": "人数", "pace": "节奏", "hotel_tier": "住宿",
-               "interests": "兴趣", "dietary_restrictions": "饮食", "budget_total": "总预算"}  # fmt: skip
+VALUE_LABELS = {
+    "vegetarian": "素食",
+    "halal": "清真",
+    "no_pork": "不吃猪肉",
+    "no_spicy": "不吃辣",
+    "no_seafood": "不吃海鲜",
+    "relaxed": "轻松",
+    "moderate": "适中",
+    "packed": "紧凑",
+    "budget": "经济型",
+    "midrange": "舒适型",
+    "luxury": "高档",
+    "history": "历史",
+    "nature": "自然",
+    "museum": "博物馆",
+    "food": "美食",
+    "shopping": "购物",
+    "nightlife": "夜景",
+    "culture": "文化",
+}
+FIELD_NAMES = {
+    "destination": "目的地",
+    "days": "天数",
+    "travelers": "人数",
+    "pace": "节奏",
+    "hotel_tier": "住宿",
+    "interests": "兴趣",
+    "dietary_restrictions": "饮食",
+    "budget_total": "总预算",
+}
 
 
 def pretty(field: str, value: Any) -> str:
@@ -154,5 +183,7 @@ class TripSummary(BaseModel):
         return self.budget_total / max(1, self.travelers * self.days)
 
     def describe(self) -> str:
-        return (f"{self.start_date:%Y-%m} {self.destination} {self.days} 天，{self.travelers} 人，预算 {self.budget_total:.0f} 元，"
-                f"节奏 {self.pace}，亮点：{'、'.join(self.highlights[:4])}")  # fmt: skip
+        return (
+            f"{self.start_date:%Y-%m} {self.destination} {self.days} 天，{self.travelers} 人，预算 {self.budget_total:.0f} 元，"
+            f"节奏 {self.pace}，亮点：{'、'.join(self.highlights[:4])}"
+        )

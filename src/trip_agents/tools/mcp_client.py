@@ -90,8 +90,13 @@ class McpToolExecutor:
         try:
             res = self._run(self._client.call_tool(name, args))
         except Exception as e:  # transport / protocol failure -> observation, not crash
-            return ToolResult(name=name, args=args, ok=False, error=f"MCP 调用失败: {type(e).__name__}: {e}",
-                              latency_ms=round((time.perf_counter() - t0) * 1000, 2))  # fmt: skip
+            return ToolResult(
+                name=name,
+                args=args,
+                ok=False,
+                error=f"MCP 调用失败: {type(e).__name__}: {e}",
+                latency_ms=round((time.perf_counter() - t0) * 1000, 2),
+            )
         latency = round((time.perf_counter() - t0) * 1000, 2)
         text = "".join(getattr(c, "text", "") for c in res.content)
         if res.is_error:

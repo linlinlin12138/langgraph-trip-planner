@@ -62,7 +62,7 @@ make eval-compare A=evals/runs/<a> B=evals/runs/<b>
 | `no_revision` | 照常校验，但不回退重排 |
 | `no_research` | 不调用任何工具，Agent 凭模型自身知识规划 |
 | `baseline` | 单次生成：原始请求 → 完整行程，没有检索、校验和重试 |
-| `no_memory` | M3 加入 |
+| `no_memory` | 关闭长期记忆。单次会话的数据集测不出记忆的作用，所以单独用两次会话的场景评测，见下文 |
 
 ## LLM-as-Judge
 
@@ -84,6 +84,19 @@ make eval-compare A=evals/runs/<a> B=evals/runs/<b>
 mock 模型是确定性的，所以稳定性恒为 1，标准差恒为 0。mock 规划器本身不会出错，所以 `full` 和 `no_revision` 的差距只能说明回退链路是通的，不能说明真实模型会出多少错。
 
 **这次评测发现的问题**（dev 集）：修复前，`full` 系统的失败全部是超预算。原因是用户要高档酒店但预算有限时，Research 只检索该档次的酒店：一方面“最低可行花费”被高估，导致 7% 的可行样本被误判为不可行；另一方面回退只能重排每天的行程，换不了酒店。修复方式：预算优先于住宿档次偏好，按限价补查酒店；回退时允许换成更便宜的酒店，并告知用户。修复后，可行样本的硬约束通过率从 84.2% 提升到 100%，误报率从 7.0% 降到 0%（mock，dev 60 × 3）。
+
+### 记忆消融（两次会话）
+
+运行 `make eval-memory`，脚本是 `trip_agents.evals.memory_eval`，共 30 个场景，分三类：
+- **inherit**：第二次会话只说城市、日期和天数，其余偏好和预算习惯应该从记忆中沿用；
+- **override**：第二次会话明确说出不同的节奏，并说“什么都吃”，应该以新说的为准；
+- **past_trip**：第二次会话说“像上次 X 那样”，应该从历史行程中取出目的地、天数、人数和预算。
+
+第二次会话的结果和标准答案逐字段比较。结果见 [`mock_memory.md`](eval/mock_memory.md)（mock）。mock 的偏好写入和读取用的是同一套规则，所以准确率由构造决定，只能验证记忆读写和优先级逻辑。
+
+### 手写 ReAct vs LangGraph
+
+运行 `make compare-react`，在 dev 集抽 20 条，两边使用相同的 prompt、工具和轮数上限。结果见 [`mock_react_compare.md`](eval/mock_react_compare.md)。手写版实现之前，表里只有 LangGraph 一侧的数字。
 
 ### 真实模型
 
