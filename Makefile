@@ -1,4 +1,4 @@
-.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-compare eval-memory eval-rejudge test-react compare-react mcp-server check-provider
+.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-rewrite eval-compare eval-memory eval-rejudge test-react compare-react mcp-server check-provider
 
 install:
 	uv sync --all-extras
@@ -30,6 +30,11 @@ eval:
 
 eval-dataset:
 	uv run python -m trip_agents.evals.dataset --n 200 --seed 42 --rewrite template
+
+# LLM paraphrases with back-checks -> evals/datasets/llm/ (rewriter, checker, tested = 3 different providers)
+# make eval-rewrite ARGS="--rewriter-provider anthropic --rewriter-model <m> --checker-provider openai --checker-model <m>"
+eval-rewrite:
+	uv run python -m trip_agents.evals.rewrite $(ARGS)
 
 # make eval-compare A=evals/runs/<a> B=evals/runs/<b>
 eval-compare:

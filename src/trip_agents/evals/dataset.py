@@ -1,7 +1,7 @@
 """Evaluation dataset: structured constraint combos -> natural-language requests.
 
     uv run python -m trip_agents.evals.dataset --n 200 --seed 42 --rewrite template
-    uv run python -m trip_agents.evals.dataset --n 200 --seed 42 --rewrite llm --provider openai   # costs money
+    # LLM paraphrases: use trip_agents.evals.rewrite (back-checked against gold), not --rewrite llm
 
 Each sample keeps the structured constraints it was generated from (``gold``) as the
 answer key, plus the tools a reasonable agent should use. Difficulty is decided by
@@ -45,6 +45,8 @@ class Sample(BaseModel):
     rewrite: Literal["template", "llm"]
     min_feasible_cost: float
     typical_cost: float
+    # provenance of an LLM rewrite (rewriter / checker models, attempts); see evals/rewrite.py
+    rewrite_info: dict[str, Any] | None = None
 
 
 # ----------------------------------------------------------------------------- constraints
