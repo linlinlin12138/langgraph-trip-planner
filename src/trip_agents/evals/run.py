@@ -34,7 +34,11 @@ RUNS_DIR = PROJECT_ROOT / "evals" / "runs"
 def git_commit() -> str:
     try:
         out = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, cwd=PROJECT_ROOT, check=True)
-        dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], capture_output=True, text=True, cwd=PROJECT_ROOT)
+        # "dirty" = uncommitted changes to code or data that affect results (reports in docs/ don't count)
+        paths = ["src", "react_from_scratch", "app", "data", "evals/datasets", "pyproject.toml", "uv.lock"]
+        dirty = subprocess.run(
+            ["git", "status", "--porcelain", "--untracked-files=no", "--", *paths], capture_output=True, text=True, cwd=PROJECT_ROOT
+        )
         return out.stdout.strip() + ("-dirty" if dirty.stdout.strip() else "")
     except Exception:
         return "unknown"

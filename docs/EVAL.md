@@ -80,6 +80,7 @@ make eval-compare A=evals/runs/<a> B=evals/runs/<b>
 - [`mock_dev_before_fix.md`](eval/mock_dev_before_fix.md)：commit `c23e7a4`，dev 60 条 × 3 次，2026-11-02
 - [`mock_dev_after_fix.md`](eval/mock_dev_after_fix.md)：commit `ae92992`，同样的配置
 - [`mock_dev_compare.md`](eval/mock_dev_compare.md)：前后对比
+- [`mock_dev_latest.md`](eval/mock_dev_latest.md)：M4 完成后在 commit `921589a` 上重跑，配置相同，README 里的表格用的是这一份
 
 mock 模型是确定性的，所以稳定性恒为 1，标准差恒为 0。mock 规划器本身不会出错，所以 `full` 和 `no_revision` 的差距只能说明回退链路是通的，不能说明真实模型会出多少错。
 
