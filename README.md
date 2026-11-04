@@ -36,7 +36,7 @@ flowchart LR
 | ReAct / 工具调用 | Research 子图自定义 tools 节点：参数校验错误作为 observation 返回、重复调用检测、每类工具最多 3 轮、并行调用 | `graph/nodes/research.py` |
 | MCP | 低层 Server 公开 Pydantic 生成的 schema；Agent 通过 MCP Client 发现工具；stdio 或进程内两种方式 | `tools/mcp_*.py` |
 | 结构化输出 | 原生 json_schema 优先，失败后清洗、解析、校验，带具体错误重试 3 次，仍失败则跳过并标记 | `llm/structured.py` |
-| 手写 ReAct | 不用框架的脚手架（**核心循环留作练习**）、14 条验收测试、与 LangGraph 版的对比脚本 | `react_from_scratch/` |
+| 手写 ReAct | 只用 SDK 的 ReAct 循环：重试、重复调用检测、轮数上限、错误作为 observation 返回；14 条验收测试；与 LangGraph 版的对比脚本 | `react_from_scratch/` |
 | 长期记忆 | 固定字段的画像（以新为准，记录时间和原话依据），加最多 10 条行程摘要；只记用户原话里出现的偏好；“像上次那样” | `memory/` |
 | 可观测性 | 回调式 tracer：每次 LLM 调用的 token、耗时、模型，工具调用，重试；业务代码零埋点 | `observability/` |
 | 评测 | 200 条样本（3 档难度，含不可行样本），按完整目录和标准答案重新判定；四类指标；baseline 与 3 组消融；记忆消融；LLM-as-Judge 及权重校准 | `evals/`、[docs/EVAL.md](docs/EVAL.md) |
@@ -108,6 +108,8 @@ make check-provider ARGS="--provider gemini --samples 5"
 
 **记忆消融**（mock，30 个两次会话场景，每组跑 1 次，commit `921589a`，[报告](docs/eval/mock_memory.md)）：有记忆时，“只说城市日期”“明确修改偏好”“像上次那样”三类场景，第二次会话的字段都 100% 正确；没有记忆时，自动模式下缺信息无法直接规划（实际使用中会转为追问用户）。mock 写入和读取偏好用的是同一套规则，所以这个结果只验证逻辑。
 
+**手写 ReAct vs LangGraph**（mock，dev 集抽 20 条，[报告](docs/eval/mock_react_compare.md)）：两边用同一套检索策略，检索成功率、工具精确率和召回率、步数完全一致，说明两种实现的行为等价。代码量上，手写循环 92 个逻辑行，LangGraph 子图 65 行（不含框架本身）。
+
 **这套评测在开发中实际发现过问题**：修复前，`full` 的失败全部是超预算，原因是“要高档酒店但预算有限”时只检索了这一档的酒店。修复后，可行样本的硬约束通过率从 84.2% 升到 100%，误报率从 7.0% 降到 0%（mock，dev 集，[前后对比](docs/eval/mock_dev_compare.md)，分析见 DESIGN §8）。
 
 **真实模型（Gemini）**：尚未运行。
@@ -137,7 +139,7 @@ src/trip_agents/
   observability/    回调式 tracer、单价表
   evals/            数据集生成、真值评判、Judge、指标、运行器、报告、记忆评测、权重校准
   cache/            语义缓存
-react_from_scratch/ 手写 ReAct 脚手架（loop.py 是练习）、测试、对比脚本
+react_from_scratch/ 不用框架的 ReAct 循环、三家 SDK 客户端、测试、对比脚本
 app/                Streamlit demo
 evals/datasets/     dev.jsonl / test.jsonl（seed=42 生成）
 docs/               DESIGN.md、EVAL.md、eval/（各次评测报告）
@@ -163,4 +165,4 @@ data/mock/          5 个城市的固定数据（景点名称真实，价格为�
 - [x] M3：MCP 工具层、real 后端、长期记忆、手写 ReAct 脚手架与对比、记忆消融
 - [x] M4：README、DESIGN.md、demo 打磨、语义缓存
 - [ ] 真实模型（Gemini）评测：dev 集 → 确认费用 → test 集
-- [ ] 自己实现 `react_from_scratch/loop.py`，补上对比表里手写版那一列
+- [x] 手写 ReAct 循环（`react_from_scratch/loop.py`）与 LangGraph 版对比（mock）

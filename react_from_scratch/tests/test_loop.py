@@ -1,9 +1,6 @@
-"""Acceptance tests for YOUR run_react / parse_tool_calls.
+"""Acceptance tests for run_react / parse_tool_calls (the contract in loop.py's docstring).
 
-They are skipped while loop.py still raises NotImplementedError, so CI stays green.
-Once you implement the loop they run automatically; to see what is pending:
-
-    uv run pytest react_from_scratch -rs
+    uv run pytest react_from_scratch
 """
 
 from __future__ import annotations
@@ -18,18 +15,6 @@ from react_from_scratch.client import ScriptedClient, TransientModelError
 from react_from_scratch.loop import parse_tool_calls, run_react
 from react_from_scratch.registry import ToolRegistry
 from react_from_scratch.types import ModelTurn, RawToolCall, ReactConfig, Usage
-
-
-def _implemented() -> bool:
-    try:
-        run_react(ScriptedClient([ModelTurn(text="ok")]), ToolRegistry(), "ping")
-        parse_tool_calls(ModelTurn(text=None))
-    except NotImplementedError:
-        return False
-    return True
-
-
-pytestmark = pytest.mark.skipif(not _implemented(), reason="react_from_scratch/loop.py not implemented yet (your exercise)")
 
 
 # ----------------------------------------------------------------------------- fixtures

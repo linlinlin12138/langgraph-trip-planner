@@ -97,7 +97,7 @@ mock 模型是确定性的，所以稳定性恒为 1，标准差恒为 0。mock 
 
 ### 手写 ReAct vs LangGraph
 
-运行 `make compare-react`，在 dev 集抽 20 条，两边使用相同的 prompt、工具和轮数上限。结果见 [`mock_react_compare.md`](eval/mock_react_compare.md)。手写版实现之前，表里只有 LangGraph 一侧的数字。
+运行 `make compare-react`，在 dev 集抽 20 条，两边使用相同的 prompt、工具和轮数上限。结果见 [`mock_react_compare.md`](eval/mock_react_compare.md)。mock 下两边用同一套检索策略，所以行为指标完全一致，主要差别在代码量（手写 92 个逻辑行，LangGraph 子图 65 行，不含框架本身）。
 
 ### 真实模型
 
