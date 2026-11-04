@@ -117,3 +117,21 @@ def test_runner_writes_report_and_resumes(tmp_path: Path, monkeypatch) -> None: 
     run_main(args)  # resume: nothing new appended
     assert len((out / "records.jsonl").read_text(encoding="utf-8").splitlines()) == len(lines)
     assert EVAL_TODAY.year == 2026
+
+
+def test_rejudge_scores_stored_plans_with_another_judge(tmp_path: Path, monkeypatch) -> None:  # type: ignore[no-untyped-def]
+    import trip_agents.evals.run as runmod
+    from trip_agents.evals.rejudge import rejudge
+    from trip_agents.evals.systems import RunRecord
+
+    monkeypatch.setattr(runmod, "RUNS_DIR", tmp_path)
+    out = run_main(["--limit", "3", "--systems", "full,baseline", "--name", "rj", "--provider", "mock", "--no-judge"])
+    recs = [RunRecord.model_validate_json(x) for x in (out / "records.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert all(r.itinerary is not None and r.judge_total is None for r in recs)
+
+    done, skipped = rejudge(out, "mock", None, workers=2)
+    assert (done, skipped) == (6, 0)
+    recs = [RunRecord.model_validate_json(x) for x in (out / "records.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert all(r.judge_total is not None for r in recs if r.structure_ok)
+    assert json.loads((out / "meta.json").read_text(encoding="utf-8"))["judge"]["provider"] == "mock"
+    assert (out / "records.none.jsonl").exists()  # previous records kept

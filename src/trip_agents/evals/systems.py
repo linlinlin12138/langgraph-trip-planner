@@ -68,6 +68,8 @@ class RunRecord(BaseModel):
     judge: dict[str, Any] | None = None
     judge_total: float | None = None
     plan_signature: list[list[str]] = Field(default_factory=list)
+    # full plan, kept so `evals.rejudge` can score it with another judge without regenerating
+    itinerary: dict[str, Any] | None = None
     # process
     tools_used: list[str] = Field(default_factory=list)
     expected_tools: list[str] = Field(default_factory=list)
@@ -165,6 +167,7 @@ def run_one(
     rec.structure_ok, rec.hard_pass, rec.violations = ev.structure_ok, ev.hard_pass, ev.errors
     rec.n_refs, rec.hallucinated_refs = ev.n_refs, ev.hallucinated_refs
     rec.plan_signature = _signature(itinerary)
+    rec.itinerary = itinerary.model_dump(mode="json") if itinerary is not None else None
 
     s = trace.summary()
     rec.tools_used = sorted({t.name for t in trace.tool_calls})

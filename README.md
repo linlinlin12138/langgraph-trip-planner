@@ -73,6 +73,16 @@ uv run python -m trip_agents.cli --auto "我和女朋友11月20日去杭州玩3�
 make eval ARGS="--split dev --repeats 3"        # 完整评测 → evals/runs/<name>/report.md
 ```
 
+Judge 想换别家模型（比如生成用 Gemini、打分用 GPT）时，先用 `--no-judge` 生成，再单独打分。每条记录都保存了完整行程，换 Judge 不需要重新生成：
+
+```bash
+make eval ARGS="--split dev --provider gemini --no-judge --name gemini_dev"
+```
+
+```bash
+make eval-rejudge RUN=evals/runs/gemini_dev ARGS="--judge-provider openai --judge-model <模型名>"
+```
+
 使用真实模型时，复制 `.env.example` 为 `.env`，设置 `LLM_PROVIDER=gemini` 和 `GOOGLE_API_KEY`，然后先运行连通性检查和费用估算：
 
 ```bash

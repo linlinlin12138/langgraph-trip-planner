@@ -5,6 +5,8 @@
 
 Output: evals/runs/<name>/{meta.json, records.jsonl, summary.json, report.md}
 Re-running with the same --name skips (sample, system, rep) triples already in records.jsonl.
+To use a judge from another provider, generate with --no-judge and score later with
+`python -m trip_agents.evals.rejudge evals/runs/<name> --judge-provider openai --judge-model <m>`.
 """
 
 from __future__ import annotations

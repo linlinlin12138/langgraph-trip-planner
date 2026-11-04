@@ -1,4 +1,4 @@
-.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-compare eval-memory test-react compare-react mcp-server check-provider
+.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-compare eval-memory eval-rejudge test-react compare-react mcp-server check-provider
 
 install:
 	uv sync --all-extras
@@ -34,6 +34,10 @@ eval-dataset:
 # make eval-compare A=evals/runs/<a> B=evals/runs/<b>
 eval-compare:
 	uv run python -m trip_agents.evals.report $(A) $(B)
+
+# make eval-rejudge RUN=evals/runs/<name> ARGS="--judge-provider openai --judge-model <m>"
+eval-rejudge:
+	uv run python -m trip_agents.evals.rejudge $(RUN) $(ARGS)
 
 eval-memory:
 	uv run python -m trip_agents.evals.memory_eval --n 30 --out docs/eval/mock_memory.md
