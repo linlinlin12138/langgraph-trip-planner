@@ -86,3 +86,16 @@ def test_mock_bad_json_fault_recovers() -> None:
     m = MockChatModel(faults={"bad_json_once"})
     res = invoke_structured(m, RequestExtraction, [HumanMessage(content="去杭州玩3天")])
     assert res.ok and res.attempts == 2 and res.value and res.value.destination == "杭州"
+
+
+def test_timezone_suffixed_times_become_local() -> None:
+    """Gemini sometimes returns "09:00:00Z"; comparing aware and naive times raised TypeError in validation."""
+    from datetime import time
+
+    from trip_agents.schemas import Activity
+
+    a = Activity.model_validate(
+        {"start_time": "09:00:00Z", "end_time": "10:30+08:00", "kind": "attraction", "title": "灵隐寺", "ref_id": "a1", "est_cost": 0}
+    )
+    assert a.start_time == time(9, 0) and a.end_time == time(10, 30)
+    assert a.start_time.tzinfo is None and a.end_time < time(23, 30)

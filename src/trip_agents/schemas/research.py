@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from datetime import date, time
+from datetime import date
 from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from trip_agents.schemas._types import LocalTime
 from trip_agents.schemas.request import DietaryRestriction, HotelTier, Interest
 
 
@@ -42,8 +43,8 @@ class Attraction(BaseModel):
     category: Interest
     ticket_price: float = Field(description="Per person, CNY")
     recommended_hours: float
-    open_time: time
-    close_time: time
+    open_time: LocalTime
+    close_time: LocalTime
     rating: float
     area: str
     lat: float

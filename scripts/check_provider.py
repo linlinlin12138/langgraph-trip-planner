@@ -134,7 +134,11 @@ def _main() -> None:
     per: dict[str, list[tuple[int, int, float]]] = {"full": [], "baseline": []}
     for s in picked:
         for name in per:
-            r = run_one(s, SYSTEMS[name], make)
+            try:
+                r = run_one(s, SYSTEMS[name], make)
+            except Exception as e:  # keep going: one bad sample should not hide the cost estimate
+                print(f"[4] {s.id} {s.difficulty:<6} {name:<8} CRASHED {explain(e)}")
+                continue
             per[name].append((r.input_tokens, r.output_tokens, r.wall_ms))
             err = ("ERR " + r.error[:80]) if r.error else ""
             print(
@@ -142,6 +146,8 @@ def _main() -> None:
                 f"tokens={r.input_tokens}+{r.output_tokens} {r.wall_ms / 1000:.1f}s {err}"
             )
 
+    if not all(per.values()):
+        raise SystemExit("no successful runs for at least one system -- fix the errors above first")
     print("[5] per-sample averages and extrapolation (graph systems ~= full; baseline is one call):")
     for name, rows in per.items():
         ti = statistics.fmean(x[0] for x in rows)
