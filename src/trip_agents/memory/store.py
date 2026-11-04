@@ -43,6 +43,12 @@ class MemoryManager:
     def put_profile(self, profile: UserProfile) -> None:
         self.store.put(("users", profile.user_id), "profile", profile.model_dump(mode="json"))
 
+    def clear(self, user_id: str) -> None:
+        """Forget everything about a user (profile + trips)."""
+        self.store.delete(("users", user_id), "profile")
+        for t in self.list_trips(user_id):
+            self.store.delete(("users", user_id, "trips"), t.thread_id)
+
     # ---------------------------------------------------------------- trips
     def list_trips(self, user_id: str) -> list[TripSummary]:
         items = self.store.search(("users", user_id, "trips"), limit=1000)
