@@ -63,11 +63,13 @@ class HashingEmbedder:
 class GeminiEmbedder:
     """Real embedding model via langchain-google-genai (needs GOOGLE_API_KEY)."""
 
-    def __init__(self, model: str = "models/text-embedding-004") -> None:
+    def __init__(self, model: str = "models/gemini-embedding-001") -> None:  # text-embedding-004 was retired
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
+        from trip_agents.config import gemini_api_key
+
         self.name = model
-        self._emb = GoogleGenerativeAIEmbeddings(model=model)
+        self._emb = GoogleGenerativeAIEmbeddings(model=model, api_key=gemini_api_key())
 
     def embed(self, text: str) -> list[float]:
         v = self._emb.embed_query(text)

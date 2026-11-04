@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -25,7 +26,9 @@ class Settings(BaseSettings):
     llm_temperature: float = 0.2
     llm_timeout_s: float = 60.0
     llm_max_retries: int = 6
-    # Gemini "thinking" models spend extra output tokens on reasoning; None = provider default, 0 = off
+    # Gemini "thinking" spends extra output tokens on reasoning. Gemini 3+ models take a level,
+    # 2.5 models take a token budget (0 = off). None = model default.
+    llm_thinking_level: Literal["minimal", "low", "medium", "high"] | None = None
     llm_thinking_budget: int | None = None
 
     # --- tools ---------------------------------------------------------------
@@ -58,6 +61,12 @@ class Settings(BaseSettings):
     @property
     def store_db(self) -> Path:
         return self.data_dir / "store.sqlite"
+
+
+def gemini_api_key() -> str | None:
+    """GOOGLE_API_KEY, falling back to GEMINI_API_KEY (both names are used in Google's docs)."""
+    get_settings()  # make sure .env has been exported
+    return os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY") or None
 
 
 @lru_cache

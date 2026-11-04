@@ -11,7 +11,6 @@ so the loop can decide whether to retry; anything else propagates.
 from __future__ import annotations
 
 import json
-import os
 from collections.abc import Sequence
 from typing import Any, Protocol
 
@@ -54,9 +53,9 @@ class OpenAIClient:
 
 def GeminiClient(model: str) -> OpenAIClient:
     """Gemini through its OpenAI-compatible endpoint."""
-    return OpenAIClient(
-        model, base_url="https://generativelanguage.googleapis.com/v1beta/openai/", api_key=os.environ.get("GOOGLE_API_KEY")
-    )
+    from trip_agents.config import gemini_api_key
+
+    return OpenAIClient(model, base_url="https://generativelanguage.googleapis.com/v1beta/openai/", api_key=gemini_api_key())
 
 
 # --------------------------------------------------------------------------- Anthropic

@@ -15,7 +15,6 @@ Nothing here is cached or written to the eval runs directory.
 from __future__ import annotations
 
 import argparse
-import os
 import random
 import statistics
 import sys
@@ -26,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from trip_agents.config import gemini_api_key, get_settings
 from trip_agents.evals.dataset import DATASET_DIR, EVAL_TODAY, load
 from trip_agents.evals.systems import SYSTEMS, run_one
 from trip_agents.graph.deps import AgentDeps, LocalToolExecutor
@@ -42,7 +42,7 @@ from trip_agents.schemas import RequestExtraction
 def list_gemini_models() -> None:
     from google import genai
 
-    client = genai.Client(api_key=os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY"))
+    client = genai.Client(api_key=gemini_api_key())
     rows = []
     for m in client.models.list():
         actions = getattr(m, "supported_actions", None) or []
@@ -52,14 +52,41 @@ def list_gemini_models() -> None:
         print(f"  {name:<45} {display}  (max output {out_limit})")
 
 
+_HINTS = (
+    ("NOT_FOUND", "model not available to this key -> pick one from `--list-models` and pass --model / set LLM_MODEL"),
+    ("PERMISSION_DENIED", "key rejected or API not enabled for its project -> check GOOGLE_API_KEY in AI Studio"),
+    ("API_KEY_INVALID", "key rejected -> check GOOGLE_API_KEY in AI Studio"),
+    ("credits are depleted", "project billing: prepaid credits used up -> top up at https://ai.studio/projects"),
+    ("RESOURCE_EXHAUSTED", "quota / rate limit (or billing) -> wait, lower concurrency, or check the project's quota"),
+)
+
+
+def explain(e: BaseException) -> str:
+    msg = str(e)
+    hint = next((h for key, h in _HINTS if key in msg), None)
+    first = msg.splitlines()[0][:300] if msg else type(e).__name__
+    return f"{type(e).__name__}: {first}" + (f"\n    hint: {hint}" if hint else "")
+
+
 def main() -> None:
+    try:
+        _main()
+    except KeyboardInterrupt:
+        raise
+    except Exception as e:  # provider errors: one actionable line instead of a 40-frame traceback
+        raise SystemExit(f"FAILED  {explain(e)}") from None
+
+
+def _main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--provider", default="gemini")
     ap.add_argument("--model", default=None)
     ap.add_argument("--samples", type=int, default=5)
     ap.add_argument("--list-models", action="store_true")
     args = ap.parse_args()
-    model_name = args.model or DEFAULT_MODELS[args.provider]
+    model_name = args.model or get_settings().llm_model or DEFAULT_MODELS[args.provider]
+    if args.provider == "gemini" and not gemini_api_key():
+        raise SystemExit("GOOGLE_API_KEY (or GEMINI_API_KEY) is not set -- put it in .env or the environment")
 
     if args.list_models:
         if args.provider != "gemini":
@@ -69,7 +96,7 @@ def main() -> None:
         return
 
     def make():  # type: ignore[no-untyped-def]
-        return get_chat_model(args.provider, args.model)  # type: ignore[arg-type]
+        return get_chat_model(args.provider, model_name)  # type: ignore[arg-type]
 
     print(f"[1] provider={args.provider} model={model_name}")
 
