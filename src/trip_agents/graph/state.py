@@ -53,6 +53,9 @@ class TripState(TypedDict, total=False):
     defaults_pending: bool  # waiting for the user to confirm memory defaults
     defaults_confirmed: bool
 
+    # ---- cache_lookup ------------------------------------------------------------
+    cache_hit: dict[str, Any] | None  # {"entry_id", "similarity"} when the plan came from the semantic cache
+
     # ---- research --------------------------------------------------------------
     research: ResearchBundle
     tool_calls: Annotated[list[ToolCallRecord], operator.add]

@@ -18,6 +18,7 @@ from langgraph.graph.state import CompiledStateGraph
 from langgraph.store.base import BaseStore
 from langgraph.types import Command
 
+from trip_agents.cache.semantic import SemanticCache
 from trip_agents.config import get_settings
 from trip_agents.graph.builder import build_graph, sqlite_checkpointer
 from trip_agents.graph.deps import AgentDeps, GraphOptions, make_tool_executor
@@ -34,11 +35,14 @@ def create_planner(
     checkpoint_path: str | None = None,
     store: BaseStore | None = None,
     today: date | None = None,
+    semantic_cache: bool | None = None,
 ) -> CompiledStateGraph[Any]:
     s = get_settings()
     kwargs: dict[str, Any] = {"faults": set(faults)} if faults and (provider or s.llm_provider) == "mock" else {}
     llm = get_chat_model(provider, model, **kwargs)  # type: ignore[arg-type]
-    deps = AgentDeps(model=llm, tools=make_tool_executor(), today=today or date.today())
+    use_cache = s.semantic_cache if semantic_cache is None else semantic_cache
+    cache = SemanticCache(s.cache_db, threshold=s.cache_threshold, ttl_s=s.cache_ttl_days * 86400) if use_cache else None
+    deps = AgentDeps(model=llm, tools=make_tool_executor(), today=today or date.today(), cache=cache)
     cp = sqlite_checkpointer(checkpoint_path or s.checkpoint_db)
     return build_graph(deps, options, checkpointer=cp, store=store if store is not None else sqlite_store(s.store_db))
 

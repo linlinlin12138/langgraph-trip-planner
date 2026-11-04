@@ -13,6 +13,7 @@ from typing import Any, Protocol
 
 from langchain_core.language_models import BaseChatModel
 
+from trip_agents.cache.semantic import SemanticCache
 from trip_agents.config import get_settings
 from trip_agents.tools.executor import ToolBackend, ToolResult, execute_tool, get_backend
 from trip_agents.tools.specs import TOOL_SPECS
@@ -70,6 +71,7 @@ class AgentDeps:
     tools: ToolExecutor
     today: date = field(default_factory=date.today)
     clock: Callable[[], datetime] = datetime.now
+    cache: SemanticCache | None = None  # optional semantic cache of confirmed plans
     structured_max_retries: int = field(default_factory=lambda: get_settings().structured_max_retries)
     research_max_steps: int = field(default_factory=lambda: get_settings().research_max_steps)
     research_max_rounds_per_tool: int = field(default_factory=lambda: get_settings().research_max_rounds_per_tool)

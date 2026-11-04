@@ -39,12 +39,21 @@ class Settings(BaseSettings):
     research_max_steps: int = Field(default=8, ge=1)
     research_max_rounds_per_tool: int = Field(default=3, ge=1)
 
+    # --- semantic cache (off by default: a hit skips research and candidate picking) ---
+    semantic_cache: bool = False
+    cache_threshold: float = 0.85
+    cache_ttl_days: float = 7
+
     # --- persistence ---------------------------------------------------------
     data_dir: Path = PROJECT_ROOT / ".data"
 
     @property
     def checkpoint_db(self) -> Path:
         return self.data_dir / "checkpoints.sqlite"
+
+    @property
+    def cache_db(self) -> Path:
+        return self.data_dir / "semantic_cache.sqlite"
 
     @property
     def store_db(self) -> Path:

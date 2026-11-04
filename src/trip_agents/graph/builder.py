@@ -1,7 +1,8 @@
 """Assemble the StateGraph.
 
-START → chat ─┬─(missing info)→ clarify ⟲ chat         [interrupt #1, optional]
-              └─(complete)→ research → human_select    [interrupt #2: pick candidates]
+START → chat ─┬─(missing info / memory defaults)→ clarify ⟲ chat   [interrupt #1, optional]
+              └─(complete)→ cache_lookup ─(hit)→ budget (re-validate the cached plan)
+                                         └─(miss)→ research → human_select   [interrupt #2: pick candidates]
                  → itinerary → budget → validate ─┬─(errors & retries left)→ itinerary
                                                   └─→ finalize → confirm → END   [interrupt #3]
 """
@@ -21,6 +22,7 @@ from langgraph.store.base import BaseStore
 
 from trip_agents.graph.deps import AgentDeps, GraphOptions
 from trip_agents.graph.nodes.budget import make_budget_node
+from trip_agents.graph.nodes.cache import make_cache_lookup_node, route_after_cache
 from trip_agents.graph.nodes.chat import make_chat_node, make_clarify_node, route_after_chat
 from trip_agents.graph.nodes.finalize import finalize, make_confirm_node
 from trip_agents.graph.nodes.human_select import make_human_select_node
@@ -51,6 +53,7 @@ def build_graph(
     g = StateGraph(TripState)
     g.add_node("chat", make_chat_node(deps, options))
     g.add_node("clarify", make_clarify_node(options))
+    g.add_node("cache_lookup", make_cache_lookup_node(deps.cache))
     g.add_node("research", make_research_node(deps, options))
     g.add_node("human_select", make_human_select_node(options))
     g.add_node("itinerary", make_itinerary_node(deps))
@@ -60,7 +63,8 @@ def build_graph(
     g.add_node("confirm", make_confirm_node(deps, options))
 
     g.add_edge(START, "chat")
-    g.add_conditional_edges("chat", route_after_chat(options), ["clarify", "research", END])
+    g.add_conditional_edges("chat", route_after_chat(options), {"clarify": "clarify", "research": "cache_lookup", END: END})
+    g.add_conditional_edges("cache_lookup", route_after_cache, ["research", "budget"])
     g.add_edge("clarify", "chat")
     g.add_edge("research", "human_select")
     g.add_edge("human_select", "itinerary")

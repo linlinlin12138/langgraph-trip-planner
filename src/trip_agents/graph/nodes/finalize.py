@@ -9,6 +9,7 @@ from langchain_core.runnables import RunnableConfig
 from langgraph.types import interrupt
 
 from trip_agents.graph.deps import AgentDeps, GraphOptions
+from trip_agents.graph.nodes.cache import store_in_cache
 from trip_agents.graph.nodes.chat import memory_manager
 from trip_agents.graph.state import TripState
 from trip_agents.memory.ops import remember_trip
@@ -23,6 +24,8 @@ def finalize(state: TripState) -> dict[str, Any]:
         f"行程已生成（修订 {state.get('revision', 0)} 次）：{it.summary}",
         f"预计总花费 {budget.total:.0f} 元 / 预算 {budget.budget:.0f} 元。",
     ]
+    if hit := state.get("cache_hit"):
+        lines.insert(0, f"（复用了相似度 {hit['similarity']:.2f} 的已确认行程，并已重新校验）")
     if state.get("adjustments"):
         lines.append("调整说明：" + "；".join(state["adjustments"]))
     if not budget.feasible:
@@ -53,13 +56,14 @@ def make_confirm_node(deps: AgentDeps, options: GraphOptions):  # type: ignore[n
             confirmed = True  # automated runs (evals) count as accepted
         if not confirmed:
             return {}
+        cached = store_in_cache(deps.cache, dict(state))
         mem = memory_manager(options)
         if mem is None:
-            return {"status": "confirmed"}
+            return {"status": "confirmed", "memory_updates": ["已写入语义缓存"] if cached else []}
         thread_id = str((config.get("configurable") or {}).get("thread_id", "unknown"))
         notes = remember_trip(
             mem, deps.model, dict(state), thread_id=thread_id, now=deps.clock(), config=config, max_retries=deps.structured_max_retries
         )
-        return {"status": "confirmed", "memory_updates": notes}
+        return {"status": "confirmed", "memory_updates": notes + (["已写入语义缓存"] if cached else [])}
 
     return confirm
