@@ -1,6 +1,6 @@
 """Acceptance tests for run_react / parse_tool_calls (the contract in loop.py's docstring).
 
-    uv run pytest react_from_scratch
+uv run pytest react_from_scratch
 """
 
 from __future__ import annotations
