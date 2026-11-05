@@ -135,3 +135,11 @@ def test_rejudge_scores_stored_plans_with_another_judge(tmp_path: Path, monkeypa
     assert all(r.judge_total is not None for r in recs if r.structure_ok)
     assert json.loads((out / "meta.json").read_text(encoding="utf-8"))["judge"]["provider"] == "mock"
     assert (out / "records.none.jsonl").exists()  # previous records kept
+
+
+def test_real_model_runs_go_to_tracked_results_dir() -> None:
+    from trip_agents.evals import run as runmod
+
+    assert runmod.run_dir("mock", "x") == runmod.RUNS_DIR / "x"
+    assert runmod.run_dir("gemini", "x") == runmod.RESULTS_DIR / "x"
+    assert runmod.RESULTS_DIR.parent == runmod.RUNS_DIR.parent and runmod.RESULTS_DIR.name == "results"

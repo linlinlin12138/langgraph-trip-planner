@@ -6,7 +6,7 @@
 make eval ARGS="--split dev --repeats 3"          # 默认 mock，无需 key
 ```
 
-产物在 `evals/runs/<name>/`：`meta.json`（模型、commit、数据集、种子）、`records.jsonl`（每条样本 × 系统 × 第几次运行的明细）、`summary.json`、`report.md`。用同一个 `--name` 重跑时会跳过已完成的记录，可以断点续跑。比较两次运行：
+产物在 `evals/runs/<name>/`（mock，不进 git）或 `evals/results/<name>/`（真实模型，进 git：生成要花钱，换 Judge 重新打分也要用到保存的行程，跑完记得提交）：`meta.json`（模型、commit、数据集、种子）、`records.jsonl`（每条样本 × 系统 × 第几次运行的明细）、`summary.json`、`report.md`。用同一个 `--name` 重跑时会跳过已完成的记录，可以断点续跑。比较两次运行：
 
 ```bash
 make eval-compare A=evals/runs/<a> B=evals/runs/<b>

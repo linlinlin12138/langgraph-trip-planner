@@ -40,7 +40,7 @@ eval-rewrite:
 eval-compare:
 	uv run python -m trip_agents.evals.report $(A) $(B)
 
-# make eval-rejudge RUN=evals/runs/<name> ARGS="--judge-provider openai --judge-model <m>"
+# make eval-rejudge RUN=evals/results/<name>   (real-model runs live in evals/results/, mock in evals/runs/) ARGS="--judge-provider openai --judge-model <m>"
 eval-rejudge:
 	uv run python -m trip_agents.evals.rejudge $(RUN) $(ARGS)
 

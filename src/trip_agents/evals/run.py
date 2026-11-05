@@ -3,10 +3,12 @@
     uv run python -m trip_agents.evals.run                                  # mock, dev split, all systems
     uv run python -m trip_agents.evals.run --split test --repeats 3 --provider openai --model <m> --judge-provider anthropic
 
-Output: evals/runs/<name>/{meta.json, records.jsonl, summary.json, report.md}
+Output: <dir>/<name>/{meta.json, records.jsonl, summary.json, report.md}, where <dir> is
+evals/runs/ for mock runs (git-ignored, cheap to redo) and evals/results/ for real models
+(tracked in git: generation costs money, and rejudge needs the stored plans).
 Re-running with the same --name skips (sample, system, rep) triples already in records.jsonl.
 To use a judge from another provider, generate with --no-judge and score later with
-`python -m trip_agents.evals.rejudge evals/runs/<name> --judge-provider openai --judge-model <m>`.
+`python -m trip_agents.evals.rejudge evals/results/<name> --judge-provider openai --judge-model <m>`.
 """
 
 from __future__ import annotations
@@ -30,7 +32,12 @@ from trip_agents.evals.report import write_report
 from trip_agents.evals.systems import SYSTEMS, RunRecord, run_one
 from trip_agents.llm.factory import DEFAULT_MODELS, get_chat_model
 
-RUNS_DIR = PROJECT_ROOT / "evals" / "runs"
+RUNS_DIR = PROJECT_ROOT / "evals" / "runs"  # mock runs, git-ignored
+RESULTS_DIR = PROJECT_ROOT / "evals" / "results"  # real-model runs, committed
+
+
+def run_dir(provider: str, name: str) -> Path:
+    return (RUNS_DIR if provider == "mock" else RESULTS_DIR) / name
 
 
 def git_commit() -> str:
@@ -80,7 +87,7 @@ def main(argv: list[str] | None = None) -> Path:
         samples = sorted(random.Random(args.seed).sample(samples, args.limit), key=lambda x: x.id)
     systems = [SYSTEMS[x] for x in args.systems.split(",")]
     name = args.name or f"{datetime.now():%Y%m%d-%H%M%S}_{args.provider}_{args.split}"
-    out = RUNS_DIR / name
+    out = run_dir(args.provider, name)
     out.mkdir(parents=True, exist_ok=True)
 
     model_name = args.model or DEFAULT_MODELS[args.provider]

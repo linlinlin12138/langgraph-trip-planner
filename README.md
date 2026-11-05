@@ -80,8 +80,10 @@ make eval ARGS="--split dev --provider gemini --no-judge --name gemini_dev"
 ```
 
 ```bash
-make eval-rejudge RUN=evals/runs/gemini_dev ARGS="--judge-provider openai --judge-model <模型名>"
+make eval-rejudge RUN=evals/results/gemini_dev ARGS="--judge-provider openai --judge-model <模型名>"
 ```
+
+真实模型的运行结果写到 `evals/results/<name>/` 并提交进 git（生成要花钱，换 Judge 也要用到保存的行程）；mock 运行写到 `evals/runs/`，不进 git。
 
 使用真实模型时，复制 `.env.example` 为 `.env`，设置 `LLM_PROVIDER=gemini` 和 `GOOGLE_API_KEY`，然后先运行连通性检查和费用估算：
 
