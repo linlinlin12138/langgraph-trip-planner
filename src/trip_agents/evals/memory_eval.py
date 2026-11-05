@@ -58,7 +58,7 @@ def build_scenarios(n: int, seed: int) -> list[Scenario]:
     for i in range(n):
         kind = kinds[i % 3]
         c1, c2 = rng.sample(supported_cities(), 2)
-        diet = [d for d in [rng.choice(["vegetarian", "no_pork", "no_spicy", "no_seafood"])] if _diet_ok(c1, [d]) and _diet_ok(c2, [d])]
+        diet = [d for d in [rng.choice(["no_spicy", "no_seafood"])] if _diet_ok(c1, [d]) and _diet_ok(c2, [d])]
         travelers = rng.choice([1, 2, 3])
         days1 = rng.randint(2, 4)
         per_day = rng.choice([600, 800, 1000, 1200])

@@ -25,13 +25,13 @@ from pydantic import BaseModel
 from trip_agents.config import PROJECT_ROOT
 from trip_agents.evals.world import min_feasible_cost, world_bundle
 from trip_agents.schemas import HardConstraints, SoftPreferences, TripRequest
-from trip_agents.tools.mock_backend import supported_cities
+from trip_agents.tools.mock_backend import _load_all, supported_cities
 
 DATASET_DIR = PROJECT_ROOT / "evals" / "datasets"
 EVAL_TODAY = date(2026, 11, 2)  # fixed "today" so relative dates in requests are reproducible
 
 Difficulty = Literal["easy", "medium", "hard"]
-DIETS = ["vegetarian", "halal", "no_pork", "no_spicy", "no_seafood"]
+DIETS = ["no_spicy", "no_seafood"]
 INTERESTS = ["history", "nature", "museum", "food", "shopping", "nightlife", "culture"]
 
 
@@ -68,11 +68,17 @@ def _compliant_restaurants(city: str, diet: list[str]) -> int:
 
 def sample_constraints(rng: random.Random, difficulty: Difficulty, infeasible: bool) -> TripRequest:
     city = rng.choice(supported_cities())
-    attractions = world_bundle(city).attractions
     spec: dict[str, Any] = {
         "easy": {"days": (1, 3), "trav": (1, 2), "diet": (0, 0), "must": (0, 0), "int": (0, 1), "budget": (1.6, 2.2)},
         "medium": {"days": (2, 4), "trav": (1, 3), "diet": (0, 1), "must": (0, 1), "int": (1, 2), "budget": (1.15, 1.5)},
-        "hard": {"days": (3, 5), "trav": (2, 4), "diet": (1, 2), "must": (1, 2), "int": (2, 3), "budget": (0.85, 1.05)},
+        "hard": {
+            "days": (3, 5),
+            "trav": (2, 4),
+            "diet": (1, 2),
+            "must": (1, 2),
+            "int": (2, 3),
+            "budget": (1.1, 1.6),
+        },  # hard: x min feasible cost
     }[difficulty]
     days = rng.randint(*spec["days"])
     travelers = rng.randint(*spec["trav"])
@@ -80,7 +86,9 @@ def sample_constraints(rng: random.Random, difficulty: Difficulty, infeasible: b
         diet = rng.sample(DIETS, rng.randint(*spec["diet"]))
         if _compliant_restaurants(city, diet) >= 2:
             break
-    must = [a.name for a in rng.sample(attractions, rng.randint(*spec["must"]))]
+    # must-visit: only the hand-curated landmarks people actually name (not every mosque / mall in the catalog)
+    landmarks = [a["name"] for a in _load_all()[city]["attractions"] if a.get("source", "curated") == "curated"]
+    must = rng.sample(landmarks, rng.randint(*spec["must"]))
     start = EVAL_TODAY + timedelta(days=rng.randint(20, 170))
     soft = SoftPreferences(
         pace=rng.choice(["relaxed", "moderate", "moderate", "packed"]),
@@ -93,6 +101,8 @@ def sample_constraints(rng: random.Random, difficulty: Difficulty, infeasible: b
     req = TripRequest(hard=hard, soft=soft)
     if infeasible:
         budget = min_feasible_cost(req) * rng.uniform(0.4, 0.7)
+    elif difficulty == "hard":  # tight: pricier picks overshoot, so budget checks and revisions matter
+        budget = min_feasible_cost(req) * rng.uniform(*spec["budget"])
     else:
         budget = max(typical_cost(req) * rng.uniform(*spec["budget"]), min_feasible_cost(req) * 1.25)
     req.hard.budget_total = float(max(100, round(budget, -2)))
@@ -110,9 +120,6 @@ def expected_tools(req: TripRequest) -> list[str]:
 _CN = "零一两三四五六七八九十"
 _PHRASES: dict[str, dict[str, Any]] = {
     "diet": {
-        "vegetarian": ["我吃素", "我是素食者"],
-        "halal": ["需要清真餐", "吃清真"],
-        "no_pork": ["不吃猪肉"],
         "no_spicy": ["不能吃辣", "完全吃不了辣"],
         "no_seafood": ["海鲜过敏", "不吃海鲜"],
     },

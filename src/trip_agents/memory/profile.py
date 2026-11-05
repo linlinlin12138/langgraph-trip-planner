@@ -36,9 +36,6 @@ _VALIDATORS: dict[str, TypeAdapter[Any]] = {
 }
 HISTORY_LIMIT = 5
 VALUE_LABELS = {
-    "vegetarian": "素食",
-    "halal": "清真",
-    "no_pork": "不吃猪肉",
     "no_spicy": "不吃辣",
     "no_seafood": "不吃海鲜",
     "relaxed": "轻松",

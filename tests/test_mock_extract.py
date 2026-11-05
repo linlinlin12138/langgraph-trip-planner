@@ -19,10 +19,10 @@ def test_cn_to_int(s: str, n: int) -> None:
 
 
 def test_extract_full_request() -> None:
-    r = extract_request(["一家三口想2027-01-05去北京玩五天，人均预算3000，吃素，一定要去故宫博物院，别太累"], TODAY, None)
+    r = extract_request(["一家三口想2027-01-05去北京玩五天，人均预算3000，不吃海鲜，一定要去故宫博物院，别太累"], TODAY, None)
     assert r["destination"] == "北京" and r["start_date"] == "2027-01-05" and r["days"] == 5
     assert r["travelers"] == 3 and r["budget_total"] == 9000
-    assert r["dietary_restrictions"] == ["vegetarian"] and r["must_visit"] == ["故宫博物院"] and r["pace"] == "relaxed"
+    assert r["dietary_restrictions"] == ["no_seafood"] and r["must_visit"] == ["故宫博物院"] and r["pace"] == "relaxed"
 
 
 def test_later_turns_override_and_alias() -> None:

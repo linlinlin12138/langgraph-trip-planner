@@ -57,12 +57,12 @@ def _profile() -> UserProfile:
     p, _, _ = merge_profile(
         UserProfile(user_id="u"),
         [
-            pref("dietary_restrictions", ["halal"], "清真"),
+            pref("dietary_restrictions", ["no_seafood"], "不吃海鲜"),
             pref("pace", "relaxed", "轻松"),
             pref("companions", "家人（3人）", "一家三口"),
             pref("budget_per_person_per_day", 500, "预算"),
         ],
-        user_texts=["一家三口 清真 轻松 预算"],
+        user_texts=["一家三口 不吃海鲜 轻松 预算"],
         thread_id="t",
         now=T0,
     )
@@ -73,7 +73,7 @@ def test_defaults_fill_only_unstated_fields() -> None:
     ex = RequestExtraction(destination="成都", start_date=date(2027, 1, 1), days=2, pace="packed")
     merged, applied = apply_memory_defaults(ex, _profile(), None)
     assert merged.pace == "packed"  # explicit wins
-    assert merged.dietary_restrictions == ["halal"] and merged.travelers == 3
+    assert merged.dietary_restrictions == ["no_seafood"] and merged.travelers == 3
     assert merged.budget_total == 3000  # 500 x 3 people x 2 days
     assert set(applied) == {"dietary_restrictions", "travelers", "budget_total"}
     none, applied2 = apply_memory_defaults(ex.model_copy(update={"dietary_none": True}), _profile(), None)
@@ -95,7 +95,7 @@ def test_past_trip_beats_profile() -> None:
     ex = RequestExtraction(start_date=date(2027, 1, 1), refers_to_past_trip=True)
     merged, applied = apply_memory_defaults(ex, _profile(), past)
     assert (merged.destination, merged.days, merged.travelers, merged.pace) == ("杭州", 4, 2, "moderate")
-    assert merged.budget_total == 8000 and merged.dietary_restrictions == ["halal"]  # diet not in past trip -> profile
+    assert merged.budget_total == 8000 and merged.dietary_restrictions == ["no_seafood"]  # diet not in past trip -> profile
     assert "上次的杭州行程" in applied["pace"] and "用户画像" in applied["dietary_restrictions"]
 
 
@@ -183,4 +183,4 @@ def test_no_store_or_disabled_means_no_memory() -> None:
         AgentDeps(model=MockChatModel(), tools=LocalToolExecutor(), today=TODAY), GraphOptions(human_in_loop=False), store=store
     )
     out = g.invoke({"messages": [HumanMessage(content=text)], "user_id": "alice"})
-    assert out["request"].hard.dietary_restrictions == ["halal"]  # auto mode applies defaults without asking
+    assert out["request"].hard.dietary_restrictions == ["no_seafood"]  # auto mode applies defaults without asking

@@ -43,7 +43,7 @@ def _gold() -> TripRequest:
             days=1,
             budget_total=2000,
             travelers=1,
-            dietary_restrictions=["vegetarian"],
+            dietary_restrictions=["no_spicy"],
             must_visit=["灵隐寺"],
         )
     )
@@ -51,7 +51,7 @@ def _gold() -> TripRequest:
 
 def test_world_eval_resolves_names_and_counts_hallucinations() -> None:
     w = world_bundle("杭州")
-    veg = next(r for r in w.restaurants if "vegetarian" in r.dietary_tags)
+    veg = next(r for r in w.restaurants if "no_spicy" in r.dietary_tags)
     it = Itinerary(
         hotel_id=None,
         days=[

@@ -7,7 +7,9 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-DietaryRestriction = Literal["vegetarian", "halal", "no_pork", "no_spicy", "no_seafood"]
+# Only restrictions a restaurant's cuisine determines (the catalog derives them from it). Halal / vegetarian /
+# no-pork need per-restaurant certification that open place data does not have, so they are not modelled.
+DietaryRestriction = Literal["no_spicy", "no_seafood"]
 Pace = Literal["relaxed", "moderate", "packed"]
 HotelTier = Literal["budget", "midrange", "luxury"]
 Interest = Literal["history", "nature", "museum", "food", "shopping", "nightlife", "culture"]

@@ -10,8 +10,8 @@ from .conftest import TODAY, ScriptedChatModel
 
 
 def test_valid_call_and_filters() -> None:
-    res = execute_tool("search_restaurants", {"city": "成都", "dietary": ["halal"]})
-    assert res.ok and res.data and all("halal" in r["dietary_tags"] for r in res.data)
+    res = execute_tool("search_restaurants", {"city": "成都", "dietary": ["no_spicy"]})
+    assert res.ok and res.data and all("no_spicy" in r["dietary_tags"] for r in res.data)
     res = execute_tool("search_hotels", {"city": "北京", "tier": "luxury", "limit": 2})
     assert res.ok and len(res.data) <= 2 and all(h["tier"] == "luxury" for h in res.data)
 

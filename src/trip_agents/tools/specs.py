@@ -47,6 +47,7 @@ class RestaurantSearchInput(BaseModel):
 class AttractionSearchInput(BaseModel):
     city: str
     categories: list[Interest] = Field(default_factory=list, description="为空表示不限类别")
+    keyword: str | None = Field(default=None, description="名称关键词，用于查找指定景点（如用户的必去景点）")
     max_ticket_price: float | None = Field(default=None, ge=0)
     limit: int = Field(default=10, ge=1, le=15)
 

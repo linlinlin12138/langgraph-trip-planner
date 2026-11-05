@@ -54,7 +54,7 @@ from trip_agents.schemas import RequestExtraction, TripRequest
 OUT_DIR = DATASET_DIR / "llm"
 
 # ----------------------------------------------------------------------------- prompts
-_DIET_CN = {"vegetarian": "吃素", "halal": "清真", "no_pork": "不吃猪肉", "no_spicy": "不吃辣", "no_seafood": "不吃海鲜/海鲜过敏"}
+_DIET_CN = {"no_spicy": "不吃辣", "no_seafood": "不吃海鲜/海鲜过敏"}
 _INTEREST_CN = {
     "history": "历史古迹", "nature": "自然风景", "museum": "博物馆", "food": "美食小吃",
     "shopping": "逛街购物", "nightlife": "夜景/夜生活", "culture": "文化艺术",

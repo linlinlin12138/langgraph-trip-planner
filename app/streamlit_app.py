@@ -34,8 +34,8 @@ NODE_LABELS = {
     "finalize": "Finalize：汇总",
     "confirm": "等待用户确认",
 }
-LABEL = {"budget": "经济型", "midrange": "舒适型", "luxury": "高档", "vegetarian": "素食", "halal": "清真", "no_pork": "无猪肉",
-         "no_spicy": "不辣", "no_seafood": "无海鲜", "history": "历史", "nature": "自然", "museum": "博物馆", "food": "美食",
+LABEL = {"budget": "经济型", "midrange": "舒适型", "luxury": "高档", "no_spicy": "不辣", "no_seafood": "无海鲜",
+         "history": "历史", "nature": "自然", "museum": "博物馆", "food": "美食",
          "shopping": "购物", "nightlife": "夜景", "culture": "文化",
          "sunny": "☀️ 晴", "cloudy": "⛅ 多云", "rain": "🌧️ 雨", "snow": "❄️ 雪"}  # fmt: skip
 EXAMPLES = [

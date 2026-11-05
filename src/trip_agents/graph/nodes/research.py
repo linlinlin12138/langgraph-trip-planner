@@ -155,6 +155,7 @@ def top_up(results: list[dict[str, Any]], req: TripRequest, tools: Any) -> tuple
     search once more without those filters (hard constraints -- city and dietary
     restrictions -- are kept). These calls are not agent decisions, so they are kept out
     of the tool-call records and the process metrics; the bundle notes say they happened.
+    Must-visit places missing from the results are looked up by name.
     """
     bundle = assemble_bundle(results)
     h = req.hard
@@ -163,6 +164,13 @@ def top_up(results: list[dict[str, Any]], req: TripRequest, tools: Any) -> tuple
     diet = set(h.dietary_restrictions)
     extra: list[dict[str, Any]] = []
     notes: list[str] = []
+    have = [a.name for a in bundle.attractions]
+    for name in h.must_visit:  # category / rating search can miss a named landmark in a large catalog
+        if not any(name in n or n in name for n in have):
+            res = tools.call("search_attractions", {"city": h.destination, "keyword": name})
+            if res.ok and res.data:
+                extra.append({"name": "search_attractions", "data": res.data})
+                notes.append(f"必去景点「{name}」未在检索结果中，已按名称补充检索")
     if len(bundle.attractions) < need_attr:
         res = tools.call("search_attractions", {"city": h.destination, "limit": 15})
         if res.ok:

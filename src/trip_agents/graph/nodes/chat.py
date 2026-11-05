@@ -26,9 +26,6 @@ from trip_agents.memory.store import MemoryManager
 from trip_agents.schemas import RequestExtraction, SkippedItem, TripRequest
 
 _LABELS = {
-    "vegetarian": "素食",
-    "halal": "清真",
-    "no_pork": "不吃猪肉",
     "no_spicy": "不吃辣",
     "no_seafood": "不吃海鲜",
     "relaxed": "轻松",

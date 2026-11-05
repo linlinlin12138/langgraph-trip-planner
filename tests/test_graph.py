@@ -117,16 +117,18 @@ def test_research_top_up_fills_sparse_categories() -> None:
     tools = LocalToolExecutor()
     req = TripRequest.model_validate(
         {"hard": {"destination": "杭州", "start_date": date(2027, 1, 14), "days": 3, "budget_total": 6000, "travelers": 2,
-                  "dietary_restrictions": ["halal"]},
+                  "dietary_restrictions": ["no_spicy"], "must_visit": ["灵隐寺"]},
          "soft": {"pace": "packed", "interests": ["shopping"]}}
     )  # fmt: skip
     first = tools.call("search_attractions", {"city": "杭州", "categories": ["shopping"]})
-    rest = tools.call("search_restaurants", {"city": "杭州", "dietary": ["halal"], "cuisine": "西湖菜"})
+    rest = tools.call("search_restaurants", {"city": "杭州", "dietary": ["no_spicy"], "cuisine": "西湖菜"})
     results = [{"name": "search_attractions", "data": first.data}, {"name": "search_restaurants", "data": rest.data}]
-    assert len(assemble_bundle(results).attractions) <= 2
+    need = 3 * 4 + 2  # packed: 4 per day, + 2 spare
+    assert len(assemble_bundle(results).attractions) < need
     extra, notes = top_up(results, req, tools)
     b = assemble_bundle(results + extra)
-    assert len(b.attractions) == 15 and len(notes) == 2
-    assert b.restaurants and all("halal" in r.dietary_tags for r in b.restaurants)  # hard constraint kept
+    assert len(b.attractions) >= need and len(notes) == 3
+    assert any(a.name == "灵隐寺" for a in b.attractions)  # must-visit looked up by name
+    assert b.restaurants and all("no_spicy" in r.dietary_tags for r in b.restaurants)  # hard constraint kept
     again, _ = top_up(results + extra, req, tools)
-    assert all(x["name"] != "search_attractions" for x in again)  # 15 >= 3*4+2, no second top-up
+    assert all(x["name"] != "search_attractions" for x in again)  # enough now, no second top-up

@@ -32,9 +32,6 @@ def cn_to_int(s: str) -> int:
 
 
 _DIET_RULES = [
-    (r"素食|吃素|素食者", "vegetarian"),
-    (r"清真", "halal"),
-    (r"不吃猪肉|不能吃猪肉", "no_pork"),
     (r"不吃辣|不能吃辣|不要辣|怕辣|吃不了辣", "no_spicy"),
     (r"海鲜过敏|不吃海鲜|不能吃海鲜", "no_seafood"),
 ]

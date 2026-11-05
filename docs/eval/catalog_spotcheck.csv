@@ -1,0 +1,121 @@
+﻿城市,类型,id,名称,类别/档次/菜系,估算字段,来源,名称对吗(y/n),分类/标签对吗(y/n),备注
+北京,景点,bj-a42,永定门,history,门票50 08:30-17:30,wikidata:Q1808040
+北京,景点,bj-a27,来福士购物中心,shopping,门票0 10:00-22:00,overture:e591635b-900c-4f0b-9ccb-909783de0577
+北京,景点,bj-a39,恭王府,history,门票0 08:30-17:30,wikidata:Q2666344
+北京,景点,bj-a28,北京市百货大楼,shopping,门票0 10:00-22:00,overture:ed075caa-4502-4ebd-ada6-2914da2bdb4e
+北京,景点,bj-a16,首都博物馆,museum,门票20 09:00-17:00,wikidata:Q1189666
+北京,景点,bj-a23,牛街礼拜寺,culture,门票30 09:00-18:00,wikidata:Q603256
+北京,景点,bj-a31,地坛,history,门票60 08:30-17:30,wikidata:Q615178
+北京,景点,bj-a30,太庙,culture,门票80 09:00-18:00,wikidata:Q1347866
+北京,酒店,bj-h12,桔子酒店,midrange,670元/晚,overture:5a570bba-bae6-46a7-9c3a-e7db2ca814f0
+北京,酒店,bj-h25,悠唐皇冠假日酒店,luxury,1340元/晚,overture:f46b618b-7e66-468a-babc-40ebbc1ebc89
+北京,酒店,bj-h26,北京索菲特大酒店,luxury,1360元/晚,overture:b662782c-2d50-46ce-8420-c5c1b52da1ff
+北京,酒店,bj-h09,全季酒店,midrange,430元/晚,overture:aa3e6620-2281-4c31-80f0-99955e345bbc
+北京,酒店,bj-h15,北京前门富力智选假日酒店,midrange,520元/晚,overture:7a5afb78-b413-42f2-a954-a3df41e65573
+北京,酒店,bj-h11,北京东直门智选假日酒店,midrange,490元/晚,overture:edfb20a7-e0da-4c6c-b4ab-e25a963a4c15
+北京,餐厅,bj-r37,恒河印度餐厅,东南亚及异国菜,"标签:no_spicy,no_seafood 人均150",overture:2d28260e-337c-4ffd-8409-4f7ee4b18c72
+北京,餐厅,bj-r13,全鸭季,中餐,"标签:no_spicy,no_seafood 人均80",overture:2f927ac1-bceb-4765-a60c-0c553f094e25
+北京,餐厅,bj-r32,北平三兄弟涮肉,涮肉,"标签:no_spicy,no_seafood 人均100",overture:aeab4fcb-8131-4c20-8b01-714b07cff857
+北京,餐厅,bj-r08,铃木食堂,日料,标签:no_spicy 人均220,overture:73090212-d583-4c0b-a4cd-55e17aa2d7fe
+北京,餐厅,bj-r18,北京全聚德烤鸭,京菜,"标签:no_spicy,no_seafood 人均160",overture:20b8a8df-1308-41bf-b88a-587850ee269f
+北京,餐厅,bj-r36,站点比萨,西餐,"标签:no_spicy,no_seafood 人均120",overture:915b020d-837b-41e5-b3b2-94d009974eab
+北京,餐厅,bj-r06,小辣椒重庆老火锅,火锅,标签:no_seafood 人均160,overture:4ca7e85c-03e0-46bb-a066-88af9a8f05cc
+北京,餐厅,bj-r16,本杰比印度餐厅和文化中心,中餐,"标签:no_spicy,no_seafood 人均160",overture:124c3ce0-669a-43d5-a983-d1fd4fd10d10
+北京,餐厅,bj-r09,唐宫海鲜舫,海鲜,标签:no_spicy 人均260,overture:f7e956db-8531-4061-a5e7-d0bc02df79a2
+北京,餐厅,bj-r31,海碗居 老北京炸酱面,小吃面食,"标签:no_spicy,no_seafood 人均35",overture:187b82a5-b898-404d-b33b-1d314e1de0e8
+上海,景点,sh-a18,中华艺术宫,museum,门票50 09:00-17:00,wikidata:Q5099572
+上海,景点,sh-a38,真如寺,culture,门票30 09:00-18:00,wikidata:Q41857
+上海,景点,sh-a17,沉香阁,history,门票50 08:30-17:30,wikidata:Q11139200
+上海,景点,sh-a36,阿哈龙会堂,culture,门票10 09:00-18:00,wikidata:Q16928615
+上海,景点,sh-a25,徐家汇圣依纳爵主教座堂,culture,门票30 09:00-18:00,wikidata:Q49633
+上海,景点,sh-a30,小桃园清真寺,culture,门票80 09:00-18:00,wikidata:Q631946
+上海,景点,sh-a32,摩西会堂,culture,门票10 09:00-18:00,wikidata:Q11078482
+上海,景点,sh-a44,圆明讲堂,history,门票60 08:30-17:30,wikidata:Q10926516
+上海,酒店,sh-h11,上海海神诺富特酒店,midrange,550元/晚,overture:756f496d-69b9-4265-8e2f-0cf96df6f69b
+上海,酒店,sh-h13,上海外滩锦江都城新城饭店,midrange,710元/晚,overture:e26b8979-6935-422f-acb2-fea5531ca897
+上海,酒店,sh-h10,上海浦东假日酒店,midrange,420元/晚,overture:4f55cae6-bbb9-4dc7-83b1-d8a31b707772
+上海,酒店,sh-h19,上海古井假日酒店,midrange,620元/晚,overture:121e3f2b-90c4-4cb2-bf6f-f8f9f1990141
+上海,酒店,sh-h20,维也纳国际酒店,midrange,710元/晚,overture:91063f5c-5cc8-44b9-87ed-332a1bcb2c27
+上海,酒店,sh-h06,上海虹桥迎宾馆,budget,210元/晚,overture:d3bc201e-50b7-4e20-bc97-b33c49e1439b
+上海,餐厅,sh-r35,静冈胜政日式猪排,日料,标签:no_spicy 人均160,overture:c1359b0d-6d57-48d3-86c1-4696faaeab46
+上海,餐厅,sh-r30,西贝莜面村,小吃面食,标签:no_spicy 人均35,overture:802c8c17-2975-40b6-90ac-7bfc83bb6bbb
+上海,餐厅,sh-r28,南门涮肉,涮肉,"标签:no_spicy,no_seafood 人均100",overture:2ff8a640-90cc-4bd2-a5d1-fe99025377ee
+上海,餐厅,sh-r33,小山日本料理,日料,标签:no_spicy 人均220,overture:2aade8d2-36e9-4901-944f-70a0a7bdcf4a
+上海,餐厅,sh-r16,成隆行颐丰花园,中餐,"标签:no_spicy,no_seafood 人均80",overture:33ed4a8a-3454-4aeb-aa21-9e6f49273c06
+上海,餐厅,sh-r03,霸道火锅,火锅,标签:no_seafood 人均110,overture:c4d41bed-75be-4821-a046-8b6b9107b8c3
+上海,餐厅,sh-r00,海底捞火锅,火锅,标签:no_seafood 人均160,overture:5e410af3-b850-49d4-a283-c8ec998ce0f4
+上海,餐厅,sh-r05,鸿姐老火锅,火锅,标签:no_seafood 人均90,overture:a11da8ec-a0ee-4734-a81a-db95f9a60726
+上海,餐厅,sh-r25,鼎泰丰,中餐,"标签:no_spicy,no_seafood 人均160",overture:880206ad-51c3-4592-b5d2-8c805ffc4209
+上海,餐厅,sh-r22,全聚德,京菜,"标签:no_spicy,no_seafood 人均120",overture:449c99d8-3a36-4472-95b0-f2dd15b5a724
+杭州,景点,hz-a41,昭庆寺,culture,门票10 09:00-18:00,wikidata:Q17498538
+杭州,景点,hz-a40,老虎洞窑址,history,门票40 08:30-17:30,wikidata:Q17034146
+杭州,景点,hz-a36,华家池,nature,门票20 06:30-21:00,wikidata:Q10905674
+杭州,景点,hz-a35,崇一堂,history,门票0 08:30-17:30,wikidata:Q10270575
+杭州,景点,hz-a15,六和塔,history,门票30 08:30-17:30,wikidata:Q1195294
+杭州,景点,hz-a34,玛瑙寺,culture,门票30 09:00-18:00,wikidata:Q19850220
+杭州,景点,hz-a30,胡雪岩故居,history,门票40 08:30-17:30,wikidata:Q15924642
+杭州,景点,hz-a25,银泰百货,shopping,门票0 10:00-22:00,overture:91144e6f-da31-408e-9818-b9dff69bc65c
+杭州,酒店,hz-h07,西溪宾馆,budget,220元/晚,overture:e38bd55a-a1be-4ad9-829b-fabf9aa8412d
+杭州,酒店,hz-h23,滨江银泰喜来登,luxury,1790元/晚,overture:c0f78373-61e4-40a8-8589-3027d7b56f6d
+杭州,酒店,hz-h10,杭州国际假日酒店,midrange,720元/晚,overture:0c31e8cf-9eb0-4732-9256-48150b53c1dd
+杭州,酒店,hz-h22,杭州城中香格里拉酒店,luxury,1570元/晚,overture:18a67d93-344e-42ec-a1d2-badab7fbfd73
+杭州,酒店,hz-h02,东方金座公寓酒店,budget,260元/晚,overture:4defc2e2-b1f2-4ed4-9c41-dadc48e6c8ae
+杭州,酒店,hz-h06,汉庭酒店,budget,270元/晚,overture:e5b5e685-db88-4032-9972-40a475a94822
+杭州,餐厅,hz-r36,新丰小吃,小吃面食,"标签:no_spicy,no_seafood 人均30",overture:ac0f241e-bc6a-41d2-8a39-b1ff559e24ac
+杭州,餐厅,hz-r14,绿茶餐厅-杭州,杭帮菜,"标签:no_spicy,no_seafood 人均80",overture:b8cfcf8f-8098-4a71-9aba-19021d743738
+杭州,餐厅,hz-r15,杭州皇饭儿餐厅,杭帮菜,"标签:no_spicy,no_seafood 人均150",overture:ec1b580b-dede-4a19-bb03-35e7cbc24eea
+杭州,餐厅,hz-r09,炉鱼 (嘉里中心店),中餐,标签:no_spicy 人均80,overture:bbdd8709-ec18-4b36-9eeb-5bcb23fd16e9
+杭州,餐厅,hz-r34,和府捞面(黄龙万科店),小吃面食,"标签:no_spicy,no_seafood 人均30",overture:4e8c46b3-66bb-4428-b03b-23d007a21c49
+杭州,餐厅,hz-r28,临湖素食,素食,"标签:no_spicy,no_seafood 人均80",overture:72500d07-2002-4a0e-acff-74f29c1ab0a9
+杭州,餐厅,hz-r05,江南驿(天竺店),粤菜,标签:no_spicy 人均220,overture:bc103b12-3191-49b9-8733-05ff444f03c0
+杭州,餐厅,hz-r33,比萨玛尚诺,西餐,"标签:no_spicy,no_seafood 人均220",overture:3c12ebda-4943-419c-bee2-fe3d1695ed5b
+杭州,餐厅,hz-r20,西溪天堂,中餐,"标签:no_spicy,no_seafood 人均80",overture:8511f33b-91a6-42d3-957a-75afe6574f8c
+杭州,餐厅,hz-r35,杭州阿二骨煲大关店,杭帮菜,"标签:no_spicy,no_seafood 人均150",overture:60dbcccd-05be-44f9-83e4-0585c6b04aa8
+成都,景点,cd-a31,文殊院,history,门票40 08:30-17:30,wikidata:Q11080015
+成都,景点,cd-a30,春熙坊唐宋美食街,food,门票0 10:00-22:30,overture:1a2a98b0-d99d-4a78-839a-3877e978eacd
+成都,景点,cd-a18,成都市天府美术馆,museum,门票20 09:00-17:00,wikidata:Q109655117
+成都,景点,cd-a24,昭觉寺,culture,门票10 09:00-18:00,wikidata:Q197497
+成都,景点,cd-a32,鼓楼南街清真寺,culture,门票30 09:00-18:00,wikidata:Q21018491
+成都,景点,cd-a41,府南河活水公园西门,nature,门票15 06:30-21:00,overture:21faa1c8-52e2-4d37-9db0-8fb658e4914d
+成都,景点,cd-a37,四圣祠礼拜堂,history,门票60 08:30-17:30,wikidata:Q9668845
+成都,景点,cd-a42,大源中央公园,nature,门票0 06:30-21:00,overture:d8401f11-cf75-420f-a42f-be47f9a56e19
+成都,酒店,cd-h17,成都浣花溪智选假日酒店,midrange,450元/晚,overture:e6ffee15-7a88-4553-90d0-be24893c036f
+成都,酒店,cd-h10,全季酒店,midrange,500元/晚,overture:45198810-aa57-4885-b643-53a734ff3dd5
+成都,酒店,cd-h26,成都凯悦嘉轩酒店,luxury,2000元/晚,overture:859c5164-d46a-463c-99a1-fecfef80ba09
+成都,酒店,cd-h29,成都总府皇冠假日酒店,luxury,2100元/晚,overture:815a2226-e02c-4146-8d74-c0c72b14b2df
+成都,酒店,cd-h06,宜必思成都高新天府软件园酒店,budget,320元/晚,overture:f6b9a957-58ad-4476-af0a-ac00add8a6dc
+成都,酒店,cd-h19,成都春熙路福朋喜来登酒店,midrange,410元/晚,overture:11b55a6c-cdf2-434d-b741-ebcb04190262
+成都,餐厅,cd-r35,陈记蜀味面,小吃面食,"标签:no_spicy,no_seafood 人均25",overture:e91146f0-4d62-4ae3-b41e-e8eeafdb8fc2
+成都,餐厅,cd-r37,蜀府宴语,川菜,标签:no_seafood 人均170,overture:9b288302-9d4c-4f3d-a977-c6f492e4de0a
+成都,餐厅,cd-r18,小龙翻大江,中餐,"标签:no_spicy,no_seafood 人均100",overture:0810c237-40f3-46e3-838e-679c5ad09c2e
+成都,餐厅,cd-r28,蓝蛙,西餐,"标签:no_spicy,no_seafood 人均160",overture:f6706904-6ada-4ee1-bd79-03b29350c559
+成都,餐厅,cd-r05,大妙火锅,火锅,标签:no_seafood 人均90,overture:24a6dacf-71c2-4fd0-bda6-c02f7b5f51e3
+成都,餐厅,cd-r24,春熙里老火锅,火锅,标签:no_seafood 人均90,overture:8bb44b2e-d8ab-459b-b3b9-58073f66d9a3
+成都,餐厅,cd-r20,成都老码头火㶽红星店,中餐,"标签:no_spicy,no_seafood 人均160",overture:a8abbe4e-510a-4d03-96ea-f9662a2603ba
+成都,餐厅,cd-r15,加德满都餐厅,中餐,"标签:no_spicy,no_seafood 人均60",overture:31b3abbe-fcd2-436b-b965-c63efc418f13
+成都,餐厅,cd-r38,钟水饺,小吃面食,"标签:no_spicy,no_seafood 人均40",overture:7489e1c8-80d3-45a1-9651-42772ca25278
+成都,餐厅,cd-r39,蜀中吴养生板栗鸡,川菜,标签:no_seafood 人均100,overture:de879752-6ada-4a56-8b10-8d3f0f63e84e
+西安,景点,xa-a21,西安清真大寺,culture,门票20 09:00-18:00,wikidata:Q820842
+西安,景点,xa-a41,熙地港购物中心,shopping,门票0 10:00-22:00,overture:6c76e82c-7130-41ad-941a-e07161586cff
+西安,景点,xa-a20,兴庆宫,nature,门票20 06:30-21:00,overture:1b6da5c7-956d-4ee7-9d8a-dacdde66c321
+西安,景点,xa-a16,大唐西市博物馆,museum,门票0 09:00-17:00,wikidata:Q15919802
+西安,景点,xa-a34,卧龙寺,culture,门票50 09:00-18:00,wikidata:Q8030399
+西安,景点,xa-a36,敕建万寿八仙宫,history,门票30 08:30-17:30,wikidata:Q15929741
+西安,景点,xa-a23,兴教寺,culture,门票80 09:00-18:00,wikidata:Q1538662
+西安,景点,xa-a30,香积寺,culture,门票80 09:00-18:00,wikidata:Q2276797
+西安,酒店,xa-h02,钟楼国际青年旅舍,budget,270元/晚,overture:10d06d36-c512-4197-9919-757dc17ffa7c
+西安,酒店,xa-h29,丽晶酒店西安,luxury,980元/晚,overture:764e032a-84d1-46f6-97c6-98597d479b12
+西安,酒店,xa-h21,西安海荣 万豪酒店,luxury,1510元/晚,overture:5951b1e5-e3f7-4762-a873-bff537b0c443
+西安,酒店,xa-h24,西安浐灞艾美酒店,luxury,1620元/晚,overture:d931b941-3bfc-4226-a5d4-78061a735ef6
+西安,酒店,xa-h04,秦城小巷青年旅舍,budget,280元/晚,overture:b7362db8-bb24-4e8c-919c-42d65b343843
+西安,酒店,xa-h25,西安万丽酒店,luxury,1670元/晚,overture:768a536f-ada4-49e7-acdb-704ea3d407c2
+西安,餐厅,xa-r02,威哥酒楼高新店,火锅,标签:no_seafood 人均90,overture:c604bfca-004f-477c-888a-4c30f4c512b4
+西安,餐厅,xa-r05,蚝太郎私房烧烤,烧烤,标签:no_spicy 人均100,overture:5c819d59-45e7-4655-bca3-28946e264791
+西安,餐厅,xa-r34,老铺烤鸭(西梢门店),京菜,"标签:no_spicy,no_seafood 人均200",overture:1069f86a-1b6d-4aeb-bf4f-58bce11c8b56
+西安,餐厅,xa-r25,孙家老舖,韩餐,"标签:no_spicy,no_seafood 人均80",overture:0f5f687c-239b-498d-8087-4c0432e172b4
+西安,餐厅,xa-r17,天龙宝严素食馆,素食,"标签:no_spicy,no_seafood 人均60",overture:779ae0e3-78ac-4c68-8376-b4d6d0d713a4
+西安,餐厅,xa-r15,马二优质酸汤水饺,小吃面食,"标签:no_spicy,no_seafood 人均50",overture:0d2c8f09-e198-441a-ae4e-b5c24d580efe
+西安,餐厅,xa-r27,十三朝餐厅,中餐,"标签:no_spicy,no_seafood 人均160",overture:76e6747a-2f14-46aa-9c0b-473a9a088b46
+西安,餐厅,xa-r06,长安大牌档,陕菜,"标签:no_spicy,no_seafood 人均70",overture:6ea81925-be77-4886-a8d9-3279cdf72d04
+西安,餐厅,xa-r28,福茂源陕北铁锅羊肉,西北菜,"标签:no_spicy,no_seafood 人均60",overture:cb42d91c-fa94-40ce-85fd-3a79e211197b
+西安,餐厅,xa-r21,失重餐厅,西餐,"标签:no_spicy,no_seafood 人均120",overture:66c5ce38-8b79-48f9-b2c0-6accff17eb27

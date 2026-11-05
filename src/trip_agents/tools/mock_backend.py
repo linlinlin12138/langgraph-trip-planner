@@ -180,6 +180,8 @@ class MockBackend:
 
     def search_attractions(self, inp: AttractionSearchInput) -> list[Attraction]:
         attrs = [Attraction(**a) for a in _city(inp.city)["attractions"]]
+        if inp.keyword:
+            attrs = [a for a in attrs if inp.keyword in a.name or a.name in inp.keyword]
         if inp.categories:
             attrs = [a for a in attrs if a.category in inp.categories]
         if inp.max_ticket_price is not None:

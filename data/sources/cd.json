@@ -1,0 +1,6067 @@
+{
+"city": "成都",
+"center": [
+30.6746,
+104.0356
+],
+"overture_release": "2026-10-21.0",
+"overture": [
+{
+"kind": "hotel",
+"id": "ab46e0bb-4d9e-4dfb-9911-348bfb86f4c5",
+"name": "博舍",
+"category": "hotel",
+"confidence": 0.999,
+"lat": 30.65417,
+"lon": 104.08193,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "ae6f600a-1d23-4575-9ab7-ef45946990a8",
+"name": "成都棕榈泉费尔蒙酒店",
+"category": "hotel",
+"confidence": 0.996,
+"lat": 30.55296,
+"lon": 104.06967,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d1e40fa8-38d0-4d46-9ec4-c2b4ab1a27a4",
+"name": "成都新东方千禧大酒店",
+"category": "resort",
+"confidence": 0.993,
+"lat": 30.613,
+"lon": 104.04906,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "70252d42-cfd4-4d24-9acc-b26694f2488b",
+"name": "成都首座万豪酒店",
+"category": "hotel",
+"confidence": 0.988,
+"lat": 30.58892,
+"lon": 104.06712,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "24ac6aa8-c4f1-46f8-ae49-acc59045afc0",
+"name": "成都万达瑞华酒店",
+"category": "hotel",
+"confidence": 0.987,
+"lat": 30.64933,
+"lon": 104.06694,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "4a1987b6-fde5-4b14-9266-0b51f3f0268b",
+"name": "成都香格里拉大酒店",
+"category": "hotel",
+"confidence": 0.975,
+"lat": 30.64322,
+"lon": 104.08621,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "ea7c911e-4b4b-4066-a908-3e7561e1efda",
+"name": "成都钓鱼台精品酒店",
+"category": "hotel",
+"confidence": 0.974,
+"lat": 30.66701,
+"lon": 104.04961,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "74670cdf-fbc8-454c-856b-b33f328bab8b",
+"name": "东方广场假日酒店",
+"category": "hotel",
+"confidence": 0.965,
+"lat": 30.65026,
+"lon": 104.08656,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "45198810-aa57-4885-b643-53a734ff3dd5",
+"name": "全季酒店",
+"category": "hotel",
+"confidence": 0.964,
+"lat": 30.65208,
+"lon": 104.03892,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d478d59a-2adf-4e87-b898-37b6c716bdaa",
+"name": "地铁锦江宾馆站",
+"category": "hotel",
+"confidence": 0.961,
+"lat": 30.65139,
+"lon": 104.06351,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "9e9f88d5-5115-419b-bbd7-0ea58680c19c",
+"name": "汉庭酒店(天府广场盐市口店)",
+"category": "hotel",
+"confidence": 0.956,
+"lat": 30.65391,
+"lon": 104.06964,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "401d9898-92c3-47d0-8cc3-c5f607f19002",
+"name": "成都世外桃源酒店",
+"category": "hotel",
+"confidence": 0.952,
+"lat": 30.63194,
+"lon": 104.07528,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "209f0159-5819-498e-9b18-b5536b75d4e3",
+"name": "温江皇冠假日酒店",
+"category": "hotel",
+"confidence": 0.941,
+"lat": 30.68834,
+"lon": 103.88821,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "35ba0c71-0e04-452f-b0f0-90f259a5cd48",
+"name": "成都赛仑吉地大酒店",
+"category": "hotel",
+"confidence": 0.939,
+"lat": 30.61503,
+"lon": 103.90672,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c6655c80-7529-4cf8-a4d5-1a870ea1cd23",
+"name": "梦之旅国际青年旅馆",
+"category": "hostel",
+"confidence": 0.934,
+"lat": 30.64635,
+"lon": 104.04477,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "ec1bc834-3472-477f-8fb6-262a2be55809",
+"name": "如家快捷酒店",
+"category": "hotel",
+"confidence": 0.932,
+"lat": 30.64001,
+"lon": 104.0138,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "a729e52e-cf26-4eeb-88f0-cd906283de71",
+"name": "成都百悦希尔顿逸林饭店",
+"category": "hotel",
+"confidence": 0.926,
+"lat": 30.57981,
+"lon": 104.18368,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "859c5164-d46a-463c-99a1-fecfef80ba09",
+"name": "成都凯悦嘉轩酒店",
+"category": "hotel",
+"confidence": 0.918,
+"lat": 30.58879,
+"lon": 104.04646,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1c70f136-a406-4a30-8a8b-045cc463807b",
+"name": "成都高新皇冠假日酒店",
+"category": "hotel",
+"confidence": 0.909,
+"lat": 30.73121,
+"lon": 103.97151,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c7f7054b-cc97-4d4a-a9ee-c1455a98cf38",
+"name": "成都富豪首座酒店",
+"category": "hotel",
+"confidence": 0.905,
+"lat": 30.61478,
+"lon": 104.064,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d38f358d-82d4-4c60-881e-4f79a68c0e42",
+"name": "明宇豪雅饭店",
+"category": "hotel",
+"confidence": 0.902,
+"lat": 30.64956,
+"lon": 104.08858,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "97c420d4-373a-4c5c-aea3-1e898ea61de6",
+"name": "成都帝盛君豪酒店",
+"category": "hotel",
+"confidence": 0.898,
+"lat": 30.66998,
+"lon": 104.06509,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1958aa14-9c0e-43e7-b416-d3823333919e",
+"name": "锦江澜岸酒店",
+"category": "hotel",
+"confidence": 0.895,
+"lat": 30.54665,
+"lon": 104.11208,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "61fb2805-62fe-45bb-8578-4a95211bccee",
+"name": "成都岷山饭店",
+"category": "hotel",
+"confidence": 0.89,
+"lat": 30.651,
+"lon": 104.06451,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "4c57eff2-9d8d-4cb8-9766-00cb556fef9f",
+"name": "瑞廷西郊酒店",
+"category": "hotel",
+"confidence": 0.888,
+"lat": 30.56153,
+"lon": 104.0441,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c47225ac-21ce-448c-aeac-591abb0a9dfe",
+"name": "成都大鼎戴斯酒店",
+"category": "hotel",
+"confidence": 0.886,
+"lat": 30.6037,
+"lon": 104.06586,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "a440ea51-f1e9-4376-8bc5-b2923d0159ea",
+"name": "成都群光百货",
+"category": "hotel",
+"confidence": 0.885,
+"lat": 30.65683,
+"lon": 104.07451,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "f6812323-7f79-41cc-bc44-c25ab84b2997",
+"name": "成都 星宸假日酒店",
+"category": "hotel",
+"confidence": 0.882,
+"lat": 30.56109,
+"lon": 104.05598,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "02cefc87-b7cb-4c9a-9aa9-dbfc33119f9c",
+"name": "成都环球中心天堂洲际大饭店",
+"category": "hotel",
+"confidence": 0.88,
+"lat": 30.57092,
+"lon": 104.06063,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "b825fbe1-fdd0-43a3-9fb0-a04f2c40cf3f",
+"name": "成都空港商务酒店",
+"category": "hotel",
+"confidence": 0.88,
+"lat": 30.57467,
+"lon": 103.95992,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "46cd778d-c162-4d08-9821-0a3261379790",
+"name": "亚朵酒店",
+"category": "hotel",
+"confidence": 0.88,
+"lat": 30.5469,
+"lon": 104.06358,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1e5594ce-70ef-4464-b134-fb8bfef03c5f",
+"name": "艾克美酒店",
+"category": "hotel",
+"confidence": 0.876,
+"lat": 30.68674,
+"lon": 103.95942,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "0e21cf88-26a4-4b3c-b729-43fde5bf5b93",
+"name": "背包十年",
+"category": "hostel",
+"confidence": 0.87,
+"lat": 30.66756,
+"lon": 104.06879,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "815a2226-e02c-4146-8d74-c0c72b14b2df",
+"name": "成都总府皇冠假日酒店",
+"category": "hotel",
+"confidence": 0.866,
+"lat": 30.66129,
+"lon": 104.07475,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "241ae485-4428-4d66-81f9-baebc4e5feba",
+"name": "成都城市名人酒店",
+"category": "hotel",
+"confidence": 0.863,
+"lat": 30.65664,
+"lon": 104.06323,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "2b4d2d32-90c2-4ff8-ba8c-8e9e84755cdb",
+"name": "天府丽都喜来登饭店",
+"category": "hotel",
+"confidence": 0.861,
+"lat": 30.66731,
+"lon": 104.06502,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "5314b553-a929-4aea-a055-86a35ad40fd3",
+"name": "西藏饭店Tibet",
+"category": "hotel",
+"confidence": 0.86,
+"lat": 30.68465,
+"lon": 104.06969,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "fef63120-7f60-4a42-84fe-e03818c0c478",
+"name": "金牛宾馆",
+"category": "hotel",
+"confidence": 0.859,
+"lat": 30.71931,
+"lon": 104.02039,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "8e15b174-1b63-440b-ba89-efa11a38b628",
+"name": "(隐栖堂酒店)",
+"category": "hotel",
+"confidence": 0.859,
+"lat": 30.66404,
+"lon": 104.01977,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "0374f47e-3a43-4e3a-b8cf-3428ed350335",
+"name": "世茂成都茂御酒店",
+"category": "hotel",
+"confidence": 0.858,
+"lat": 30.67278,
+"lon": 104.09168,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "a1a77ef0-07ed-48ca-a3fc-a14b41a44421",
+"name": "成都拖板鞋青年旅舍",
+"category": "hotel",
+"confidence": 0.857,
+"lat": 30.65284,
+"lon": 104.07543,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "8ff63069-c216-41c3-a38e-c0a734fe00fb",
+"name": "尚祥航空大酒店",
+"category": "hotel",
+"confidence": 0.857,
+"lat": 30.5807,
+"lon": 103.98164,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "cfdb1c64-33f7-4abc-a5b8-42a5595c7f90",
+"name": "锦江之星",
+"category": "hotel",
+"confidence": 0.856,
+"lat": 30.65484,
+"lon": 104.08762,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1d5b4261-2e25-4279-b5d9-56943e080da5",
+"name": "成都西藏饭店",
+"category": "hotel",
+"confidence": 0.852,
+"lat": 30.68474,
+"lon": 104.06969,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "04daa3ee-8ce9-4c32-92be-9a4164c89185",
+"name": "成都双流美居酒店",
+"category": "hotel",
+"confidence": 0.85,
+"lat": 30.6001,
+"lon": 103.92812,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "dfe27593-b14c-4259-ae56-30013fda442b",
+"name": "宜必思成都宽窄巷子中心酒店",
+"category": "resort",
+"confidence": 0.85,
+"lat": 30.64735,
+"lon": 104.0687,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "f6b9a957-58ad-4476-af0a-ac00add8a6dc",
+"name": "宜必思成都高新天府软件园酒店",
+"category": "hotel",
+"confidence": 0.85,
+"lat": 30.7506,
+"lon": 103.921,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c836c6dc-1210-4cf7-90b0-27b21028d0b4",
+"name": "成都川菜",
+"category": "hotel",
+"confidence": 0.843,
+"lat": 30.67679,
+"lon": 104.07166,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c4e8cd20-2131-4674-89a9-6b416be29cdb",
+"name": "金科圣嘉酒店",
+"category": "hotel",
+"confidence": 0.84,
+"lat": 30.64315,
+"lon": 104.02485,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "cbceea9b-340d-4dea-90b2-81087bccf071",
+"name": "成都天之府温德姆至尊豪廷大酒店",
+"category": "hotel",
+"confidence": 0.836,
+"lat": 30.79538,
+"lon": 103.89993,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "ea560334-9709-43f1-b0ad-6c1505a1d51f",
+"name": "梦之旅文君楼酒店-宽窄巷子店",
+"category": "hotel",
+"confidence": 0.835,
+"lat": 30.66332,
+"lon": 104.04392,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c1b7bcb4-50e8-4400-8ce6-4b8d28478407",
+"name": "天府美居酒店",
+"category": "hotel",
+"confidence": 0.833,
+"lat": 30.66475,
+"lon": 104.04696,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "5c2c2cda-5703-48ce-9284-6ddb4f3d65b6",
+"name": "成都瑞吉酒店",
+"category": "hotel",
+"confidence": 0.83,
+"lat": 30.66352,
+"lon": 104.072,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "78e89ce4-dde9-426d-a3ba-2d167fdde177",
+"name": "成都浣花锦城酒店",
+"category": "hotel",
+"confidence": 0.823,
+"lat": 30.65836,
+"lon": 104.03621,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "e2715ad8-097e-4241-bf36-1d8e8ccec409",
+"name": "贝尔特酒店",
+"category": "hotel",
+"confidence": 0.823,
+"lat": 30.56051,
+"lon": 104.05576,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d1dfaf71-bd31-470d-b494-613e39bec9ce",
+"name": "成都新都假日酒店",
+"category": "hotel",
+"confidence": 0.822,
+"lat": 30.81246,
+"lon": 104.17833,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "25e6bfd7-40ca-412b-b748-30d145211dc9",
+"name": "Ramada华美达大酒店",
+"category": "hotel",
+"confidence": 0.821,
+"lat": 30.71953,
+"lon": 104.04133,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "f6bb360f-2866-4a15-a335-36665b8f28c3",
+"name": "星辰航渡 国际酒店",
+"category": "hotel",
+"confidence": 0.82,
+"lat": 30.59116,
+"lon": 103.90804,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "9319d76e-7968-4fe4-9299-d7d28e99259b",
+"name": "四川 川投国际酒店",
+"category": "hotel",
+"confidence": 0.818,
+"lat": 30.60369,
+"lon": 103.90328,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "0a20e863-2d6a-4b6e-aa4c-28de899ece78",
+"name": "成都瑞峰国际酒店",
+"category": "hotel",
+"confidence": 0.815,
+"lat": 30.63311,
+"lon": 104.14249,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "8cfbc81e-9d51-431b-bf7c-f21789058848",
+"name": "成都世纪城天堂洲际大饭店",
+"category": "hotel",
+"confidence": 0.809,
+"lat": 30.56175,
+"lon": 104.06981,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "90a7cc97-67c9-435a-a3ae-9a290a18b2be",
+"name": "世代锦江大酒店",
+"category": "hotel",
+"confidence": 0.809,
+"lat": 30.65073,
+"lon": 104.05833,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d32bfca8-81e3-4a6c-a168-2aecf2ba9c52",
+"name": "金河宾馆",
+"category": "hotel",
+"confidence": 0.808,
+"lat": 30.66413,
+"lon": 104.05316,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "fa785124-c1f8-4f60-904d-f9d72fd147b1",
+"name": "锦江宾馆",
+"category": "hotel",
+"confidence": 0.795,
+"lat": 30.65066,
+"lon": 104.06244,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "e6ffee15-7a88-4553-90d0-be24893c036f",
+"name": "成都浣花溪智选假日酒店",
+"category": "hotel",
+"confidence": 0.793,
+"lat": 30.65453,
+"lon": 104.00205,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "8e457986-2e4a-4ec9-a80d-3c48f87d17bb",
+"name": "龙之梦酒店",
+"category": "hotel",
+"confidence": 0.79,
+"lat": 30.63224,
+"lon": 104.1426,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1605e853-45e2-4d9c-a756-c381497823b8",
+"name": "青桐城市酒店",
+"category": "hotel",
+"confidence": 0.789,
+"lat": 30.68654,
+"lon": 104.04362,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "cbc47937-4fce-4c12-a812-2093b67e60d9",
+"name": "明宇尚雅酒店",
+"category": "hotel",
+"confidence": 0.784,
+"lat": 30.65327,
+"lon": 104.06306,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c89ee5fa-f12b-49ce-9338-fa4f0e0a676e",
+"name": "艺宿里",
+"category": "hotel",
+"confidence": 0.78,
+"lat": 30.59069,
+"lon": 104.15688,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "6a7b2d06-c59f-4230-b60d-83e9fe570d3b",
+"name": "成都海悦酒店",
+"category": "hotel",
+"confidence": 0.775,
+"lat": 30.65489,
+"lon": 104.0798,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "68f7aede-4e77-4973-806a-57f446e6a388",
+"name": "成都一起一起·蒸汽旅舍",
+"category": "hostel",
+"confidence": 0.773,
+"lat": 30.6479,
+"lon": 104.05281,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "51085ed0-4836-412c-9f8c-eca97f21e082",
+"name": "金港假日酒店",
+"category": "hotel",
+"confidence": 0.771,
+"lat": 30.57519,
+"lon": 103.98485,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1e95d640-9eff-46ea-a971-f22190488954",
+"name": "成都保利公园皇冠假日酒店",
+"category": "hotel",
+"confidence": 0.771,
+"lat": 30.75469,
+"lon": 104.14243,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "027a3a01-4e12-48f5-a560-d61de893d5d5",
+"name": "宜必思酒店(美洲中心店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.59823,
+"lon": 104.03689,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "0db59ad9-ee10-4dc6-8086-7686bf1db0ab",
+"name": "宜必思尚品酒店(春熙太古里店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.65045,
+"lon": 104.09408,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "11b55a6c-cdf2-434d-b741-ebcb04190262",
+"name": "成都春熙路福朋喜来登酒店",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.66088,
+"lon": 104.07767,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "1c09f16e-9f2c-4e81-ba1a-ef378a3988b2",
+"name": "成都瑯珀酒店",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.65052,
+"lon": 104.08098,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "25fa40f9-0816-4213-84b4-8b806571b3d6",
+"name": "宜必思尚品酒店(春熙路步行街店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.65384,
+"lon": 104.06944,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "350bb13f-0bd6-4d5b-ac1f-d51fb35d1a96",
+"name": "汉庭酒店(宽窄巷子中心店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.67442,
+"lon": 104.05326,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "3a2650fd-babe-43a4-9448-137a5515772b",
+"name": "宜必思酒店(春熙路蜀都大厦店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.65907,
+"lon": 104.07564,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "45076c85-0124-4365-9ea6-b5e5e93a10af",
+"name": "宜必思酒店",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.61578,
+"lon": 104.07619,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "4f9eef7f-07ac-4d15-844c-dfd9c96615c4",
+"name": "美居酒店(春熙店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.65928,
+"lon": 104.07561,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "5425c306-28fb-4abe-86d2-78ba542acdf1",
+"name": "如家酒店·(成都新南门地铁站店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.64522,
+"lon": 104.07129,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "543375ff-9067-4b91-8461-5e8255e87cc4",
+"name": "汉庭酒店(永陵路店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.67596,
+"lon": 104.04166,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "5b90bae8-22c3-44e5-a70e-e51815665d39",
+"name": "宜必思酒店(温江中心店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.68873,
+"lon": 103.83575,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "66bac875-445a-4232-a225-dfaf8f57e5dd",
+"name": "宜必思酒店(成都武侯祠永丰店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.6256,
+"lon": 104.04413,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "6a804f2e-0c02-45ce-8841-3223d2056781",
+"name": "宜必思酒店(高新电子科大店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.75275,
+"lon": 103.91904,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "7333cd99-4e1e-4a68-9bdc-338aedce1663",
+"name": "全季酒店(新会展中心店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.55838,
+"lon": 104.07312,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "849b6760-352b-47a1-99ff-05c709d5e012",
+"name": "如家商旅酒店(文殊院站店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.6761,
+"lon": 104.06612,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "8e606c92-88fe-4252-9d65-b9b1610bde11",
+"name": "宜必思酒店(动物园地铁站店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.71749,
+"lon": 104.104,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "8f0a65f3-3fc2-4252-bb1b-b2e7f91540af",
+"name": "宜必思尚品酒店(美洲花园机场路店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.5965,
+"lon": 104.03743,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "9886bf7a-3b70-4e21-983a-4c8019714705",
+"name": "美居酒店(宽窄巷子店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.66231,
+"lon": 104.04964,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "a4b64c83-cbdd-4750-b9ab-1ee020f05a9f",
+"name": "宜必思尚品酒店(新都石油大学店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.81693,
+"lon": 104.17653,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "a5c0f095-742f-48a4-b926-b53270cfc63a",
+"name": "宜必思成都武侯祠店",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.64452,
+"lon": 104.04154,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "a7d84825-31fc-4964-8a56-65ca4923b2b8",
+"name": "汉庭酒店(春熙路店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.6543,
+"lon": 104.08714,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "afca1bec-10c1-4eb9-b94d-a5fad8c9ef91",
+"name": "全季酒店(春熙路店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.65737,
+"lon": 104.0794,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "b5bd5834-300f-4c54-adfa-e6ec9d78eff1",
+"name": "成都辉盛庭国际公寓",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.57279,
+"lon": 104.0757,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "bd69d944-105b-4c40-b8db-faf0d03079ba",
+"name": "成都高新会展中心福朋喜来登酒店",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.55547,
+"lon": 104.05741,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "cd26fd2e-e8f3-46cd-9e66-4915f36b35b5",
+"name": "宜必思酒店(SM广场店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.67008,
+"lon": 104.11162,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "cf9e81fc-2001-439f-856c-e7f1d7a47f6b",
+"name": "全季酒店(高新西区龙湖店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.75392,
+"lon": 103.92055,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "d1899303-4846-46d1-bae9-0b20dd1370d3",
+"name": "汉庭酒店(一品天下店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.68945,
+"lon": 104.01941,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "d7ddc883-804b-4cdf-b033-de713dcd790a",
+"name": "美居酒店(成都景澜店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.68035,
+"lon": 104.04539,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "dbe09068-ce55-4f32-904b-5d4fa28ab7b4",
+"name": "宜必思酒店(武候祠店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.64455,
+"lon": 104.04152,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "df816c6d-e10e-4ca7-843c-cb56076a0565",
+"name": "汉庭酒店(紫荆店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.61977,
+"lon": 104.05347,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "eb9e5a60-81a3-4dc2-9feb-66df7f92cf6c",
+"name": "汉庭酒店(武侯店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.64288,
+"lon": 104.04155,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "f30ccda5-29e7-44b9-b646-6e9c774158bc",
+"name": "成都武侯新城智选假日酒店",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.62457,
+"lon": 103.97525,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "f5ff2288-d27f-4e73-80b0-e997c8e17f81",
+"name": "汉庭酒店(天府广场店)",
+"category": "hotel",
+"confidence": 0.77,
+"lat": 30.65797,
+"lon": 104.05958,
+"license": "Apache-2.0"
+},
+{
+"kind": "hotel",
+"id": "11c2899e-3632-47c2-b9b8-649e921c935f",
+"name": "成都银河王朝大酒店",
+"category": "hotel",
+"confidence": 0.767,
+"lat": 30.65905,
+"lon": 104.07116,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "f09ac898-7bc6-4606-89e6-b4d7018edca7",
+"name": "图腾铂金酒店",
+"category": "hotel",
+"confidence": 0.767,
+"lat": 30.63114,
+"lon": 104.06361,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "845f3da3-efb8-4ab6-b8ae-5c5f6fa806d7",
+"name": "空港建国饭店",
+"category": "hotel",
+"confidence": 0.766,
+"lat": 30.56072,
+"lon": 103.96786,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "fe861073-2a17-4289-bce0-d5112f578411",
+"name": "成都九天国际大酒店",
+"category": "hotel",
+"confidence": 0.766,
+"lat": 30.60982,
+"lon": 104.08167,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d0887089-aa5d-4cbf-aea2-8e32db0d1a5a",
+"name": "莱普敦酒店",
+"category": "hotel",
+"confidence": 0.765,
+"lat": 30.54923,
+"lon": 104.06282,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "e1b8ef48-eab1-4a60-9709-d20890a7d03b",
+"name": "成都梦之旅国际青年旅社",
+"category": "hostel",
+"confidence": 0.765,
+"lat": 30.6464,
+"lon": 104.04475,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "a2b46c19-200a-4b9f-925c-23105f172ec4",
+"name": "成都宜尚",
+"category": "hotel",
+"confidence": 0.764,
+"lat": 30.60739,
+"lon": 103.97932,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d3aad217-a3e7-4e05-a3be-9df44d89e355",
+"name": "维也纳国际酒店",
+"category": "hotel",
+"confidence": 0.763,
+"lat": 30.54987,
+"lon": 104.07459,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "b771248f-7b2e-4283-a793-1593da1e6cfb",
+"name": "成都百港国际酒店",
+"category": "hotel",
+"confidence": 0.761,
+"lat": 30.57039,
+"lon": 103.97194,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "3dff8aa5-6664-4c71-84d4-dd9227ba3b8a",
+"name": "成都高新豪生酒店",
+"category": "hotel",
+"confidence": 0.759,
+"lat": 30.59217,
+"lon": 104.06703,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "a857e25d-d77f-499e-ada8-a5187d347f0a",
+"name": "保利中心",
+"category": "lodging",
+"confidence": 0.756,
+"lat": 30.62694,
+"lon": 104.06716,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "e29d8c49-0bde-45eb-9f1c-2c51eca43c0a",
+"name": "成都华尔道夫酒店",
+"category": "hotel",
+"confidence": 0.755,
+"lat": 30.59036,
+"lon": 104.09385,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "29937547-b44d-4708-8ce1-5bf70546d4e7",
+"name": "成都锦里客栈",
+"category": "hotel",
+"confidence": 0.755,
+"lat": 30.64542,
+"lon": 104.04782,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "8479f7e1-ce63-476a-926a-3d3dcf66476d",
+"name": "天悦酒店",
+"category": "hotel",
+"confidence": 0.753,
+"lat": 30.80341,
+"lon": 103.89506,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "aedb4376-16a0-4f9e-8f3e-a685f638b18f",
+"name": "成都润邦国际酒店",
+"category": "hotel",
+"confidence": 0.752,
+"lat": 30.68637,
+"lon": 104.02441,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "a0699bfd-d086-40cc-a749-04e909b2ac3e",
+"name": "成都西门",
+"category": "hotel",
+"confidence": 0.752,
+"lat": 30.68599,
+"lon": 104.04369,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c0aa01d9-e368-4efd-9e48-0192524e933c",
+"name": "四川岷山安逸大酒店",
+"category": "hotel",
+"confidence": 0.75,
+"lat": 30.65759,
+"lon": 104.07457,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "631eeb94-c24c-44b1-a92f-84b290deeb6b",
+"name": "成都尼依格罗酒店",
+"category": "hotel",
+"confidence": 0.748,
+"lat": 30.6565,
+"lon": 104.07959,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "5efadccc-c924-468b-938c-574d23a168a5",
+"name": "成都嘉悦里希尔顿",
+"category": "hotel",
+"confidence": 0.744,
+"lat": 30.70805,
+"lon": 104.10349,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "8d29b9b6-826a-440c-88bf-596d56a13a19",
+"name": "天河智选假日酒店",
+"category": "hotel",
+"confidence": 0.741,
+"lat": 30.74804,
+"lon": 103.97513,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "8e00f8b6-1507-4a3c-8600-f468c8c790c3",
+"name": "成都双流区友豪景江酒店",
+"category": "hotel",
+"confidence": 0.74,
+"lat": 30.63598,
+"lon": 103.99281,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "6640dcb7-85cb-4b62-beb9-0348e6273db5",
+"name": "四川省成都市仁和春天五星酒店",
+"category": "hotel",
+"confidence": 0.738,
+"lat": 30.69511,
+"lon": 104.08624,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "28fc5b1b-522b-4db2-821b-0bd3af1a1fb1",
+"name": "天辰楼宾馆",
+"category": "hotel",
+"confidence": 0.737,
+"lat": 30.66505,
+"lon": 104.02184,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "7685cb69-9917-4c6b-9382-d3a3a6522158",
+"name": "艺家城市酒店",
+"category": "hotel",
+"confidence": 0.734,
+"lat": 30.60761,
+"lon": 104.06729,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "797fa1bc-2330-486c-8a75-46f0433b2b6b",
+"name": "星瑞美丽华酒店",
+"category": "hotel",
+"confidence": 0.734,
+"lat": 30.72606,
+"lon": 103.97603,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "eec28afe-544b-4842-9b02-2da0e8545a4e",
+"name": "四川省成都市中海国际社区",
+"category": "lodging",
+"confidence": 0.733,
+"lat": 30.72114,
+"lon": 103.97889,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "8cd546a6-cafd-416d-841d-e45a14f2397a",
+"name": "成都新华宾馆",
+"category": "hotel",
+"confidence": 0.731,
+"lat": 30.67752,
+"lon": 104.063,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1abbf178-da3e-4f79-a828-e9ec676bacd7",
+"name": "成都宜必思酒店",
+"category": "hotel",
+"confidence": 0.73,
+"lat": 30.61578,
+"lon": 104.07619,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "fadaa231-7baa-46d5-8957-90a26fb5ead2",
+"name": "成都诺亚方舟酒店",
+"category": "hotel",
+"confidence": 0.729,
+"lat": 30.61992,
+"lon": 104.037,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "66bf60fe-cc94-4ea3-b02c-fb6271872caa",
+"name": "崇德故里",
+"category": "hotel",
+"confidence": 0.726,
+"lat": 30.64938,
+"lon": 104.08057,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "fec8627d-2057-4d78-80c3-182eaf41637f",
+"name": "老成都酒店",
+"category": "hotel",
+"confidence": 0.718,
+"lat": 30.66128,
+"lon": 104.07635,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "b7d95b65-1250-45af-a261-02d249ae6d3b",
+"name": "和颐酒店",
+"category": "hotel",
+"confidence": 0.716,
+"lat": 30.64521,
+"lon": 104.0875,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "654824ea-b310-43b1-acc9-e23622d9cba5",
+"name": "成都瓦舍旅行酒店",
+"category": "hotel",
+"confidence": 0.716,
+"lat": 30.6795,
+"lon": 104.05415,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d8e16b92-fb81-4b79-9095-c403d95c840e",
+"name": "成都费尔顿凯莱大酒店",
+"category": "hotel",
+"confidence": 0.716,
+"lat": 30.69888,
+"lon": 103.84464,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "5538122d-a809-439c-bb0f-d5d3b84bf877",
+"name": "成都老夏老火锅",
+"category": "hotel",
+"confidence": 0.715,
+"lat": 30.6663,
+"lon": 104.04883,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "27c50186-ef8d-4929-a2fe-f464aeb52a6f",
+"name": "尊悦豪生酒店",
+"category": "hotel",
+"confidence": 0.714,
+"lat": 30.71015,
+"lon": 103.99858,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "c035db72-a4c6-4181-a62d-f14bae89569e",
+"name": "友豪锦江大饭店",
+"category": "hotel",
+"confidence": 0.714,
+"lat": 30.63614,
+"lon": 103.99203,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "2279f478-1ce6-4c16-97ff-d0dbeae63818",
+"name": "科华苑宾馆",
+"category": "hotel",
+"confidence": 0.712,
+"lat": 30.62737,
+"lon": 104.07482,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "3a5768d8-93f3-4891-921c-cae62a640aea",
+"name": "熊猫王子酒店",
+"category": "hotel",
+"confidence": 0.706,
+"lat": 30.60567,
+"lon": 104.05888,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "6e990329-388c-4ddc-9747-aeb0259b9d03",
+"name": "成都有客酒店",
+"category": "hotel",
+"confidence": 0.693,
+"lat": 30.6595,
+"lon": 104.07596,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "cf97618c-2ec2-4011-a064-1e51f39047f6",
+"name": "嘉年ceo酒店公寓",
+"category": "hotel",
+"confidence": 0.692,
+"lat": 30.54703,
+"lon": 104.06497,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1c1d4816-f0d2-46d6-8470-f7869f7d41fe",
+"name": "成都艺朗酒店",
+"category": "hotel",
+"confidence": 0.668,
+"lat": 30.56272,
+"lon": 104.04734,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "d1ec9e28-107f-4eda-b3dc-59ecd723a2eb",
+"name": "浣花黉台",
+"category": "hotel",
+"confidence": 0.666,
+"lat": 30.66258,
+"lon": 104.03059,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "ba45ce36-be3f-4036-84ed-f45cd95fb577",
+"name": "布衣客栈",
+"category": "hotel",
+"confidence": 0.666,
+"lat": 30.54399,
+"lon": 104.07137,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "91df0d82-ecc6-4af0-be8b-dbd91ad36ed9",
+"name": "沙河壹号",
+"category": "lodging",
+"confidence": 0.648,
+"lat": 30.62115,
+"lon": 104.1139,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "6cc71432-4e08-4f2f-9342-d48e3fcc996a",
+"name": "鹭岛国际社区",
+"category": "lodging",
+"confidence": 0.646,
+"lat": 30.6448,
+"lon": 104.01063,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "0fa0068d-b51e-4a8d-80f8-a362a940bf16",
+"name": "成都一起一起·闪银盒子青年旅舍",
+"category": "hostel",
+"confidence": 0.645,
+"lat": 30.66162,
+"lon": 104.07696,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "863434e8-30a7-4f9a-84d9-77e1c7a2c6e8",
+"name": "新皇城大酒店",
+"category": "hotel",
+"confidence": 0.642,
+"lat": 30.50125,
+"lon": 103.94888,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "7b3f257b-2f29-4fd6-882e-51c9677d5d90",
+"name": "金府银座酒店",
+"category": "hotel",
+"confidence": 0.624,
+"lat": 30.71474,
+"lon": 104.03431,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "1d36e385-7d9e-4fbe-9d16-a9f5d2b4fc41",
+"name": "成都桂祥大酒店",
+"category": "hotel",
+"confidence": 0.613,
+"lat": 30.78053,
+"lon": 103.92179,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "ab19a9ba-6927-4aef-b7e1-23b1b19031a9",
+"name": "公馆1881",
+"category": "lodging",
+"confidence": 0.61,
+"lat": 30.60407,
+"lon": 104.05096,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "4a96b958-c207-4270-87dd-3f51133c4b7b",
+"name": "成都南都商务酒店",
+"category": "hotel",
+"confidence": 0.608,
+"lat": 30.62829,
+"lon": 104.06406,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "hotel",
+"id": "65fed2c7-f9a3-4b65-8b80-d72690cafc55",
+"name": "成都金隆酒店",
+"category": "hotel",
+"confidence": 0.604,
+"lat": 30.67569,
+"lon": 103.99951,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "da805be9-5887-42e5-9112-539cdd5b4ebe",
+"name": "伊势丹百货公司-和幸炸猪排店",
+"category": "japanese_restaurant",
+"confidence": 0.973,
+"lat": 30.65682,
+"lon": 104.07637,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "85220049-6ffe-4c88-aee9-8c4e99355029",
+"name": "皇城老妈",
+"category": "chinese_restaurant",
+"confidence": 0.973,
+"lat": 30.62431,
+"lon": 104.05005,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "31b3abbe-fcd2-436b-b965-c63efc418f13",
+"name": "加德满都餐厅",
+"category": "nepalese_restaurant",
+"confidence": 0.97,
+"lat": 30.66093,
+"lon": 104.03428,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "eeb58c98-3226-4d00-8338-b4f7aa504a03",
+"name": "马旺子1923",
+"category": "chinese_restaurant",
+"confidence": 0.963,
+"lat": 30.65389,
+"lon": 104.08149,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "8315f434-19e6-4f22-85fc-82a43f11c9f1",
+"name": "美心翠园",
+"category": "chinese_restaurant",
+"confidence": 0.959,
+"lat": 30.65435,
+"lon": 104.08129,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "61c19c8b-2970-4860-92fe-ccb899691304",
+"name": "香宫",
+"category": "chinese_restaurant",
+"confidence": 0.951,
+"lat": 30.64538,
+"lon": 104.08253,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1a0cedac-4be6-4592-8018-5e35d2f1d283",
+"name": "Häagen- 哈根达斯",
+"category": "ice_cream_shop",
+"confidence": 0.947,
+"lat": 30.65739,
+"lon": 104.07441,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "0810c237-40f3-46e3-838e-679c5ad09c2e",
+"name": "小龙翻大江",
+"category": "chinese_restaurant",
+"confidence": 0.946,
+"lat": 30.65478,
+"lon": 104.07722,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "45cff9fd-3f21-44e4-815d-23a2f4e851ae",
+"name": "陈麻婆豆腐",
+"category": "chinese_restaurant",
+"confidence": 0.937,
+"lat": 30.66524,
+"lon": 104.03175,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b17d8376-3478-4dcc-ab43-2d41976e8fe4",
+"name": "蜀大侠火锅(春熙店)",
+"category": "chinese_restaurant",
+"confidence": 0.933,
+"lat": 30.6563,
+"lon": 104.0737,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "d9e2891f-72b2-49a8-9896-5bbb342f9f6f",
+"name": "明婷饭店",
+"category": "dim_sum_restaurant",
+"confidence": 0.931,
+"lat": 30.67592,
+"lon": 104.08491,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "5b3a685f-6d7d-472d-b117-f6a69d1fdb47",
+"name": "必胜客",
+"category": "pizza_restaurant",
+"confidence": 0.922,
+"lat": 30.66427,
+"lon": 104.04742,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "35d47b7e-9647-49fe-af36-1eb023e98f45",
+"name": "冒椒火辣",
+"category": "chinese_restaurant",
+"confidence": 0.912,
+"lat": 30.67086,
+"lon": 104.05131,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "7d8e677e-73b1-4d9d-979f-8f2bdd62e3b3",
+"name": "成都巴蜀大宅门火锅",
+"category": "chinese_restaurant",
+"confidence": 0.904,
+"lat": 30.64175,
+"lon": 104.08176,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "77ac9c87-9e3b-46f1-8426-3cb07dfb8a1b",
+"name": "巴蜀大宅门火锅",
+"category": "chinese_restaurant",
+"confidence": 0.9,
+"lat": 30.6764,
+"lon": 104.07467,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "172d7cc7-e973-44b5-a733-253e585dd01f",
+"name": "赛百味",
+"category": "sandwich_shop",
+"confidence": 0.899,
+"lat": 30.58083,
+"lon": 103.95639,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "40428059-d649-4f97-b959-b63251bc47f8",
+"name": "龙森园火锅",
+"category": "chinese_restaurant",
+"confidence": 0.897,
+"lat": 30.66124,
+"lon": 104.04296,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ed0e534d-bac4-43be-889d-aa452b3d104b",
+"name": "肯德基",
+"category": "chicken_restaurant",
+"confidence": 0.892,
+"lat": 30.56982,
+"lon": 103.95137,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "24a6dacf-71c2-4fd0-bda6-c02f7b5f51e3",
+"name": "大妙火锅",
+"category": "chinese_restaurant",
+"confidence": 0.892,
+"lat": 30.66525,
+"lon": 104.05186,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "03d06fa9-811a-40b3-9530-d4d9d857d754",
+"name": "顺兴老茶馆",
+"category": "chinese_restaurant",
+"confidence": 0.892,
+"lat": 30.56195,
+"lon": 104.07069,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "a8abbe4e-510a-4d03-96ea-f9662a2603ba",
+"name": "成都老码头火㶽红星店",
+"category": "chinese_restaurant",
+"confidence": 0.887,
+"lat": 30.65224,
+"lon": 104.07416,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "0dbe2890-62e1-4777-8b86-747d156680c4",
+"name": "楠火锅太古里店",
+"category": "chinese_restaurant",
+"confidence": 0.887,
+"lat": 30.65339,
+"lon": 104.07809,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "0e071f12-e705-416c-8da0-9f649945c140",
+"name": "成都崇德里",
+"category": "restaurant",
+"confidence": 0.885,
+"lat": 30.65166,
+"lon": 104.0778,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "42793754-2e4b-45cf-8aea-7c24877b145c",
+"name": "顺兴老茶馆(老店)",
+"category": "chinese_restaurant",
+"confidence": 0.882,
+"lat": 30.56184,
+"lon": 104.07093,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b705c2a0-cfce-484b-b984-b214eba4ae20",
+"name": "洞子口张老二凉粉店",
+"category": "ramen_restaurant",
+"confidence": 0.876,
+"lat": 30.6766,
+"lon": 104.07016,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "0d0ca820-1468-4421-8809-c6d0808cbb56",
+"name": "子非",
+"category": "chinese_restaurant",
+"confidence": 0.875,
+"lat": 30.66708,
+"lon": 104.04948,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b8b5c69a-9a3e-4e35-8dfc-0290d20694c9",
+"name": "纯阳馆",
+"category": "ramen_restaurant",
+"confidence": 0.872,
+"lat": 30.67083,
+"lon": 104.05254,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "a0b3a668-c35c-4775-adbe-4d0099c4a45c",
+"name": "成都星巴克兰桂坊店",
+"category": "chinese_restaurant",
+"confidence": 0.871,
+"lat": 30.64664,
+"lon": 104.08215,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "edf3ef69-6a4a-4ae3-ad39-e38121168a96",
+"name": "万得冰田",
+"category": "dessert_shop",
+"confidence": 0.868,
+"lat": 30.67363,
+"lon": 104.09959,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "62a70fb5-51fd-41dc-a41c-5121fc2da414",
+"name": "十域",
+"category": "restaurant",
+"confidence": 0.867,
+"lat": 30.65427,
+"lon": 104.07959,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "823a2497-2e85-42b5-9e41-36161f51a25c",
+"name": "西月城谭豆花",
+"category": "chinese_restaurant",
+"confidence": 0.862,
+"lat": 30.66238,
+"lon": 104.07391,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "a9f3cb91-e85e-4baa-bbba-de75ae0cd756",
+"name": "龙抄手",
+"category": "restaurant",
+"confidence": 0.861,
+"lat": 30.65677,
+"lon": 104.0752,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "6cf6586a-a0ad-4a45-b561-5b41d85f498a",
+"name": "饕林餐厅",
+"category": "restaurant",
+"confidence": 0.86,
+"lat": 30.65273,
+"lon": 104.07527,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "64ead7ae-cb30-432d-9fac-34cb583596fd",
+"name": "成都巴国布衣",
+"category": "restaurant",
+"confidence": 0.86,
+"lat": 30.60894,
+"lon": 104.04731,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "bd28815d-e178-4b7f-9804-6f5fe40b5af1",
+"name": "月满大江",
+"category": "fondue_restaurant",
+"confidence": 0.857,
+"lat": 30.5779,
+"lon": 104.05155,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "dc973302-8a88-4ca9-9bd8-fff921e29537",
+"name": "园里火锅",
+"category": "chinese_restaurant",
+"confidence": 0.855,
+"lat": 30.55,
+"lon": 104.06359,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "e875d291-69a0-4ef5-a821-5bf1ab52fd8c",
+"name": "永乐饭店",
+"category": "chinese_restaurant",
+"confidence": 0.845,
+"lat": 30.63313,
+"lon": 104.04135,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "8bb44b2e-d8ab-459b-b3b9-58073f66d9a3",
+"name": "春熙里老火锅",
+"category": "chinese_restaurant",
+"confidence": 0.842,
+"lat": 30.6573,
+"lon": 104.07549,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "963e6cc6-9803-4bf9-a3a7-2dbd0059a694",
+"name": "轻安素食馆",
+"category": "chinese_restaurant",
+"confidence": 0.841,
+"lat": 30.56079,
+"lon": 104.04628,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "e8b67bf2-f293-4357-9669-3b7706bca206",
+"name": "唡唡茶寮",
+"category": "restaurant",
+"confidence": 0.84,
+"lat": 30.62617,
+"lon": 104.05318,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "81abaf49-e61f-4b6d-b7e9-9865b19df3dd",
+"name": "人民食堂",
+"category": "chinese_restaurant",
+"confidence": 0.834,
+"lat": 30.62955,
+"lon": 104.06314,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "f7d00534-6f93-4d26-b7d2-405a92a89ab5",
+"name": "成都蜀大侠",
+"category": "fondue_restaurant",
+"confidence": 0.829,
+"lat": 30.54889,
+"lon": 104.06457,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b16d823d-665f-4352-ad67-857f36ef6963",
+"name": "海底捞",
+"category": "seafood_restaurant",
+"confidence": 0.827,
+"lat": 30.55174,
+"lon": 104.04334,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "14710f69-104c-4c72-a8c2-9662c0b71340",
+"name": "海底捞火锅",
+"category": "chinese_restaurant",
+"confidence": 0.826,
+"lat": 30.64502,
+"lon": 104.08845,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "4f088daa-be43-4d10-b4aa-42369e980ebb",
+"name": "李雪火锅",
+"category": "fondue_restaurant",
+"confidence": 0.825,
+"lat": 30.66738,
+"lon": 104.04907,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "5818b55e-fb1d-4b80-863a-e07d65896f9a",
+"name": "红鼎坊",
+"category": "chinese_restaurant",
+"confidence": 0.821,
+"lat": 30.6448,
+"lon": 104.07309,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "009fdccc-1424-4cbd-bd62-55882be0b489",
+"name": "德庄麻辣火锅",
+"category": "fondue_restaurant",
+"confidence": 0.821,
+"lat": 30.65612,
+"lon": 104.09572,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ba382fdb-82ce-4cf9-b923-3bc693793a30",
+"name": "小龙坎春熙店",
+"category": "chinese_restaurant",
+"confidence": 0.817,
+"lat": 30.65436,
+"lon": 104.0762,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "c1a65546-d9fe-4d1f-b749-44c8b6e4cf07",
+"name": "老码头火锅",
+"category": "chinese_restaurant",
+"confidence": 0.814,
+"lat": 30.65222,
+"lon": 104.07383,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "6688e394-c994-4ca4-ac3c-8251dc6a1c74",
+"name": "老夏老火锅",
+"category": "restaurant",
+"confidence": 0.807,
+"lat": 30.66744,
+"lon": 104.0443,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "98e1d850-47a7-4c2e-a333-df9a522fd656",
+"name": "天空农场火锅-成都银泰城店",
+"category": "chinese_restaurant",
+"confidence": 0.798,
+"lat": 30.54328,
+"lon": 104.0532,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "f8e3eae0-6032-4704-8fb0-7a4026383e46",
+"name": "成都红杏酒家",
+"category": "chinese_restaurant",
+"confidence": 0.796,
+"lat": 30.69183,
+"lon": 104.01948,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "eeadb104-5aee-4439-a1d9-294c611d1584",
+"name": "夫妻肺片",
+"category": "restaurant",
+"confidence": 0.787,
+"lat": 30.66062,
+"lon": 104.07568,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "036c11f8-fb8d-4ae0-8e4b-745fb9afacdd",
+"name": "红杏酒家@成都",
+"category": "chinese_restaurant",
+"confidence": 0.786,
+"lat": 30.6235,
+"lon": 104.09542,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "746cdadd-a935-4d6d-b88a-744aeecd965c",
+"name": "琴台廊桥",
+"category": "theme_restaurant",
+"confidence": 0.783,
+"lat": 30.6619,
+"lon": 104.04315,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "3a403cc8-b080-4054-bd5a-efa4eb97d587",
+"name": "钦善斋",
+"category": "restaurant",
+"confidence": 0.783,
+"lat": 30.6463,
+"lon": 104.0429,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ff6b8895-b6db-4350-bc31-17724a20456c",
+"name": "玉芝兰",
+"category": "restaurant",
+"confidence": 0.782,
+"lat": 30.66926,
+"lon": 104.05621,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "76c8a81d-258f-45a1-a7b9-e891d80cea60",
+"name": "8号 #8",
+"category": "chinese_restaurant",
+"confidence": 0.776,
+"lat": 30.65651,
+"lon": 104.07441,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "f8f23c6a-4152-45dc-a2d8-53d2e986dffb",
+"name": "桃源眷村",
+"category": "taiwanese_restaurant",
+"confidence": 0.771,
+"lat": 30.65505,
+"lon": 104.08075,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1700c311-de3f-4c99-a083-bcbf28625b95",
+"name": "宫廷糕点",
+"category": "bakery",
+"confidence": 0.771,
+"lat": 30.67579,
+"lon": 104.07212,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "12d37a2d-c3f1-4549-bd84-1e95483d45ed",
+"name": "鼎泰丰",
+"category": "dumpling_restaurant",
+"confidence": 0.77,
+"lat": 30.63413,
+"lon": 104.06511,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "19145e99-253f-4c5c-8193-897a178622ed",
+"name": "小南国",
+"category": null,
+"confidence": 0.77,
+"lat": 30.65736,
+"lon": 104.07761,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "27955004-b77a-473c-b930-2fa5bfe6b505",
+"name": "(满记甜品)",
+"category": "dessert_shop",
+"confidence": 0.77,
+"lat": 30.57884,
+"lon": 104.05992,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "49c6fa87-6245-4a5b-b967-c405244cfbad",
+"name": "祖母的厨房",
+"category": "chinese_restaurant",
+"confidence": 0.77,
+"lat": 30.65907,
+"lon": 104.0785,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "5609eaec-9651-4a2a-b7ba-7d62ffeffb75",
+"name": "外婆家",
+"category": "chinese_restaurant",
+"confidence": 0.77,
+"lat": 30.65743,
+"lon": 104.07774,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "5c9a821e-fbb9-4a49-b115-5794fe7ced98",
+"name": "芭斯罗缤",
+"category": "ice_cream_shop",
+"confidence": 0.77,
+"lat": 30.57121,
+"lon": 104.06286,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "62345daf-11f0-4cd3-aad0-ce6449de78c0",
+"name": "Bräuhaus 宝莱纳餐厅",
+"category": "german_restaurant",
+"confidence": 0.77,
+"lat": 30.64563,
+"lon": 104.08351,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "67107917-48ae-48cb-879b-f307bd61c84a",
+"name": "Café 咖啡厅",
+"category": "buffet_restaurant",
+"confidence": 0.77,
+"lat": 30.65664,
+"lon": 104.07462,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "87f5817f-66f6-4f58-81ef-3d77df584758",
+"name": "尝艺",
+"category": "restaurant",
+"confidence": 0.77,
+"lat": 30.553,
+"lon": 104.07018,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "94bb354f-843a-4a88-81cf-583a335750a2",
+"name": "觅餐厅",
+"category": "restaurant",
+"confidence": 0.77,
+"lat": 30.55343,
+"lon": 104.06973,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "cf598176-667b-45b9-b6d7-7ffc3505d68c",
+"name": "广泰门",
+"category": "bakery",
+"confidence": 0.77,
+"lat": 30.65587,
+"lon": 104.07742,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "dd4d619e-dcfb-4209-a9cb-05c706ed1929",
+"name": "(新元素)",
+"category": "american_restaurant",
+"confidence": 0.77,
+"lat": 30.65577,
+"lon": 104.08143,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "e349fcce-9ab8-4e16-b67f-1551ef32d6e9",
+"name": "烤匠",
+"category": null,
+"confidence": 0.77,
+"lat": 30.65677,
+"lon": 104.07423,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "f6706904-6ada-4ee1-bd79-03b29350c559",
+"name": "蓝蛙",
+"category": "burger_restaurant",
+"confidence": 0.77,
+"lat": 30.58522,
+"lon": 104.05644,
+"license": "Apache-2.0"
+},
+{
+"kind": "restaurant",
+"id": "7d2f0564-dc75-4a8a-9446-e501008315ea",
+"name": "玛歌庄园",
+"category": "chinese_restaurant",
+"confidence": 0.769,
+"lat": 30.76369,
+"lon": 104.16675,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "51ac4273-c63a-4787-b5a8-0c7f8fe714c8",
+"name": "何师烧烤",
+"category": "barbecue_restaurant",
+"confidence": 0.769,
+"lat": 30.65147,
+"lon": 104.08255,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "d8da5caa-7cf4-471d-815a-5a515637d4fe",
+"name": "转转会",
+"category": "restaurant",
+"confidence": 0.756,
+"lat": 30.55937,
+"lon": 104.07187,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "4887359d-e03e-4419-934c-5d9cfc4ab119",
+"name": "犀浦夜市",
+"category": "restaurant",
+"confidence": 0.753,
+"lat": 30.75237,
+"lon": 103.96324,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "dbb90cde-ef0e-4aa5-90f6-78996ffac834",
+"name": "成都宴",
+"category": "theme_restaurant",
+"confidence": 0.753,
+"lat": 30.61812,
+"lon": 104.064,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "89c11885-9301-47d3-9bae-be922823e032",
+"name": "成都盘飧市",
+"category": "chinese_restaurant",
+"confidence": 0.751,
+"lat": 30.66185,
+"lon": 104.0771,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "709d4935-c589-465d-9aff-958368cc78fb",
+"name": "旬八日本料理象南里店",
+"category": "japanese_restaurant",
+"confidence": 0.751,
+"lat": 30.6667,
+"lon": 104.06699,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "df150c13-16a0-416e-a228-176f4109d4f5",
+"name": "张烤鸭",
+"category": "chinese_restaurant",
+"confidence": 0.749,
+"lat": 30.6565,
+"lon": 104.06866,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1490e04f-faf1-4718-b071-461f4fcec8de",
+"name": "贰麻酒馆",
+"category": "restaurant",
+"confidence": 0.748,
+"lat": 30.64525,
+"lon": 104.0827,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "7239e9f3-21b3-49c9-b871-cee55eeb4370",
+"name": "青石桥市场",
+"category": "restaurant_wholesale",
+"confidence": 0.748,
+"lat": 30.65594,
+"lon": 104.06937,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "30db00af-395f-4915-a85e-dcfb135d5b05",
+"name": "港九茶餐厅",
+"category": "chinese_restaurant",
+"confidence": 0.747,
+"lat": 30.62618,
+"lon": 104.07372,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "dc46e473-4bd6-42e4-8db1-cd2d3db85945",
+"name": "宽坐",
+"category": "chinese_restaurant",
+"confidence": 0.747,
+"lat": 30.66591,
+"lon": 104.05249,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b63a71d4-ca65-43c9-8a98-a234d092de21",
+"name": "成都龙抄手食府",
+"category": "chinese_restaurant",
+"confidence": 0.745,
+"lat": 30.66509,
+"lon": 104.03385,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "98e6c823-2782-4fe7-ae5a-25fbe7943263",
+"name": "三圣面",
+"category": "chinese_restaurant",
+"confidence": 0.745,
+"lat": 30.6531,
+"lon": 104.07806,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "fcd0e397-c44d-4eef-afa4-b014811d1258",
+"name": "小名堂担担甜水面",
+"category": "chinese_restaurant",
+"confidence": 0.744,
+"lat": 30.66134,
+"lon": 104.05835,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "027a654b-e5a1-4c53-aac9-fab08f9d1a0c",
+"name": "江北老灶 三国义府",
+"category": "fondue_restaurant",
+"confidence": 0.737,
+"lat": 30.64817,
+"lon": 104.04988,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "6001f7f2-a9e5-45a3-8441-cb720dba8390",
+"name": "无名冒菜",
+"category": "chinese_restaurant",
+"confidence": 0.733,
+"lat": 30.67466,
+"lon": 104.0542,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "afe3e66c-5249-4f01-a2b7-13903d74e56d",
+"name": "自贡好吃客",
+"category": "chinese_restaurant",
+"confidence": 0.731,
+"lat": 30.62806,
+"lon": 104.07932,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ceb4227f-8216-49d6-be82-0f9ee99ed6d9",
+"name": "老码头麻辣锅",
+"category": "chinese_restaurant",
+"confidence": 0.73,
+"lat": 30.62907,
+"lon": 104.05584,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1775208b-14f9-449e-8380-884072fd59f0",
+"name": "成都温鸭子",
+"category": "chinese_restaurant",
+"confidence": 0.727,
+"lat": 30.61522,
+"lon": 104.09739,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "20385004-58f1-432a-b356-61f862b0ad7a",
+"name": "陈姐烧烤",
+"category": "restaurant",
+"confidence": 0.727,
+"lat": 30.65138,
+"lon": 104.07686,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ee78fab3-4c19-4304-8397-37b4346e979b",
+"name": "龙抄手食府",
+"category": "chinese_restaurant",
+"confidence": 0.725,
+"lat": 30.67662,
+"lon": 104.07023,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "e138d08c-036e-4980-9e4e-a84b484450be",
+"name": "飘香火锅",
+"category": "fondue_restaurant",
+"confidence": 0.725,
+"lat": 30.63189,
+"lon": 104.05363,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "e8ccd52b-10b7-4317-b34c-229c1e02eb69",
+"name": "锦城印象麻辣火锅",
+"category": "chinese_restaurant",
+"confidence": 0.724,
+"lat": 30.65002,
+"lon": 104.05393,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "e91146f0-4d62-4ae3-b41e-e8eeafdb8fc2",
+"name": "陈记蜀味面",
+"category": "restaurant",
+"confidence": 0.724,
+"lat": 30.66058,
+"lon": 104.07635,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "fb9e0dd6-959d-4e36-b4c3-cbe1c3a25527",
+"name": "宴庭",
+"category": "chinese_restaurant",
+"confidence": 0.722,
+"lat": 30.66303,
+"lon": 104.07214,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1ad88769-4843-4289-85ee-693845ea76eb",
+"name": "青年火锅",
+"category": "fondue_restaurant",
+"confidence": 0.722,
+"lat": 30.62985,
+"lon": 104.0535,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "15447ac2-3fd1-4985-9a08-43fa7ab1d04c",
+"name": "香香巷",
+"category": "restaurant",
+"confidence": 0.722,
+"lat": 30.65624,
+"lon": 104.08713,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "6cea3601-0e71-4bed-8a30-59ceda1fc228",
+"name": "福行市",
+"category": "bakery",
+"confidence": 0.721,
+"lat": 30.65298,
+"lon": 104.10715,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "16cdded4-9c17-4af0-9624-bd6a39847c92",
+"name": "乐山钵钵鸡",
+"category": "chinese_restaurant",
+"confidence": 0.72,
+"lat": 30.66903,
+"lon": 104.02698,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ee655452-1b14-460b-8132-3cdf95b62d90",
+"name": "烤匠(群光店)",
+"category": "barbecue_restaurant",
+"confidence": 0.717,
+"lat": 30.65657,
+"lon": 104.0742,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "cafc7ef6-5bf3-4c95-9d3b-8a0252618744",
+"name": "文殊院香园",
+"category": "restaurant",
+"confidence": 0.716,
+"lat": 30.67675,
+"lon": 104.07066,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "2071ee7f-7d03-4809-af93-4599464d5804",
+"name": "赵二老火锅",
+"category": "chinese_restaurant",
+"confidence": 0.716,
+"lat": 30.5493,
+"lon": 104.04243,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "9fece876-c96f-4f00-b8a9-db611246bd99",
+"name": "蜀大侠",
+"category": "chinese_restaurant",
+"confidence": 0.716,
+"lat": 30.6697,
+"lon": 104.06418,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "afea1829-5324-4add-9cbe-cd42a5b944e3",
+"name": "享月·汤皇",
+"category": "chinese_restaurant",
+"confidence": 0.715,
+"lat": 30.58844,
+"lon": 104.04698,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "7fea4343-e835-4ba2-af5e-e66bad6c03d1",
+"name": "卞氏菜根香",
+"category": "chinese_restaurant",
+"confidence": 0.714,
+"lat": 30.619,
+"lon": 104.0685,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "a8647022-2c8d-4ac4-82b3-06b1804f6b99",
+"name": "三道街老宅子肥肠鱼",
+"category": "fondue_restaurant",
+"confidence": 0.714,
+"lat": 30.67447,
+"lon": 104.05366,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "c7a07f8e-9809-4508-afee-0a917eb0785e",
+"name": "成都 香天下",
+"category": "restaurant",
+"confidence": 0.712,
+"lat": 30.56163,
+"lon": 104.07035,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "bbfebfbf-f778-4e54-b094-b3abee17423f",
+"name": "九锅一堂",
+"category": "chinese_restaurant",
+"confidence": 0.711,
+"lat": 30.65546,
+"lon": 104.07752,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "af08b383-ec8a-45d0-9930-e154ddaf0211",
+"name": "成都玉林串串香",
+"category": "chinese_restaurant",
+"confidence": 0.71,
+"lat": 30.62928,
+"lon": 104.05978,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "9b288302-9d4c-4f3d-a977-c6f492e4de0a",
+"name": "蜀府宴语",
+"category": "chinese_restaurant",
+"confidence": 0.709,
+"lat": 30.59237,
+"lon": 104.06352,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "7489e1c8-80d3-45a1-9651-42772ca25278",
+"name": "钟水饺",
+"category": "asian_restaurant",
+"confidence": 0.708,
+"lat": 30.65928,
+"lon": 104.05661,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "cbaa5e99-7a3f-45c5-88c0-072fc93494e6",
+"name": "赵记传承",
+"category": "dessert_shop",
+"confidence": 0.707,
+"lat": 30.65618,
+"lon": 104.08289,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "6277e45e-9fe7-4dcb-a6b5-df14e48ab998",
+"name": "莲花坊",
+"category": "chinese_restaurant",
+"confidence": 0.705,
+"lat": 30.66547,
+"lon": 104.0512,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "541b685d-b9c1-41b9-a46e-28c14bab2947",
+"name": "三缺一",
+"category": "chinese_restaurant",
+"confidence": 0.702,
+"lat": 30.61153,
+"lon": 104.03713,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "336a689f-cbef-41ea-b4d4-c63346a5101d",
+"name": "大海湾酒楼",
+"category": "chinese_restaurant",
+"confidence": 0.702,
+"lat": 30.63956,
+"lon": 104.06421,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "4c1e7c77-3de3-4f67-be8b-cd15328ec3e7",
+"name": "成都九眼桥酒吧一条街",
+"category": "gastropub",
+"confidence": 0.7,
+"lat": 30.64377,
+"lon": 104.08348,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "d4b768c4-f7fc-4208-9fe9-904cc5972037",
+"name": "老妈蹄花总店",
+"category": "chinese_restaurant",
+"confidence": 0.698,
+"lat": 30.65201,
+"lon": 104.0878,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1d3afd9d-4e90-48f3-8121-f69724769765",
+"name": "马路边边麻辣烫",
+"category": "chinese_restaurant",
+"confidence": 0.695,
+"lat": 30.6461,
+"lon": 104.07403,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "13c9e9eb-6fcb-4a61-a911-861d75455ded",
+"name": "雍雅河鲜馆",
+"category": "chinese_restaurant",
+"confidence": 0.694,
+"lat": 30.61512,
+"lon": 104.06007,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "cad54731-ae82-46bf-bb70-534352cce039",
+"name": "老房子青竹花溪大酒楼",
+"category": "chinese_restaurant",
+"confidence": 0.693,
+"lat": 30.64653,
+"lon": 104.04366,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "8ff95404-0545-436e-9e45-02e00359c15a",
+"name": "云门锦翠",
+"category": "chinese_restaurant",
+"confidence": 0.691,
+"lat": 30.62142,
+"lon": 104.06511,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "124f239e-13dc-4a39-af38-4d91c55c6b79",
+"name": "老妈蹄花",
+"category": "chinese_restaurant",
+"confidence": 0.684,
+"lat": 30.6516,
+"lon": 104.07693,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "2179cb2f-19d3-46e1-a83f-3faee6a4627f",
+"name": "香霸头乌鱼片",
+"category": "restaurant",
+"confidence": 0.684,
+"lat": 30.5298,
+"lon": 104.06281,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ff1024d4-17d2-411e-af3d-ff1512a2af72",
+"name": "成都印象",
+"category": "chinese_restaurant",
+"confidence": 0.679,
+"lat": 30.61989,
+"lon": 104.04707,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "40924c66-57de-4827-940f-e8ff4f1cd7ef",
+"name": "玥轩",
+"category": "chinese_restaurant",
+"confidence": 0.677,
+"lat": 30.65664,
+"lon": 104.07971,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "de879752-6ada-4a56-8b10-8d3f0f63e84e",
+"name": "蜀中吴养生板栗鸡",
+"category": "chicken_restaurant",
+"confidence": 0.677,
+"lat": 30.55433,
+"lon": 104.07109,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "f05e7616-c082-4f90-a3d1-c956bbb2b42c",
+"name": "见山书院",
+"category": "chinese_restaurant",
+"confidence": 0.677,
+"lat": 30.66629,
+"lon": 104.05166,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "4a0d33ec-f31e-47d0-b0f6-64db455a6a9f",
+"name": "柴门饭儿",
+"category": "chinese_restaurant",
+"confidence": 0.674,
+"lat": 30.65579,
+"lon": 104.08051,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "a5d93144-9998-4aec-83f7-45cd35715db9",
+"name": "二当家",
+"category": "chinese_restaurant",
+"confidence": 0.673,
+"lat": 30.65689,
+"lon": 104.07787,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ded2e0e0-d731-4198-b0d7-763f234aa111",
+"name": "如轩海鲜粥",
+"category": "chinese_restaurant",
+"confidence": 0.673,
+"lat": 30.63236,
+"lon": 104.07326,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "015b1391-fdf1-4696-9b6b-52c4e2f372a7",
+"name": "天香仁和酒楼",
+"category": "restaurant",
+"confidence": 0.671,
+"lat": 30.64233,
+"lon": 104.09403,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "027d3977-8a24-4f3b-9ddc-e0f23f9301ff",
+"name": "粤小虎点心小炒",
+"category": "chinese_restaurant",
+"confidence": 0.665,
+"lat": 30.65261,
+"lon": 104.08048,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "a50c4e38-da1f-4e34-a0d5-a50356660164",
+"name": "大喜川菜",
+"category": "chinese_restaurant",
+"confidence": 0.664,
+"lat": 30.55709,
+"lon": 104.07506,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "be64e7b6-6842-463c-9ec9-ecd6abe61205",
+"name": "初代(奎星楼总店)",
+"category": "dessert_shop",
+"confidence": 0.664,
+"lat": 30.67127,
+"lon": 104.05032,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "9ede3a77-4f12-4e38-9fb6-95499a8e98de",
+"name": "皇城老妈·壹小馆",
+"category": "chinese_restaurant",
+"confidence": 0.661,
+"lat": 30.65832,
+"lon": 104.07961,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "20bb7f5c-0dd9-42ea-bea3-66f655a9b1fd",
+"name": "生如夏花·泰式海鲜火锅",
+"category": "thai_restaurant",
+"confidence": 0.659,
+"lat": 30.66978,
+"lon": 104.0028,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "287a8fc7-1c68-41c5-b979-b6251adeb7e0",
+"name": "Sabaidee萨芭蒂.高空花园餐吧",
+"category": "thai_restaurant",
+"confidence": 0.657,
+"lat": 30.63709,
+"lon": 104.06824,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "6ca904b1-81a8-40d0-b224-1cf9a21c60db",
+"name": "月满大江火锅",
+"category": "chinese_restaurant",
+"confidence": 0.655,
+"lat": 30.61812,
+"lon": 104.0745,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "0280d9f4-e9f4-4d3f-9618-75645511db43",
+"name": "俏江南",
+"category": "restaurant",
+"confidence": 0.655,
+"lat": 30.57093,
+"lon": 104.06287,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "8e2b6f01-d19b-4573-953e-fdc9a635d75d",
+"name": "努力餐",
+"category": "restaurant",
+"confidence": 0.655,
+"lat": 30.66261,
+"lon": 104.05331,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "e246942c-1570-4f19-8fb3-4d3f0fe382c8",
+"name": "金翠河港式茶餐厅",
+"category": "chinese_restaurant",
+"confidence": 0.653,
+"lat": 30.65811,
+"lon": 104.07903,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "10c3c635-6978-46b7-bb96-9222861df56d",
+"name": "南堂馆",
+"category": "chinese_restaurant",
+"confidence": 0.648,
+"lat": 30.65525,
+"lon": 104.06521,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "2678bc0a-e5bd-4cef-934f-fe6b7134cb2a",
+"name": "味千拉面",
+"category": "japanese_restaurant",
+"confidence": 0.645,
+"lat": 30.63407,
+"lon": 104.06503,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "2caa0494-2126-4a9b-8254-d000fac09bef",
+"name": "大蓉和",
+"category": "chinese_restaurant",
+"confidence": 0.644,
+"lat": 30.5497,
+"lon": 104.06461,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "a8f0b267-c5ed-4c88-a08a-ef856751e71b",
+"name": "彼得西餐厅",
+"category": "texmex_restaurant",
+"confidence": 0.643,
+"lat": 30.6279,
+"lon": 104.07093,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1ada67ba-256f-4f6f-867a-2c57b667cced",
+"name": "厕所串串",
+"category": "chinese_restaurant",
+"confidence": 0.642,
+"lat": 30.64398,
+"lon": 104.04259,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "82e64ce0-422c-4785-8b9c-98aa3294a8ab",
+"name": "Guo大龙火锅",
+"category": "chinese_restaurant",
+"confidence": 0.64,
+"lat": 30.62262,
+"lon": 104.05636,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "4f6284c5-10f1-409f-ae28-f4b61299644e",
+"name": "南堂倌",
+"category": "restaurant",
+"confidence": 0.64,
+"lat": 30.547,
+"lon": 104.05923,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "a583cab8-6e9b-41ea-a7dd-0a0fc09f891d",
+"name": "味原割烹料理",
+"category": "japanese_restaurant",
+"confidence": 0.638,
+"lat": 30.68008,
+"lon": 104.00787,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "5923e652-fd1e-45c0-ac09-b8640cd5a046",
+"name": "市井生活",
+"category": "chinese_restaurant",
+"confidence": 0.635,
+"lat": 30.66532,
+"lon": 104.05145,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "88d6d659-8eac-4ba4-9751-ebe688f16ab2",
+"name": "三顾园",
+"category": "restaurant",
+"confidence": 0.635,
+"lat": 30.6474,
+"lon": 104.04736,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "dd4a23b3-e746-43c1-8499-ebafeed0cc17",
+"name": "五斗柴老灶火锅",
+"category": "restaurant",
+"confidence": 0.632,
+"lat": 30.55506,
+"lon": 104.07234,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "7fb65e1d-bc82-439e-ae69-0917668e23d2",
+"name": "双流老妈兔头",
+"category": "chinese_restaurant",
+"confidence": 0.632,
+"lat": 30.67456,
+"lon": 104.06876,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "d6a5db80-48d9-414a-b1de-d2779ab1faf5",
+"name": "王婆荞面",
+"category": "chinese_restaurant",
+"confidence": 0.631,
+"lat": 30.65584,
+"lon": 104.06981,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1eb5a08d-40c8-48ba-9ea4-6f69c523632c",
+"name": "川传串",
+"category": "chinese_restaurant",
+"confidence": 0.631,
+"lat": 30.6681,
+"lon": 104.04949,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "c2a80b2f-9ceb-4fb3-bc0e-9c832bbd82cf",
+"name": "爱妻牛排火锅",
+"category": "chinese_restaurant",
+"confidence": 0.628,
+"lat": 30.64265,
+"lon": 104.07741,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "627149c6-b7a3-43f7-8e71-d937ad91918c",
+"name": "自留田西北菜",
+"category": "chinese_restaurant",
+"confidence": 0.627,
+"lat": 30.6688,
+"lon": 104.11189,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "601465f9-b4ff-4c50-87f6-02a3859181dd",
+"name": "金芙蓉酒楼",
+"category": "chinese_restaurant",
+"confidence": 0.626,
+"lat": 30.67477,
+"lon": 104.07107,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b6f1f871-7cfd-473f-866e-f04c96c9f20f",
+"name": "甘食记私房小吃",
+"category": "chinese_restaurant",
+"confidence": 0.625,
+"lat": 30.60449,
+"lon": 104.06087,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "f8a4eb48-3d8e-40be-975b-c02ccf5b9af8",
+"name": "雷门火锅",
+"category": "chinese_restaurant",
+"confidence": 0.625,
+"lat": 30.55182,
+"lon": 104.06481,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "03676845-ad25-419e-836d-d21be5c1b0b9",
+"name": "布达拉藏餐",
+"category": "asian_restaurant",
+"confidence": 0.624,
+"lat": 30.64389,
+"lon": 104.04797,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1caa0579-abdf-4d3b-9872-1f6fb90adf0e",
+"name": "锦悦法餐厅",
+"category": "french_restaurant",
+"confidence": 0.623,
+"lat": 30.65015,
+"lon": 104.06159,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "25eb6931-6f93-466f-8fd9-91149c9e2b03",
+"name": "王大爷烧烤(玉林)",
+"category": "barbecue_restaurant",
+"confidence": 0.622,
+"lat": 30.63174,
+"lon": 104.061,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b121677f-9235-4210-8e42-fcb41eff18a5",
+"name": "蜀九香火锅酒楼",
+"category": "restaurant",
+"confidence": 0.621,
+"lat": 30.62689,
+"lon": 104.05619,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "4a8cdea4-2994-41e7-a1e9-871d52c7f2b6",
+"name": "泸州酸菜豆花火锅",
+"category": "dim_sum_restaurant",
+"confidence": 0.621,
+"lat": 30.55962,
+"lon": 104.05061,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "94b259c2-4102-40d7-a721-7a8aac7454b6",
+"name": "蜀少原味老火锅 太古里店",
+"category": "chinese_restaurant",
+"confidence": 0.619,
+"lat": 30.65178,
+"lon": 104.08064,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "fc4c6036-a570-4e85-a9de-a9dc6b295870",
+"name": "呈祥东馆",
+"category": "asian_restaurant",
+"confidence": 0.619,
+"lat": 30.6669,
+"lon": 104.1134,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "55b3a86b-618b-42bf-9e81-1d0db4b67f14",
+"name": "三只耳火锅",
+"category": "chinese_restaurant",
+"confidence": 0.617,
+"lat": 30.6559,
+"lon": 104.09464,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "97ca2f16-ac9d-4ac5-a4c4-f444533807bf",
+"name": "满记甜品",
+"category": "dessert_shop",
+"confidence": 0.616,
+"lat": 30.60233,
+"lon": 104.06033,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b3316c9a-5612-44e0-8b83-8babd020dd6b",
+"name": "牛排坊",
+"category": "steakhouse",
+"confidence": 0.613,
+"lat": 30.65362,
+"lon": 104.07669,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "71b0b70d-ac1d-49f9-9c04-25a519484ba6",
+"name": "兄弟手提串串",
+"category": "chinese_restaurant",
+"confidence": 0.613,
+"lat": 30.62358,
+"lon": 104.05994,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "cb734242-1162-43c5-a0d7-27d8006762da",
+"name": "老号无名包子",
+"category": "bakery",
+"confidence": 0.613,
+"lat": 30.66547,
+"lon": 104.05328,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "1a2a98b0-d99d-4a78-839a-3877e978eacd",
+"name": "春熙坊唐宋美食街",
+"category": "restaurant",
+"confidence": 0.613,
+"lat": 30.65862,
+"lon": 104.07796,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "60fa38ee-a860-4c7b-bc3a-fca841d65e02",
+"name": "味觉美蛙鱼头",
+"category": "chinese_restaurant",
+"confidence": 0.612,
+"lat": 30.63371,
+"lon": 104.07352,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "7a6bf230-4b35-43bb-a78f-bae7d6e02fea",
+"name": "炉鱼LUYU",
+"category": "chinese_restaurant",
+"confidence": 0.612,
+"lat": 30.6563,
+"lon": 104.08246,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "f55d625a-40e1-4058-94e4-e14fb4aac3cf",
+"name": "朴素素食餐厅",
+"category": "vegetarian_restaurant",
+"confidence": 0.612,
+"lat": 30.66653,
+"lon": 104.05154,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "cb8c7b40-cd2d-4c89-b54a-2cff218ea5af",
+"name": "银杏金阁",
+"category": "chinese_restaurant",
+"confidence": 0.61,
+"lat": 30.65186,
+"lon": 104.05471,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "5c19f360-6b7c-4b1a-86bd-c3f3def8b2dd",
+"name": "烤匠｜科华路店",
+"category": "barbecue_restaurant",
+"confidence": 0.609,
+"lat": 30.62598,
+"lon": 104.07478,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "59bd53b7-7d59-4305-ad93-99982e5f98bd",
+"name": "皇城坝",
+"category": "chinese_restaurant",
+"confidence": 0.609,
+"lat": 30.64548,
+"lon": 104.0419,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "cc8fc583-be90-47ad-a7d5-e3064abf0790",
+"name": "兰亭叙",
+"category": "restaurant",
+"confidence": 0.609,
+"lat": 30.66405,
+"lon": 104.05326,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "d0923ab7-77a5-4ce3-8ae8-3500949f9d46",
+"name": "(清真皇城坝牛肉馆(三桂街店))",
+"category": "chinese_restaurant",
+"confidence": 0.608,
+"lat": 30.66449,
+"lon": 104.0714,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "f5de2612-e5d7-45b7-9d91-af82ca27b512",
+"name": "天府神厨火锅",
+"category": "chinese_restaurant",
+"confidence": 0.607,
+"lat": 30.66973,
+"lon": 104.07111,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "7f7966bf-4fbe-47b9-9ca8-dc4cd93efe6c",
+"name": "尚味老火锅",
+"category": "restaurant",
+"confidence": 0.606,
+"lat": 30.65615,
+"lon": 104.09557,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "cb96016a-596a-4849-8698-a4814c3cbffb",
+"name": "一风堂",
+"category": "japanese_restaurant",
+"confidence": 0.605,
+"lat": 30.658,
+"lon": 104.07755,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "b899b330-1b4f-43c2-aa8a-9ad5fabd5411",
+"name": "天添饭店",
+"category": "chinese_restaurant",
+"confidence": 0.601,
+"lat": 30.62958,
+"lon": 104.06271,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "18fc67f8-e615-42a3-acc6-433d963f034b",
+"name": "味蜀吾老火锅",
+"category": "chinese_restaurant",
+"confidence": 0.601,
+"lat": 30.65091,
+"lon": 104.07104,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "68a2c8a9-85f2-4e7f-82ec-0ef768ab02c7",
+"name": "苏坦",
+"category": "turkish_restaurant",
+"confidence": 0.6,
+"lat": 30.65648,
+"lon": 104.08238,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "ac370f24-bf8b-4a7c-a51c-c9b94622946d",
+"name": "秋金小炒",
+"category": "restaurant",
+"confidence": 0.6,
+"lat": 30.65169,
+"lon": 104.07504,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "restaurant",
+"id": "e60237df-acbc-4c24-a086-8e012442beef",
+"name": "花舞人间",
+"category": "chinese_restaurant",
+"confidence": 0.6,
+"lat": 30.68797,
+"lon": 103.88843,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "eb80e778-f114-4538-8266-ce792b62854e",
+"name": "锦里",
+"category": "historic_site",
+"confidence": 0.985,
+"lat": 30.64922,
+"lon": 104.04716,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f7834ce0-e3e2-4b27-bdc9-60b56b4590ec",
+"name": "武侯祠",
+"category": "historic_site",
+"confidence": 0.983,
+"lat": 30.64786,
+"lon": 104.04693,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "29b28502-fbda-4875-a324-8db2003b141b",
+"name": "成都望江楼公园",
+"category": "park",
+"confidence": 0.978,
+"lat": 30.63363,
+"lon": 104.09005,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "4a05ab5a-8932-44b8-9486-6293efbdceb8",
+"name": "万达广场",
+"category": "shopping_mall",
+"confidence": 0.977,
+"lat": 30.68928,
+"lon": 104.07176,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d7af2157-671e-406f-8d26-9655f1ba47e7",
+"name": "成都银泰中心in99",
+"category": "shopping_mall",
+"confidence": 0.971,
+"lat": 30.58737,
+"lon": 104.06708,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "9c6cd365-ec6e-402a-819b-38f4e412c184",
+"name": "玉林路小酒馆",
+"category": "wine_bar",
+"confidence": 0.971,
+"lat": 30.63175,
+"lon": 104.0538,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ef602443-0a1a-43bf-8913-cfccb2c698f9",
+"name": "锦城湖公园",
+"category": "park",
+"confidence": 0.963,
+"lat": 30.56906,
+"lon": 104.04794,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "e356c6cc-bc4a-4aa6-b42a-1d6a9391e7fc",
+"name": "仁恒置地广场",
+"category": "shopping_mall",
+"confidence": 0.96,
+"lat": 30.65449,
+"lon": 104.06535,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "4904078a-7761-4685-87e5-468fb1dcb36f",
+"name": "Bar井酒吧",
+"category": "bar",
+"confidence": 0.958,
+"lat": 30.65396,
+"lon": 104.08212,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "bef5a814-b2cc-4535-9877-22b20044eaf2",
+"name": "万象城",
+"category": "shopping_mall",
+"confidence": 0.946,
+"lat": 30.65236,
+"lon": 104.1134,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d3f43ccb-c1fc-4c27-958f-e89031b1deb1",
+"name": "神州版画博物馆",
+"category": "museum",
+"confidence": 0.945,
+"lat": 30.65943,
+"lon": 104.06148,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "21faa1c8-52e2-4d37-9db0-8fb658e4914d",
+"name": "府南河活水公园西门",
+"category": "park",
+"confidence": 0.943,
+"lat": 30.67023,
+"lon": 104.0882,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d8401f11-cf75-420f-a42f-be47f9a56e19",
+"name": "大源中央公园",
+"category": "park",
+"confidence": 0.93,
+"lat": 30.54788,
+"lon": 104.03519,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "bd7e950a-0db5-435c-9df3-108fc10c13bb",
+"name": "文殊院",
+"category": "historic_site",
+"confidence": 0.916,
+"lat": 30.67688,
+"lon": 104.06999,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "84c7c86f-8262-4f3a-ba21-2b6322db929c",
+"name": "青龙湖湿地公园",
+"category": "park",
+"confidence": 0.915,
+"lat": 30.62375,
+"lon": 104.17442,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "1692729f-4b3f-4873-be8a-047953b622cd",
+"name": "凯丹广场",
+"category": "shopping_mall",
+"confidence": 0.912,
+"lat": 30.60499,
+"lon": 104.06047,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "e5cb0602-2c95-4c61-83bd-0cb2844bc529",
+"name": "水井坊博物馆",
+"category": "history_museum",
+"confidence": 0.903,
+"lat": 30.64813,
+"lon": 104.08331,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a85800a7-17c3-4b0b-935e-b9b0a4569f65",
+"name": "凯德天府",
+"category": "shopping_mall",
+"confidence": 0.9,
+"lat": 30.60524,
+"lon": 104.06673,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "314f4bd8-8997-4479-bcdc-47f144829eb6",
+"name": "王府井百货",
+"category": "department_store",
+"confidence": 0.899,
+"lat": 30.66032,
+"lon": 104.07694,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ad58f030-fa12-4e6e-ad2d-496db51f2cee",
+"name": "成都 塔子山公园",
+"category": "park",
+"confidence": 0.894,
+"lat": 30.63044,
+"lon": 104.12292,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f91e4292-5631-4cf9-8d4d-d09454f0ae4d",
+"name": "成都动物园",
+"category": "zoo",
+"confidence": 0.886,
+"lat": 30.71327,
+"lon": 104.10285,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f0f55c16-101b-4066-9315-b5ee061a9bb3",
+"name": "成都青羊万达",
+"category": "shopping_mall",
+"confidence": 0.885,
+"lat": 30.67889,
+"lon": 103.97089,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "571469d2-324c-4fe1-a121-231dec48014e",
+"name": "成都博物馆",
+"category": "art_museum",
+"confidence": 0.883,
+"lat": 30.65936,
+"lon": 104.06136,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "6b907ebc-d8f9-4ff1-abea-c50445dbc0b5",
+"name": "天合汇锦城",
+"category": "historic_site",
+"confidence": 0.882,
+"lat": 30.55836,
+"lon": 104.05236,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ff129bc0-0f15-4b87-ad24-fef598415cd1",
+"name": "九龙广场",
+"category": "shopping_mall",
+"confidence": 0.878,
+"lat": 30.65978,
+"lon": 104.06925,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a0ec6ba7-b568-464c-a8e8-25a3ef237a3c",
+"name": "四川艺术馆",
+"category": "art_museum",
+"confidence": 0.878,
+"lat": 30.66091,
+"lon": 104.05892,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "942bde0b-6ddd-48ce-8d52-0e66464b552a",
+"name": "不二音乐餐吧",
+"category": "music_venue",
+"confidence": 0.877,
+"lat": 30.64443,
+"lon": 104.08119,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "62fcdabe-e334-4158-8465-f78c3c519b46",
+"name": "成都天府广场",
+"category": "historic_site",
+"confidence": 0.877,
+"lat": 30.65966,
+"lon": 104.06335,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a570408f-3027-4407-ad83-868813a17938",
+"name": "天艺浓园艺术村",
+"category": "historic_site",
+"confidence": 0.876,
+"lat": 30.59016,
+"lon": 104.00439,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "c53debe5-419b-42fe-bb74-d486a311c9f3",
+"name": "王府井购物中心",
+"category": "shopping_mall",
+"confidence": 0.874,
+"lat": 30.62125,
+"lon": 104.07378,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "65c2096c-8d5c-4b19-9b86-cd60ae580d58",
+"name": "象南里",
+"category": "historic_site",
+"confidence": 0.872,
+"lat": 30.58869,
+"lon": 104.0472,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "03f50544-55a9-44ee-a4de-75c84a3e149b",
+"name": "海滨城",
+"category": "shopping_mall",
+"confidence": 0.872,
+"lat": 30.60635,
+"lon": 103.90773,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "7e15bcba-7f20-4bbf-b33d-db29f1c22cef",
+"name": "特味轩",
+"category": "shopping_mall",
+"confidence": 0.87,
+"lat": 30.63442,
+"lon": 104.06464,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d52fc2b2-4bc8-47e0-82c6-bfcbcabb9023",
+"name": "悠方购物中心",
+"category": "shopping_mall",
+"confidence": 0.868,
+"lat": 30.58303,
+"lon": 104.05778,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "3281012f-32d4-4141-a018-f1ba56bd6ade",
+"name": "北京华联空港购物中心",
+"category": "shopping_mall",
+"confidence": 0.868,
+"lat": 30.5744,
+"lon": 103.98469,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "aca37c9a-e0d2-4d78-a16a-a5ca669031f4",
+"name": "胡桃里音乐酒馆 文殊坊",
+"category": "music_venue",
+"confidence": 0.867,
+"lat": 30.67521,
+"lon": 104.0713,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "312b930f-730a-4311-907f-0035d44b9049",
+"name": "Commune公社",
+"category": "pub",
+"confidence": 0.865,
+"lat": 30.6274,
+"lon": 104.07284,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "8b23f679-ec96-4cb0-908d-3a4b4f94f81d",
+"name": "成都百花潭公园",
+"category": "park",
+"confidence": 0.865,
+"lat": 30.65859,
+"lon": 104.0411,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "72dd8738-7def-4b9a-b9a5-8be9d43fa1b2",
+"name": "四川安岳华严洞",
+"category": "historic_site",
+"confidence": 0.865,
+"lat": 30.58144,
+"lon": 103.99724,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "b39c0d66-7a41-4fb9-b2f3-0b8c3ffcf392",
+"name": "成都珠江国际花园",
+"category": "historic_site",
+"confidence": 0.864,
+"lat": 30.69193,
+"lon": 103.85452,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ace2674d-be3b-416d-a57a-26ff65721ff6",
+"name": "三义庙",
+"category": "park",
+"confidence": 0.863,
+"lat": 30.64916,
+"lon": 104.04689,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a6b980a4-fd26-4eed-8918-08067fb2c056",
+"name": "合江亭",
+"category": "historic_site",
+"confidence": 0.863,
+"lat": 30.64644,
+"lon": 104.07932,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2b714d12-903b-45d9-a347-b85b171aca80",
+"name": "成都大悦城",
+"category": "shopping_mall",
+"confidence": 0.862,
+"lat": 30.62894,
+"lon": 104.00835,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "343fa491-72a7-4481-8391-698ba336676b",
+"name": "保利198公园",
+"category": "park",
+"confidence": 0.856,
+"lat": 30.75128,
+"lon": 104.14332,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "64009349-3aa3-43eb-83bd-6c957f0469f5",
+"name": "东湖公园",
+"category": "park",
+"confidence": 0.855,
+"lat": 30.61927,
+"lon": 104.08521,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a28463fe-6899-4168-a53a-e83dfbf24363",
+"name": "伊藤洋华堂双楠店",
+"category": "department_store",
+"confidence": 0.855,
+"lat": 30.64883,
+"lon": 104.01904,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "e8a149aa-b0e4-430e-911c-836702f0acbc",
+"name": "四川博物院",
+"category": "museum",
+"confidence": 0.855,
+"lat": 30.66027,
+"lon": 104.03433,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "fdd5dc2c-5046-4892-ad65-063d7a63aa44",
+"name": "成都市彭州市白鹿中法传统风情小镇",
+"category": "historic_site",
+"confidence": 0.854,
+"lat": 30.72114,
+"lon": 103.97285,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "c9c1446f-c517-4f65-a964-8e880bf40f3b",
+"name": "成都当代美术馆",
+"category": "art_museum",
+"confidence": 0.852,
+"lat": 30.54221,
+"lon": 104.06593,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "bfd972c7-7064-4588-a9a0-627bef5984f3",
+"name": "富力天汇",
+"category": "shopping_mall",
+"confidence": 0.847,
+"lat": 30.66774,
+"lon": 104.06781,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "94d1aa11-5164-46ef-8601-b8bef9a33125",
+"name": "浣花溪",
+"category": "park",
+"confidence": 0.844,
+"lat": 30.65817,
+"lon": 104.02908,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d66b1719-88b9-4ac8-b24a-5f00bff1b1e3",
+"name": "成都来福士广场",
+"category": "shopping_mall",
+"confidence": 0.843,
+"lat": 30.63408,
+"lon": 104.06532,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "db84524e-eb47-4935-b335-31d217ac578d",
+"name": "双流中心公园",
+"category": "park",
+"confidence": 0.839,
+"lat": 30.59225,
+"lon": 103.90383,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "0a959d69-7c50-4106-bff5-cea7243417b0",
+"name": "太平洋咖啡 - 成都万象城二期店",
+"category": "shopping_mall",
+"confidence": 0.837,
+"lat": 30.65062,
+"lon": 104.1114,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "7c1839b3-4d73-49b1-80aa-dff83ef7c2de",
+"name": "永陵博物馆",
+"category": "history_museum",
+"confidence": 0.837,
+"lat": 30.67562,
+"lon": 104.04448,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2a10a6ce-cb71-4dc8-b55b-dc330eda103f",
+"name": "成都欧洲中心",
+"category": "historic_site",
+"confidence": 0.835,
+"lat": 30.53922,
+"lon": 104.06821,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "7e502f40-7e04-4087-b343-fdc1b078688a",
+"name": "建发·鹭洲里",
+"category": "shopping_mall",
+"confidence": 0.83,
+"lat": 30.55305,
+"lon": 104.04078,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "af885243-8675-4a51-a55b-90899ab031c3",
+"name": "艾荷",
+"category": "bar",
+"confidence": 0.827,
+"lat": 30.64081,
+"lon": 104.08501,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d4ec1f72-e247-40d7-b13e-31843aa2f9f8",
+"name": "正火艺术中心1号馆",
+"category": "music_venue",
+"confidence": 0.826,
+"lat": 30.62204,
+"lon": 104.15057,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "0f9f179a-c65c-4311-b17d-099d7d11fc86",
+"name": "新光天地成都",
+"category": "shopping_mall",
+"confidence": 0.823,
+"lat": 30.68581,
+"lon": 103.85764,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "4924708b-83af-4673-b929-0b0173f2edcf",
+"name": "九方广场",
+"category": "shopping_mall",
+"confidence": 0.823,
+"lat": 30.59253,
+"lon": 104.0629,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "9d02ad44-47b1-4569-a827-dd44fa21da37",
+"name": "老桂湖公园",
+"category": "park",
+"confidence": 0.823,
+"lat": 30.82267,
+"lon": 104.15543,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "134f71f9-b827-4658-8dc6-d8992b3ff7ba",
+"name": "文化公园﹣蜀风雅韵",
+"category": "park",
+"confidence": 0.82,
+"lat": 30.66363,
+"lon": 104.04286,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "8840622b-3d2f-4bab-b58b-951e84fcb5bc",
+"name": "晶融汇",
+"category": "historic_site",
+"confidence": 0.816,
+"lat": 30.65428,
+"lon": 104.07912,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "9531c3fd-2a2c-4d4a-a0eb-4d065834ab1a",
+"name": "恒大广场",
+"category": "shopping_mall",
+"confidence": 0.815,
+"lat": 30.6638,
+"lon": 104.07178,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "b05667aa-1a64-4b77-9a60-cb5fbf68016f",
+"name": "武侯区",
+"category": "historic_site",
+"confidence": 0.814,
+"lat": 30.6492,
+"lon": 104.044,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "6686b9f5-a07c-415f-869e-1cbdde5aac0d",
+"name": "成都财富中心",
+"category": "shopping_mall",
+"confidence": 0.813,
+"lat": 30.6515,
+"lon": 104.0671,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "51f4bb78-98ab-4f2f-8406-1fe49e047bba",
+"name": "青羊区",
+"category": "historic_site",
+"confidence": 0.813,
+"lat": 30.6881,
+"lon": 104.062,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d0b1627e-1a34-4ba8-b7ba-85a65d01656e",
+"name": "西村大院",
+"category": "shopping_mall",
+"confidence": 0.811,
+"lat": 30.67215,
+"lon": 104.0039,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f6fee947-d705-435f-849d-04f565525c56",
+"name": "胡桃里音乐餐厅",
+"category": "bar",
+"confidence": 0.81,
+"lat": 30.55924,
+"lon": 104.07306,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "dee42429-7274-4e7e-b905-fc2b82098b4e",
+"name": "新华公园",
+"category": "park",
+"confidence": 0.806,
+"lat": 30.6587,
+"lon": 104.10313,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "da60c8c6-ac48-4a0d-a761-09b88a3c1751",
+"name": "成都东区音乐公园",
+"category": "music_venue",
+"confidence": 0.804,
+"lat": 30.67181,
+"lon": 104.12091,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "30628700-c0a3-4b1f-babd-90c928f8d62a",
+"name": "华宇广场",
+"category": "shopping_mall",
+"confidence": 0.8,
+"lat": 30.62586,
+"lon": 104.11962,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "8a507e3a-21f1-4b74-9668-917a60bdc25f",
+"name": "成华区",
+"category": "historic_site",
+"confidence": 0.799,
+"lat": 30.66,
+"lon": 104.10194,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "307064e5-df8e-4da0-91cc-ae909842b0bf",
+"name": "凯德广场",
+"category": "shopping_mall",
+"confidence": 0.795,
+"lat": 30.70555,
+"lon": 104.04148,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a090719f-6490-45f8-a63a-8e8ab5c4bfca",
+"name": "新都区 (成都市)",
+"category": "historic_site",
+"confidence": 0.795,
+"lat": 30.8125,
+"lon": 104.17348,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "23d7344a-37d3-4eb9-afd8-6cfb4f5f61cd",
+"name": "成都锦城艺术宫",
+"category": "music_venue",
+"confidence": 0.795,
+"lat": 30.66006,
+"lon": 104.06583,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "690c7073-70c9-4c37-b46d-2b752d15903c",
+"name": "伊藤广场",
+"category": "shopping_mall",
+"confidence": 0.794,
+"lat": 30.60714,
+"lon": 104.15398,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "88edfa94-f763-4eac-90ae-8984d32e0c35",
+"name": "朗御",
+"category": "historic_site",
+"confidence": 0.791,
+"lat": 30.65577,
+"lon": 104.08434,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f9ba412a-ed13-488b-8406-bafc4a592a3d",
+"name": "成都琴台路",
+"category": "historic_site",
+"confidence": 0.788,
+"lat": 30.66211,
+"lon": 104.043,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "8aa5f51f-e8ed-4c9e-b26d-a8bee9276f6d",
+"name": "卓锦曼购中心",
+"category": "shopping_mall",
+"confidence": 0.786,
+"lat": 30.59844,
+"lon": 104.13398,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "613f0362-d0b5-48a8-bd1c-bdd674132ca4",
+"name": "惠陵",
+"category": "historic_site",
+"confidence": 0.783,
+"lat": 30.64903,
+"lon": 104.0465,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "86b36ba4-74cd-4f43-ba04-3a33434d9b71",
+"name": "成都高新区青创园区",
+"category": "park",
+"confidence": 0.781,
+"lat": 30.5414,
+"lon": 104.05894,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "00c8f3dc-da35-4094-9664-c50862090d8c",
+"name": "成都环球购物中心",
+"category": "shopping_mall",
+"confidence": 0.78,
+"lat": 30.57634,
+"lon": 104.06284,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "265e5ac3-dbcf-4f61-9324-35d4dc9e577f",
+"name": "温江公园",
+"category": "park",
+"confidence": 0.778,
+"lat": 30.69916,
+"lon": 103.84424,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "eb1d3900-fab4-4be6-9446-5232958c062d",
+"name": "成都城市音乐厅",
+"category": "historic_site",
+"confidence": 0.776,
+"lat": 30.63865,
+"lon": 104.07795,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f9abed39-6e98-4dba-9da4-c99e444c4e30",
+"name": "成都露天音乐公园",
+"category": "amusement_park",
+"confidence": 0.774,
+"lat": 30.72645,
+"lon": 104.07692,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "0325aff3-d3da-409d-af97-db5faeb4e292",
+"name": "麦德龙",
+"category": "department_store",
+"confidence": 0.77,
+"lat": 30.67249,
+"lon": 104.01777,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "23a769d0-6718-484d-9df4-2856a80e9fd6",
+"name": "国际金融中心",
+"category": "shopping_mall",
+"confidence": 0.77,
+"lat": 30.65662,
+"lon": 104.07885,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "58cfe997-c93f-4ac1-b329-87801748d9d4",
+"name": "新世纪环球中心",
+"category": "shopping_mall",
+"confidence": 0.77,
+"lat": 30.57127,
+"lon": 104.0603,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "9133790a-b32a-42a2-a5e9-e2b11e660ddb",
+"name": "成都大熊猫繁育研究基地",
+"category": "zoo",
+"confidence": 0.77,
+"lat": 30.73875,
+"lon": 104.14284,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "aaadd8a2-1a7c-4156-92a3-26b91ea39f95",
+"name": "望江楼公园",
+"category": "park",
+"confidence": 0.77,
+"lat": 30.63202,
+"lon": 104.08989,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "aaeaa616-e578-44f6-a3b5-1806d0ed9870",
+"name": "杜甫草堂",
+"category": "historic_site",
+"confidence": 0.77,
+"lat": 30.66309,
+"lon": 104.02557,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "ae0a4fd4-9803-48dc-aaca-e853295b1192",
+"name": "来福士广场",
+"category": "shopping_mall",
+"confidence": 0.77,
+"lat": 30.63442,
+"lon": 104.06464,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "c66880c2-1713-43ea-8d58-49a8119a78e8",
+"name": "兰桂坊成都",
+"category": "bar",
+"confidence": 0.77,
+"lat": 30.64673,
+"lon": 104.08273,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "fa4a1343-22a4-46ee-9317-cb8899aef3a7",
+"name": "玉林生活广场",
+"category": "bar",
+"confidence": 0.77,
+"lat": 30.62299,
+"lon": 104.05499,
+"license": "Apache-2.0"
+},
+{
+"kind": "attraction",
+"id": "d847bd62-f201-4eb9-8edd-d9deb1281e61",
+"name": ".成都银石广场",
+"category": "shopping_mall",
+"confidence": 0.769,
+"lat": 30.65594,
+"lon": 104.0767,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "0bf83f28-88bd-401a-82db-50ac70d733aa",
+"name": "活水公园",
+"category": "park",
+"confidence": 0.765,
+"lat": 30.67024,
+"lon": 104.08826,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a184b114-65ef-4b33-a9ef-bd31d7bdc2b9",
+"name": "苏宁广场",
+"category": "shopping_mall",
+"confidence": 0.764,
+"lat": 30.60377,
+"lon": 104.06389,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "b0f0f74b-d8ac-4043-ad4e-590777cb5730",
+"name": "龙湖金楠天街",
+"category": "shopping_mall",
+"confidence": 0.763,
+"lat": 30.6503,
+"lon": 103.99481,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "eaa4abae-a4a5-4ca1-a3ec-66c85a3a7285",
+"name": "岷江源头",
+"category": "historic_site",
+"confidence": 0.762,
+"lat": 30.64514,
+"lon": 103.93713,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "32317e7f-42ac-4de1-9ecb-1af8491d4c53",
+"name": "成都339",
+"category": "shopping_mall",
+"confidence": 0.761,
+"lat": 30.66397,
+"lon": 104.09143,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "57d06275-3454-432b-8cdc-5102976b6539",
+"name": "仁和新城 - 高新店",
+"category": "shopping_mall",
+"confidence": 0.76,
+"lat": 30.59017,
+"lon": 104.04996,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "9242ff5c-a040-447f-b16d-8d925df4d5f3",
+"name": "鹏瑞利广场",
+"category": "shopping_mall",
+"confidence": 0.759,
+"lat": 30.67302,
+"lon": 103.96062,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2be9d030-e63b-4ece-9b36-10c262842852",
+"name": "黄龙溪古镇",
+"category": "historic_site",
+"confidence": 0.755,
+"lat": 30.6667,
+"lon": 104.06699,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "8dacf9f3-350b-4db4-b52d-15a2c64b48b9",
+"name": "Ego潮流广场",
+"category": "shopping_mall",
+"confidence": 0.752,
+"lat": 30.65733,
+"lon": 104.0714,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "b834f32e-17b1-47ff-92c5-5e955e3d6fbe",
+"name": "成都环球中心",
+"category": "shopping_mall",
+"confidence": 0.752,
+"lat": 30.57142,
+"lon": 104.0622,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "015faa80-bc56-4a73-bc2b-7b0f8fda7300",
+"name": "饰品购物中心",
+"category": "shopping_mall",
+"confidence": 0.752,
+"lat": 30.6577,
+"lon": 104.06856,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "b5e2a789-d872-4541-b038-9d2fe7d1dbdb",
+"name": "娇子音乐厅",
+"category": "music_venue",
+"confidence": 0.751,
+"lat": 30.64934,
+"lon": 104.09647,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "eacd3bc9-ddd7-478a-8e54-ceacaaca5ee0",
+"name": "二环BRT东湖公园",
+"category": "park",
+"confidence": 0.75,
+"lat": 30.62367,
+"lon": 104.08972,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "fdb0e0c8-0d53-4c5c-b15b-816ae6634b1c",
+"name": "哥谭广场",
+"category": "historic_site",
+"confidence": 0.746,
+"lat": 30.55923,
+"lon": 104.05215,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "5f19430e-6686-4dca-8c78-332b9a8d2892",
+"name": "小酒馆音乐空间",
+"category": "music_venue",
+"confidence": 0.742,
+"lat": 30.65209,
+"lon": 104.11311,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "0050a596-f43f-4a2d-8cc1-af39771d5529",
+"name": "国金豪庭",
+"category": "historic_site",
+"confidence": 0.738,
+"lat": 30.65626,
+"lon": 104.07904,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d1d854e4-6404-4e2e-b2e9-2b5eefc06376",
+"name": "欧尚",
+"category": "shopping_mall",
+"confidence": 0.736,
+"lat": 30.60481,
+"lon": 104.05881,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "9343026d-cc38-4664-9cf7-383ee26914df",
+"name": "漫花庄园",
+"category": "park",
+"confidence": 0.733,
+"lat": 30.76295,
+"lon": 104.14101,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2be25f87-4ce7-424e-bc7e-573a61a3e10c",
+"name": "许燎原博物馆",
+"category": "art_museum",
+"confidence": 0.731,
+"lat": 30.58532,
+"lon": 104.15402,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ff2452d3-26f7-4f3b-8302-ce90997d40b6",
+"name": "SM广场",
+"category": "shopping_mall",
+"confidence": 0.728,
+"lat": 30.67064,
+"lon": 104.10941,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "768e9afd-2b82-4ce3-bf3b-2d15cc0d4d42",
+"name": "成都王府井",
+"category": "department_store",
+"confidence": 0.727,
+"lat": 30.66094,
+"lon": 104.0778,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "069c6655-1c19-4b76-b07a-e41cf96cced2",
+"name": "成都凯丹广场Shopping",
+"category": "shopping_mall",
+"confidence": 0.726,
+"lat": 30.60494,
+"lon": 104.06055,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "23d7fa26-c1ca-4c01-8fc5-8878002d0d1e",
+"name": "四川三星堆博物馆",
+"category": "historic_site",
+"confidence": 0.724,
+"lat": 30.66711,
+"lon": 104.04945,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "e0ee767c-b7ee-411b-846a-549f43eb0746",
+"name": "(成都)",
+"category": "shopping_mall",
+"confidence": 0.723,
+"lat": 30.63412,
+"lon": 104.06526,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "c995b8fc-e73c-4b27-855d-cfab89eaaa64",
+"name": "兴隆湖",
+"category": "park",
+"confidence": 0.722,
+"lat": 30.5903,
+"lon": 104.09368,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "657869b7-6325-4080-9c60-b10d751eec6b",
+"name": "Bar院吧",
+"category": "bar",
+"confidence": 0.722,
+"lat": 30.62658,
+"lon": 104.07321,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a96996e9-24e3-4fee-a916-09b19f539808",
+"name": "成都杜甫草堂博物馆",
+"category": "museum",
+"confidence": 0.721,
+"lat": 30.6667,
+"lon": 104.06699,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a18db1d0-7849-4c0a-a067-46b3d4a95876",
+"name": "新希望国际",
+"category": "historic_site",
+"confidence": 0.72,
+"lat": 30.5485,
+"lon": 104.0638,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "56fdee9d-6745-43ad-a5a2-2ecefe932d75",
+"name": "成都金牛万达广场",
+"category": "shopping_mall",
+"confidence": 0.718,
+"lat": 30.68625,
+"lon": 104.07446,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d1f5fac2-3d1a-427e-b019-df963fc5799a",
+"name": "隧道酒吧",
+"category": "bar",
+"confidence": 0.718,
+"lat": 30.64095,
+"lon": 104.08562,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "6257c3d9-7254-4cb2-b1da-cbd92ea7ffa0",
+"name": "成都易园园林博物馆",
+"category": "art_museum",
+"confidence": 0.717,
+"lat": 30.71926,
+"lon": 104.01225,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "12ada8e9-eaad-478c-ae1f-c486a8da3a50",
+"name": "华润二十四城",
+"category": "historic_site",
+"confidence": 0.714,
+"lat": 30.64502,
+"lon": 104.1121,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "bb599031-ca92-43d1-acaa-cc4b5913a65e",
+"name": "珠江广场",
+"category": "shopping_mall",
+"confidence": 0.711,
+"lat": 30.6881,
+"lon": 103.86095,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f3f46024-ea01-4345-95d8-b22ac441bab4",
+"name": "神仙树大院",
+"category": "park",
+"confidence": 0.709,
+"lat": 30.62041,
+"lon": 104.04237,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2c33fab2-4626-4b9f-afd8-4834093dbf03",
+"name": "金龙长城",
+"category": "park",
+"confidence": 0.705,
+"lat": 30.65376,
+"lon": 104.18485,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "5374db5a-f7c5-494c-b301-a8acb820fdc7",
+"name": "首开·龙湖西宸天街购物中心",
+"category": "shopping_mall",
+"confidence": 0.705,
+"lat": 30.70065,
+"lon": 104.03091,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "65d52ce9-6f35-421e-84ab-e2aaf2e8f563",
+"name": "望江橡树林",
+"category": "historic_site",
+"confidence": 0.704,
+"lat": 30.62513,
+"lon": 104.09008,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "c3e85efe-a31c-419e-8318-2d2d297b78cf",
+"name": "成都远洋太古里",
+"category": "shopping_mall",
+"confidence": 0.704,
+"lat": 30.6667,
+"lon": 104.06699,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ce88c887-96df-4805-9ccc-682c4c98900d",
+"name": "华宇 蓉国府",
+"category": "historic_site",
+"confidence": 0.703,
+"lat": 30.63085,
+"lon": 104.06223,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ac46a71c-0bc9-49ff-8d27-e72d0e8ca0bb",
+"name": "成都南湖",
+"category": "park",
+"confidence": 0.702,
+"lat": 30.50309,
+"lon": 104.04079,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "92d0693d-1736-4fe4-bece-3e84a95de3b6",
+"name": "𢦓都锦江区le",
+"category": "wine_bar",
+"confidence": 0.702,
+"lat": 30.64789,
+"lon": 104.0802,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "b4d86ae1-2c56-4b1b-b7da-de14e5c090a0",
+"name": "成都文化公园",
+"category": "park",
+"confidence": 0.702,
+"lat": 30.66238,
+"lon": 104.03809,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "61e523e8-ef08-47ae-8c4a-177f8e06df60",
+"name": "西村艺术中心",
+"category": "art_gallery",
+"confidence": 0.7,
+"lat": 30.67322,
+"lon": 104.00156,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d2c8e26d-0477-4c3b-9412-f9fe2ddcadc4",
+"name": "春熙路",
+"category": "historic_site",
+"confidence": 0.699,
+"lat": 30.6341,
+"lon": 104.06544,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "713ba872-54d5-4142-ba22-99d14ccd54b5",
+"name": "钻石广场",
+"category": "shopping_mall",
+"confidence": 0.696,
+"lat": 30.67184,
+"lon": 104.10178,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d9e1e836-8df1-4e22-8e63-bc950dba76b0",
+"name": "福年广场",
+"category": "historic_site",
+"confidence": 0.69,
+"lat": 30.54713,
+"lon": 104.06441,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "b04fcc68-76fe-4239-93a7-e3790df62124",
+"name": "仁和春天百货春天超市",
+"category": "department_store",
+"confidence": 0.676,
+"lat": 30.66511,
+"lon": 104.01833,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a43ba944-fd14-4dd4-b644-a2e7e3c05daa",
+"name": "成都规划馆",
+"category": "museum",
+"confidence": 0.668,
+"lat": 30.58861,
+"lon": 104.06133,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "5d1ddd88-ece9-4b9c-bc17-d6a4f1284f22",
+"name": "银泰城购物中心",
+"category": "shopping_mall",
+"confidence": 0.668,
+"lat": 30.54373,
+"lon": 104.05592,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "a93ebae9-ded4-4cd1-9e6d-abd43658f5a7",
+"name": "小酒馆空间",
+"category": "bar",
+"confidence": 0.665,
+"lat": 30.64981,
+"lon": 104.11548,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2b57bbad-b3f6-4ea1-a140-3890e1abaa75",
+"name": "新城吾悦广场",
+"category": "shopping_mall",
+"confidence": 0.662,
+"lat": 30.57987,
+"lon": 104.23757,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "cbcf9cae-8628-46b2-931d-0ec479ab520e",
+"name": "时代百盛",
+"category": "shopping_mall",
+"confidence": 0.658,
+"lat": 30.65983,
+"lon": 104.077,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "c2656440-27ca-435b-95de-12c06716f68c",
+"name": "凯德广场魅力城",
+"category": "shopping_mall",
+"confidence": 0.658,
+"lat": 30.6291,
+"lon": 104.14989,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2ce35f28-cbb8-4200-b0d3-e580d22dce8b",
+"name": "成都杜甫草堂",
+"category": "historic_site",
+"confidence": 0.657,
+"lat": 30.66283,
+"lon": 104.02588,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f70e8e15-53dc-41fa-a2f3-e371a4814ac2",
+"name": "蓝光·韩国城",
+"category": "shopping_mall",
+"confidence": 0.656,
+"lat": 30.57338,
+"lon": 104.00497,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ee440099-f464-46fd-8fcf-270449822a81",
+"name": "禧来蜀韵老戏院",
+"category": "opera_and_ballet",
+"confidence": 0.656,
+"lat": 30.66604,
+"lon": 104.05057,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "78aaa2be-d149-487b-8bf4-0961c86e9246",
+"name": "天府软件园B区",
+"category": "park",
+"confidence": 0.655,
+"lat": 30.54711,
+"lon": 104.06833,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "5ea7d388-5882-49be-a93a-ed6c80faa363",
+"name": "城南优品道",
+"category": "shopping_mall",
+"confidence": 0.654,
+"lat": 30.59876,
+"lon": 103.91061,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "67bc5611-4fc9-41d0-a459-ca16c9557c34",
+"name": "上海东韵",
+"category": "historic_site",
+"confidence": 0.65,
+"lat": 30.62865,
+"lon": 104.10035,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "9fe84416-c69b-4153-aa67-20382255bb82",
+"name": "第五大道",
+"category": "shopping_mall",
+"confidence": 0.644,
+"lat": 30.67157,
+"lon": 104.10081,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2d7f2f47-4f0b-4998-ad41-d9606c6ef92d",
+"name": "时代广场",
+"category": "shopping_mall",
+"confidence": 0.644,
+"lat": 30.65615,
+"lon": 104.07639,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "608aefc2-f36d-4cb9-bfd7-6f8a54bbcebb",
+"name": "凤凰山公园",
+"category": "park",
+"confidence": 0.641,
+"lat": 30.74084,
+"lon": 104.07941,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "5591200b-694c-4605-bdd0-72feb1547bee",
+"name": "清水河公园",
+"category": "park",
+"confidence": 0.64,
+"lat": 30.67162,
+"lon": 103.97641,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f4a7c19a-1586-4405-82ec-6268d73a3843",
+"name": "成都画院美术馆",
+"category": "art_gallery",
+"confidence": 0.638,
+"lat": 30.66572,
+"lon": 104.05161,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "207796a4-8195-494d-89d3-a254f2e35573",
+"name": "优品道广场",
+"category": "shopping_mall",
+"confidence": 0.637,
+"lat": 30.66484,
+"lon": 104.00507,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "8f50f0cf-2d01-4e3a-89f3-040daa4bc349",
+"name": "思蜀园",
+"category": "park",
+"confidence": 0.637,
+"lat": 30.64664,
+"lon": 104.08081,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2370ffbc-fc32-4d05-91b7-3d8765b391f8",
+"name": "无同",
+"category": "wine_bar",
+"confidence": 0.63,
+"lat": 30.64056,
+"lon": 104.08743,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ce916933-d3f2-4c37-aef2-dd99067df8c6",
+"name": "温江区公园一号商业广场",
+"category": "shopping_mall",
+"confidence": 0.624,
+"lat": 30.70263,
+"lon": 103.84117,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "f0737247-673e-4fd1-b488-2b1cea6d8ca3",
+"name": "成都海洋公园",
+"category": "park",
+"confidence": 0.611,
+"lat": 30.57681,
+"lon": 104.06184,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "704fdda1-dca3-466f-af8c-e8c7be2d79d1",
+"name": "成都金沙遗址博物馆北大门",
+"category": "museum",
+"confidence": 0.609,
+"lat": 30.68592,
+"lon": 104.01217,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "9f161f51-7964-4029-94fa-c00b4c878a80",
+"name": "四方街酒吧",
+"category": "bar",
+"confidence": 0.605,
+"lat": 30.64958,
+"lon": 104.04741,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "63371289-6df4-4f25-b55c-53c5bf721931",
+"name": "南站公园",
+"category": "park",
+"confidence": 0.603,
+"lat": 30.6081,
+"lon": 104.056,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ddec9bac-fdd3-444a-b7c2-d59af821dffb",
+"name": "乐天百货",
+"category": "department_store",
+"confidence": 0.602,
+"lat": 30.56992,
+"lon": 104.06276,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "08672ae7-9224-45be-88a8-b1ec282722a1",
+"name": "万科天荟",
+"category": "shopping_mall",
+"confidence": 0.602,
+"lat": 30.66975,
+"lon": 104.12263,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "ea8923d8-a14b-4640-9042-fe5c1a92906c",
+"name": "桂溪生态公园",
+"category": "park",
+"confidence": 0.601,
+"lat": 30.56313,
+"lon": 104.0673,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "8c4cd2d7-1300-4f50-b4a3-a2be4701cf02",
+"name": "地铁动物园站",
+"category": "zoo",
+"confidence": 0.601,
+"lat": 30.71361,
+"lon": 104.10302,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "d5502328-b4e5-498e-a936-bf370496e423",
+"name": "未来中心",
+"category": "shopping_mall",
+"confidence": 0.6,
+"lat": 30.65305,
+"lon": 104.09302,
+"license": "CDLA-Permissive-2.0"
+},
+{
+"kind": "attraction",
+"id": "2955dedb-0c8a-45b9-96d4-8421271b7ff4",
+"name": "阳光100米娅中心 100",
+"category": "historic_site",
+"confidence": 0.6,
+"lat": 30.63982,
+"lon": 104.13766,
+"license": "CDLA-Permissive-2.0"
+}
+],
+"wikidata": [
+{
+"id": "Q2281517",
+"name": "四川大学",
+"category": "history",
+"sitelinks": 21,
+"lat": 30.63447,
+"lon": 104.08638,
+"license": "CC0-1.0"
+},
+{
+"id": "Q2118734",
+"name": "天府熊猫塔",
+"category": "attraction",
+"sitelinks": 16,
+"lat": 30.66444,
+"lon": 104.09222,
+"license": "CC0-1.0"
+},
+{
+"id": "Q217618",
+"name": "金沙遗址",
+"category": "history",
+"sitelinks": 15,
+"lat": 30.68344,
+"lon": 104.01091,
+"license": "CC0-1.0"
+},
+{
+"id": "Q1067861",
+"name": "成都大熊猫繁育研究基地",
+"category": "nature",
+"sitelinks": 13,
+"lat": 30.73861,
+"lon": 104.14194,
+"license": "CC0-1.0"
+},
+{
+"id": "Q4390891",
+"name": "杜甫草堂",
+"category": "museum",
+"sitelinks": 11,
+"lat": 30.66217,
+"lon": 104.02633,
+"license": "CC0-1.0"
+},
+{
+"id": "Q1069942",
+"name": "成都武侯祠",
+"category": "museum",
+"sitelinks": 8,
+"lat": 30.64831,
+"lon": 104.04703,
+"license": "CC0-1.0"
+},
+{
+"id": "Q10281190",
+"name": "平安桥主教座堂",
+"category": "history",
+"sitelinks": 7,
+"lat": 30.66639,
+"lon": 104.05944,
+"license": "CC0-1.0"
+},
+{
+"id": "Q1540709",
+"name": "王建墓",
+"category": "history",
+"sitelinks": 7,
+"lat": 30.67671,
+"lon": 104.04444,
+"license": "CC0-1.0"
+},
+{
+"id": "Q197497",
+"name": "昭觉寺",
+"category": "history",
+"sitelinks": 7,
+"lat": 30.70811,
+"lon": 104.10347,
+"license": "CC0-1.0"
+},
+{
+"id": "Q976143",
+"name": "皇城清真寺",
+"category": "history",
+"sitelinks": 7,
+"lat": 30.65917,
+"lon": 104.06056,
+"license": "CC0-1.0"
+},
+{
+"id": "Q11080015",
+"name": "文殊院",
+"category": "history",
+"sitelinks": 6,
+"lat": 30.68133,
+"lon": 104.07899,
+"license": "CC0-1.0"
+},
+{
+"id": "Q3127198",
+"name": "欢乐谷(成都)",
+"category": "nature",
+"sitelinks": 6,
+"lat": 30.72352,
+"lon": 104.03282,
+"license": "CC0-1.0"
+},
+{
+"id": "Q10924774",
+"name": "四川博物院",
+"category": "museum",
+"sitelinks": 5,
+"lat": 30.66307,
+"lon": 104.03154,
+"license": "CC0-1.0"
+},
+{
+"id": "Q16927648",
+"name": "人民公园",
+"category": "nature",
+"sitelinks": 5,
+"lat": 30.65945,
+"lon": 104.05541,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21018491",
+"name": "鼓楼南街清真寺",
+"category": "history",
+"sitelinks": 5,
+"lat": 30.66558,
+"lon": 104.06939,
+"license": "CC0-1.0"
+},
+{
+"id": "Q2121639",
+"name": "青羊宫",
+"category": "history",
+"sitelinks": 5,
+"lat": 30.66245,
+"lon": 104.03863,
+"license": "CC0-1.0"
+},
+{
+"id": "Q30588416",
+"name": "成都当代美术馆",
+"category": "museum",
+"sitelinks": 5,
+"lat": 30.55389,
+"lon": 104.04417,
+"license": "CC0-1.0"
+},
+{
+"id": "Q55696247",
+"name": "成都博物馆",
+"category": "museum",
+"sitelinks": 5,
+"lat": 30.65973,
+"lon": 104.0612,
+"license": "CC0-1.0"
+},
+{
+"id": "Q9907170",
+"name": "大慈寺",
+"category": "history",
+"sitelinks": 5,
+"lat": 30.657,
+"lon": 104.08141,
+"license": "CC0-1.0"
+},
+{
+"id": "Q10868216",
+"name": "上翔堂",
+"category": "history",
+"sitelinks": 4,
+"lat": 30.66357,
+"lon": 104.06783,
+"license": "CC0-1.0"
+},
+{
+"id": "Q109655117",
+"name": "成都市天府美术馆",
+"category": "museum",
+"sitelinks": 4,
+"lat": 30.71519,
+"lon": 104.02183,
+"license": "CC0-1.0"
+},
+{
+"id": "Q109655282",
+"name": "天府艺术公园",
+"category": "nature",
+"sitelinks": 4,
+"lat": 30.71329,
+"lon": 104.01971,
+"license": "CC0-1.0"
+},
+{
+"id": "Q109690323",
+"name": "成都市文化公园",
+"category": "nature",
+"sitelinks": 4,
+"lat": 30.66293,
+"lon": 104.04168,
+"license": "CC0-1.0"
+},
+{
+"id": "Q17025263",
+"name": "成都古蜀船棺合葬墓",
+"category": "history",
+"sitelinks": 4,
+"lat": 30.66677,
+"lon": 104.05529,
+"license": "CC0-1.0"
+},
+{
+"id": "Q20669929",
+"name": "成都动物园",
+"category": "nature",
+"sitelinks": 4,
+"lat": 30.711,
+"lon": 104.104,
+"license": "CC0-1.0"
+},
+{
+"id": "Q7507431",
+"name": "四川科技馆",
+"category": "museum",
+"sitelinks": 4,
+"lat": 30.66231,
+"lon": 104.06331,
+"license": "CC0-1.0"
+},
+{
+"id": "Q9668845",
+"name": "四圣祠礼拜堂",
+"category": "history",
+"sitelinks": 4,
+"lat": 30.66281,
+"lon": 104.0852,
+"license": "CC0-1.0"
+},
+{
+"id": "Q109719156",
+"name": "营桂湖",
+"category": "nature",
+"sitelinks": 3,
+"lat": 30.71329,
+"lon": 104.01971,
+"license": "CC0-1.0"
+},
+{
+"id": "Q48928448",
+"name": "川军抗日阵亡将士纪念碑",
+"category": "history",
+"sitelinks": 3,
+"lat": 30.65887,
+"lon": 104.05773,
+"license": "CC0-1.0"
+},
+{
+"id": "Q10564008",
+"name": "金沙遗址博物馆",
+"category": "museum",
+"sitelinks": 2,
+"lat": 30.68556,
+"lon": 104.01195,
+"license": "CC0-1.0"
+},
+{
+"id": "Q109345557",
+"name": "成都琉璃厂窑",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.6001,
+"lon": 104.08976,
+"license": "CC0-1.0"
+},
+{
+"id": "Q109345565",
+"name": "成都广东会馆",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.65544,
+"lon": 104.07985,
+"license": "CC0-1.0"
+},
+{
+"id": "Q10945218",
+"name": "孟知祥墓",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.74115,
+"lon": 104.11961,
+"license": "CC0-1.0"
+},
+{
+"id": "Q109718397",
+"name": "成都市当代艺术馆",
+"category": "museum",
+"sitelinks": 2,
+"lat": 30.71223,
+"lon": 104.01793,
+"license": "CC0-1.0"
+},
+{
+"id": "Q110109122",
+"name": "福音医院建筑群",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66255,
+"lon": 104.08536,
+"license": "CC0-1.0"
+},
+{
+"id": "Q11129500",
+"name": "水井街酒坊遗址",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.64744,
+"lon": 104.08347,
+"license": "CC0-1.0"
+},
+{
+"id": "Q117286788",
+"name": "成汉墓",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.64485,
+"lon": 104.0571,
+"license": "CC0-1.0"
+},
+{
+"id": "Q134892830",
+"name": "土桥清真上寺",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.72506,
+"lon": 104.006,
+"license": "CC0-1.0"
+},
+{
+"id": "Q136766716",
+"name": "成都自然博物馆",
+"category": "museum",
+"sitelinks": 2,
+"lat": 30.68071,
+"lon": 104.14189,
+"license": "CC0-1.0"
+},
+{
+"id": "Q15931237",
+"name": "西川邮政管理局旧址",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66323,
+"lon": 104.0744,
+"license": "CC0-1.0"
+},
+{
+"id": "Q15934393",
+"name": "辛亥秋保路死事纪念碑",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66076,
+"lon": 104.05447,
+"license": "CC0-1.0"
+},
+{
+"id": "Q17022034",
+"name": "十二桥遗址",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66383,
+"lon": 104.04202,
+"license": "CC0-1.0"
+},
+{
+"id": "Q17025657",
+"name": "朱悦燫墓",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.73445,
+"lon": 104.0756,
+"license": "CC0-1.0"
+},
+{
+"id": "Q17038372",
+"name": "江南馆街街坊遗址",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.65573,
+"lon": 104.07791,
+"license": "CC0-1.0"
+},
+{
+"id": "Q17498760",
+"name": "刘湘陵园",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.65042,
+"lon": 104.04541,
+"license": "CC0-1.0"
+},
+{
+"id": "Q18111940",
+"name": "成都东华门遗址",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66444,
+"lon": 104.06556,
+"license": "CC0-1.0"
+},
+{
+"id": "Q18111943",
+"name": "成都十二桥烈士墓",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66262,
+"lon": 104.04057,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017200",
+"name": "二仙庵",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.6631,
+"lon": 104.0403,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017508",
+"name": "尹昌衡公馆",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.65035,
+"lon": 104.07483,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017523",
+"name": "望江楼",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.63278,
+"lon": 104.09111,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017630",
+"name": "成都基督教青年会",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.65885,
+"lon": 104.07591,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017724",
+"name": "李家钰兄弟住宅",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66155,
+"lon": 104.052,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017856",
+"name": "温江文庙",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.70067,
+"lon": 103.83506,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21018120",
+"name": "艾芜墓",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.82192,
+"lon": 104.15469,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21018408",
+"name": "青羊宫窑址",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66597,
+"lon": 104.03862,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21018414",
+"name": "颐庐",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.64268,
+"lon": 104.06095,
+"license": "CC0-1.0"
+},
+{
+"id": "Q24838358",
+"name": "三义庙",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.6492,
+"lon": 104.047,
+"license": "CC0-1.0"
+},
+{
+"id": "Q56271972",
+"name": "努力餐",
+"category": "history",
+"sitelinks": 2,
+"lat": 30.66261,
+"lon": 104.05329,
+"license": "CC0-1.0"
+},
+{
+"id": "Q67936027",
+"name": "浣花溪公园",
+"category": "nature",
+"sitelinks": 2,
+"lat": 30.65956,
+"lon": 104.0275,
+"license": "CC0-1.0"
+},
+{
+"id": "Q67936052",
+"name": "百花潭公园",
+"category": "nature",
+"sitelinks": 2,
+"lat": 30.65868,
+"lon": 104.04144,
+"license": "CC0-1.0"
+},
+{
+"id": "Q102328053",
+"name": "塔子山公园",
+"category": "nature",
+"sitelinks": 1,
+"lat": 30.63726,
+"lon": 104.12135,
+"license": "CC0-1.0"
+},
+{
+"id": "Q110108246",
+"name": "成都陕西会馆",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.6577,
+"lon": 104.0591,
+"license": "CC0-1.0"
+},
+{
+"id": "Q110110176",
+"name": "张大千故居",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.71918,
+"lon": 104.01457,
+"license": "CC0-1.0"
+},
+{
+"id": "Q110110293",
+"name": "民众教育馆旧址",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.6593,
+"lon": 104.05418,
+"license": "CC0-1.0"
+},
+{
+"id": "Q11088189",
+"name": "明蜀王陵",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.64639,
+"lon": 104.18667,
+"license": "CC0-1.0"
+},
+{
+"id": "Q11092442",
+"name": "望江楼古建筑群",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.63278,
+"lon": 104.09111,
+"license": "CC0-1.0"
+},
+{
+"id": "Q111097997",
+"name": "中正图书馆旧址 (成都)",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.65919,
+"lon": 104.05467,
+"license": "CC0-1.0"
+},
+{
+"id": "Q111333203",
+"name": "西南交通大学机车博物园",
+"category": "museum",
+"sitelinks": 1,
+"lat": 30.76419,
+"lon": 103.98939,
+"license": "CC0-1.0"
+},
+{
+"id": "Q113164674",
+"name": "望江楼公园",
+"category": "nature",
+"sitelinks": 1,
+"lat": 30.63189,
+"lon": 104.08988,
+"license": "CC0-1.0"
+},
+{
+"id": "Q126889177",
+"name": "通俗教育馆旧址",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.65958,
+"lon": 104.05386,
+"license": "CC0-1.0"
+},
+{
+"id": "Q133855733",
+"name": "旃檀寺",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.80777,
+"lon": 104.09695,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017374",
+"name": "严谷荪书库",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.66538,
+"lon": 104.07941,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017377",
+"name": "四川大学早期建筑",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.63478,
+"lon": 104.0761,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017378",
+"name": "四川大学行政楼",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.63478,
+"lon": 104.0761,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017586",
+"name": "张家巷天主教堂",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.68129,
+"lon": 104.07944,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017597",
+"name": "张清平宅",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.65734,
+"lon": 104.06123,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017631",
+"name": "成都机车车辆厂厂部大楼",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.68943,
+"lon": 104.12906,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017632",
+"name": "成都画院民居建筑",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.66767,
+"lon": 104.0497,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017633",
+"name": "成都量具刃具厂大楼",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.68847,
+"lon": 104.10066,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017720",
+"name": "李劼人旧居",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.62124,
+"lon": 104.12212,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017723",
+"name": "李家钰住宅",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.65411,
+"lon": 104.05474,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21017915",
+"name": "王光祈墓碑",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.64053,
+"lon": 104.07709,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21018146",
+"name": "四川大学华西校区老建筑群",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.6418,
+"lon": 104.06686,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21018309",
+"name": "金华寺",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.77983,
+"lon": 104.11566,
+"license": "CC0-1.0"
+},
+{
+"id": "Q21018351",
+"name": "陕西会馆",
+"category": "history",
+"sitelinks": 1,
+"lat": 30.65703,
+"lon": 104.05925,
+"license": "CC0-1.0"
+}
+]
+}

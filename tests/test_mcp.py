@@ -18,7 +18,7 @@ from .conftest import REQUEST_TEXT, TODAY
 CALLS = [
     ("get_weather", {"city": "杭州", "start_date": "2026-11-20", "end_date": "2026-11-22"}),
     ("search_hotels", {"city": "北京", "tier": "budget"}),
-    ("search_restaurants", {"city": "成都", "dietary": ["halal"]}),
+    ("search_restaurants", {"city": "成都", "dietary": ["no_spicy"]}),
     ("search_attractions", {"city": "西安", "categories": ["history"], "limit": 3}),
     ("get_route", {"city": "西安", "origin": "xa-a01", "destination": "回民街"}),
 ]

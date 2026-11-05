@@ -27,7 +27,7 @@ from trip_agents.schemas import RequestExtraction
 
 PROFILE_SYSTEM = """你负责从用户在本次对话中的发言里提取「长期偏好」，用于以后的旅行规划。
 可提取的字段（固定）：
-- dietary_restrictions: 饮食禁忌列表（vegetarian/halal/no_pork/no_spicy/no_seafood）
+- dietary_restrictions: 饮食禁忌列表（no_spicy/no_seafood）
 - hotel_tier: 住宿档次（budget/midrange/luxury）
 - pace: 节奏（relaxed/moderate/packed）
 - budget_per_person_per_day: 人均每天预算（元），由用户说的预算、人数、天数换算
