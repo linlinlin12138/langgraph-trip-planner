@@ -84,3 +84,11 @@ def test_fallback_keeps_template_text(tmp_path: Path) -> None:
         raise AssertionError("resume must not call the rewriter again")
 
     assert run({"dev": subset}, boom, check, info, tmp_path)["accepted"] == 3
+
+    other = {"rewriter": {"provider": "fake"}, "checker": {"provider": "other"}}
+    try:
+        run({"dev": subset}, boom, check, other, tmp_path)
+    except SystemExit as e:
+        assert "checker" in str(e)
+    else:
+        raise AssertionError("cached outcomes from another checker must not be reused")

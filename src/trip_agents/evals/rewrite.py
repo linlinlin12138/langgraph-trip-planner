@@ -26,7 +26,8 @@ Risk being controlled: a paraphrase that drops a constraint, changes a number, o
 
 Output goes to ``evals/datasets/llm/`` (the template set is untouched); run evals on it
 with ``--dataset evals/datasets/llm/dev.jsonl``. Resumable: finished ids in
-``rewrite_log.jsonl`` are skipped.
+``rewrite_log.jsonl`` are skipped, so trial runs (``--limit`` / ``--difficulty``) count
+towards the full run. Reuse is refused if the rewriter or checker model changed.
 """
 
 from __future__ import annotations
@@ -253,6 +254,7 @@ def run(
 ) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
     log = out_dir / "rewrite_log.jsonl"
+    _check_same_models(out_dir, info)
     outcomes: dict[str, Outcome] = {}
     if log.exists():
         for line in log.read_text(encoding="utf-8").splitlines():
@@ -295,6 +297,20 @@ def run(
     return meta
 
 
+def _check_same_models(out_dir: Path, info: dict[str, Any]) -> None:
+    """Cached outcomes are only valid for the models that produced them."""
+    meta_path = out_dir / "meta.json"
+    if not (out_dir / "rewrite_log.jsonl").exists() or not meta_path.exists():
+        return
+    old = json.loads(meta_path.read_text(encoding="utf-8"))
+    for role in ("rewriter", "checker"):
+        if old.get(role) != info.get(role):
+            raise SystemExit(
+                f"{out_dir}/rewrite_log.jsonl was made with {role}={old.get(role)}, now {info.get(role)}; "
+                "use another --out or delete the log to start over"
+            )
+
+
 def _by_stratum(samples: list[Sample]) -> dict[str, str]:
     out = {}
     for d, fz in sorted({(s.difficulty, s.feasible) for s in samples}):
@@ -333,6 +349,7 @@ def main() -> None:
     ap.add_argument("--checker-model", default=None)
     ap.add_argument("--tested-provider", default="gemini", help="provider of the system under test")
     ap.add_argument("--splits", default="dev,test")
+    ap.add_argument("--difficulty", default=None, help="only these difficulties, e.g. hard or medium,hard")
     ap.add_argument("--limit", type=int, default=0, help="first N samples per split (0 = all); for a cheap trial")
     ap.add_argument("--max-attempts", type=int, default=3)
     ap.add_argument("--workers", type=int, default=4)
@@ -344,6 +361,9 @@ def main() -> None:
         raise SystemExit(f"rewriter, checker and tested system must be three different providers, got {roles}")
 
     splits = {n: load(DATASET_DIR / f"{n}.jsonl") for n in args.splits.split(",")}
+    if args.difficulty:
+        keep = set(args.difficulty.split(","))
+        splits = {n: [s for s in ss if s.difficulty in keep] for n, ss in splits.items()}
     if args.limit:
         splits = {n: ss[: args.limit] for n, ss in splits.items()}
     info = {
