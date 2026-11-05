@@ -5,7 +5,7 @@
 | 日期 | 2026-11-05T19:55:50 |
 | git commit | `5356d23` |
 | 模型 | gemini / `gemini-3.8-flash` |
-| Judge | 未启用 |
+| Judge | openai / `gpt-6.1-sol` |
 | 工具后端 | mock |
 | 数据集 | `evals/datasets/dev.jsonl`（5 条） |
 | 每组运行次数 | 1（seed=42，表中为各次均值 ± 标准差） |
@@ -21,6 +21,10 @@
 | 实体幻觉率 | 0.0% | 0.0% | 67.0% | 69.9% |
 | 需求抽取字段准确率 | 100.0% | 100.0% | 100.0% | n/a |
 | 可行样本误报率 | 0.0% | 0.0% | 0.0% | n/a |
+| Judge 加权总分 | 64.68 | 65.68 | 77.74 | 80.32 |
+| Judge 丰富度 | 56.20 | 56.60 | 84.60 | 86.60 |
+| Judge 偏好符合度 | 69.00 | 70.60 | 80.80 | 86.20 |
+| Judge 合理性 | 67.40 | 68.20 | 66.80 | 66.20 |
 
 ## 过程指标
 
@@ -54,18 +58,18 @@
 
 | 系统 | 难度 | 硬约束通过率 | Judge 总分 | 平均 token |
 |---|---|---|---|---|
-| full | easy | 100.0% | n/a | 25950 |
-| full | medium | 100.0% | n/a | 28294 |
-| full | hard | 100.0% | n/a | 53619 |
-| no_revision | easy | 100.0% | n/a | 25950 |
-| no_revision | medium | 100.0% | n/a | 28294 |
-| no_revision | hard | 100.0% | n/a | 53465 |
-| no_research | easy | 0.0% | n/a | 7745 |
-| no_research | medium | 0.0% | n/a | 9115 |
-| no_research | hard | 0.0% | n/a | 36495 |
-| baseline | easy | 0.0% | n/a | 2349 |
-| baseline | medium | 0.0% | n/a | 1762 |
-| baseline | hard | 0.0% | n/a | 3520 |
+| full | easy | 100.0% | 64.43 | 25950 |
+| full | medium | 100.0% | 57.50 | 28294 |
+| full | hard | 100.0% | 72.60 | 53619 |
+| no_revision | easy | 100.0% | 65.10 | 25950 |
+| no_revision | medium | 100.0% | 59.30 | 28294 |
+| no_revision | hard | 100.0% | 73.80 | 53465 |
+| no_research | easy | 0.0% | 79.40 | 7745 |
+| no_research | medium | 0.0% | 78.40 | 9115 |
+| no_research | hard | 0.0% | 72.10 | 36495 |
+| baseline | easy | 0.0% | 79.20 | 2349 |
+| baseline | medium | 0.0% | 79.80 | 1762 |
+| baseline | hard | 0.0% | 84.20 | 3520 |
 
 ## 各节点耗时（ms）
 

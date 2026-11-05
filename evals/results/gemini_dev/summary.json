@@ -37,24 +37,24 @@
     "n_reps": 1.0
    },
    "judge_total": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 64.67999999999999,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_richness": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 56.2,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_preference": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 69.0,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_reasonable": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 67.4,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "tool_precision": {
     "mean": 1.0,
@@ -154,24 +154,24 @@
     "n_reps": 1.0
    },
    "judge_total": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 65.68,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_richness": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 56.6,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_preference": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 70.6,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_reasonable": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 68.2,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "tool_precision": {
     "mean": 1.0,
@@ -271,24 +271,24 @@
     "n_reps": 1.0
    },
    "judge_total": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 77.74000000000001,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_richness": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 84.6,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_preference": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 80.8,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_reasonable": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 66.8,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "tool_precision": {
     "mean": null,
@@ -388,24 +388,24 @@
     "n_reps": 0.0
    },
    "judge_total": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 80.32,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_richness": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 86.6,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_preference": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 86.2,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_reasonable": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 66.2,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "tool_precision": {
     "mean": null,
@@ -508,24 +508,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 64.43333333333334,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 52.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 68.33333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 71.66666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": 1.0,
@@ -625,24 +625,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 57.5,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 45.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 56.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 72.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": 1.0,
@@ -742,24 +742,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 72.6,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 80.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 84.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 50.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": 1.0,
@@ -861,24 +861,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 65.10000000000001,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 51.666666666666664,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 70.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 72.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": 1.0,
@@ -978,24 +978,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 59.3,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 46.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 59.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 73.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": 1.0,
@@ -1095,24 +1095,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 73.8,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 82.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 84.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 52.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": 1.0,
@@ -1214,24 +1214,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 79.39999999999999,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 87.66666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 83.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 66.33333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
@@ -1331,24 +1331,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 78.4,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 88.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 73.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 76.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
@@ -1448,24 +1448,24 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 72.1,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 72.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 82.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 59.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
@@ -1567,24 +1567,24 @@
      "n_reps": 0.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 79.2,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 85.33333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 85.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 65.33333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
@@ -1684,24 +1684,24 @@
      "n_reps": 0.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 79.8,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 87.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 81.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 71.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
@@ -1801,24 +1801,24 @@
      "n_reps": 0.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 84.2,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 90.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 95.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 64.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
