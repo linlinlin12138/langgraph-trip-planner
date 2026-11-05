@@ -1,0 +1,2049 @@
+{
+ "metrics": {
+  "full": {
+   "completion_rate": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "structure_ok": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "hard_pass": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "hallucination_rate": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "extraction_acc": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "infeasible_recall": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "infeasible_false_alarm": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_total": {
+    "mean": 79.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_richness": {
+    "mean": 84.4,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_preference": {
+    "mean": 82.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_reasonable": {
+    "mean": 69.6,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tool_precision": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tool_recall": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "invalid_call_rate": {
+    "mean": 0.027777777777777776,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "duplicate_call_rate": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "research_steps": {
+    "mean": 3.2,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "revisions": {
+    "mean": 0.4,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "parse_failures": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "llm_calls": {
+    "mean": 9.8,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tokens": {
+    "mean": 57433.6,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "cost_usd": {
+    "mean": 0.1313364,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "latency_mean_ms": {
+    "mean": 306472.05999999994,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "latency_p95_ms": {
+    "mean": 1195135.68,
+    "std": 0.0,
+    "n_reps": 1.0
+   }
+  },
+  "no_revision": {
+   "completion_rate": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "structure_ok": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "hard_pass": {
+    "mean": 0.8,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "hallucination_rate": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "extraction_acc": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "infeasible_recall": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "infeasible_false_alarm": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_total": {
+    "mean": 80.82000000000001,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_richness": {
+    "mean": 87.2,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_preference": {
+    "mean": 85.8,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_reasonable": {
+    "mean": 67.8,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tool_precision": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tool_recall": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "invalid_call_rate": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "duplicate_call_rate": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "research_steps": {
+    "mean": 3.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "revisions": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "parse_failures": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "llm_calls": {
+    "mean": 7.4,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tokens": {
+    "mean": 33484.4,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "cost_usd": {
+    "mean": 0.067492,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "latency_mean_ms": {
+    "mean": 100778.702,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "latency_p95_ms": {
+    "mean": 176824.99,
+    "std": 0.0,
+    "n_reps": 1.0
+   }
+  },
+  "no_research": {
+   "completion_rate": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "structure_ok": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "hard_pass": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "hallucination_rate": {
+    "mean": 0.4842105263157895,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "extraction_acc": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "infeasible_recall": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "infeasible_false_alarm": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_total": {
+    "mean": 78.2,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_richness": {
+    "mean": 85.8,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_preference": {
+    "mean": 83.6,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_reasonable": {
+    "mean": 63.4,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tool_precision": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "tool_recall": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "invalid_call_rate": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "duplicate_call_rate": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "research_steps": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "revisions": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "parse_failures": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "llm_calls": {
+    "mean": 4.2,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tokens": {
+    "mean": 18503.2,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "cost_usd": {
+    "mean": 0.062035799999999995,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "latency_mean_ms": {
+    "mean": 156511.498,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "latency_p95_ms": {
+    "mean": 416902.13,
+    "std": 0.0,
+    "n_reps": 1.0
+   }
+  },
+  "baseline": {
+   "completion_rate": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "structure_ok": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "hard_pass": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "hallucination_rate": {
+    "mean": 0.5494505494505495,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "extraction_acc": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "infeasible_recall": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "infeasible_false_alarm": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "judge_total": {
+    "mean": 82.25999999999999,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_richness": {
+    "mean": 87.6,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_preference": {
+    "mean": 90.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_reasonable": {
+    "mean": 66.6,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tool_precision": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "tool_recall": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "invalid_call_rate": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "duplicate_call_rate": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "research_steps": {
+    "mean": null,
+    "std": null,
+    "n_reps": 0.0
+   },
+   "revisions": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "parse_failures": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "llm_calls": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tokens": {
+    "mean": 2757.2,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "cost_usd": {
+    "mean": 0.0097202,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "latency_mean_ms": {
+    "mean": 20921.189999999995,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "latency_p95_ms": {
+    "mean": 29099.85,
+    "std": 0.0,
+    "n_reps": 1.0
+   }
+  }
+ },
+ "by_difficulty": {
+  "full": {
+   "easy": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 78.8,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 84.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 83.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 68.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "invalid_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "duplicate_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "research_steps": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 6.666666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 28480.666666666668,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.05573533333333334,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 81689.22333333333,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 101210.05,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   },
+   "medium": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 80.7,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 89.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 81.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 72.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "invalid_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "duplicate_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "research_steps": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 29266.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.061073,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 92156.95,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 92156.95,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   },
+   "hard": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 77.9,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 81.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 80.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 72.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "invalid_call_rate": {
+     "mean": 0.1,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "duplicate_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "research_steps": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "revisions": {
+     "mean": 2.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 22.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 172460.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.428403,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 1195135.68,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 1195135.68,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   }
+  },
+  "no_revision": {
+   "easy": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 79.86666666666666,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 85.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 85.66666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 67.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "invalid_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "duplicate_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "research_steps": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 6.666666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 27999.333333333332,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.05393066666666666,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 78091.82333333335,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 89423.77,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   },
+   "medium": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 81.7,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 90.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 82.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 73.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "invalid_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "duplicate_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "research_steps": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 7.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 29245.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.060994,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 92793.05,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 92793.05,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   },
+   "hard": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 82.8,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 91.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 90.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 65.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "invalid_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "duplicate_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "research_steps": {
+     "mean": 3.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 10.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 54179.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.114674,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 176824.99,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 176824.99,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   }
+  },
+  "no_research": {
+   "easy": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.6,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 80.46666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 89.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 85.66666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 65.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "tool_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "invalid_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "duplicate_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "research_steps": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 3.6666666666666665,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 8180.333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.02484133333333333,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 48490.66333333333,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 64342.3,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   },
+   "medium": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.5333333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 73.5,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 84.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 75.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 61.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "tool_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "invalid_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "duplicate_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "research_steps": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 4.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 34199.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.121649,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 416902.13,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 416902.13,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   },
+   "hard": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.26666666666666666,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 76.1,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 78.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 86.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 61.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "tool_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "invalid_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "duplicate_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "research_steps": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 6.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 33776.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.114006,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 220183.37,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 220183.37,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   }
+  },
+  "baseline": {
+   "easy": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.6521739130434783,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "judge_total": {
+     "mean": 81.73333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 84.66666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 91.33333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 66.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "tool_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "invalid_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "duplicate_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "research_steps": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 2433.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.008551666666666667,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 17731.17,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 23275.92,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   },
+   "medium": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.5,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "judge_total": {
+     "mean": 82.7,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 92.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 83.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 73.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "tool_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "invalid_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "duplicate_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "research_steps": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 2639.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.009287,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 22312.59,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 22312.59,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   },
+   "hard": {
+    "completion_rate": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
+     "mean": 0.41379310344827586,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "infeasible_false_alarm": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "judge_total": {
+     "mean": 83.4,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 92.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 93.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 62.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "tool_recall": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "invalid_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "duplicate_call_rate": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "research_steps": {
+     "mean": null,
+     "std": null,
+     "n_reps": 0.0
+    },
+    "revisions": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 3848.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "cost_usd": {
+     "mean": 0.013659,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_mean_ms": {
+     "mean": 29099.85,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "latency_p95_ms": {
+     "mean": 29099.85,
+     "std": 0.0,
+     "n_reps": 1.0
+    }
+   }
+  }
+ },
+ "node_latency": {
+  "full": {
+   "chat": {
+    "mean": 4800.0599999999995,
+    "p95": 5766.5
+   },
+   "cache_lookup": {
+    "mean": 0.18000000000000002,
+    "p95": 0.2
+   },
+   "research": {
+    "mean": 18333.939999999995,
+    "p95": 25174.4
+   },
+   "human_select": {
+    "mean": 0.1,
+    "p95": 0.1
+   },
+   "itinerary": {
+    "mean": 279025.57999999996,
+    "p95": 1146140.8
+   },
+   "budget": {
+    "mean": 3651.1400000000003,
+    "p95": 18255.0
+   },
+   "validate": {
+    "mean": 0.6,
+    "p95": 1.4
+   },
+   "finalize": {
+    "mean": 0.1,
+    "p95": 0.1
+   },
+   "confirm": {
+    "mean": 0.1,
+    "p95": 0.1
+   }
+  },
+  "no_revision": {
+   "chat": {
+    "mean": 4823.299999999999,
+    "p95": 7075.0
+   },
+   "cache_lookup": {
+    "mean": 0.13999999999999999,
+    "p95": 0.2
+   },
+   "research": {
+    "mean": 18934.9,
+    "p95": 21553.4
+   },
+   "human_select": {
+    "mean": 0.1,
+    "p95": 0.1
+   },
+   "itinerary": {
+    "mean": 74617.66,
+    "p95": 139805.1
+   },
+   "budget": {
+    "mean": 2200.0,
+    "p95": 10999.4
+   },
+   "validate": {
+    "mean": 0.38,
+    "p95": 0.5
+   },
+   "finalize": {
+    "mean": 0.1,
+    "p95": 0.1
+   },
+   "confirm": {
+    "mean": 0.1,
+    "p95": 0.1
+   }
+  },
+  "no_research": {
+   "chat": {
+    "mean": 4986.839999999999,
+    "p95": 5757.6
+   },
+   "cache_lookup": {
+    "mean": 0.16,
+    "p95": 0.2
+   },
+   "research": {
+    "mean": 0.1,
+    "p95": 0.1
+   },
+   "human_select": {
+    "mean": 0.1,
+    "p95": 0.1
+   },
+   "itinerary": {
+    "mean": 151462.56,
+    "p95": 411182.6
+   },
+   "budget": {
+    "mean": 0.12,
+    "p95": 0.2
+   },
+   "validate": {
+    "mean": 0.3,
+    "p95": 0.4
+   },
+   "finalize": {
+    "mean": 0.1,
+    "p95": 0.1
+   },
+   "confirm": {
+    "mean": 0.1,
+    "p95": 0.1
+   }
+  },
+  "baseline": {}
+ },
+ "stability": {
+  "full": {
+   "outcome_agreement": null,
+   "plan_jaccard": null,
+   "judge_std": null,
+   "n_groups": 0.0
+  },
+  "no_revision": {
+   "outcome_agreement": null,
+   "plan_jaccard": null,
+   "judge_std": null,
+   "n_groups": 0.0
+  },
+  "no_research": {
+   "outcome_agreement": null,
+   "plan_jaccard": null,
+   "judge_std": null,
+   "n_groups": 0.0
+  },
+  "baseline": {
+   "outcome_agreement": null,
+   "plan_jaccard": null,
+   "judge_std": null,
+   "n_groups": 0.0
+  }
+ },
+ "violations": {
+  "full": {},
+  "no_revision": {
+   "over_budget": 1
+  },
+  "no_research": {
+   "unknown_ref": 5,
+   "missing_hotel": 5,
+   "closed": 1
+  },
+  "baseline": {
+   "extra_day": 5,
+   "missing_day": 5,
+   "wrong_date": 5,
+   "unknown_ref": 5,
+   "closed": 4,
+   "unknown_hotel": 2,
+   "time_overlap": 1
+  }
+ }
+}
