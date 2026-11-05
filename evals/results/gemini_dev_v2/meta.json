@@ -1,0 +1,21 @@
+{
+ "name": "gemini_dev_v2",
+ "date": "2026-11-05T22:50:53",
+ "git_commit": "f85270f",
+ "dataset": "evals/datasets/dev.jsonl",
+ "split": "dev",
+ "n_samples": 5,
+ "systems": [
+  "full",
+  "no_revision",
+  "no_research",
+  "baseline"
+ ],
+ "repeats": 1,
+ "seed": 42,
+ "provider": "gemini",
+ "model": "gemini-3.8-flash",
+ "tool_backend": "mock",
+ "judge": null,
+ "mock": false
+}
