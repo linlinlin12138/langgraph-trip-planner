@@ -104,3 +104,29 @@ def test_budget_beats_hotel_tier_preference(make_graph) -> None:  # type: ignore
     hotel_searches = [t for t in out["tool_calls"] if t["name"] == "search_hotels"]
     assert any("tier" not in t["args"] for t in hotel_searches)  # fell back to a price-capped search
     assert out["final"].passed_validation and out["budget"].total <= 4800
+
+
+def test_research_top_up_fills_sparse_categories() -> None:
+    """s020-like: 3 packed days, only 'shopping' searched -> 1 attraction; top-up must fill the plan."""
+    from datetime import date
+
+    from trip_agents.graph.deps import LocalToolExecutor
+    from trip_agents.graph.nodes.research import assemble_bundle, top_up
+    from trip_agents.schemas import TripRequest
+
+    tools = LocalToolExecutor()
+    req = TripRequest.model_validate(
+        {"hard": {"destination": "杭州", "start_date": date(2027, 1, 14), "days": 3, "budget_total": 6000, "travelers": 2,
+                  "dietary_restrictions": ["halal"]},
+         "soft": {"pace": "packed", "interests": ["shopping"]}}
+    )  # fmt: skip
+    first = tools.call("search_attractions", {"city": "杭州", "categories": ["shopping"]})
+    rest = tools.call("search_restaurants", {"city": "杭州", "dietary": ["halal"], "cuisine": "西湖菜"})
+    results = [{"name": "search_attractions", "data": first.data}, {"name": "search_restaurants", "data": rest.data}]
+    assert len(assemble_bundle(results).attractions) <= 2
+    extra, notes = top_up(results, req, tools)
+    b = assemble_bundle(results + extra)
+    assert len(b.attractions) == 15 and len(notes) == 2
+    assert b.restaurants and all("halal" in r.dietary_tags for r in b.restaurants)  # hard constraint kept
+    again, _ = top_up(results + extra, req, tools)
+    assert all(x["name"] != "search_attractions" for x in again)  # 15 >= 3*4+2, no second top-up

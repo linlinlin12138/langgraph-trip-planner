@@ -16,7 +16,7 @@ from trip_agents.graph.deps import GraphOptions
 from trip_agents.graph.state import TripState
 from trip_agents.schemas import ResearchBundle, Selection, TripRequest
 
-_PER_DAY = {"relaxed": 2, "moderate": 3, "packed": 4}
+PER_DAY = {"relaxed": 2, "moderate": 3, "packed": 4}
 
 
 def default_selection(req: TripRequest, rb: ResearchBundle) -> Selection:
@@ -38,7 +38,7 @@ def default_selection(req: TripRequest, rb: ResearchBundle) -> Selection:
     must = set(h.must_visit)
     interests = set(s.interests)
     attrs = sorted(rb.attractions, key=lambda a: (a.name not in must, a.category not in interests, -a.rating))
-    n_attr = min(len(attrs), h.days * _PER_DAY[s.pace] + 2)
+    n_attr = min(len(attrs), h.days * PER_DAY[s.pace] + 2)
     return Selection(
         hotel_id=hotels[0].id if hotels and h.days > 1 else None,
         restaurant_ids=[r.id for r in rests[: max(6, h.days * 2)]],

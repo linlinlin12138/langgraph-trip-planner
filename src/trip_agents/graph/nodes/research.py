@@ -24,6 +24,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 
 from trip_agents.graph.deps import AgentDeps, GraphOptions
+from trip_agents.graph.nodes.human_select import PER_DAY
 from trip_agents.graph.prompts import RESEARCH_SYSTEM
 from trip_agents.graph.state import ToolCallRecord, TripState
 from trip_agents.llm.context import render_context
@@ -144,6 +145,37 @@ def assemble_bundle(results: list[dict[str, Any]], summary: str = "") -> Researc
     )
 
 
+def top_up(results: list[dict[str, Any]], req: TripRequest, tools: Any) -> tuple[list[dict[str, Any]], list[str]]:
+    """Deterministic follow-up search when the agent's results can't fill the plan.
+
+    The agent tends to search attractions only by the user's interest categories; with
+    1-3 catalog entries per category that leaves the planner a single attraction for a
+    multi-day trip, and it pads the days with "rest". Same for restaurants when it adds
+    cuisine/price filters. Here, if fewer candidates came back than the planner needs,
+    search once more without those filters (hard constraints -- city and dietary
+    restrictions -- are kept). These calls are not agent decisions, so they are kept out
+    of the tool-call records and the process metrics; the bundle notes say they happened.
+    """
+    bundle = assemble_bundle(results)
+    h = req.hard
+    need_attr = h.days * PER_DAY[req.soft.pace] + 2
+    need_rest = max(6, h.days * 2)
+    diet = set(h.dietary_restrictions)
+    extra: list[dict[str, Any]] = []
+    notes: list[str] = []
+    if len(bundle.attractions) < need_attr:
+        res = tools.call("search_attractions", {"city": h.destination, "limit": 15})
+        if res.ok:
+            extra.append({"name": "search_attractions", "data": res.data})
+            notes.append(f"景点仅 {len(bundle.attractions)} 个（需要 {need_attr}），已不限类别补充检索")
+    if sum(diet <= set(r.dietary_tags) for r in bundle.restaurants) < need_rest:
+        res = tools.call("search_restaurants", {"city": h.destination, "dietary": sorted(diet), "limit": 15})
+        if res.ok:
+            extra.append({"name": "search_restaurants", "data": res.data})
+            notes.append("符合饮食限制的餐厅不足，已只按饮食限制补充检索")
+    return extra, notes
+
+
 def make_research_node(deps: AgentDeps, options: GraphOptions | None = None):  # type: ignore[no-untyped-def]
     sub = build_research_subgraph(deps)
     enabled = options.enable_research if options else True
@@ -162,7 +194,9 @@ def make_research_node(deps: AgentDeps, options: GraphOptions | None = None):  #
         )
         final = out["messages"][-1]
         summary = final.content if isinstance(final, AIMessage) and isinstance(final.content, str) else ""
-        bundle = assemble_bundle(out.get("results", []), summary)
+        results = out.get("results", [])
+        extra, notes = top_up(results, req, deps.tools)
+        bundle = assemble_bundle(results + extra, "\n".join([summary, *notes]).strip())
         return {"research": bundle, "tool_calls": out.get("records", []), "status": "awaiting_selection"}
 
     return research
