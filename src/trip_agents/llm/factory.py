@@ -76,7 +76,7 @@ def get_chat_model(
         from langchain_google_genai import ChatGoogleGenerativeAI
 
         kwargs.setdefault("max_retries", s.llm_max_retries)  # free tier rate-limits aggressively; SDK backs off
-        if s.llm_thinking_level is not None:
+        if s.llm_thinking_level != "default" and not model.startswith("gemini-2"):  # 2.5 takes a budget, not a level
             kwargs.setdefault("thinking_level", s.llm_thinking_level)
         if s.llm_thinking_budget is not None:
             kwargs.setdefault("thinking_budget", s.llm_thinking_budget)

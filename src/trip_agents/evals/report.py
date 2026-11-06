@@ -95,7 +95,9 @@ def render(meta: dict[str, Any], summary: dict[str, Any], records: list[RunRecor
         "|---|---|",
         f"| 日期 | {meta['date']} |",
         f"| git commit | `{meta['git_commit']}` |",
-        f"| 模型 | {meta['provider']} / `{meta['model']}` |",
+        f"| 模型 | {meta['provider']} / `{meta['model']}`"
+        + (f"（推理强度 {meta['thinking_level']}）" if meta.get("thinking_level") else "")
+        + " |",
         f"| Judge | {judge['provider'] + ' / `' + judge['model'] + '`' if judge else '未启用'} |",
         f"| 工具后端 | {meta['tool_backend']} |",
         f"| 数据集 | `{meta['dataset']}`（{meta['n_samples']} 条） |",

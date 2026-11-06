@@ -106,6 +106,7 @@ def main(argv: list[str] | None = None) -> Path:
         "seed": args.seed,
         "provider": args.provider,
         "model": model_name,
+        "thinking_level": s.llm_thinking_level if args.provider == "gemini" else None,
         "tool_backend": s.tool_backend,
         "judge": None if args.no_judge else {"provider": judge_provider, "model": judge_name},
         "mock": args.provider == "mock",

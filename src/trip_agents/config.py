@@ -27,8 +27,11 @@ class Settings(BaseSettings):
     llm_timeout_s: float = 60.0
     llm_max_retries: int = 6
     # Gemini "thinking" spends extra output tokens on reasoning. Gemini 3+ models take a level,
-    # 2.5 models take a token budget (0 = off). None = model default.
-    llm_thinking_level: Literal["minimal", "low", "medium", "high"] | None = None
+    # 2.5 models take a token budget (0 = off). Default "low": in a 5-sample dev trial it cut the full
+    # system's cost from $0.085 to $0.035 and latency from 348 s to 51 s per sample, with every plan
+    # passing after revisions (the model default timed out with a 504 on a 5-day plan).
+    # "default" = let the model decide.
+    llm_thinking_level: Literal["minimal", "low", "medium", "high", "default"] = "low"
     llm_thinking_budget: int | None = None
 
     # --- tools ---------------------------------------------------------------

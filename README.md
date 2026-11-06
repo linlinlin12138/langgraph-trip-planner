@@ -95,7 +95,7 @@ make check-provider ARGS="--provider gemini --list-models"
 make check-provider ARGS="--provider gemini --samples 5"
 ```
 
-Gemini 默认模型是 `gemini-3.8-flash`（`gemini-2.5-flash` 对新 key 已返回 404）。Gemini 3+ 可用 `LLM_THINKING_LEVEL=low` 减少推理 token；`GEMINI_API_KEY` 也可以代替 `GOOGLE_API_KEY`。检查脚本遇到模型不存在、key 无效、额度或预付费余额不足时，会输出一行原因和处理建议。
+Gemini 默认模型是 `gemini-3.8-flash`（`gemini-2.5-flash` 对新 key 已返回 404）。Gemini 3+ 的推理强度默认是 `LLM_THINKING_LEVEL=low`（dev 试跑里比模型默认省约六成费用、快约 7 倍，合格率没有下降），可改成 `medium` / `high` / `default`；`GEMINI_API_KEY` 也可以代替 `GOOGLE_API_KEY`。检查脚本遇到模型不存在、key 无效、额度或预付费余额不足时，会输出一行原因和处理建议。
 
 ## 30 秒演示脚本
 
@@ -176,7 +176,7 @@ data/sources/       抽取的开放数据候选（scripts/fetch_catalog_sources.
 
 - `LLM_PROVIDER`：`mock`、`openai`、`anthropic` 或 `gemini`
 - `LLM_MODEL`：模型名（留空用各家默认，Gemini 为 `gemini-3.8-flash`）
-- `LLM_THINKING_LEVEL` / `LLM_THINKING_BUDGET`：Gemini 3+ / 2.5 的推理开销
+- `LLM_THINKING_LEVEL`（默认 `low`）/ `LLM_THINKING_BUDGET`：Gemini 3+ / 2.5 的推理开销
 - `TOOL_BACKEND`：`mock` 或 `real`
 - `TOOL_TRANSPORT`：`mcp` 或 `local`
 - `MAX_REVISIONS`：回退次数上限

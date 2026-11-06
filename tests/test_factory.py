@@ -37,6 +37,15 @@ def test_gemini_model_gets_settings(env: pytest.MonkeyPatch) -> None:
     assert m.max_retries == get_settings().llm_max_retries  # type: ignore[attr-defined]
 
 
+def test_thinking_level_defaults_to_low_and_can_be_left_to_model(env: pytest.MonkeyPatch) -> None:
+    pytest.importorskip("langchain_google_genai")
+    env.setenv("GOOGLE_API_KEY", "k")
+    assert get_chat_model("gemini").thinking_level == "low"  # type: ignore[attr-defined]
+    env.setenv("LLM_THINKING_LEVEL", "default")
+    get_settings.cache_clear()
+    assert getattr(get_chat_model("gemini"), "thinking_level", None) is None
+
+
 def test_llm_model_overrides_default(env: pytest.MonkeyPatch) -> None:
     pytest.importorskip("langchain_google_genai")
     env.setenv("GOOGLE_API_KEY", "k")
