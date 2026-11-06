@@ -46,7 +46,7 @@ _INTEREST_RULES = [
     (r"夜景|夜生活|酒吧", "nightlife"),
     (r"文化|艺术|寺庙|演出", "culture"),
 ]
-_COMPANION_2 = r"我和(?:女朋友|男朋友|老婆|老公|妻子|丈夫|朋友|对象|爸爸|妈妈|同事)|情侣|两口子|二人"
+_COMPANION_2 = r"我和(?:一[个位])?(?:女朋友|男朋友|老婆|老公|妻子|丈夫|朋友|对象|爸爸|妈妈|同事)|情侣|两口子|二人"
 
 
 def _parse_date(text: str, today: date) -> date | None:
@@ -141,7 +141,7 @@ def respond_extract(messages: list[BaseMessage], ctx: dict[str, Any]) -> dict[st
 
 
 _COMPANION_RULES: list[tuple[str, Callable[[re.Match[str]], str]]] = [
-    (r"我和(女朋友|男朋友|老婆|老公|妻子|丈夫|对象|朋友|同事)", lambda m: m[1]),
+    (r"我和(?:一[个位])?(女朋友|男朋友|老婆|老公|妻子|丈夫|对象|朋友|同事)", lambda m: m[1]),
     (r"一家([三四五])口", lambda m: f"家人（{cn_to_int(m[1])}人）"),
     (r"我们(\d+|[两二三四五六])\s*个人", lambda m: f"同行（{cn_to_int(m[1])}人）"),
     (r"我一个人|独自|我自己", lambda m: "独自"),

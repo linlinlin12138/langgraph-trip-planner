@@ -146,7 +146,7 @@ def template_rewrite(req: TripRequest, rng: random.Random) -> str:
     h, s = req.hard, req.soft
     options = {
         1: ["我一个人", "我自己"],
-        2: ["我和女朋友", "我和朋友", "我们两个人"],
+        2: ["我和女朋友", "我和一个朋友", "我们两个人"],  # not "我和朋友": could be several friends
         3: ["一家三口", "我们3个人"],
         4: ["我们4个人", "我们四个人"],
     }

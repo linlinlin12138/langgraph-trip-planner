@@ -47,3 +47,13 @@ def test_default_selection_prefers_constraints(world) -> None:  # type: ignore[n
     assert sel.attraction_ids[0] == "a1"  # must-visit first
     assert sanitize_selection({"hotel_id": "bad"}, rb, sel) == sel
     assert sanitize_selection(Selection(attraction_ids=["a2"]), rb, sel).attraction_ids == ["a2"]
+
+
+def test_one_friend_is_two_travelers_and_template_avoids_bare_friend() -> None:
+    from trip_agents.evals.dataset import DATASET_DIR, load
+
+    r = extract_request(["我和一个朋友12月22日去杭州两日游，预算2600"], TODAY, None)
+    assert r["travelers"] == 2
+    # "我和朋友" is ambiguous (one friend or several) -- the templates must not produce it
+    samples = load(DATASET_DIR / "dev.jsonl") + load(DATASET_DIR / "test.jsonl")
+    assert not any("我和朋友" in s.request_text for s in samples)
