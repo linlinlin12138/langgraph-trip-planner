@@ -11,7 +11,17 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from trip_agents.evals.metrics import FAMILIES, METRICS, node_latency, stability, summarize, violation_counts
+from trip_agents.evals.metrics import (
+    FAMILIES,
+    JUDGE_KEYS,
+    METRICS,
+    judged,
+    node_latency,
+    paired_judge,
+    stability,
+    summarize,
+    violation_counts,
+)
 from trip_agents.evals.systems import SYSTEMS, RunRecord
 
 PERCENT = {
@@ -42,6 +52,11 @@ def fmt(key: str, mean: float | None, std: float | None = None, n_reps: float = 
     else:
         s = f"{mean:.2f}"
     return s + (f" ± {std:.2f}" if std is not None and n_reps > 1 else "")
+
+
+def judge_cell(key: str, m: dict[str, float | None], n: int) -> str:
+    """Quality score of hard-passing plans, with how many plans it is based on."""
+    return "N/A（n=0）" if not n or m["mean"] is None else f"{fmt(key, **m)}（n={n}）"  # type: ignore[arg-type]
 
 
 def by_system(records: list[RunRecord]) -> dict[str, list[RunRecord]]:
@@ -88,14 +103,42 @@ def render(meta: dict[str, Any], summary: dict[str, Any], records: list[RunRecor
         f"| 记录数 | {len(records)} |",
         "",
     ]
+    groups = by_system(records)
+    judge_on = any(r.judge_total is not None for r in records)
     for fam, keys in FAMILIES.items():
         header = " | ".join(f"{s}（{SYSTEMS[s].description}）" if s in SYSTEMS else s for s in systems)
         lines += [f"## {fam}指标", "", f"| 指标 | {header} |", "|---|" + "---|" * len(systems)]
         for k in keys:
-            cells = [fmt(k, **summary["metrics"][s][k]) for s in systems]
+            if k in JUDGE_KEYS:
+                if not judge_on:
+                    continue
+                cells = [judge_cell(k, summary["metrics"][s][k], judged(groups[s])) for s in systems]
+            else:
+                cells = [fmt(k, **summary["metrics"][s][k]) for s in systems]
             if all(c == "n/a" for c in cells):
                 continue
             lines.append(f"| {METRICS[k][0]} | " + " | ".join(cells) + " |")
+        if fam == "结果" and judge_on:
+            lines += ["", "> 质量分只对硬约束全部通过的计划打分（n = 参与评分的计划数），不通过的计划不打分；"
+                      "系统之间请看下面的配对比较。"]  # fmt: skip
+        lines.append("")
+
+    if judge_on and len(systems) > 1:
+        lines += [
+            "## 合格计划质量分：配对比较",
+            "",
+            "只取两个系统**都通过**硬约束的同一批样本比较，避免一方只在简单样本上通过造成的选择偏差。",
+            "",
+            "| 对比 (A vs B) | A | B | Δ (B−A) | 配对样本数 |",
+            "|---|---|---|---|---|",
+        ]
+        for i, a in enumerate(systems):
+            for b in systems[i + 1 :]:
+                ma, mb, n = paired_judge(groups[a], groups[b])
+                if not n:
+                    lines.append(f"| {a} vs {b} | N/A | N/A | N/A | 0 |")
+                else:
+                    lines.append(f"| {a} vs {b} | {ma:.2f} | {mb:.2f} | {mb - ma:+.2f} | {n} |")  # type: ignore[operator]
         lines.append("")
 
     lines += [
@@ -116,12 +159,14 @@ def render(meta: dict[str, Any], summary: dict[str, Any], records: list[RunRecor
         lines.append("| （repeats=1，未计算） | | | | |")
     lines.append("")
 
-    lines += ["## 按难度", "", "| 系统 | 难度 | 硬约束通过率 | Judge 总分 | 平均 token |", "|---|---|---|---|---|"]
+    lines += ["## 按难度", "", "| 系统 | 难度 | 硬约束通过率 | 合格计划质量分 | 平均 token |", "|---|---|---|---|---|"]
     for s in systems:
         for d, m in summary["by_difficulty"][s].items():
             if m["completion_rate"]["mean"] is None:
                 continue
-            cells = [fmt(k, **m[k]) for k in ("hard_pass", "judge_total", "tokens")]
+            nd = judged([r for r in groups[s] if r.difficulty == d])
+            judge_txt = judge_cell("judge_total", m["judge_total"], nd) if judge_on else "n/a"
+            cells = [fmt("hard_pass", **m["hard_pass"]), judge_txt, fmt("tokens", **m["tokens"])]
             lines.append(f"| {s} | {d} | " + " | ".join(cells) + " |")
     lines.append("")
 
@@ -151,8 +196,16 @@ def write_report(out: Path, meta: dict[str, Any], records: list[RunRecord]) -> P
     return path
 
 
+def _records(run: Path) -> list[RunRecord]:
+    path = run / "records.jsonl"
+    if not path.exists():
+        return []
+    return [RunRecord.model_validate_json(x) for x in path.read_text(encoding="utf-8").splitlines() if x.strip()]
+
+
 def compare(a: Path, b: Path) -> str:
     sa, sb = (json.loads((p / "summary.json").read_text(encoding="utf-8"))["metrics"] for p in (a, b))
+    ra, rb = by_system(_records(a)), by_system(_records(b))
     ma, mb = (json.loads((p / "meta.json").read_text(encoding="utf-8")) for p in (a, b))
     lines = [f"# 对比：`{a.name}` (A) vs `{b.name}` (B)", ""]
     if ma.get("mock") or mb.get("mock"):
@@ -164,6 +217,12 @@ def compare(a: Path, b: Path) -> str:
     for system in [s for s in sa if s in sb]:
         lines += [f"## {system}", "", "| 指标 | A | B | Δ (B−A) |", "|---|---|---|---|"]
         for k, (label, _) in METRICS.items():
+            if k in JUDGE_KEYS:  # unpaired means mix different sample sets; compare on samples judged in both runs
+                if k == "judge_total":
+                    pa, pb, n = paired_judge(ra.get(system, []), rb.get(system, []))
+                    if n:
+                        lines.append(f"| 合格计划质量分（两次都通过的 {n} 个样本） | {pa:.2f} | {pb:.2f} | {pb - pa:+.2f} |")  # type: ignore[operator]
+                continue
             va, vb = sa[system][k]["mean"], sb[system][k]["mean"]
             if va is None and vb is None:
                 continue

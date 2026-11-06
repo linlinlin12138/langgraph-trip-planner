@@ -102,3 +102,33 @@ def test_judge_weighted_total_and_calibration() -> None:
     w, corr = fit(pairs)
     assert w["reasonableness"] == pytest.approx(1.0) and corr == pytest.approx(1.0)
     assert spearman([1, 2, 3], [3, 2, 1]) == pytest.approx(-1.0)
+
+
+def test_paired_judge_uses_only_samples_both_systems_pass() -> None:
+    from trip_agents.evals.metrics import paired_judge
+
+    a = [rec(sample_id="easy", judge_total=80.0), rec(sample_id="hard", judge_total=60.0), rec(sample_id="x", judge_total=None)]
+    b = [rec(sample_id="easy", system="b", judge_total=85.0), rec(sample_id="hard", system="b", judge_total=None)]
+    # unpaired means would be 70 vs 85 (b only passed the easy one); paired: 80 vs 85 on 1 sample
+    assert paired_judge(a, b) == (80.0, 85.0, 1)
+    assert paired_judge(a, []) == (None, None, 0)
+
+
+def test_judge_cell_shows_n_and_na() -> None:
+    from trip_agents.evals.report import judge_cell
+
+    assert judge_cell("judge_total", {"mean": 79.0, "std": 0.0, "n_reps": 1.0}, 5) == "79.00（n=5）"
+    assert judge_cell("judge_total", {"mean": None, "std": None, "n_reps": 0.0}, 0) == "N/A（n=0）"
+
+
+def test_calibration_template_only_hard_passing_plans(tmp_path) -> None:  # type: ignore[no-untyped-def]
+    import csv
+
+    from trip_agents.evals.calibrate import make_template
+
+    recs = [rec(sample_id=f"p{i}", hard_pass=True, judge={"richness": 1}, judge_total=1.0) for i in range(4)]
+    recs += [rec(sample_id=f"f{i}", hard_pass=False) for i in range(4)]
+    path = tmp_path / "h.csv"
+    assert make_template(recs, path, 10) == 4
+    rows = list(csv.DictReader(path.open(encoding="utf-8")))
+    assert {r["sample_id"] for r in rows} == {"p0", "p1", "p2", "p3"} and all(r["human"] == "" for r in rows)

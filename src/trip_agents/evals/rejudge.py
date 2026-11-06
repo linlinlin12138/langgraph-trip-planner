@@ -42,6 +42,8 @@ def rules_only(run_dir: Path) -> int:
     gold = {s.id: s.gold for s in load(DATASET_DIR / f"{meta['split']}.jsonl")}
     for r in records:
         rescore_rules(r, gold)  # type: ignore[arg-type]
+        if not r.hard_pass:  # judge scores only exist for plans that pass the hard constraints
+            r.judge = r.judge_total = None
     rec_path.write_text("".join(r.model_dump_json() + "\n" for r in records), encoding="utf-8")
     write_report(run_dir, meta, records)
     return len(records)
@@ -58,8 +60,8 @@ def rejudge(run_dir: Path, provider: str, model: str | None, *, workers: int = 4
     def score(r: RunRecord) -> bool:
         rescore_rules(r, gold)  # type: ignore[arg-type]
         r.judge = r.judge_total = None
-        if r.itinerary is None or not r.structure_ok:
-            return r.itinerary is not None  # unscorable plan: judged as "nothing", like run_one does
+        if r.itinerary is None or not r.hard_pass:
+            return r.itinerary is not None  # only plans passing all hard constraints are judged, like run_one
         jr = judge_plan(judge, Itinerary.model_validate(r.itinerary), gold[r.sample_id], r.violations)
         if jr.scores:
             r.judge, r.judge_total = jr.scores.model_dump(), jr.total

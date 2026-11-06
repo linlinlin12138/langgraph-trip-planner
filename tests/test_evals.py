@@ -97,7 +97,7 @@ def test_run_one_all_systems() -> None:
     for name, cfg in SYSTEMS.items():
         r = run_one(sample, cfg, lambda: MockChatModel(), judge_model=MockChatModel())
         assert r.completed, (name, r.error)
-        assert r.structure_ok and r.judge_total is not None
+        assert r.structure_ok and (r.judge_total is not None) == r.hard_pass  # only hard-passing plans are judged
         assert (r.tool_calls > 0) == (name in ("full", "no_revision"))
         assert (r.llm_calls == 1) == (name == "baseline")
 
@@ -132,7 +132,9 @@ def test_rejudge_scores_stored_plans_with_another_judge(tmp_path: Path, monkeypa
     done, skipped = rejudge(out, "mock", None, workers=2)
     assert (done, skipped) == (6, 0)
     recs = [RunRecord.model_validate_json(x) for x in (out / "records.jsonl").read_text(encoding="utf-8").splitlines()]
-    assert all(r.judge_total is not None for r in recs if r.structure_ok)
+    assert all((r.judge_total is not None) == r.hard_pass for r in recs)  # judged iff hard constraints pass
+    report = (out / "report.md").read_text(encoding="utf-8")
+    assert "合格计划质量分" in report and "（n=" in report and "配对比较" in report
     assert json.loads((out / "meta.json").read_text(encoding="utf-8"))["judge"]["provider"] == "mock"
     assert (out / "records.none.jsonl").exists()  # previous records kept
 

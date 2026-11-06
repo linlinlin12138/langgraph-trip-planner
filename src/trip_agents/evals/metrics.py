@@ -2,7 +2,7 @@
 
 Four families:
   outcome     structure_ok, hard_pass (feasible samples only), hallucination rate,
-              extraction accuracy, infeasible detection, judge score
+              extraction accuracy, infeasible detection, judge score (hard-passing plans only)
   process     tool precision / recall, invalid & duplicate call rate, research steps, revisions
   efficiency  tokens, estimated cost, end-to-end latency (mean / P95), per-node latency
   stability   across repeats of the same sample: outcome agreement, plan Jaccard, judge std
@@ -72,10 +72,11 @@ METRICS: dict[str, tuple[str, Metric]] = {
     "extraction_acc": ("需求抽取字段准确率", lambda rs: mean(mean(r.extraction.values()) for r in rs if r.extraction is not None)),
     "infeasible_recall": ("不可行样本识别率", lambda rs: rate([r for r in rs if not r.feasible_gold], lambda r: r.flagged_infeasible)),
     "infeasible_false_alarm": ("可行样本误报率", lambda rs: rate([r for r in rs if r.feasible_gold], lambda r: r.flagged_infeasible)),
-    "judge_total": ("Judge 加权总分", lambda rs: mean(r.judge_total for r in rs)),
-    "judge_richness": ("Judge 丰富度", lambda rs: mean(r.judge["richness"] if r.judge else None for r in rs)),
-    "judge_preference": ("Judge 偏好符合度", lambda rs: mean(r.judge["preference_fit"] if r.judge else None for r in rs)),
-    "judge_reasonable": ("Judge 合理性", lambda rs: mean(r.judge["reasonableness"] if r.judge else None for r in rs)),
+    # Judge scores exist only for plans that pass every hard constraint (see docs/EVAL.md); the mean is over those
+    "judge_total": ("合格计划质量分（Judge）", lambda rs: mean(r.judge_total for r in rs)),
+    "judge_richness": ("　丰富度", lambda rs: mean(r.judge["richness"] if r.judge else None for r in rs)),
+    "judge_preference": ("　偏好符合度", lambda rs: mean(r.judge["preference_fit"] if r.judge else None for r in rs)),
+    "judge_reasonable": ("　合理性", lambda rs: mean(r.judge["reasonableness"] if r.judge else None for r in rs)),
     # process
     "tool_precision": (
         "工具选择精确率",
@@ -162,6 +163,27 @@ def stability(records: Sequence[RunRecord]) -> dict[str, float | None]:
         if len(js) > 1:
             jstd.append(statistics.stdev(js))
     return {"outcome_agreement": mean(agree), "plan_jaccard": mean(jac), "judge_std": mean(jstd), "n_groups": float(len(agree))}
+
+
+JUDGE_KEYS = ("judge_total", "judge_richness", "judge_preference", "judge_reasonable")
+
+
+def judged(records: Sequence[RunRecord]) -> int:
+    return sum(r.judge_total is not None for r in records)
+
+
+def paired_judge(a: Sequence[RunRecord], b: Sequence[RunRecord]) -> tuple[float | None, float | None, int]:
+    """Judge means of two systems over the (sample, rep) pairs where BOTH plans were judged.
+
+    Comparing each system's mean over its own passing plans is biased: a weaker system passes
+    mostly easy samples, whose plans score higher. Pairing removes that selection effect.
+    """
+    sa = {(r.sample_id, r.rep): r.judge_total for r in a if r.judge_total is not None}
+    sb = {(r.sample_id, r.rep): r.judge_total for r in b if r.judge_total is not None}
+    keys = sorted(sa.keys() & sb.keys())
+    if not keys:
+        return None, None, 0
+    return statistics.fmean(sa[k] for k in keys), statistics.fmean(sb[k] for k in keys), len(keys)
 
 
 def violation_counts(records: Sequence[RunRecord]) -> dict[str, int]:

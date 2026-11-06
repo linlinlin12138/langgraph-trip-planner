@@ -175,7 +175,9 @@ def run_one(
     rec.llm_calls, rec.input_tokens, rec.output_tokens, rec.cost_usd = s["llm_calls"], s["input_tokens"], s["output_tokens"], s["cost_usd"]
     rec.node_ms = s["node_ms"]
 
-    if judge_model is not None and itinerary is not None and ev.structure_ok:
+    # Judge only plans that pass every hard constraint: quality of an invalid plan is not comparable
+    # (an invented landmark or a missing day reads as "rich"), and it saves the judge calls.
+    if judge_model is not None and itinerary is not None and ev.hard_pass:
         jr = judge_plan(judge_model, itinerary, sample.gold, ev.errors)
         if jr.scores:
             rec.judge, rec.judge_total = jr.scores.model_dump(), jr.total
