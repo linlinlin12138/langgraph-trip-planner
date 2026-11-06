@@ -15,6 +15,9 @@
  "provider": "gemini",
  "model": "gemini-3.8-flash",
  "tool_backend": "mock",
- "judge": null,
+ "judge": {
+  "provider": "openai",
+  "model": "gpt-6.1-sol"
+ },
  "mock": false
 }

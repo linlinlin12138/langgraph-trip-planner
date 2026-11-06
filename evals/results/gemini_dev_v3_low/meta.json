@@ -1,0 +1,23 @@
+{
+ "name": "gemini_dev_v3_low",
+ "date": "2026-11-06T03:22:10",
+ "git_commit": "4883676",
+ "dataset": "evals/datasets/dev.jsonl",
+ "split": "dev",
+ "n_samples": 5,
+ "systems": [
+  "full",
+  "no_revision",
+  "baseline"
+ ],
+ "repeats": 1,
+ "seed": 42,
+ "provider": "gemini",
+ "model": "gemini-3.8-flash",
+ "tool_backend": "mock",
+ "judge": {
+  "provider": "openai",
+  "model": "gpt-6.1-sol"
+ },
+ "mock": false
+}
