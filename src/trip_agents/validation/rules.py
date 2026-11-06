@@ -14,6 +14,7 @@ from datetime import time
 from itertools import pairwise
 
 from trip_agents.schemas import BudgetReport, Itinerary, ResearchBundle, TripRequest, ValidationIssue
+from trip_agents.validation.names import matches_any
 
 EARLIEST = time(7, 0)
 LATEST = time(23, 30)
@@ -120,11 +121,11 @@ def check_dietary(it: Itinerary, req: TripRequest, rb: ResearchBundle, br: Budge
 def check_must_visit(it: Itinerary, req: TripRequest, rb: ResearchBundle, br: BudgetReport | None) -> list[ValidationIssue]:
     found = (rb.attraction(a.ref_id or "") for d in it.days for a in d.activities if a.kind == "attraction")
     visited = {x.name for x in found if x is not None}
-    titles = " ".join(a.title for d in it.days for a in d.activities if a.kind == "attraction")
+    titles = [a.title for d in it.days for a in d.activities if a.kind == "attraction"]
     return [
         ValidationIssue(code="must_visit", message=f"必去景点「{m}」未安排")
         for m in req.hard.must_visit
-        if m not in visited and m not in titles
+        if not matches_any(m, visited) and not any(m in t for t in titles)
     ]
 
 

@@ -8,6 +8,7 @@ can never inject an id the planner hasn't seen.
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Any
 
 from langgraph.types import interrupt
@@ -15,8 +16,28 @@ from langgraph.types import interrupt
 from trip_agents.graph.deps import GraphOptions
 from trip_agents.graph.state import TripState
 from trip_agents.schemas import ResearchBundle, Selection, TripRequest
+from trip_agents.validation.names import matches_any
 
 PER_DAY = {"relaxed": 2, "moderate": 3, "packed": 4}
+# Below this, money per person per day after lodging (45% of the budget, as in hotel selection) is "tight".
+# Dev/test: 48 of 49 feasible hard samples are below 250, 2 of 70 easy, 0 of 69 medium.
+TIGHT_PER_PERSON_DAY = 250.0
+
+
+@dataclass(frozen=True)
+class BudgetCaps:
+    per_person_day: float  # after lodging
+    meal: float  # per person per meal
+    ticket: float  # per person per attraction
+
+
+def budget_caps(req: TripRequest) -> BudgetCaps | None:
+    """Price caps for candidates when the budget is tight, else None (rank by rating as usual)."""
+    h = req.hard
+    per_day = h.budget_total * 0.55 / (h.days * h.travelers)
+    if per_day >= TIGHT_PER_PERSON_DAY:
+        return None
+    return BudgetCaps(per_day, meal=round(per_day * 0.35, 1), ticket=round(per_day * 0.3 / PER_DAY[req.soft.pace], 1))
 
 
 def default_selection(req: TripRequest, rb: ResearchBundle) -> Selection:
@@ -34,10 +55,15 @@ def default_selection(req: TripRequest, rb: ResearchBundle) -> Selection:
         ),
     )
     diet = set(h.dietary_restrictions)
-    rests = sorted(rb.restaurants, key=lambda r: (not diet <= set(r.dietary_tags), -r.rating))
-    must = set(h.must_visit)
+    caps = budget_caps(req)  # tight budget: affordable candidates first, so the planner starts from them
+    meal_cap = caps.meal if caps else float("inf")
+    ticket_cap = caps.ticket if caps else float("inf")
+    rests = sorted(rb.restaurants, key=lambda r: (not diet <= set(r.dietary_tags), r.avg_price_per_person > meal_cap, -r.rating))
     interests = set(s.interests)
-    attrs = sorted(rb.attractions, key=lambda a: (a.name not in must, a.category not in interests, -a.rating))
+    attrs = sorted(
+        rb.attractions,
+        key=lambda a: (not matches_any(a.name, h.must_visit), a.ticket_price > ticket_cap, a.category not in interests, -a.rating),
+    )
     n_attr = min(len(attrs), h.days * PER_DAY[s.pace] + 2)
     return Selection(
         hotel_id=hotels[0].id if hotels and h.days > 1 else None,

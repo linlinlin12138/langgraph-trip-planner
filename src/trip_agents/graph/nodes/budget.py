@@ -19,6 +19,7 @@ from trip_agents.graph.state import TripState
 from trip_agents.llm.context import render_context
 from trip_agents.llm.structured import invoke_structured
 from trip_agents.schemas import BudgetAdvice, BudgetLine, BudgetReport, Itinerary, ResearchBundle, TripRequest
+from trip_agents.validation.names import matches_any
 
 
 def compute_budget(req: TripRequest, rb: ResearchBundle, it: Itinerary, model_costs: dict[str, list[float]] | None = None) -> BudgetReport:
@@ -49,7 +50,7 @@ def compute_budget(req: TripRequest, rb: ResearchBundle, it: Itinerary, model_co
     diet = set(req.hard.dietary_restrictions)
     ok_rest = [r.avg_price_per_person for r in rb.restaurants if diet <= set(r.dietary_tags)]
     cheapest_hotel = min((x.price_per_night for x in rb.hotels), default=0.0)
-    must_tickets = sum(a.ticket_price for a in rb.attractions if a.name in req.hard.must_visit) * n
+    must_tickets = sum(a.ticket_price for a in rb.attractions if matches_any(a.name, req.hard.must_visit)) * n
     min_cost = cheapest_hotel * nights * rooms + min(ok_rest, default=0.0) * 2 * days * n + must_tickets
 
     total = round(sum(li.amount for li in lines), 2)

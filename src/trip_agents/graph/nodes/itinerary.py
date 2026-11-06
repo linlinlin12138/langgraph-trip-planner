@@ -31,6 +31,7 @@ from trip_agents.schemas import (
     TripRequest,
     ValidationIssue,
 )
+from trip_agents.validation.names import matches_any
 
 # Issues without a day_index that can only be fixed by re-planning every day.
 GLOBAL_CODES = {"over_budget", "must_visit", "missing_hotel", "unknown_hotel"}
@@ -136,7 +137,7 @@ def repair_budget(
         notes.append(f"为满足预算，{old_name} 换成了 {r.name}")
         changed.append((d.day_index, k))
 
-    must = set(req.hard.must_visit)
+    must = req.hard.must_visit
     attr_pool = attraction_candidates if attraction_candidates is not None else rb.attractions
     preferred = preferred_attractions or set()
     paid = [(d, k, a) for d in plan.days for k, a in enumerate(d.activities) if a.kind == "attraction"]
@@ -144,7 +145,7 @@ def repair_budget(
         if plan_total(req, rb, plan) <= budget:
             break
         old_attr = rb.attraction(a.ref_id or "")
-        if old_attr is None or old_attr.name in must:
+        if old_attr is None or matches_any(old_attr.name, must):
             continue
         used = {y.ref_id for dd in plan.days for y in dd.activities if y.kind == "attraction"}
         cost_now = activity_cost(a, rb, n)
@@ -229,7 +230,7 @@ def make_itinerary_node(deps: AgentDeps, options: GraphOptions | None = None):  
                 "attractions": [a for a in attractions if a.id not in used_attr],
                 "restaurants": restaurants,
                 "used_restaurant_ids": used_rest,
-                "must_visit_remaining": [m for m in req.hard.must_visit if m not in visited_names],
+                "must_visit_remaining": [m for m in req.hard.must_visit if not matches_any(m, visited_names)],
                 "budget_per_day": round(per_day_budget, 1),
                 "feedback": feedback,
                 "no_candidates": not attractions,

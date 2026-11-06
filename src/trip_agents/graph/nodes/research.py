@@ -24,11 +24,12 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 
 from trip_agents.graph.deps import AgentDeps, GraphOptions
-from trip_agents.graph.nodes.human_select import PER_DAY
+from trip_agents.graph.nodes.human_select import PER_DAY, budget_caps
 from trip_agents.graph.prompts import RESEARCH_SYSTEM
 from trip_agents.graph.state import ToolCallRecord, TripState
 from trip_agents.llm.context import render_context
 from trip_agents.schemas import Attraction, Hotel, ResearchBundle, Restaurant, Route, TripRequest, WeatherDay
+from trip_agents.validation.names import matches_any
 
 
 class ResearchState(TypedDict, total=False):
@@ -166,7 +167,7 @@ def top_up(results: list[dict[str, Any]], req: TripRequest, tools: Any) -> tuple
     notes: list[str] = []
     have = [a.name for a in bundle.attractions]
     for name in h.must_visit:  # category / rating search can miss a named landmark in a large catalog
-        if not any(name in n or n in name for n in have):
+        if not matches_any(name, have):
             res = tools.call("search_attractions", {"city": h.destination, "keyword": name})
             if res.ok and res.data:
                 extra.append({"name": "search_attractions", "data": res.data})
@@ -176,6 +177,21 @@ def top_up(results: list[dict[str, Any]], req: TripRequest, tools: Any) -> tuple
         if res.ok:
             extra.append({"name": "search_attractions", "data": res.data})
             notes.append(f"景点仅 {len(bundle.attractions)} 个（需要 {need_attr}），已不限类别补充检索")
+    caps = budget_caps(req)
+    if caps is not None:  # tight budget: make sure affordable options exist for the planner and the budget repair
+        cheap_rest = sum(diet <= set(r.dietary_tags) and r.avg_price_per_person <= caps.meal for r in bundle.restaurants)
+        if cheap_rest < need_rest:
+            args = {"city": h.destination, "dietary": sorted(diet), "max_price_per_person": caps.meal, "limit": 15}
+            res = tools.call("search_restaurants", args)
+            if res.ok and res.data:
+                extra.append({"name": "search_restaurants", "data": res.data})
+                notes.append(f"预算紧，补充检索人均 {caps.meal:.0f} 元以内的餐厅")
+        cheap_attr = sum(a.ticket_price <= caps.ticket for a in bundle.attractions)
+        if cheap_attr < need_attr:
+            res = tools.call("search_attractions", {"city": h.destination, "max_ticket_price": caps.ticket, "limit": 15})
+            if res.ok and res.data:
+                extra.append({"name": "search_attractions", "data": res.data})
+                notes.append(f"预算紧，补充检索门票 {caps.ticket:.0f} 元以内的景点")
     if sum(diet <= set(r.dietary_tags) for r in bundle.restaurants) < need_rest:
         res = tools.call("search_restaurants", {"city": h.destination, "dietary": sorted(diet), "limit": 15})
         if res.ok:
