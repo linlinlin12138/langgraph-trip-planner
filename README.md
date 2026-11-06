@@ -113,7 +113,7 @@ Gemini 默认模型是 `gemini-3.8-flash`（`gemini-2.5-flash` 对新 key 已返
 
 ## 评测结果
 
-> 以下全部是 **mock 模式**：模型和 Judge 都是规则模拟的，dev 集 60 条，每组跑 3 次，seed=42，commit `a802c67`，2026-11-06（目录：真实店名、每城 45 个景点；hard 样本预算为最低可行花费的 1.1–1.6 倍）。mock 是确定性的，所以标准差为 0。这些数字只证明评测体系能正确运行，**不能当作模型能力的结论**。完整报告见 [`docs/eval/mock_dev_latest.md`](docs/eval/mock_dev_latest.md)。
+> 以下全部是 **mock 模式**：模型和 Judge 都是规则模拟的，dev 集 60 条，每组跑 3 次，seed=42，commit `91da692`，2026-11-06（目录：真实店名、每城 45 个景点；hard 样本预算为最低可行花费的 1.1–1.6 倍）。mock 是确定性的，所以标准差为 0。这些数字只证明评测体系能正确运行，**不能当作模型能力的结论**。完整报告见 [`docs/eval/mock_dev_latest.md`](docs/eval/mock_dev_latest.md)。
 
 | 指标 | full | 去掉回退 | baseline（单次生成） |
 |---|---|---|---|
