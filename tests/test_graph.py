@@ -132,3 +132,38 @@ def test_research_top_up_fills_sparse_categories() -> None:
     assert b.restaurants and all("no_spicy" in r.dietary_tags for r in b.restaurants)  # hard constraint kept
     again, _ = top_up(results + extra, req, tools)
     assert all(x["name"] != "search_attractions" for x in again)  # enough now, no second top-up
+
+
+def test_over_budget_is_repaired_by_swapping_meals_without_llm() -> None:
+    from datetime import date, time
+
+    from trip_agents.evals.world import world_bundle
+    from trip_agents.graph.nodes.itinerary import plan_total, repair_budget
+    from trip_agents.schemas import Activity, DayPlan, Itinerary, TripRequest
+
+    rb = world_bundle("杭州")
+    pricey = max((r for r in rb.restaurants if "no_spicy" in r.dietary_tags), key=lambda r: r.avg_price_per_person)
+    days = [
+        DayPlan(day_index=i, date=date(2027, 1, 14 + i), theme="t", activities=[
+            Activity(start_time=time(12), end_time=time(13), kind="meal", title=f"午餐 - {pricey.name}", ref_id=pricey.id,
+                     est_cost=pricey.avg_price_per_person * 2),
+            Activity(start_time=time(18), end_time=time(19), kind="meal", title=f"晚餐 - {pricey.name}", ref_id=pricey.id,
+                     est_cost=pricey.avg_price_per_person * 2),
+        ])
+        for i in range(2)
+    ]  # fmt: skip
+    it = Itinerary(hotel_id=None, days=days)
+    req = TripRequest.model_validate(
+        {"hard": {"destination": "杭州", "start_date": date(2027, 1, 14), "days": 2, "budget_total": 1, "travelers": 2,
+                  "dietary_restrictions": ["no_spicy"]}}
+    )  # fmt: skip
+    req.hard.budget_total = plan_total(req, rb, it) * 0.6
+    fixed = repair_budget(req, rb, rb.restaurants, it)
+    assert fixed is not None
+    plan, notes = fixed
+    assert plan_total(req, rb, plan) <= req.hard.budget_total and notes
+    meals = [a for d in plan.days for a in d.activities]
+    assert all("no_spicy" in rb.restaurant(a.ref_id or "").dietary_tags for a in meals)  # type: ignore[union-attr]
+    assert all(a.est_cost == rb.restaurant(a.ref_id or "").avg_price_per_person * 2 or a.ref_id == pricey.id for a in meals)  # type: ignore[union-attr]
+    req.hard.budget_total = 1  # unreachable -> caller must fall back to re-planning
+    assert repair_budget(req, rb, rb.restaurants, it) is None

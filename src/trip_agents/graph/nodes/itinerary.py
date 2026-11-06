@@ -18,7 +18,7 @@ from trip_agents.graph.prompts import ITINERARY_SYSTEM
 from trip_agents.graph.state import TripState
 from trip_agents.llm.context import render_context
 from trip_agents.llm.structured import invoke_structured
-from trip_agents.schemas import DayPlan, Itinerary, ResearchBundle, Selection, SkippedItem, TripRequest, ValidationIssue
+from trip_agents.schemas import DayPlan, Itinerary, ResearchBundle, Restaurant, Selection, SkippedItem, TripRequest, ValidationIssue
 
 # Issues without a day_index that can only be fixed by re-planning every day.
 GLOBAL_CODES = {"over_budget", "must_visit", "missing_hotel", "unknown_hotel"}
@@ -82,6 +82,42 @@ def cheaper_hotel(req: TripRequest, rb: ResearchBundle, current: str | None, oth
     return current
 
 
+def plan_total(req: TripRequest, rb: ResearchBundle, it: Itinerary) -> float:
+    """Same total as the Budget agent: lodging + every activity's est_cost."""
+    return hotel_cost(req, rb, it.hotel_id) + sum(a.est_cost for d in it.days for a in d.activities)
+
+
+def repair_budget(req: TripRequest, rb: ResearchBundle, candidates: list[Restaurant], it: Itinerary) -> tuple[Itinerary, list[str]] | None:
+    """Fix an over-budget plan without the LLM: swap the priciest meals for cheaper compliant restaurants.
+
+    Re-planning every day through the model costs N calls per revision (a 5-day trip with two
+    revisions took ~20 LLM calls and $0.4 on Gemini in the dev trial), while "too expensive" is
+    usually just a couple of meals or the hotel. Returns None when swaps can't reach the budget;
+    the caller then falls back to re-planning.
+    """
+    budget, n = req.hard.budget_total, req.hard.travelers
+    diet = set(req.hard.dietary_restrictions)
+    pool = sorted((r for r in candidates if diet <= set(r.dietary_tags)), key=lambda r: r.avg_price_per_person)
+    plan = it.model_copy(deep=True)
+    notes: list[str] = []
+    meals = sorted((a for d in plan.days for a in d.activities if a.kind == "meal"), key=lambda a: -a.est_cost)
+    for a in meals:
+        if plan_total(req, rb, plan) <= budget:
+            break
+        used_today = {x.ref_id for d in plan.days if a in d.activities for x in d.activities if x.kind == "meal"}
+        options = [r for r in pool if r.avg_price_per_person * n < a.est_cost]
+        if not options:
+            continue
+        r = next((r for r in options if r.id not in used_today), options[0])
+        old = rb.restaurant(a.ref_id or "")
+        old_name = old.name if old else a.title
+        a.title = a.title.replace(old_name, r.name) if old_name in a.title else f"用餐：{r.name}"
+        a.ref_id, a.est_cost = r.id, round(r.avg_price_per_person * n, 2)
+        a.notes = "为控制预算更换餐厅"
+        notes.append(f"为满足预算，{old_name} 换成了 {r.name}")
+    return (plan, notes) if plan_total(req, rb, plan) <= budget else None
+
+
 def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
     def itinerary(state: TripState, config: RunnableConfig) -> dict[str, Any]:
         req, rb = state["request"], state["research"]
@@ -104,6 +140,13 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
                 old, new = rb.hotel(hotel_id or ""), rb.hotel(new_hotel)
                 adjustments.append(f"为满足预算，酒店由「{old.name if old else hotel_id}」调整为「{new.name if new else new_hotel}」")
                 hotel_id = new_hotel
+        errors = {i.code for i in issues if i.severity == "error"}
+        if prev is not None and errors == {"over_budget"}:  # only the price is wrong: try a rule-based fix first
+            fixed = repair_budget(req, rb, restaurants or rb.restaurants, prev.model_copy(update={"hotel_id": hotel_id}))
+            if fixed is not None:
+                plan, notes = fixed
+                plan.summary = " / ".join(f"D{d.day_index + 1} {d.theme}" for d in plan.days)
+                return {"itinerary": plan, "revision": revision, "skipped_items": [], "adjustments": adjustments + notes}
         per_day_budget = (req.hard.budget_total - hotel_cost(req, rb, hotel_id)) / req.hard.days
         skipped: list[SkippedItem] = []
 

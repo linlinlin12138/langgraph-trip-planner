@@ -186,11 +186,8 @@ def top_up(results: list[dict[str, Any]], req: TripRequest, tools: Any) -> tuple
 
 def make_research_node(deps: AgentDeps, options: GraphOptions | None = None):  # type: ignore[no-untyped-def]
     sub = build_research_subgraph(deps)
-    enabled = options.enable_research if options else True
 
     def research(state: TripState, config: RunnableConfig) -> dict[str, Any]:
-        if not enabled:  # ablation: no retrieval, downstream agents rely on model knowledge
-            return {"research": ResearchBundle(notes="research disabled"), "tool_calls": [], "status": "awaiting_selection"}
         req = state["request"]
         system = RESEARCH_SYSTEM.format(max_rounds=deps.research_max_rounds_per_tool)
         ctx = render_context(

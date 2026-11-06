@@ -57,7 +57,6 @@ class GraphOptions:
     """Behaviour switches. Ablations in the eval harness flip these."""
 
     enable_revision: bool = True  # conditional edge validate -> itinerary
-    enable_research: bool = True  # False: no tools at all, plan from model knowledge (ablation)
     max_revisions: int = field(default_factory=lambda: get_settings().max_revisions)
     human_in_loop: bool = True  # False: auto-pick defaults, never interrupt (evals)
     max_clarify_rounds: int = 3

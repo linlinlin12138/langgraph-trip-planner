@@ -2,7 +2,6 @@
 
 * full         the complete graph (auto-selection instead of a human)
 * no_revision  ablation: validator still runs, but never routes back to Itinerary
-* no_research  ablation: no tool calls; agents plan from model knowledge
 * baseline     one LLM call: raw request -> whole itinerary; no tools, no validation, no retries
 """
 
@@ -44,7 +43,6 @@ class SystemConfig:
 SYSTEMS: dict[str, SystemConfig] = {
     "full": SystemConfig("full", "graph", GraphOptions(human_in_loop=False), "完整系统"),
     "no_revision": SystemConfig("no_revision", "graph", GraphOptions(human_in_loop=False, enable_revision=False), "去掉回退"),
-    "no_research": SystemConfig("no_research", "graph", GraphOptions(human_in_loop=False, enable_research=False), "去掉检索"),
     "baseline": SystemConfig("baseline", "single_shot", description="单次生成，无检索无校验"),
 }
 

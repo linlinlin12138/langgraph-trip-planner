@@ -57,7 +57,7 @@ def jaccard(a: set[str], b: set[str]) -> float:
 
 # ----------------------------------------------------------------------------- metric table
 def _uses_tools(r: RunRecord) -> bool:
-    return r.system not in ("baseline", "no_research")
+    return r.system != "baseline"
 
 
 METRICS: dict[str, tuple[str, Metric]] = {

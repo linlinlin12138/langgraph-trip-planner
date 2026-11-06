@@ -66,7 +66,7 @@ def main(argv: list[str] | None = None) -> Path:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--split", default="dev", choices=["dev", "test"])
     ap.add_argument("--dataset", type=Path, default=None, help="override dataset path")
-    ap.add_argument("--systems", default="full,no_revision,no_research,baseline")
+    ap.add_argument("--systems", default="full,no_revision,baseline")
     ap.add_argument("--repeats", type=int, default=1)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--limit", type=int, default=0, help="first N samples only (0 = all)")

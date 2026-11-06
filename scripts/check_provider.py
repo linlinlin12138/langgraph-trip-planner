@@ -161,11 +161,11 @@ def _main() -> None:
     base_in, base_out = (statistics.fmean(x[i] for x in per["baseline"]) for i in (0, 1))
     for split, n in (("dev", 60), ("test", 140)):
         for reps in (1, 3):
-            tin = (3 * full_in + base_in) * n * reps  # full, no_revision, no_research ~ full (upper bound), + baseline
-            tout = (3 * full_out + base_out) * n * reps
+            tin = (2 * full_in + base_in) * n * reps  # full, no_revision ~ full (upper bound), + baseline
+            tout = (2 * full_out + base_out) * n * reps
             cost = estimate_cost(model_name, int(tin), int(tout))
             print(
-                f"    {split} x{reps} (4 systems, judge excluded): ~{tin / 1e6:.2f}M in + {tout / 1e6:.2f}M out tokens"
+                f"    {split} x{reps} (3 systems, judge excluded): ~{tin / 1e6:.2f}M in + {tout / 1e6:.2f}M out tokens"
                 f"{'' if cost is None else f'  ~${cost:.2f}'}"
             )
 

@@ -62,7 +62,6 @@ make eval-compare A=evals/runs/<a> B=evals/runs/<b>
 |---|---|
 | `full` | 完整图；自动选择默认候选代替人工挑选 |
 | `no_revision` | 照常校验，但不回退重排 |
-| `no_research` | 不调用任何工具，Agent 凭模型自身知识规划 |
 | `baseline` | 单次生成：原始请求 → 完整行程，没有检索、校验和重试 |
 | `no_memory` | 关闭长期记忆。单次会话的数据集测不出记忆的作用，所以单独用两次会话的场景评测，见下文 |
 
