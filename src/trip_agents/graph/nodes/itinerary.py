@@ -20,7 +20,17 @@ from trip_agents.graph.prompts import ITINERARY_SYSTEM
 from trip_agents.graph.state import TripState
 from trip_agents.llm.context import render_context
 from trip_agents.llm.structured import invoke_structured
-from trip_agents.schemas import DayPlan, Itinerary, ResearchBundle, Restaurant, Selection, SkippedItem, TripRequest, ValidationIssue
+from trip_agents.schemas import (
+    Attraction,
+    DayPlan,
+    Itinerary,
+    ResearchBundle,
+    Restaurant,
+    Selection,
+    SkippedItem,
+    TripRequest,
+    ValidationIssue,
+)
 
 # Issues without a day_index that can only be fixed by re-planning every day.
 GLOBAL_CODES = {"over_budget", "must_visit", "missing_hotel", "unknown_hotel"}
@@ -78,9 +88,21 @@ def cheaper_hotel(req: TripRequest, rb: ResearchBundle, current: str | None, oth
 
 
 def repair_budget(
-    req: TripRequest, rb: ResearchBundle, candidates: list[Restaurant], it: Itinerary
+    req: TripRequest,
+    rb: ResearchBundle,
+    candidates: list[Restaurant],
+    it: Itinerary,
+    attraction_candidates: list[Attraction] | None = None,
+    preferred_attractions: set[str] | None = None,
+    preferred_restaurants: set[str] | None = None,
 ) -> tuple[Itinerary, list[str], list[tuple[int, int]]] | None:
-    """Fix an over-budget plan without the LLM: swap the priciest meals for cheaper compliant restaurants.
+    """Fix an over-budget plan without the LLM.
+
+    1. (caller) a cheaper hotel; 2. the priciest meals -> cheaper diet-compliant restaurants;
+    3. the priciest paid attractions that are not must-visit -> free / cheaper ones open in the same
+       time slot, not yet in the plan, preferring the same category and the user's selection.
+    In the Gemini dev run the remaining over-budget failures were mostly tickets: hotel + tickets
+    alone left too little for meals, so meal swaps could never reach the budget.
 
     Re-planning every day through the model costs N calls per revision (a 5-day trip with two
     revisions took ~20 LLM calls and $0.4 on Gemini in the dev trial), while "too expensive" is
@@ -103,14 +125,40 @@ def repair_budget(
         if not options:
             continue
         uses = Counter(x.ref_id for d in plan.days for x in d.activities if x.kind == "meal")
-        # spread the swaps: not twice the same day, then the least-used restaurant, then the cheapest
-        r = min(options, key=lambda r: (r.id in used_today, uses[r.id], r.avg_price_per_person))
+        # spread the swaps: not twice the same day, then the least-used restaurant, the user's picks, the cheapest
+        liked = preferred_restaurants or set()
+        r = min(options, key=lambda r: (r.id in used_today, uses[r.id], r.id not in liked, r.avg_price_per_person))
         old = rb.restaurant(a.ref_id or "")
         old_name = old.name if old else a.title
         a.title = a.title.replace(old_name, r.name) if old_name in a.title else f"用餐：{r.name}"
         a.ref_id, a.est_cost = r.id, round(r.avg_price_per_person * n, 2)
         a.notes = "为控制预算更换餐厅"
         notes.append(f"为满足预算，{old_name} 换成了 {r.name}")
+        changed.append((d.day_index, k))
+
+    must = set(req.hard.must_visit)
+    attr_pool = attraction_candidates if attraction_candidates is not None else rb.attractions
+    preferred = preferred_attractions or set()
+    paid = [(d, k, a) for d in plan.days for k, a in enumerate(d.activities) if a.kind == "attraction"]
+    for d, k, a in sorted(paid, key=lambda x: -activity_cost(x[2], rb, n)):
+        if plan_total(req, rb, plan) <= budget:
+            break
+        old_attr = rb.attraction(a.ref_id or "")
+        if old_attr is None or old_attr.name in must:
+            continue
+        used = {y.ref_id for dd in plan.days for y in dd.activities if y.kind == "attraction"}
+        cost_now = activity_cost(a, rb, n)
+        attr_options = [
+            alt for alt in attr_pool
+            if alt.id not in used and alt.ticket_price * n < cost_now and alt.open_time <= a.start_time and alt.close_time >= a.end_time
+        ]  # fmt: skip
+        if not attr_options:
+            continue
+        new = min(attr_options, key=lambda o: (o.category != old_attr.category, o.id not in preferred, o.ticket_price, -o.rating))
+        a.title = a.title.replace(old_attr.name, new.name) if old_attr.name in a.title else new.name
+        a.ref_id, a.est_cost = new.id, round(new.ticket_price * n, 2)
+        a.notes = "为控制预算更换景点"
+        notes.append(f"为满足预算，{old_attr.name} 换成了 {new.name}")
         changed.append((d.day_index, k))
     return (plan, notes, changed) if plan_total(req, rb, plan) <= budget else None
 
@@ -141,7 +189,12 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
                 hotel_id = new_hotel
         errors = {i.code for i in issues if i.severity == "error"}
         if prev is not None and errors == {"over_budget"}:  # only the price is wrong: try a rule-based fix first
-            fixed = repair_budget(req, rb, restaurants or rb.restaurants, prev.model_copy(update={"hotel_id": hotel_id}))
+            fixed = repair_budget(
+                # every researched candidate, not just the selected ones: the selection is the best-rated, i.e. pricey
+                req, rb, rb.restaurants, prev.model_copy(update={"hotel_id": hotel_id}),
+                attraction_candidates=rb.attractions, preferred_attractions=set(sel.attraction_ids),
+                preferred_restaurants=set(sel.restaurant_ids),
+            )  # fmt: skip
             if fixed is not None:
                 plan, notes, changed = fixed
                 plan.summary = " / ".join(f"D{d.day_index + 1} {d.theme}" for d in plan.days)

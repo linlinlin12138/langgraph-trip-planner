@@ -79,3 +79,29 @@ def test_graph_rewrites_costs_and_run_record_carries_the_audit() -> None:
     world = world_bundle(sample.gold.hard.destination)
     n = sample.gold.hard.travelers
     assert all(a.est_cost == activity_cost(a, world, n) for d in it.days for a in d.activities if a.kind != "transit")
+
+
+def test_repair_swaps_paid_attractions_but_never_must_visit() -> None:
+    cheapest_meal = min(RB.restaurants, key=lambda r: r.avg_price_per_person)
+    paid = sorted((a for a in RB.attractions if a.ticket_price > 0), key=lambda a: -a.ticket_price)
+    must, other = paid[0], paid[1]
+    acts = [
+        Activity(start_time=time(10), end_time=time(11), kind="attraction", title=must.name, ref_id=must.id, est_cost=0),
+        Activity(start_time=time(14), end_time=time(15), kind="attraction", title=other.name, ref_id=other.id, est_cost=0),
+        Activity(start_time=time(18), end_time=time(19), kind="meal", title="晚餐", ref_id=cheapest_meal.id, est_cost=0),
+    ]
+    it = Itinerary(hotel_id=None, days=[DayPlan(day_index=0, date=date(2027, 1, 14), activities=acts)])
+    req = request(budget=1)
+    req.hard.must_visit = [must.name]
+    # tickets dominate: even the cheapest meal can't close the gap, only dropping the non-must ticket can
+    req.hard.budget_total = plan_total(req, RB, it) - other.ticket_price * 2 + 1
+    fixed = repair_budget(req, RB, RB.restaurants, it)
+    assert fixed is not None
+    new_plan, notes, changed = fixed
+    a0, a1 = new_plan.days[0].activities[:2]
+    assert a0.ref_id == must.id  # must-visit kept
+    swapped = RB.attraction(a1.ref_id or "")
+    assert swapped is not None and swapped.id != other.id and swapped.ticket_price < other.ticket_price
+    assert swapped.open_time <= a1.start_time and swapped.close_time >= a1.end_time  # still open in that slot
+    assert (0, 1) in changed and any(other.name in x for x in notes)
+    assert plan_total(req, RB, new_plan) <= req.hard.budget_total
