@@ -1,12 +1,12 @@
-# 评测报告 · mock-dev-r3-v4
+# 评测报告 · mock-dev-r3-final2
 
 > ⚠️ **MOCK 模式**：模型为规则模拟的 `MockChatModel`，Judge 为启发式打分。以下数字只验证评测流程能跑通，
 > **不代表任何真实模型的规划质量**；mock 是确定性的，稳定性指标恒为 1。
 
 | 项 | 值 |
 |---|---|
-| 日期 | 2026-11-06T18:57:01 |
-| git commit | `ffa1bd1` |
+| 日期 | 2026-11-06T19:42:13 |
+| git commit | `deb0eaf` |
 | 模型 | mock / `mock-planner-v1` |
 | Judge | mock / `mock-planner-v1` |
 | 工具后端 | mock |
@@ -54,8 +54,8 @@
 | 平均 LLM 调用次数 | 8.20 ± 0.00 | 7.73 ± 0.00 | 1.00 ± 0.00 |
 | 平均 token (输入+输出) | 13930 ± 0.00 | 12952 ± 0.00 | 9061 ± 0.00 |
 | 平均估算费用 (USD) | 0.00000 ± 0.00 | 0.00000 ± 0.00 | 0.00000 ± 0.00 |
-| 端到端耗时均值 (ms) | 35.54 ± 5.40 | 35.55 ± 1.98 | 3.75 ± 0.47 |
-| 端到端耗时 P95 (ms) | 51.81 ± 8.28 | 49.91 ± 9.67 | 4.39 ± 0.94 |
+| 端到端耗时均值 (ms) | 36.27 ± 3.43 | 36.51 ± 2.02 | 4.86 ± 0.57 |
+| 端到端耗时 P95 (ms) | 55.22 ± 4.27 | 52.72 ± 7.09 | 6.00 ± 1.16 |
 
 ## 合格计划质量分：配对比较
 
@@ -91,8 +91,8 @@
 
 ## 各节点耗时（ms）
 
-**full**：`chat` 1.60 / P95 2.20 · `cache_lookup` 0.13 / P95 0.20 · `research` 7.42 / P95 11.60 · `human_select` 0.10 / P95 0.10 · `itinerary` 5.87 / P95 16.00 · `budget` 0.51 / P95 1.40 · `validate` 0.31 / P95 0.60 · `finalize` 0.10 / P95 0.10 · `confirm` 0.02 / P95 0.10
-**no_revision**：`chat` 1.65 / P95 2.30 · `cache_lookup` 0.13 / P95 0.20 · `research` 7.71 / P95 12.20 · `human_select` 0.10 / P95 0.10 · `itinerary` 4.98 / P95 10.20 · `budget` 0.47 / P95 1.50 · `validate` 0.23 / P95 0.40 · `finalize` 0.11 / P95 0.10 · `confirm` 0.03 / P95 0.10
+**full**：`chat` 1.64 / P95 2.40 · `cache_lookup` 0.13 / P95 0.20 · `research` 7.48 / P95 11.10 · `human_select` 0.10 / P95 0.10 · `itinerary` 6.13 / P95 14.70 · `budget` 0.55 / P95 1.90 · `validate` 0.32 / P95 0.80 · `finalize` 0.10 / P95 0.10 · `confirm` 0.03 / P95 0.10
+**no_revision**：`chat` 1.70 / P95 2.40 · `cache_lookup` 0.14 / P95 0.20 · `research` 8.00 / P95 12.20 · `human_select` 0.10 / P95 0.10 · `itinerary` 5.28 / P95 11.00 · `budget` 0.50 / P95 1.50 · `validate` 0.25 / P95 0.40 · `finalize` 0.10 / P95 0.10 · `confirm` 0.02 / P95 0.10
 
 ## 违规类型（出现该违规的记录数）
 

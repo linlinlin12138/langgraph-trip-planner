@@ -104,7 +104,7 @@ Gemini 的推理强度默认为 `low`（`LLM_THINKING_LEVEL`），记录在 `met
 - [`mock_dev_before_fix.md`](eval/mock_dev_before_fix.md)：commit `c23e7a4`，dev 60 条 × 3 次，2026-11-02
 - [`mock_dev_after_fix.md`](eval/mock_dev_after_fix.md)：commit `ae92992`，同样的配置
 - [`mock_dev_compare.md`](eval/mock_dev_compare.md)：前后对比
-- [`mock_dev_latest.md`](eval/mock_dev_latest.md)：换成真实店名目录、收紧 hard 预算后，在 commit `ffa1bd1` 上重跑（花费按目录价格判定、规则修复加入换景点、修正人数说法、对照改为 baseline_catalog 之后），配置相同，README 里的表格用的是这一份
+- [`mock_dev_latest.md`](eval/mock_dev_latest.md)：换成真实店名目录、收紧 hard 预算后，在 commit `deb0eaf` 上重跑（花费按目录价格判定、规则修复加入换景点和最后一轮纯规则修复、修正人数说法、对照改为 baseline_catalog 之后），配置相同，README 里的表格用的是这一份
 - 以上 before/after/compare 三份是在旧目录（虚构酒店餐厅、每城 15 个景点、5 种饮食限制）上测的，只作为历史记录
 - [`catalog_spotcheck.csv`](eval/catalog_spotcheck.csv)：新目录的人工抽查表（120 条）
 
@@ -143,6 +143,12 @@ mock 模型是确定性的，所以稳定性恒为 1，标准差恒为 0。mock 
 - **质量分**：两边都合格的 37 个样本上，baseline_catalog 的质量分高约 2 分，主要在丰富度和偏好符合度。full 为过预算会把餐厅、景点换成便宜的，Judge 对这类行程打分略低。
 - **相比 `gemini_dev_full`（修复前，重新判定后 hard 20.0%）**：full 的 hard 样本通过率升到 46.7%。7 条通过的 hard 样本里有 5 条用到了规则修复（换餐厅 / 换景点）。
 - **剩下的 8 条 full 失败**里规则修复一次都没触发：前几轮除了超预算还有别的错误，所以走了模型重排；等到只剩超预算时，回退次数已经用完。离线对这 8 份最终行程补做一次规则修复，4 份能修到合格（偏乐观：模拟时可选整个目录）。
+
+**补充：修订用完后再做一次纯规则修复（`gemini_dev_v4_hard`，只跑 full 的 15 条 hard 样本，花费 $1.12）**。修订次数用完、剩下的错误只有超预算时，再进一次 Itinerary 节点，只做规则修复、不调用模型。hard 样本通过 8/15（v4 是 7/15）。这一轮在 6 条样本上触发，只救回 s155（换了便宜酒店）。其余没修好的原因：
+- 规则修复只能从检索结果里挑，而检索按评分取，便宜的餐厅和免费景点多半不在里面（例如 s166 目录里最便宜的合规餐厅人均 25 元，检索结果里最便宜的是 40 元）；离线用整个目录模拟能修好，运行时修不好。
+- 差距太大：s176 超出 70%、s186 超出一倍，门票和酒店已占掉大部分预算。
+- s161 没有触发：模型把必去景点抽成“成都大熊猫繁育研究基地”，运行时的校验认为必去景点没排上，错误不只超预算（评测按标准答案判，这一项是过的）。
+- Gemini 在固定 seed 下输出确定，这 15 条的行程和 v4 完全一样，差异只来自最后这一轮修复。
 
 **历史结果：`gemini_dev_full`**（修复花费计算、换景点、人数说法、对照系统之前），结果在 [`evals/results/gemini_dev_full/`](../evals/results/gemini_dev_full/report.md)。生成花费 $4.42。下表是按目录价格**重新判定后**的数字，括号里是修复花费计算前的旧结论：
 
