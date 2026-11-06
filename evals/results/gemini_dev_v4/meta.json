@@ -1,7 +1,7 @@
 {
  "name": "gemini_dev_v4",
- "date": "2026-11-06T19:09:05",
- "git_commit": "81c27af",
+ "date": "2026-11-06T19:27:52",
+ "git_commit": "3e8cfb6",
  "dataset": "evals/datasets/dev.jsonl",
  "split": "dev",
  "n_samples": 60,
@@ -16,6 +16,9 @@
  "model": "gemini-3.8-flash",
  "thinking_level": "low",
  "tool_backend": "mock",
- "judge": null,
+ "judge": {
+  "provider": "openai",
+  "model": "gpt-6.1-sol"
+ },
  "mock": false
 }
