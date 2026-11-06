@@ -1,0 +1,22 @@
+{
+ "name": "gemini_test_v1",
+ "date": "2026-11-06T21:03:07",
+ "git_commit": "6d6507c",
+ "dataset": "evals/datasets/test.jsonl",
+ "split": "test",
+ "n_samples": 140,
+ "difficulty_filter": null,
+ "systems": [
+  "full",
+  "no_revision",
+  "baseline_catalog"
+ ],
+ "repeats": 1,
+ "seed": 42,
+ "provider": "gemini",
+ "model": "gemini-3.8-flash",
+ "thinking_level": "low",
+ "tool_backend": "mock",
+ "judge": null,
+ "mock": false
+}
