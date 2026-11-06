@@ -96,7 +96,7 @@ Gemini 的推理强度默认为 `low`（`LLM_THINKING_LEVEL`），记录在 `met
 - [`mock_dev_before_fix.md`](eval/mock_dev_before_fix.md)：commit `c23e7a4`，dev 60 条 × 3 次，2026-11-02
 - [`mock_dev_after_fix.md`](eval/mock_dev_after_fix.md)：commit `ae92992`，同样的配置
 - [`mock_dev_compare.md`](eval/mock_dev_compare.md)：前后对比
-- [`mock_dev_latest.md`](eval/mock_dev_latest.md)：换成真实店名目录、收紧 hard 预算后，在 commit `cb8debc` 上重跑（花费按目录价格判定、规则修复加入换景点之后），配置相同，README 里的表格用的是这一份
+- [`mock_dev_latest.md`](eval/mock_dev_latest.md)：换成真实店名目录、收紧 hard 预算后，在 commit `19ef084` 上重跑（花费按目录价格判定、规则修复加入换景点、修正人数说法之后），配置相同，README 里的表格用的是这一份
 - 以上 before/after/compare 三份是在旧目录（虚构酒店餐厅、每城 15 个景点、5 种饮食限制）上测的，只作为历史记录
 - [`catalog_spotcheck.csv`](eval/catalog_spotcheck.csv)：新目录的人工抽查表（120 条）
 
