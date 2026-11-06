@@ -77,6 +77,7 @@ def main(argv: list[str] | None = None) -> Path:
     ap.add_argument("--no-judge", action="store_true")
     ap.add_argument("--workers", type=int, default=1)
     ap.add_argument("--name", default=None)
+    ap.add_argument("--retry-errors", action="store_true", help="on resume, re-run records that ended in an exception (e.g. 504)")
     args = ap.parse_args(argv)
 
     if args.split == "test" and args.provider == "mock":
@@ -114,9 +115,15 @@ def main(argv: list[str] | None = None) -> Path:
     rec_path = out / "records.jsonl"
     done = set()
     if rec_path.exists():
+        kept = []
         for line in rec_path.read_text(encoding="utf-8").splitlines():
             r = RunRecord.model_validate_json(line)
+            if args.retry_errors and r.error:
+                continue  # dropped: will be run again
+            kept.append(line)
             done.add((r.sample_id, r.system, r.rep))
+        if args.retry_errors:
+            rec_path.write_text("".join(x + "\n" for x in kept), encoding="utf-8")
     jobs = [(smp, sys, rep) for rep in range(args.repeats) for sys in systems for smp in samples if (smp.id, sys.name, rep) not in done]
     print(f"{name}: {len(jobs)} runs to do ({len(done)} already done)")
 

@@ -8,6 +8,7 @@ Trade-off: N sequential calls instead of 1 (more latency); see docs/DESIGN.md.
 
 from __future__ import annotations
 
+from collections import Counter
 from typing import Any
 
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -108,7 +109,9 @@ def repair_budget(req: TripRequest, rb: ResearchBundle, candidates: list[Restaur
         options = [r for r in pool if r.avg_price_per_person * n < a.est_cost]
         if not options:
             continue
-        r = next((r for r in options if r.id not in used_today), options[0])
+        uses = Counter(x.ref_id for d in plan.days for x in d.activities if x.kind == "meal")
+        # spread the swaps: not twice the same day, then the least-used restaurant, then the cheapest
+        r = min(options, key=lambda r: (r.id in used_today, uses[r.id], r.avg_price_per_person))
         old = rb.restaurant(a.ref_id or "")
         old_name = old.name if old else a.title
         a.title = a.title.replace(old_name, r.name) if old_name in a.title else f"用餐：{r.name}"

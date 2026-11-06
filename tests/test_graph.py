@@ -165,5 +165,7 @@ def test_over_budget_is_repaired_by_swapping_meals_without_llm() -> None:
     meals = [a for d in plan.days for a in d.activities]
     assert all("no_spicy" in rb.restaurant(a.ref_id or "").dietary_tags for a in meals)  # type: ignore[union-attr]
     assert all(a.est_cost == rb.restaurant(a.ref_id or "").avg_price_per_person * 2 or a.ref_id == pricey.id for a in meals)  # type: ignore[union-attr]
+    swapped = [a.ref_id for a in meals if a.ref_id != pricey.id]
+    assert max(swapped.count(x) for x in swapped) <= 2  # swaps spread over several restaurants
     req.hard.budget_total = 1  # unreachable -> caller must fall back to re-planning
     assert repair_budget(req, rb, rb.restaurants, it) is None

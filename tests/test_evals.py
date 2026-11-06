@@ -158,3 +158,21 @@ def test_days_matched_by_date_not_index_numbering() -> None:
     assert not {"missing_day", "wrong_date", "extra_day"} & set(ev.errors)
     wrong = day.model_copy(update={"day_index": 0, "date": g.hard.start_date.replace(day=2)})
     assert "wrong_date" in evaluate_plan(Itinerary(hotel_id=None, days=[wrong]), g).errors
+
+
+def test_retry_errors_reruns_crashed_records(tmp_path: Path, monkeypatch) -> None:  # type: ignore[no-untyped-def]
+    import trip_agents.evals.run as runmod
+    from trip_agents.evals.systems import RunRecord
+
+    monkeypatch.setattr(runmod, "RUNS_DIR", tmp_path)
+    args = ["--limit", "2", "--systems", "baseline", "--name", "re", "--provider", "mock", "--no-judge"]
+    out = run_main(args)
+    path = out / "records.jsonl"
+    recs = [RunRecord.model_validate_json(x) for x in path.read_text(encoding="utf-8").splitlines()]
+    recs[0].error = "GoogleAPIError: 504 DEADLINE_EXCEEDED"
+    path.write_text("".join(r.model_dump_json() + "\n" for r in recs), encoding="utf-8")
+    run_main(args)  # plain resume keeps the crashed record
+    assert sum(1 for x in path.read_text(encoding="utf-8").splitlines() if "DEADLINE" in x) == 1
+    run_main([*args, "--retry-errors"])
+    lines = path.read_text(encoding="utf-8").splitlines()
+    assert len(lines) == 2 and not any("DEADLINE" in x for x in lines)
