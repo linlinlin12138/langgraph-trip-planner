@@ -21,18 +21,28 @@ from pathlib import Path
 from trip_agents.evals.dataset import DATASET_DIR, load
 from trip_agents.evals.judge import judge_plan
 from trip_agents.evals.report import write_report
-from trip_agents.evals.systems import RunRecord
+from trip_agents.evals.systems import RunRecord, set_cost_audit
 from trip_agents.evals.world import evaluate_plan
 from trip_agents.llm.factory import DEFAULT_MODELS, get_chat_model
-from trip_agents.schemas import Itinerary
+from trip_agents.schemas import BudgetReport, Itinerary, TripRequest
 
 
-def rescore_rules(r: RunRecord, gold: dict[str, object]) -> None:
+def rescore_rules(r: RunRecord, gold: dict[str, TripRequest]) -> None:
     if r.itinerary is None:
         return
-    ev = evaluate_plan(Itinerary.model_validate(r.itinerary), gold[r.sample_id])  # type: ignore[arg-type]
+    g = gold[r.sample_id]
+    ev = evaluate_plan(Itinerary.model_validate(r.itinerary), g)
     r.structure_ok, r.hard_pass, r.violations = ev.structure_ok, ev.hard_pass, ev.errors
     r.n_refs, r.hallucinated_refs = ev.n_refs, ev.hallucinated_refs
+    # Runs made after the cost fix store the model's original estimates; older plans still carry them in
+    # est_cost, so the evaluation's own audit of the stored plan recovers them.
+    runtime = None
+    if r.cost_model_refs is not None:
+        runtime = BudgetReport(
+            lines=[], total=0.0, budget=0.0, min_feasible_cost=0.0,
+            model_refs_total=r.cost_model_refs, catalog_refs_total=r.cost_catalog_refs, model_plan_total=r.plan_total_model,
+        )  # fmt: skip
+    set_cost_audit(r, ev.budget, runtime, g.hard.budget_total)
 
 
 def rules_only(run_dir: Path) -> int:
@@ -41,7 +51,7 @@ def rules_only(run_dir: Path) -> int:
     records = [RunRecord.model_validate_json(x) for x in rec_path.read_text(encoding="utf-8").splitlines() if x.strip()]
     gold = {s.id: s.gold for s in load(DATASET_DIR / f"{meta['split']}.jsonl")}
     for r in records:
-        rescore_rules(r, gold)  # type: ignore[arg-type]
+        rescore_rules(r, gold)
         if not r.hard_pass:  # judge scores only exist for plans that pass the hard constraints
             r.judge = r.judge_total = None
     rec_path.write_text("".join(r.model_dump_json() + "\n" for r in records), encoding="utf-8")
@@ -58,7 +68,7 @@ def rejudge(run_dir: Path, provider: str, model: str | None, *, workers: int = 4
     model_name = model or DEFAULT_MODELS[provider]
 
     def score(r: RunRecord) -> bool:
-        rescore_rules(r, gold)  # type: ignore[arg-type]
+        rescore_rules(r, gold)
         r.judge = r.judge_total = None
         if r.itinerary is None or not r.hard_pass:
             return r.itinerary is not None  # only plans passing all hard constraints are judged, like run_one

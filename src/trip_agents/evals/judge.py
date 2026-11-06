@@ -18,6 +18,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel, Field
 
 from trip_agents.evals.world import normalize_refs, world_bundle
+from trip_agents.graph.costs import apply_catalog_costs
 from trip_agents.llm.context import render_context
 from trip_agents.llm.structured import invoke_structured
 from trip_agents.schemas import Itinerary, TripRequest
@@ -67,6 +68,7 @@ def render_plan(it: Itinerary, gold: TripRequest) -> dict[str, Any]:
     """Resolve ids to names/categories so the judge reads what a human would read."""
     world = world_bundle(gold.hard.destination)
     norm, _, _ = normalize_refs(it, world)
+    norm = apply_catalog_costs(norm, world, gold.hard.travelers)  # the judge sees catalog prices, like the budget check
     out_days = []
     for d in norm.days:
         acts = []

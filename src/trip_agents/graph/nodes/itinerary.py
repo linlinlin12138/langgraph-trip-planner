@@ -14,6 +14,7 @@ from typing import Any
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableConfig
 
+from trip_agents.graph.costs import activity_cost, apply_catalog_costs, hotel_cost, plan_total
 from trip_agents.graph.deps import AgentDeps
 from trip_agents.graph.prompts import ITINERARY_SYSTEM
 from trip_agents.graph.state import TripState
@@ -59,13 +60,6 @@ def make_day_checker(day_index: int, req: TripRequest, rb: ResearchBundle):  # t
     return check
 
 
-def hotel_cost(req: TripRequest, rb: ResearchBundle, hotel_id: str | None) -> float:
-    h = rb.hotel(hotel_id) if hotel_id else None
-    if h is None or req.hard.days <= 1:
-        return 0.0
-    return h.price_per_night * (req.hard.days - 1) * ((req.hard.travelers + 1) // 2)
-
-
 def cheaper_hotel(req: TripRequest, rb: ResearchBundle, current: str | None, other_costs: float) -> str | None:
     """Hard budget beats soft hotel preference.
 
@@ -83,30 +77,29 @@ def cheaper_hotel(req: TripRequest, rb: ResearchBundle, current: str | None, oth
     return current
 
 
-def plan_total(req: TripRequest, rb: ResearchBundle, it: Itinerary) -> float:
-    """Same total as the Budget agent: lodging + every activity's est_cost."""
-    return hotel_cost(req, rb, it.hotel_id) + sum(a.est_cost for d in it.days for a in d.activities)
-
-
-def repair_budget(req: TripRequest, rb: ResearchBundle, candidates: list[Restaurant], it: Itinerary) -> tuple[Itinerary, list[str]] | None:
+def repair_budget(
+    req: TripRequest, rb: ResearchBundle, candidates: list[Restaurant], it: Itinerary
+) -> tuple[Itinerary, list[str], list[tuple[int, int]]] | None:
     """Fix an over-budget plan without the LLM: swap the priciest meals for cheaper compliant restaurants.
 
     Re-planning every day through the model costs N calls per revision (a 5-day trip with two
     revisions took ~20 LLM calls and $0.4 on Gemini in the dev trial), while "too expensive" is
-    usually just a couple of meals or the hotel. Returns None when swaps can't reach the budget;
-    the caller then falls back to re-planning.
+    usually just a couple of meals or the hotel. Costs come from the catalog (graph/costs.py), the
+    same total the Budget agent uses. Returns (plan, notes, changed (day_index, position) slots), or
+    None when swaps can't reach the budget; the caller then falls back to re-planning.
     """
     budget, n = req.hard.budget_total, req.hard.travelers
     diet = set(req.hard.dietary_restrictions)
     pool = sorted((r for r in candidates if diet <= set(r.dietary_tags)), key=lambda r: r.avg_price_per_person)
-    plan = it.model_copy(deep=True)
+    plan = apply_catalog_costs(it, rb, n)
     notes: list[str] = []
-    meals = sorted((a for d in plan.days for a in d.activities if a.kind == "meal"), key=lambda a: -a.est_cost)
-    for a in meals:
+    changed: list[tuple[int, int]] = []
+    slots = [(d, k, a) for d in plan.days for k, a in enumerate(d.activities) if a.kind == "meal"]
+    for d, k, a in sorted(slots, key=lambda x: -activity_cost(x[2], rb, n)):
         if plan_total(req, rb, plan) <= budget:
             break
-        used_today = {x.ref_id for d in plan.days if a in d.activities for x in d.activities if x.kind == "meal"}
-        options = [r for r in pool if r.avg_price_per_person * n < a.est_cost]
+        used_today = {x.ref_id for x in d.activities if x.kind == "meal"}
+        options = [r for r in pool if r.avg_price_per_person * n < activity_cost(a, rb, n)]
         if not options:
             continue
         uses = Counter(x.ref_id for d in plan.days for x in d.activities if x.kind == "meal")
@@ -118,7 +111,8 @@ def repair_budget(req: TripRequest, rb: ResearchBundle, candidates: list[Restaur
         a.ref_id, a.est_cost = r.id, round(r.avg_price_per_person * n, 2)
         a.notes = "为控制预算更换餐厅"
         notes.append(f"为满足预算，{old_name} 换成了 {r.name}")
-    return (plan, notes) if plan_total(req, rb, plan) <= budget else None
+        changed.append((d.day_index, k))
+    return (plan, notes, changed) if plan_total(req, rb, plan) <= budget else None
 
 
 def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
@@ -127,6 +121,8 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
         sel: Selection = state["selection"]
         prev = state.get("itinerary")
         revision = state.get("revision", -1) + 1
+        n = req.hard.travelers
+        model_costs: dict[str, list[float]] = dict(state.get("model_costs") or {})
         issues = state.get("issues", []) if prev is not None else []
         targets = days_to_replan(req, prev, issues)
 
@@ -147,9 +143,15 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
         if prev is not None and errors == {"over_budget"}:  # only the price is wrong: try a rule-based fix first
             fixed = repair_budget(req, rb, restaurants or rb.restaurants, prev.model_copy(update={"hotel_id": hotel_id}))
             if fixed is not None:
-                plan, notes = fixed
+                plan, notes, changed = fixed
                 plan.summary = " / ".join(f"D{d.day_index + 1} {d.theme}" for d in plan.days)
-                return {"itinerary": plan, "revision": revision, "skipped_items": [], "adjustments": adjustments + notes}
+                costs = {k: list(v) for k, v in model_costs.items()}
+                by_day = {d.day_index: d for d in plan.days}
+                for day_i, pos in changed:  # swapped in by code: the "model estimate" there is the catalog price
+                    if str(day_i) in costs and pos < len(costs[str(day_i)]):
+                        costs[str(day_i)][pos] = by_day[day_i].activities[pos].est_cost
+                return {"itinerary": plan, "revision": revision, "skipped_items": [], "adjustments": adjustments + notes,
+                        "model_costs": costs}  # fmt: skip
         per_day_budget = (req.hard.budget_total - hotel_cost(req, rb, hotel_id)) / req.hard.days
         skipped: list[SkippedItem] = []
 
@@ -186,12 +188,14 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
                 config=config,
             )
             if res.value is not None:
-                kept[i] = res.value
+                model_costs[str(i)] = [a.est_cost for a in res.value.activities]  # the model's numbers, for auditing only
+                kept[i] = apply_catalog_costs(Itinerary(hotel_id=None, days=[res.value]), rb, n).days[0]
             else:
                 skipped.append(SkippedItem(stage="itinerary", item=f"day{i}", errors=res.errors))
 
         plan = Itinerary(hotel_id=hotel_id, days=[kept[k] for k in sorted(kept)])
         plan.summary = " / ".join(f"D{d.day_index + 1} {d.theme}" for d in plan.days)
-        return {"itinerary": plan, "revision": revision, "skipped_items": skipped, "adjustments": adjustments}
+        model_costs = {k: v for k, v in model_costs.items() if int(k) in kept}
+        return {"itinerary": plan, "revision": revision, "skipped_items": skipped, "adjustments": adjustments, "model_costs": model_costs}
 
     return itinerary

@@ -60,6 +60,24 @@ def _uses_tools(r: RunRecord) -> bool:
     return r.system != "baseline"
 
 
+def estimate_deviation(rs: Sequence[RunRecord]) -> float | None:
+    """(model's est_cost - catalog price) / catalog price, summed over catalog-resolved attractions and meals."""
+    pairs = [(r.cost_model_refs, r.cost_catalog_refs) for r in rs if r.cost_model_refs is not None and r.cost_catalog_refs]
+    cat = sum(c for _, c in pairs)
+    return (sum(m for m, _ in pairs) - cat) / cat if cat else None
+
+
+def underreported(r: RunRecord, threshold: float = 0.10) -> bool | None:
+    if r.cost_model_refs is None or not r.cost_catalog_refs:
+        return None
+    return (r.cost_model_refs - r.cost_catalog_refs) / r.cost_catalog_refs < -threshold
+
+
+def count(rs: Sequence[RunRecord], pred: Callable[[RunRecord], bool | None]) -> float | None:
+    vals = [pred(r) for r in rs]
+    return float(sum(1 for v in vals if v)) if any(v is not None for v in vals) else None
+
+
 METRICS: dict[str, tuple[str, Metric]] = {
     # outcome
     "completion_rate": ("运行完成率", lambda rs: rate(rs, lambda r: r.completed)),
@@ -73,6 +91,9 @@ METRICS: dict[str, tuple[str, Metric]] = {
     "infeasible_recall": ("不可行样本识别率", lambda rs: rate([r for r in rs if not r.feasible_gold], lambda r: r.flagged_infeasible)),
     "infeasible_false_alarm": ("可行样本误报率", lambda rs: rate([r for r in rs if r.feasible_gold], lambda r: r.flagged_infeasible)),
     # Judge scores exist only for plans that pass every hard constraint (see docs/EVAL.md); the mean is over those
+    "est_deviation": ("模型估价偏差（相对目录价）", estimate_deviation),
+    "est_underreport": ("少报超过 10% 的计划数", lambda rs: count(rs, underreported)),
+    "budget_flip": ("按模型估价判预算会改变结论的计划数", lambda rs: count(rs, lambda r: r.budget_flip)),
     "judge_total": ("合格计划质量分（Judge）", lambda rs: mean(r.judge_total for r in rs)),
     "judge_richness": ("　丰富度", lambda rs: mean(r.judge["richness"] if r.judge else None for r in rs)),
     "judge_preference": ("　偏好符合度", lambda rs: mean(r.judge["preference_fit"] if r.judge else None for r in rs)),
@@ -113,6 +134,9 @@ FAMILIES = {
         "extraction_acc",
         "infeasible_recall",
         "infeasible_false_alarm",
+        "est_deviation",
+        "est_underreport",
+        "budget_flip",
         "judge_total",
         "judge_richness",
         "judge_preference",

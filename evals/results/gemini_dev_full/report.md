@@ -17,15 +17,18 @@
 |---|---|---|---|
 | 运行完成率 | 100.0% | 100.0% | 100.0% |
 | 结构正确率 | 100.0% | 100.0% | 100.0% |
-| 硬约束通过率(可行样本) | 87.7% | 71.9% | 0.0% |
+| 硬约束通过率(可行样本) | 78.9% | 70.2% | 0.0% |
 | 实体幻觉率 | 0.0% | 0.0% | 52.1% |
 | 需求抽取字段准确率 | 99.3% | 99.3% | n/a |
 | 不可行样本识别率 | 100.0% | 100.0% | n/a |
 | 可行样本误报率 | 0.0% | 0.0% | n/a |
-| 合格计划质量分（Judge） | 80.94（n=50） | 81.89（n=41） | N/A（n=0） |
-| 　丰富度 | 85.42（n=50） | 86.20（n=41） | N/A（n=0） |
-| 　偏好符合度 | 83.76（n=50） | 83.66（n=41） | N/A（n=0） |
-| 　合理性 | 72.70（n=50） | 75.22（n=41） | N/A（n=0） |
+| 模型估价偏差（相对目录价） | -4.9% | -4.8% | -4.0% |
+| 少报超过 10% 的计划数 | 9 | 6 | 25 |
+| 按模型估价判预算会改变结论的计划数 | 5 | 1 | 6 |
+| 合格计划质量分（Judge） | 81.52（n=45） | 81.98（n=40） | N/A（n=0） |
+| 　丰富度 | 85.78（n=45） | 86.17（n=40） | N/A（n=0） |
+| 　偏好符合度 | 83.87（n=45） | 83.65（n=40） | N/A（n=0） |
+| 　合理性 | 74.13（n=45） | 75.58（n=40） | N/A（n=0） |
 
 > 质量分只对硬约束全部通过的计划打分（n = 参与评分的计划数），不通过的计划不打分；系统之间请看下面的配对比较。
 
@@ -57,7 +60,7 @@
 
 | 对比 (A vs B) | A | B | Δ (B−A) | 配对样本数 |
 |---|---|---|---|---|
-| full vs no_revision | 81.78 | 81.89 | +0.11 | 41 |
+| full vs no_revision | 81.91 | 81.98 | +0.08 | 40 |
 | full vs baseline | N/A | N/A | N/A | 0 |
 | no_revision vs baseline | N/A | N/A | N/A | 0 |
 
@@ -73,10 +76,10 @@
 |---|---|---|---|---|
 | full | easy | 100.0% | 83.25（n=21） | 15538 |
 | full | medium | 100.0% | 80.22（n=21） | 22388 |
-| full | hard | 53.3% | 76.76（n=8） | 53100 |
+| full | hard | 20.0% | 78.50（n=3） | 53100 |
 | no_revision | easy | 95.2% | 83.51（n=20） | 15173 |
 | no_revision | medium | 95.2% | 80.46（n=20） | 22313 |
-| no_revision | hard | 6.7% | 78.00（n=1） | 30350 |
+| no_revision | hard | 0.0% | N/A（n=0） | 30350 |
 | baseline | easy | 0.0% | N/A（n=0） | 1517 |
 | baseline | medium | 0.0% | N/A（n=0） | 2069 |
 | baseline | hard | 0.0% | N/A（n=0） | 2758 |
@@ -88,14 +91,14 @@
 
 ## 违规类型（出现该违规的记录数）
 
-- **full**：`over_budget` 10、`closed` 1
-- **no_revision**：`over_budget` 17、`closed` 3
-- **baseline**：`unknown_ref` 60、`unknown_hotel` 50、`closed` 13、`must_visit` 5、`dietary` 4、`out_of_hours` 2、`over_budget` 2、`missing_hotel` 1
+- **full**：`over_budget` 15、`closed` 1
+- **no_revision**：`over_budget` 18、`closed` 3
+- **baseline**：`unknown_ref` 60、`unknown_hotel` 50、`closed` 13、`over_budget` 8、`must_visit` 5、`dietary` 4、`out_of_hours` 2、`missing_hotel` 1
 
 ## full 系统失败样例
 
+- `s155`（hard，rep 0）：over_budget
 - `s159`（hard，rep 0）：over_budget
 - `s161`（hard，rep 0）：over_budget
 - `s150`（hard，rep 0）：over_budget
-- `s166`（hard，rep 0）：over_budget
-- `s176`（hard，rep 0）：over_budget
+- `s182`（hard，rep 0）：over_budget

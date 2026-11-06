@@ -25,7 +25,7 @@ from trip_agents.graph.deps import AgentDeps, GraphOptions, LocalToolExecutor
 from trip_agents.llm.context import render_context
 from trip_agents.llm.structured import invoke_structured
 from trip_agents.observability.tracer import TraceRecorder
-from trip_agents.schemas import Itinerary, TripRequest
+from trip_agents.schemas import BudgetReport, Itinerary, TripRequest
 
 BASELINE_SYSTEM = """你是旅行规划助手。根据用户的请求，直接输出完整的多日行程（Itinerary 结构）。
 每天包含景点和午餐、晚餐，给出时间、名称（ref_id 填景点或餐厅名称）和全体同行人的预计花费；hotel_id 填酒店名称。
@@ -84,6 +84,13 @@ class RunRecord(BaseModel):
     output_tokens: int = 0
     cost_usd: float | None = None
     wall_ms: float = 0.0
+    # audit of the model's own cost estimates (the budget check uses catalog prices); refs = activities
+    # that resolve to the catalog
+    cost_model_refs: float | None = None
+    cost_catalog_refs: float | None = None
+    plan_total_model: float | None = None  # lodging + the model's est_cost of every activity
+    plan_total_catalog: float | None = None  # the authoritative total the evaluation uses
+    budget_flip: bool | None = None  # would the over-budget verdict differ if the model's estimates were trusted?
     node_ms: dict[str, float] = Field(default_factory=dict)
 
 
@@ -110,6 +117,17 @@ def _signature(it: Itinerary | None) -> list[list[str]]:
     return [sorted(a.ref_id or a.title for a in d.activities if a.kind == "attraction") for d in it.days]
 
 
+def set_cost_audit(rec: RunRecord, evaluated: BudgetReport | None, runtime: BudgetReport | None, budget: float) -> None:
+    if evaluated is None:
+        return
+    src = runtime if runtime is not None and runtime.model_refs_total is not None else evaluated
+    rec.cost_model_refs, rec.cost_catalog_refs = src.model_refs_total, src.catalog_refs_total
+    rec.plan_total_model = src.model_plan_total
+    rec.plan_total_catalog = evaluated.total
+    if rec.plan_total_model is not None:
+        rec.budget_flip = (rec.plan_total_model > budget) != (evaluated.total > budget)
+
+
 def run_one(
     sample: Sample,
     system: SystemConfig,
@@ -129,6 +147,7 @@ def run_one(
     )
     tracer = TraceRecorder()
     itinerary: Itinerary | None = None
+    runtime_budget: BudgetReport | None = None
     t0 = time.perf_counter()
     try:
         if system.kind == "graph":
@@ -143,6 +162,7 @@ def run_one(
             rec.extraction = extraction_accuracy(state.get("request"), sample.gold)
             rec.flagged_infeasible = (not final.feasible) if final else None
             rec.revisions = state.get("revision", 0)
+            runtime_budget = state.get("budget")
         else:
             ctx = render_context({"task": "baseline_plan", "today": EVAL_TODAY.isoformat(), "request_text": sample.request_text})
             res = invoke_structured(
@@ -163,6 +183,9 @@ def run_one(
 
     ev = evaluate_plan(itinerary, sample.gold)
     rec.structure_ok, rec.hard_pass, rec.violations = ev.structure_ok, ev.hard_pass, ev.errors
+    # graph systems rewrite est_cost to catalog prices, so the model's original numbers come from the run's
+    # own budget report; for the baseline the plan still carries them and the evaluation's report has them
+    set_cost_audit(rec, ev.budget, runtime_budget, sample.gold.hard.budget_total)
     rec.n_refs, rec.hallucinated_refs = ev.n_refs, ev.hallucinated_refs
     rec.plan_signature = _signature(itinerary)
     rec.itinerary = itinerary.model_dump(mode="json") if itinerary is not None else None

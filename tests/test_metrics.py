@@ -132,3 +132,15 @@ def test_calibration_template_only_hard_passing_plans(tmp_path) -> None:  # type
     assert make_template(recs, path, 10) == 4
     rows = list(csv.DictReader(path.open(encoding="utf-8")))
     assert {r["sample_id"] for r in rows} == {"p0", "p1", "p2", "p3"} and all(r["human"] == "" for r in rows)
+
+
+def test_estimate_audit_metrics() -> None:
+    rs = [
+        rec(sample_id="a", cost_model_refs=80.0, cost_catalog_refs=100.0, budget_flip=True),  # under-quoted by 20%
+        rec(sample_id="b", cost_model_refs=105.0, cost_catalog_refs=100.0, budget_flip=False),
+        rec(sample_id="c"),  # no audit (e.g. crashed)
+    ]
+    assert m("est_deviation", rs) == pytest.approx(-0.075)
+    assert m("est_underreport", rs) == 1.0
+    assert m("budget_flip", rs) == 1.0
+    assert m("est_deviation", [rec()]) is None

@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from functools import lru_cache
 
+from trip_agents.graph.costs import apply_catalog_costs
 from trip_agents.graph.nodes.budget import compute_budget
 from trip_agents.schemas import Attraction, BudgetReport, Hotel, Itinerary, ResearchBundle, Restaurant, TripRequest, ValidationIssue
 from trip_agents.tools.mock_backend import _load_all
@@ -110,6 +111,8 @@ def evaluate_plan(it: Itinerary | None, gold: TripRequest) -> PlanEvaluation:
     world = world_bundle(gold.hard.destination)
     norm, total, unresolved = normalize_refs(align_days(it, gold), world)
     structure_ok = len(norm.days) == gold.hard.days and all(d.activities for d in norm.days)
+    # catalog prices decide the budget (graph/costs.py); the plan's own est_cost only feeds the audit fields
     budget = compute_budget(gold, world, norm)
-    issues = validate_itinerary(norm, gold, world, budget)
+    priced = apply_catalog_costs(norm, world, gold.hard.travelers)
+    issues = validate_itinerary(priced, gold, world, budget)
     return PlanEvaluation(structure_ok, issues, budget, total, unresolved, budget.min_feasible_cost)

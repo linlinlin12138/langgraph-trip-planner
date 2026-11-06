@@ -65,6 +65,10 @@ class BudgetReport(BaseModel):
     budget: float
     min_feasible_cost: float = Field(description="Cheapest plan possible with researched candidates")
     suggestions: list[str] = Field(default_factory=list)
+    # Audit of the model's own cost estimates (total above always uses catalog prices, see graph/costs.py).
+    model_refs_total: float | None = Field(default=None, description="Model est_cost summed over catalog-resolved attractions/meals")
+    catalog_refs_total: float | None = Field(default=None, description="Catalog price of the same activities")
+    model_plan_total: float | None = Field(default=None, description="Lodging + the model's est_cost of every activity")
 
     @property
     def over_by(self) -> float:

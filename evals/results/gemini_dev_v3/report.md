@@ -21,6 +21,9 @@
 | 实体幻觉率 | 0.0% | 0.0% | 54.9% |
 | 需求抽取字段准确率 | 100.0% | 100.0% | n/a |
 | 可行样本误报率 | 0.0% | 0.0% | n/a |
+| 模型估价偏差（相对目录价） | +0.0% | +0.0% | -10.3% |
+| 少报超过 10% 的计划数 | 0 | 0 | 2 |
+| 按模型估价判预算会改变结论的计划数 | 0 | 0 | 1 |
 | 合格计划质量分（Judge） | 80.43（n=4） | 80.12（n=4） | N/A（n=0） |
 | 　丰富度 | 85.75（n=4） | 86.75（n=4） | N/A（n=0） |
 | 　偏好符合度 | 84.25（n=4） | 85.00（n=4） | N/A（n=0） |
@@ -89,7 +92,7 @@
 
 - **full**：无
 - **no_revision**：`over_budget` 1
-- **baseline**：`unknown_ref` 5、`closed` 4、`unknown_hotel` 2、`time_overlap` 1
+- **baseline**：`unknown_ref` 5、`closed` 4、`unknown_hotel` 2、`time_overlap` 1、`over_budget` 1
 
 ## full 系统失败样例
 

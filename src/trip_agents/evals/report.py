@@ -39,9 +39,16 @@ PERCENT = {
 }
 
 
+COUNTS = {"est_underreport", "budget_flip"}
+
+
 def fmt(key: str, mean: float | None, std: float | None = None, n_reps: float = 1) -> str:
     if mean is None:
         return "n/a"
+    if key == "est_deviation":
+        return f"{mean * 100:+.1f}%" + (f" ± {std * 100:.1f}" if std is not None and n_reps > 1 else "")
+    if key in COUNTS:
+        return (f"{mean:.0f}" if float(mean).is_integer() else f"{mean:.1f}") + (f" ± {std:.1f}" if std is not None and n_reps > 1 else "")
     if key in PERCENT:
         s = f"{mean * 100:.1f}%"
         return s + (f" ± {std * 100:.1f}" if std is not None and n_reps > 1 else "")

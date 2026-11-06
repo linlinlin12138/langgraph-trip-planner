@@ -138,7 +138,8 @@ def test_over_budget_is_repaired_by_swapping_meals_without_llm() -> None:
     from datetime import date, time
 
     from trip_agents.evals.world import world_bundle
-    from trip_agents.graph.nodes.itinerary import plan_total, repair_budget
+    from trip_agents.graph.costs import plan_total
+    from trip_agents.graph.nodes.itinerary import repair_budget
     from trip_agents.schemas import Activity, DayPlan, Itinerary, TripRequest
 
     rb = world_bundle("杭州")
@@ -160,7 +161,8 @@ def test_over_budget_is_repaired_by_swapping_meals_without_llm() -> None:
     req.hard.budget_total = plan_total(req, rb, it) * 0.6
     fixed = repair_budget(req, rb, rb.restaurants, it)
     assert fixed is not None
-    plan, notes = fixed
+    plan, notes, changed = fixed
+    assert changed
     assert plan_total(req, rb, plan) <= req.hard.budget_total and notes
     meals = [a for d in plan.days for a in d.activities]
     assert all("no_spicy" in rb.restaurant(a.ref_id or "").dietary_tags for a in meals)  # type: ignore[union-attr]

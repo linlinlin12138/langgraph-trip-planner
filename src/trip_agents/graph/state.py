@@ -71,6 +71,9 @@ class TripState(TypedDict, total=False):
 
     # ---- budget ----------------------------------------------------------------
     budget: BudgetReport
+    # day_index -> the model's original est_cost of each activity (est_cost in the plan is rewritten to
+    # catalog prices); kept only to audit the model's estimates
+    model_costs: dict[str, list[float]]  # keys are str(day_index): survive checkpoint serialisation
 
     # ---- validate ------------------------------------------------------------------
     issues: list[ValidationIssue]  # latest round only (drives routing)

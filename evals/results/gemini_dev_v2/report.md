@@ -21,10 +21,15 @@
 | 实体幻觉率 | 0.0% | 0.0% | 54.9% | 48.4% |
 | 需求抽取字段准确率 | 100.0% | 100.0% | n/a | 100.0% |
 | 可行样本误报率 | 0.0% | 0.0% | n/a | 0.0% |
-| Judge 加权总分 | 79.00 | 80.82 | 82.26 | 78.20 |
-| Judge 丰富度 | 84.40 | 87.20 | 87.60 | 85.80 |
-| Judge 偏好符合度 | 82.00 | 85.80 | 90.00 | 83.60 |
-| Judge 合理性 | 69.60 | 67.80 | 66.60 | 63.40 |
+| 模型估价偏差（相对目录价） | +0.0% | +0.0% | -10.3% | -18.7% |
+| 少报超过 10% 的计划数 | 0 | 0 | 2 | 2 |
+| 按模型估价判预算会改变结论的计划数 | 0 | 0 | 1 | 0 |
+| 合格计划质量分（Judge） | 79.00（n=5） | 80.33（n=4） | N/A（n=0） | N/A（n=0） |
+| 　丰富度 | 84.40（n=5） | 86.25（n=4） | N/A（n=0） | N/A（n=0） |
+| 　偏好符合度 | 82.00（n=5） | 84.75（n=4） | N/A（n=0） | N/A（n=0） |
+| 　合理性 | 69.60（n=5） | 68.50（n=4） | N/A（n=0） | N/A（n=0） |
+
+> 质量分只对硬约束全部通过的计划打分（n = 参与评分的计划数），不通过的计划不打分；系统之间请看下面的配对比较。
 
 ## 过程指标
 
@@ -48,6 +53,19 @@
 | 端到端耗时均值 (ms) | 306472 | 100779 | 20921 | 156511 |
 | 端到端耗时 P95 (ms) | 1195136 | 176825 | 29100 | 416902 |
 
+## 合格计划质量分：配对比较
+
+只取两个系统**都通过**硬约束的同一批样本比较，避免一方只在简单样本上通过造成的选择偏差。
+
+| 对比 (A vs B) | A | B | Δ (B−A) | 配对样本数 |
+|---|---|---|---|---|
+| full vs no_revision | 79.28 | 80.33 | +1.05 | 4 |
+| full vs baseline | N/A | N/A | N/A | 0 |
+| full vs no_research | N/A | N/A | N/A | 0 |
+| no_revision vs baseline | N/A | N/A | N/A | 0 |
+| no_revision vs no_research | N/A | N/A | N/A | 0 |
+| baseline vs no_research | N/A | N/A | N/A | 0 |
+
 ## 稳定性（同一样本多次运行）
 
 | 系统 | 结果一致率 | 景点集合 Jaccard | Judge 分标准差 | 样本组数 |
@@ -56,20 +74,20 @@
 
 ## 按难度
 
-| 系统 | 难度 | 硬约束通过率 | Judge 总分 | 平均 token |
+| 系统 | 难度 | 硬约束通过率 | 合格计划质量分 | 平均 token |
 |---|---|---|---|---|
-| full | easy | 100.0% | 78.80 | 28481 |
-| full | medium | 100.0% | 80.70 | 29266 |
-| full | hard | 100.0% | 77.90 | 172460 |
-| no_revision | easy | 100.0% | 79.87 | 27999 |
-| no_revision | medium | 100.0% | 81.70 | 29245 |
-| no_revision | hard | 0.0% | 82.80 | 54179 |
-| baseline | easy | 0.0% | 81.73 | 2433 |
-| baseline | medium | 0.0% | 82.70 | 2639 |
-| baseline | hard | 0.0% | 83.40 | 3848 |
-| no_research | easy | 0.0% | 80.47 | 8180 |
-| no_research | medium | 0.0% | 73.50 | 34199 |
-| no_research | hard | 0.0% | 76.10 | 33776 |
+| full | easy | 100.0% | 78.80（n=3） | 28481 |
+| full | medium | 100.0% | 80.70（n=1） | 29266 |
+| full | hard | 100.0% | 77.90（n=1） | 172460 |
+| no_revision | easy | 100.0% | 79.87（n=3） | 27999 |
+| no_revision | medium | 100.0% | 81.70（n=1） | 29245 |
+| no_revision | hard | 0.0% | N/A（n=0） | 54179 |
+| baseline | easy | 0.0% | N/A（n=0） | 2433 |
+| baseline | medium | 0.0% | N/A（n=0） | 2639 |
+| baseline | hard | 0.0% | N/A（n=0） | 3848 |
+| no_research | easy | 0.0% | N/A（n=0） | 8180 |
+| no_research | medium | 0.0% | N/A（n=0） | 34199 |
+| no_research | hard | 0.0% | N/A（n=0） | 33776 |
 
 ## 各节点耗时（ms）
 
@@ -81,5 +99,5 @@
 
 - **full**：无
 - **no_revision**：`over_budget` 1
-- **baseline**：`unknown_ref` 5、`closed` 4、`unknown_hotel` 2、`time_overlap` 1
-- **no_research**：`unknown_ref` 5、`missing_hotel` 5、`closed` 1
+- **baseline**：`unknown_ref` 5、`closed` 4、`unknown_hotel` 2、`over_budget` 1、`time_overlap` 1
+- **no_research**：`missing_hotel` 5、`unknown_ref` 5、`closed` 1
