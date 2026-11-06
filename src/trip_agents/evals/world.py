@@ -87,11 +87,28 @@ def min_feasible_cost(gold: TripRequest) -> float:
     return compute_budget(gold, world_bundle(gold.hard.destination), empty).min_feasible_cost
 
 
+def align_days(it: Itinerary, gold: TripRequest) -> Itinerary:
+    """Match days by date, not by day_index numbering.
+
+    The graph numbers days from 0, but a single-shot model may number them from 1 with the
+    right dates; keyed by index that reads as "day 1 missing, every date wrong, one extra
+    day". The evaluation checks the dates, so a day whose date is one of the trip's dates
+    is re-indexed to that position; other days keep their index and are flagged as before.
+    """
+    pos = {dt: i for i, dt in enumerate(gold.hard.dates)}
+    if all(d.date in pos for d in it.days) and len({d.date for d in it.days}) == len(it.days):
+        out = it.model_copy(deep=True)
+        for d in out.days:
+            d.day_index = pos[d.date]
+        return out
+    return it
+
+
 def evaluate_plan(it: Itinerary | None, gold: TripRequest) -> PlanEvaluation:
     if it is None:
         return PlanEvaluation(structure_ok=False, min_feasible_cost=min_feasible_cost(gold))
     world = world_bundle(gold.hard.destination)
-    norm, total, unresolved = normalize_refs(it, world)
+    norm, total, unresolved = normalize_refs(align_days(it, gold), world)
     structure_ok = len(norm.days) == gold.hard.days and all(d.activities for d in norm.days)
     budget = compute_budget(gold, world, norm)
     issues = validate_itinerary(norm, gold, world, budget)

@@ -143,3 +143,16 @@ def test_real_model_runs_go_to_tracked_results_dir() -> None:
     assert runmod.run_dir("mock", "x") == runmod.RUNS_DIR / "x"
     assert runmod.run_dir("gemini", "x") == runmod.RESULTS_DIR / "x"
     assert runmod.RESULTS_DIR.parent == runmod.RUNS_DIR.parent and runmod.RESULTS_DIR.name == "results"
+
+
+def test_days_matched_by_date_not_index_numbering() -> None:
+    from trip_agents.evals.world import evaluate_plan
+
+    g = _gold()
+    day = DayPlan(day_index=1, date=g.hard.start_date, activities=[  # 1-based numbering, right date
+        Activity(start_time=time(9), end_time=time(11), kind="attraction", title="灵隐寺", ref_id="灵隐寺", est_cost=75),
+    ])  # fmt: skip
+    ev = evaluate_plan(Itinerary(hotel_id=None, days=[day]), g)
+    assert not {"missing_day", "wrong_date", "extra_day"} & set(ev.errors)
+    wrong = day.model_copy(update={"day_index": 0, "date": g.hard.start_date.replace(day=2)})
+    assert "wrong_date" in evaluate_plan(Itinerary(hotel_id=None, days=[wrong]), g).errors
