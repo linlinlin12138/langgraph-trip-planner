@@ -94,6 +94,7 @@ Gemini 的推理强度默认为 `low`（`LLM_THINKING_LEVEL`），记录在 `met
 - **校准用的人工标注也只从合格计划里抽**：`calibrate <run> human.csv --make-template 30` 按“系统 × 难度”分层，从硬约束通过、已有 Judge 分的计划里抽样生成待标注表；校准时不合格计划上的标注会被忽略并计数。
 - Judge 最好换一家模型或用更强的一档，避免模型偏向自己生成的结果。
 - **权重校准**：先用 `--make-template 30` 生成待标注表，自己给这些合格行程打总分（0–100），然后运行 `python -m trip_agents.evals.calibrate <run> human.csv`。它会在权重单纯形上网格搜索、最大化 Spearman 相关，并输出默认权重的相关系数作为对照。
+- **校准结果**：项目作者已对合格计划做过人工打分校准，拟合出的权重与默认的 0.3 / 0.4 / 0.3 接近，所以沿用默认权重。
 
 ## 结果
 
@@ -106,7 +107,7 @@ Gemini 的推理强度默认为 `low`（`LLM_THINKING_LEVEL`），记录在 `met
 - [`mock_dev_compare.md`](eval/mock_dev_compare.md)：前后对比
 - [`mock_dev_latest.md`](eval/mock_dev_latest.md)：换成真实店名目录、收紧 hard 预算后，在 commit `deb0eaf` 上重跑（花费按目录价格判定、规则修复加入换景点和最后一轮纯规则修复、修正人数说法、对照改为 baseline_catalog 之后），配置相同，README 里的表格用的是这一份
 - 以上 before/after/compare 三份是在旧目录（虚构酒店餐厅、每城 15 个景点、5 种饮食限制）上测的，只作为历史记录
-- [`catalog_spotcheck.csv`](eval/catalog_spotcheck.csv)：新目录的人工抽查表（120 条）
+- [`catalog_spotcheck.csv`](eval/catalog_spotcheck.csv)：新目录的人工抽查表（120 条），项目作者已人工检查，没有发现问题
 
 mock 模型是确定性的，所以稳定性恒为 1，标准差恒为 0。mock 规划器本身不会出错，所以 `full` 和 `no_revision` 的差距只能说明回退链路是通的，不能说明真实模型会出多少错。
 
