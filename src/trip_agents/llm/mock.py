@@ -86,7 +86,9 @@ class MockChatModel(BaseChatModel):
             "RequestExtraction": lambda: R.respond_extract(messages, ctx),
             "DayPlan": lambda: R.respond_plan_day(ctx, self.faults),
             "BudgetAdvice": lambda: R.respond_budget_advice(ctx),
-            "Itinerary": lambda: R.respond_baseline(messages, ctx),
+            "Itinerary": lambda: (
+                R.respond_baseline_catalog(ctx) if ctx.get("task") == "baseline_catalog_plan" else R.respond_baseline(messages, ctx)
+            ),
             "JudgeScores": lambda: R.respond_judge(ctx),
             "ProfileExtraction": lambda: R.respond_profile(ctx),
         }

@@ -18,7 +18,7 @@ from collections import defaultdict
 from collections.abc import Callable, Iterable, Sequence
 from itertools import combinations
 
-from trip_agents.evals.systems import RunRecord
+from trip_agents.evals.systems import SYSTEMS, RunRecord
 
 Metric = Callable[[Sequence[RunRecord]], float | None]
 
@@ -57,7 +57,9 @@ def jaccard(a: set[str], b: set[str]) -> float:
 
 # ----------------------------------------------------------------------------- metric table
 def _uses_tools(r: RunRecord) -> bool:
-    return r.system != "baseline"
+    """By system kind, not name: single-shot systems never call tools."""
+    cfg = SYSTEMS.get(r.system)
+    return cfg.kind == "graph" if cfg is not None else r.tool_calls > 0  # unknown names (old runs): what it did
 
 
 def estimate_deviation(rs: Sequence[RunRecord]) -> float | None:

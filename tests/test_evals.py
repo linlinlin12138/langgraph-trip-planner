@@ -98,8 +98,8 @@ def test_run_one_all_systems() -> None:
         r = run_one(sample, cfg, lambda: MockChatModel(), judge_model=MockChatModel())
         assert r.completed, (name, r.error)
         assert r.structure_ok and (r.judge_total is not None) == r.hard_pass  # only hard-passing plans are judged
-        assert (r.tool_calls > 0) == (name in ("full", "no_revision"))
-        assert (r.llm_calls == 1) == (name == "baseline")
+        assert (r.tool_calls > 0) == (cfg.kind == "graph")
+        assert (r.llm_calls == 1) == (cfg.kind == "single_shot")
 
 
 def test_runner_writes_report_and_resumes(tmp_path: Path, monkeypatch) -> None:  # type: ignore[no-untyped-def]
@@ -176,3 +176,42 @@ def test_retry_errors_reruns_crashed_records(tmp_path: Path, monkeypatch) -> Non
     run_main([*args, "--retry-errors"])
     lines = path.read_text(encoding="utf-8").splitlines()
     assert len(lines) == 2 and not any("DEADLINE" in x for x in lines)
+
+
+def test_baseline_catalog_single_call_with_destination_catalog() -> None:
+    from langchain_core.messages import BaseMessage
+
+    from trip_agents.evals.world import world_bundle
+    from trip_agents.llm.context import extract_context
+
+    sample = next(s for s in build_dataset(20, seed=3) if s.feasible and s.gold.hard.days > 1)
+    seen: list[list[BaseMessage]] = []
+
+    class Spy(MockChatModel):
+        def _generate(self, messages, stop=None, run_manager=None, **kw):  # type: ignore[no-untyped-def]
+            seen.append(list(messages))
+            return super()._generate(messages, stop, run_manager, **kw)
+
+    r = run_one(sample, SYSTEMS["baseline_catalog"], lambda: Spy())
+    assert r.completed and r.llm_calls == 1 and len(seen) == 1 and r.tool_calls == 0
+    assert r.extraction is None and r.flagged_infeasible is None  # n/a for single-shot systems
+    ctx = extract_context(seen[0])
+    world = world_bundle(sample.gold.hard.destination)
+    assert {a["id"] for a in ctx["attractions"]} == {a.id for a in world.attractions}
+    assert {h["id"] for h in ctx["hotels"]} == {h.id for h in world.hotels}
+    assert {x["id"] for x in ctx["restaurants"]} == {x.id for x in world.restaurants}
+    assert "start_date" not in json.dumps(ctx) and "budget_total" not in json.dumps(ctx)  # nothing else from gold
+    assert ctx["request_text"] == sample.request_text
+    # the plan references catalog ids, so the evaluation can judge it like any other plan
+    assert r.structure_ok and r.n_refs > 0 and r.hallucinated_refs == 0
+    assert r.plan_total_catalog is not None
+
+
+def test_uses_tools_is_decided_by_system_kind() -> None:
+    from trip_agents.evals.metrics import _uses_tools
+    from trip_agents.evals.systems import RunRecord
+
+    base = {"sample_id": "s", "rep": 0, "difficulty": "easy", "feasible_gold": True, "completed": True}
+    assert _uses_tools(RunRecord(system="full", **base))
+    assert not _uses_tools(RunRecord(system="baseline_catalog", **base))
+    assert not _uses_tools(RunRecord(system="baseline", **base))

@@ -502,6 +502,39 @@ def respond_baseline(messages: list[BaseMessage], ctx: dict[str, Any]) -> dict[s
     return {"hotel_id": hotels[0]["name"] if hotels and len(days) > 1 else None, "days": days, "summary": ""}
 
 
+def respond_baseline_catalog(ctx: dict[str, Any]) -> dict[str, Any]:
+    """Single shot with the full catalog: read the request, plan every day with the same per-day logic
+    as the Itinerary agent, pick a hotel by preference -- but no budget check, no feedback, no revision."""
+    today = date.fromisoformat(ctx.get("today", date.today().isoformat()))
+    r = extract_request([ctx.get("request_text", "")], today, None)
+    n_days = int(r.get("days") or 1)
+    start = date.fromisoformat(r.get("start_date") or today.isoformat())
+    hard = {
+        "travelers": r.get("travelers", 1), "budget_total": r.get("budget_total") or 0.0,
+        "dietary_restrictions": r.get("dietary_restrictions", []), "must_visit": r.get("must_visit", []),
+    }  # fmt: skip
+    soft = {"pace": r.get("pace") or "moderate", "interests": r.get("interests", [])}
+    tier = r.get("hotel_tier")
+    hotels = sorted(ctx.get("hotels", []), key=lambda h: (tier is not None and h["tier"] != tier, -h["rating"]))
+    hotel = hotels[0] if hotels and n_days > 1 else None
+    rooms = (hard["travelers"] + 1) // 2
+    lodging = hotel["price_per_night"] * (n_days - 1) * rooms if hotel else 0.0
+    per_day = max(0.0, (hard["budget_total"] - lodging) / n_days) if hard["budget_total"] else 1e9
+    days: list[dict[str, Any]] = []
+    for i in range(n_days):
+        used_attr = {a["ref_id"] for d in days for a in d["activities"] if a["kind"] == "attraction"}
+        used_rest = sorted({a["ref_id"] for d in days for a in d["activities"] if a["kind"] == "meal"})
+        visited = {a["name"] for a in ctx.get("attractions", []) if a["id"] in used_attr}
+        day_ctx = {
+            "request": {"hard": hard, "soft": soft}, "day_index": i, "date": (start + timedelta(days=i)).isoformat(),
+            "days_remaining": n_days - i, "attractions": [a for a in ctx.get("attractions", []) if a["id"] not in used_attr],
+            "restaurants": ctx.get("restaurants", []), "used_restaurant_ids": used_rest,
+            "must_visit_remaining": [m for m in hard["must_visit"] if m not in visited], "budget_per_day": per_day, "feedback": [],
+        }  # fmt: skip
+        days.append(respond_plan_day(day_ctx, set()))
+    return {"hotel_id": hotel["id"] if hotel else None, "days": days, "summary": ""}
+
+
 # =========================================================================== judge
 def respond_judge(ctx: dict[str, Any]) -> dict[str, Any]:
     """Heuristic stand-in for the LLM judge (scores are NOT meaningful quality numbers)."""

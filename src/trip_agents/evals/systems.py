@@ -2,7 +2,12 @@
 
 * full         the complete graph (auto-selection instead of a human)
 * no_revision  ablation: validator still runs, but never routes back to Itinerary
-* baseline     one LLM call: raw request -> whole itinerary; no tools, no validation, no retries
+* baseline_catalog  one LLM call: raw request + the destination's full catalog -> whole itinerary;
+               no tools, no validation, no revision. Same data as `full`, without the multi-step
+               pipeline and the checks: this is the comparison that measures the architecture.
+* baseline     (not run by default) one LLM call without the catalog. It can only name places from
+               memory, which the evaluation cannot verify against the catalog, so its hard-pass rate
+               is 0% by construction; kept for reference.
 """
 
 from __future__ import annotations
@@ -19,7 +24,7 @@ from pydantic import BaseModel, Field
 
 from trip_agents.evals.dataset import EVAL_TODAY, Sample
 from trip_agents.evals.judge import judge_plan
-from trip_agents.evals.world import evaluate_plan
+from trip_agents.evals.world import evaluate_plan, world_bundle
 from trip_agents.graph.builder import build_graph
 from trip_agents.graph.deps import AgentDeps, GraphOptions, LocalToolExecutor
 from trip_agents.llm.context import render_context
@@ -31,6 +36,22 @@ BASELINE_SYSTEM = """你是旅行规划助手。根据用户的请求，直接�
 每天包含景点和午餐、晚餐，给出时间、名称（ref_id 填景点或餐厅名称）和全体同行人的预计花费；hotel_id 填酒店名称。
 context.today 是今天的日期。"""
 
+# Same rules as ITINERARY_SYSTEM (graph/prompts.py), for a whole trip at once: the model reads the
+# request itself and picks the hotel. Nothing that `full` doesn't get.
+BASELINE_CATALOG_SYSTEM = """你是旅行规划助手。根据用户的原始请求（context.request_text）和 context 中该城市的目录，
+一次性输出完整的多日行程（Itinerary 结构）。
+
+要求：
+1. 自行从请求中理解出行日期、天数、人数、预算、饮食限制、必去景点和偏好；context.today 是今天的日期。
+   每天的 day_index 从 0 开始，date 为当天日期。
+2. 只能使用 context.hotels、context.attractions 和 context.restaurants 中的条目：hotel_id 和每个活动的 ref_id 填对应 id；
+   多日行程选择一家酒店。
+3. 活动按时间顺序排列，不得重叠；景点必须在开放时间内；全天在 07:00-23:30 之间。
+4. 每天安排午餐和晚餐，餐厅必须满足用户的全部饮食限制。
+5. 优先安排用户的必去景点；参考节奏偏好。
+6. est_cost 为全体同行人的总费用（门票×人数，餐饮人均×人数）；尽量让总花费（含住宿）不超过用户的预算。
+"""
+
 
 @dataclass(frozen=True)
 class SystemConfig:
@@ -38,12 +59,16 @@ class SystemConfig:
     kind: Literal["graph", "single_shot"]
     options: GraphOptions = field(default_factory=lambda: GraphOptions(human_in_loop=False))
     description: str = ""
+    catalog_context: bool = False  # single_shot only: put the destination's full catalog in the prompt
 
 
 SYSTEMS: dict[str, SystemConfig] = {
     "full": SystemConfig("full", "graph", GraphOptions(human_in_loop=False), "完整系统"),
     "no_revision": SystemConfig("no_revision", "graph", GraphOptions(human_in_loop=False, enable_revision=False), "去掉回退"),
-    "baseline": SystemConfig("baseline", "single_shot", description="单次生成，无检索无校验"),
+    "baseline_catalog": SystemConfig(
+        "baseline_catalog", "single_shot", description="单次生成，给完整目录，无校验无回退", catalog_context=True
+    ),
+    "baseline": SystemConfig("baseline", "single_shot", description="单次生成，无目录无校验（默认不跑）"),
 }
 
 
@@ -164,13 +189,31 @@ def run_one(
             rec.revisions = state.get("revision", 0)
             runtime_budget = state.get("budget")
         else:
-            ctx = render_context({"task": "baseline_plan", "today": EVAL_TODAY.isoformat(), "request_text": sample.request_text})
+            if system.catalog_context:
+                # The catalog is chosen by the gold destination (one field the model is given; full extracts
+                # the destination ~100% correctly). Everything else must be read from request_text. No weather:
+                # fetching it would reveal the dates, which the model has to read itself.
+                world = world_bundle(sample.gold.hard.destination)
+                ctx = render_context(
+                    {
+                        "task": "baseline_catalog_plan",
+                        "today": EVAL_TODAY.isoformat(),
+                        "request_text": sample.request_text,
+                        "hotels": [h.model_dump(mode="json") for h in world.hotels],
+                        "attractions": [a.model_dump(mode="json") for a in world.attractions],
+                        "restaurants": [r.model_dump(mode="json") for r in world.restaurants],
+                    }
+                )
+                system_prompt = BASELINE_CATALOG_SYSTEM
+            else:
+                ctx = render_context({"task": "baseline_plan", "today": EVAL_TODAY.isoformat(), "request_text": sample.request_text})
+                system_prompt = BASELINE_SYSTEM
             res = invoke_structured(
                 make_model(),
                 Itinerary,
-                [SystemMessage(content=BASELINE_SYSTEM), HumanMessage(content=ctx + "\n\n" + sample.request_text)],
+                [SystemMessage(content=system_prompt), HumanMessage(content=ctx + "\n\n" + sample.request_text)],
                 max_retries=1,
-                stage="baseline",
+                stage=system.name,
                 item="plan",
                 config={"callbacks": [tracer]},
             )
