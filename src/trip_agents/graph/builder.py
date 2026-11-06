@@ -56,7 +56,7 @@ def build_graph(
     g.add_node("cache_lookup", make_cache_lookup_node(deps.cache))
     g.add_node("research", make_research_node(deps, options))
     g.add_node("human_select", make_human_select_node(options))
-    g.add_node("itinerary", make_itinerary_node(deps))
+    g.add_node("itinerary", make_itinerary_node(deps, options))
     g.add_node("budget", make_budget_node(deps, options))
     g.add_node("validate", validate)
     g.add_node("finalize", finalize)

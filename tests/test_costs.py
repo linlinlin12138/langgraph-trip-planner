@@ -105,3 +105,41 @@ def test_repair_swaps_paid_attractions_but_never_must_visit() -> None:
     assert swapped.open_time <= a1.start_time and swapped.close_time >= a1.end_time  # still open in that slot
     assert (0, 1) in changed and any(other.name in x for x in notes)
     assert plan_total(req, RB, new_plan) <= req.hard.budget_total
+
+
+def test_final_rule_only_repair_after_revisions_are_used_up() -> None:
+    from typing import Any
+
+    from trip_agents.graph.deps import AgentDeps, GraphOptions, LocalToolExecutor
+    from trip_agents.graph.nodes.itinerary import make_itinerary_node
+    from trip_agents.graph.nodes.validate import route_after_validate
+    from trip_agents.schemas import BudgetReport, Selection, ValidationIssue
+
+    over = [ValidationIssue(code="over_budget", message="超预算")]
+    feasible = BudgetReport(lines=[], total=2.0, budget=1.0, min_feasible_cost=0.5)
+    route = route_after_validate(GraphOptions(human_in_loop=False, max_revisions=2))
+    assert route({"issues": over, "budget": feasible, "revision": 2}) == "itinerary"  # one extra, rule-only round
+    assert route({"issues": over, "budget": feasible, "revision": 3}) == "finalize"  # and no more
+    other = [*over, ValidationIssue(code="closed", message="闭馆", day_index=0)]
+    assert route({"issues": other, "budget": feasible, "revision": 2}) == "finalize"  # rules can't fix "closed"
+    no_rev = route_after_validate(GraphOptions(human_in_loop=False, enable_revision=False))
+    assert no_rev({"issues": over, "budget": feasible, "revision": 0}) == "finalize"  # ablation stays a pure ablation
+
+    class NoCalls:
+        def __getattr__(self, name: str) -> Any:
+            raise AssertionError(f"the final repair round must not call the model ({name})")
+
+    node = make_itinerary_node(
+        AgentDeps(model=NoCalls(), tools=LocalToolExecutor(), today=date(2026, 11, 2)),  # type: ignore[arg-type]
+        GraphOptions(human_in_loop=False, max_revisions=2),
+    )
+    it = plan(PRICEY.id, meal_cost=0)
+    req = request(budget=PRICEY.avg_price_per_person * 2 - 1)
+    base_state = {"request": req, "research": RB, "selection": Selection(hotel_id=None, restaurant_ids=[], attraction_ids=[]),
+                  "itinerary": it, "revision": 2, "issues": over, "budget": compute_budget(req, RB, it)}  # fmt: skip
+    out = node(base_state, {})
+    assert out["revision"] == 3 and plan_total(req, RB, out["itinerary"]) <= req.hard.budget_total and out["adjustments"]
+    # unreachable budget: the plan comes back unchanged, still without a model call
+    req2 = request(budget=1)
+    out2 = node({**base_state, "request": req2, "budget": compute_budget(req2, RB, it)}, {})
+    assert out2["itinerary"] == it and out2["revision"] == 3

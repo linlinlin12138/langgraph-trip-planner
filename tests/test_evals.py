@@ -215,3 +215,14 @@ def test_uses_tools_is_decided_by_system_kind() -> None:
     assert _uses_tools(RunRecord(system="full", **base))
     assert not _uses_tools(RunRecord(system="baseline_catalog", **base))
     assert not _uses_tools(RunRecord(system="baseline", **base))
+
+
+def test_difficulty_filter(tmp_path: Path, monkeypatch) -> None:  # type: ignore[no-untyped-def]
+    import trip_agents.evals.run as runmod
+    from trip_agents.evals.systems import RunRecord
+
+    monkeypatch.setattr(runmod, "RUNS_DIR", tmp_path)
+    out = run_main(["--difficulty", "hard", "--systems", "baseline_catalog", "--name", "h", "--provider", "mock", "--no-judge"])
+    recs = [RunRecord.model_validate_json(x) for x in (out / "records.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert recs and all(r.difficulty == "hard" for r in recs)
+    assert json.loads((out / "meta.json").read_text(encoding="utf-8"))["difficulty_filter"] == "hard"

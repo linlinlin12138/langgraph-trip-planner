@@ -15,7 +15,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableConfig
 
 from trip_agents.graph.costs import activity_cost, apply_catalog_costs, hotel_cost, plan_total
-from trip_agents.graph.deps import AgentDeps
+from trip_agents.graph.deps import AgentDeps, GraphOptions
 from trip_agents.graph.prompts import ITINERARY_SYSTEM
 from trip_agents.graph.state import TripState
 from trip_agents.llm.context import render_context
@@ -163,7 +163,9 @@ def repair_budget(
     return (plan, notes, changed) if plan_total(req, rb, plan) <= budget else None
 
 
-def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
+def make_itinerary_node(deps: AgentDeps, options: GraphOptions | None = None):  # type: ignore[no-untyped-def]
+    max_revisions = options.max_revisions if options else GraphOptions().max_revisions
+
     def itinerary(state: TripState, config: RunnableConfig) -> dict[str, Any]:
         req, rb = state["request"], state["research"]
         sel: Selection = state["selection"]
@@ -188,6 +190,7 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
                 adjustments.append(f"为满足预算，酒店由「{old.name if old else hotel_id}」调整为「{new.name if new else new_hotel}」")
                 hotel_id = new_hotel
         errors = {i.code for i in issues if i.severity == "error"}
+        final_pass = prev is not None and revision > max_revisions  # rule-only round after the last revision
         if prev is not None and errors == {"over_budget"}:  # only the price is wrong: try a rule-based fix first
             fixed = repair_budget(
                 # every researched candidate, not just the selected ones: the selection is the best-rated, i.e. pricey
@@ -205,6 +208,8 @@ def make_itinerary_node(deps: AgentDeps):  # type: ignore[no-untyped-def]
                         costs[str(day_i)][pos] = by_day[day_i].activities[pos].est_cost
                 return {"itinerary": plan, "revision": revision, "skipped_items": [], "adjustments": adjustments + notes,
                         "model_costs": costs}  # fmt: skip
+        if final_pass:  # no model call in this round: keep the plan as it was if rules couldn't fix it
+            return {"itinerary": prev, "revision": revision, "skipped_items": [], "adjustments": []}
         per_day_budget = (req.hard.budget_total - hotel_cost(req, rb, hotel_id)) / req.hard.days
         skipped: list[SkippedItem] = []
 

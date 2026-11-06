@@ -70,6 +70,7 @@ def main(argv: list[str] | None = None) -> Path:
     ap.add_argument("--repeats", type=int, default=1)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--limit", type=int, default=0, help="first N samples only (0 = all)")
+    ap.add_argument("--difficulty", default=None, help="only these difficulties, e.g. hard or medium,hard")
     ap.add_argument("--provider", default=s.llm_provider)
     ap.add_argument("--model", default=s.llm_model or None)
     ap.add_argument("--judge-provider", default=None, help="default: same as --provider")
@@ -84,6 +85,9 @@ def main(argv: list[str] | None = None) -> Path:
         print("note: test split with the mock model -- fine for pipeline checks, but report numbers are not model quality.")
     dataset_path = args.dataset or DATASET_DIR / f"{args.split}.jsonl"
     samples = load(dataset_path)
+    if args.difficulty:
+        keep = set(args.difficulty.split(","))
+        samples = [x for x in samples if x.difficulty in keep]
     if args.limit and args.limit < len(samples):  # seeded sample keeps the difficulty mix
         samples = sorted(random.Random(args.seed).sample(samples, args.limit), key=lambda x: x.id)
     systems = [SYSTEMS[x] for x in args.systems.split(",")]
@@ -101,6 +105,7 @@ def main(argv: list[str] | None = None) -> Path:
         "dataset": str(dataset_path.relative_to(PROJECT_ROOT) if dataset_path.is_relative_to(PROJECT_ROOT) else dataset_path),
         "split": args.split,
         "n_samples": len(samples),
+        "difficulty_filter": args.difficulty,
         "systems": [x.name for x in systems],
         "repeats": args.repeats,
         "seed": args.seed,

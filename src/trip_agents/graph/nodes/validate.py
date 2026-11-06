@@ -23,7 +23,13 @@ def route_after_validate(options: GraphOptions):  # type: ignore[no-untyped-def]
         only_budget = all(i.code == "over_budget" for i in issues if i.severity == "error")
         if budget is not None and not budget.feasible and only_budget:
             return "finalize"  # infeasible: re-planning cannot fix it, explain instead
-        if options.enable_revision and state.get("revision", 0) < options.max_revisions:
+        revision = state.get("revision", 0)
+        if options.enable_revision and revision < options.max_revisions:
+            return "itinerary"
+        if options.enable_revision and only_budget and revision == options.max_revisions:
+            # Revisions used up and only the price is wrong: one last rule-based repair (cheaper hotel /
+            # meals / attractions), no LLM call. Earlier rounds re-planned through the model because
+            # other errors were present, so the rule repair never got a turn (Gemini dev v4).
             return "itinerary"
         return "finalize"
 
