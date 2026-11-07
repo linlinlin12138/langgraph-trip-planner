@@ -32,6 +32,30 @@ from trip_agents.evals.report import write_report
 from trip_agents.evals.systems import SYSTEMS, RunRecord, run_one
 from trip_agents.llm.factory import DEFAULT_MODELS, get_chat_model
 
+# Errors that will not go away by retrying -- billing / quota / credentials. When one shows up the run
+# stops instead of burning through the remaining samples as error records (gemini_test_v1 hit the
+# Gemini monthly spending cap after 40 of 420 runs and wrote 380 error records). Plain per-minute rate
+# limits are not here: the SDKs back off and retry those.
+FATAL_ERROR_MARKERS = (
+    "spending cap",  # Gemini: project monthly spend cap
+    "spend cap",
+    "insufficient_quota",  # OpenAI: no credit left
+    "exceeded your current quota",
+    "credit balance is too low",  # Anthropic
+    "API_KEY_INVALID",
+    "API key not valid",
+    "invalid_api_key",
+    "PERMISSION_DENIED",
+)
+
+
+def fatal_error(error: str | None) -> str | None:
+    """The marker if ``error`` is one that retrying can't fix, else None."""
+    if not error:
+        return None
+    return next((m for m in FATAL_ERROR_MARKERS if m in error), None)
+
+
 RUNS_DIR = PROJECT_ROOT / "evals" / "runs"  # mock runs, git-ignored
 RESULTS_DIR = PROJECT_ROOT / "evals" / "results"  # real-model runs, committed
 
@@ -140,10 +164,20 @@ def main(argv: list[str] | None = None) -> Path:
         smp, sys, rep = job
         return run_one(smp, sys, model_factory(args.provider, args.model, args.seed + rep), rep=rep, judge_model=judge)
 
+    stopped: str | None = None
     with rec_path.open("a", encoding="utf-8") as f, ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures = [pool.submit(work, j) for j in jobs]
         for i, fut in enumerate(as_completed(futures), 1):
+            if fut.cancelled():
+                continue
             rec = fut.result()
+            marker = fatal_error(rec.error)
+            if marker is not None:  # not written: a resume runs this sample again
+                if stopped is None:
+                    stopped = marker
+                    for other in futures:
+                        other.cancel()  # queued jobs; the ones already running finish and are kept
+                continue
             with lock:
                 f.write(rec.model_dump_json() + "\n")
                 f.flush()
@@ -153,6 +187,12 @@ def main(argv: list[str] | None = None) -> Path:
     records = [RunRecord.model_validate_json(line) for line in rec_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     report = write_report(out, meta, records)
     print(f"report: {report}")
+    if stopped is not None:
+        left = len(jobs) - sum(1 for r in records if (r.sample_id, r.system, r.rep) not in done)
+        raise SystemExit(
+            f"stopped: a non-retryable provider error ({stopped!r}) -- fix billing / quota / key, then run the same "
+            f"command again to resume ({left} runs left)"
+        )
     return out
 
 

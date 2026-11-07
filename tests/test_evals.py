@@ -226,3 +226,35 @@ def test_difficulty_filter(tmp_path: Path, monkeypatch) -> None:  # type: ignore
     recs = [RunRecord.model_validate_json(x) for x in (out / "records.jsonl").read_text(encoding="utf-8").splitlines()]
     assert recs and all(r.difficulty == "hard" for r in recs)
     assert json.loads((out / "meta.json").read_text(encoding="utf-8"))["difficulty_filter"] == "hard"
+
+
+def test_run_stops_on_spending_cap_and_resumes(tmp_path: Path, monkeypatch) -> None:  # type: ignore[no-untyped-def]
+    import pytest
+
+    import trip_agents.evals.run as runmod
+    from trip_agents.evals.systems import RunRecord
+
+    monkeypatch.setattr(runmod, "RUNS_DIR", tmp_path)
+    real = runmod.run_one
+    calls = {"n": 0}
+
+    def capped(*a, **kw):  # type: ignore[no-untyped-def]
+        calls["n"] += 1
+        rec = real(*a, **kw)
+        if calls["n"] >= 3:
+            rec.error = "429 RESOURCE_EXHAUSTED. Your project has exceeded its monthly spending cap."
+        return rec
+
+    monkeypatch.setattr(runmod, "run_one", capped)
+    args = ["--limit", "8", "--systems", "baseline_catalog", "--name", "cap", "--provider", "mock", "--no-judge", "--workers", "1"]
+    with pytest.raises(SystemExit, match="spending cap"):
+        run_main(args)
+    path = tmp_path / "cap" / "records.jsonl"
+    recs = [RunRecord.model_validate_json(x) for x in path.read_text(encoding="utf-8").splitlines()]
+    assert len(recs) == 2 and not any(r.error for r in recs)  # stopped at the first cap error, nothing bogus written
+    assert calls["n"] < 8  # the remaining samples were not attempted
+    monkeypatch.setattr(runmod, "run_one", real)  # cap raised: same command resumes
+    run_main(args)
+    assert len(path.read_text(encoding="utf-8").splitlines()) == 8
+    assert runmod.fatal_error("Error code: 429 - insufficient_quota") == "insufficient_quota"
+    assert runmod.fatal_error("429 Too Many Requests, retry in 2s") is None  # ordinary rate limit: not fatal
