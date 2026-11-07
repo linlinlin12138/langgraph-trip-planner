@@ -9,11 +9,18 @@ Session 2, same user, is one of:
   past_trip  "像上次X那样" -> destination, length, party, budget from that trip
 Gold for session 2 is derived from the scenario. Runs in auto mode (no human),
 so a system that lacks required info simply cannot plan -- that is the point.
+Requests are template-generated (``template_rewrite``), like the main dataset.
+
+Real models: ``--name <run>`` writes one row per (scenario, condition) to
+``evals/results/<run>/rows.jsonl`` as it goes (resumable; a run that hits a billing / quota error stops),
+and the report to ``evals/results/<run>/report.md``. Costs of both sessions are recorded. Without memory,
+session 1 is skipped: no store, separate thread, so it cannot influence session 2.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import random
 from collections import defaultdict
 from dataclasses import dataclass
@@ -24,8 +31,9 @@ from typing import Any, Literal
 from langchain_core.messages import HumanMessage
 from langgraph.store.memory import InMemoryStore
 
+from trip_agents.config import get_settings
 from trip_agents.evals.dataset import EVAL_TODAY, template_rewrite
-from trip_agents.evals.run import git_commit
+from trip_agents.evals.run import RESULTS_DIR, fatal_error, git_commit
 from trip_agents.evals.world import evaluate_plan, world_bundle
 from trip_agents.graph.builder import build_graph
 from trip_agents.graph.deps import AgentDeps, GraphOptions, LocalToolExecutor
@@ -121,10 +129,19 @@ def _field_acc(pred: TripRequest | None, gold: TripRequest) -> dict[str, bool]:
 
 
 def run_scenario(sc: Scenario, make_model: Any, with_memory: bool) -> dict[str, Any]:
+    try:
+        return _run_scenario(sc, make_model, with_memory)
+    except Exception as e:  # one failed scenario is a result, not a reason to lose the others
+        return {"id": sc.id, "kind": sc.kind, "memory": with_memory, "error": f"{type(e).__name__}: {e}"[:2000]}
+
+
+def _run_scenario(sc: Scenario, make_model: Any, with_memory: bool) -> dict[str, Any]:
     store = InMemoryStore() if with_memory else None
     deps = AgentDeps(model=make_model(), tools=LocalToolExecutor(), today=EVAL_TODAY, clock=lambda: datetime(2026, 11, 2, 12))
     g = build_graph(deps, GraphOptions(human_in_loop=False), store=store)
-    g.invoke({"messages": [HumanMessage(content=sc.s1_text)], "user_id": "u"}, {"configurable": {"thread_id": "s1"}})
+    t1 = TraceRecorder()
+    if with_memory:  # without a store session 1 cannot affect session 2 (separate thread), so it is not run
+        g.invoke({"messages": [HumanMessage(content=sc.s1_text)], "user_id": "u"}, {"configurable": {"thread_id": "s1"}, "callbacks": [t1]})
     tracer = TraceRecorder()
     out = g.invoke(
         {"messages": [HumanMessage(content=sc.s2_text)], "user_id": "u"}, {"configurable": {"thread_id": "s2"}, "callbacks": [tracer]}
@@ -134,6 +151,8 @@ def run_scenario(sc: Scenario, make_model: Any, with_memory: bool) -> dict[str, 
     ev = evaluate_plan(final.itinerary if final else None, sc.gold2)
     acc = _field_acc(req, sc.gold2)
     tr = tracer.finish()
+    tr1 = t1.finish()
+    costs = [tr1.cost_usd if with_memory else 0.0, tr.cost_usd]
     return {
         "id": sc.id,
         "kind": sc.kind,
@@ -143,6 +162,8 @@ def run_scenario(sc: Scenario, make_model: Any, with_memory: bool) -> dict[str, 
         "all_fields": all(acc.values()),
         "hard_pass": ev.hard_pass,
         "tokens": tr.input_tokens + tr.output_tokens,
+        "session1_tokens": tr1.input_tokens + tr1.output_tokens,
+        "cost_usd": None if any(c is None for c in costs) else round(sum(c for c in costs if c is not None), 6),
     }
 
 
@@ -156,8 +177,10 @@ def report(rows: list[dict[str, Any]], meta: dict[str, Any]) -> str:
         "|---|---|---|---|---|---|---|",
     ]
     groups: dict[tuple[str, bool], list[dict[str, Any]]] = defaultdict(list)
+    errors = [r for r in rows if r.get("error")]
     for r in rows:
-        groups[(r["kind"], r["memory"])].append(r)
+        if not r.get("error"):
+            groups[(r["kind"], r["memory"])].append(r)
     for kind in ("inherit", "override", "past_trip"):
         for mem in (True, False):
             g = groups[(kind, mem)]
@@ -172,12 +195,20 @@ def report(rows: list[dict[str, Any]], meta: dict[str, Any]) -> str:
                 f"| {kind} | {name} | {len(g)} | {pct('planned')} | {pct('all_fields')} | {pct('hard_pass')} | "
                 f"{sum(r['tokens'] for r in g) / len(g):.0f} |"
             )
+    costs = [r["cost_usd"] for r in rows if r.get("cost_usd") is not None]
     lines += [
         "",
         "说明：",
         "",
+        "- 两次会话的请求文本都是模板生成的（`template_rewrite`），和主评测集一样。",
+        *([f"- 估算费用合计 ${sum(costs):.2f}（两次会话都计入；无记忆条件不跑第一次会话）。"] if costs and not meta["mock"] else []),
+        *([f"- 出错未计入的记录 {len(errors)} 条。"] if errors else []),
         "- 自动模式下不能追问用户。no_memory 缺少预算、人数等信息时无法规划，实际使用中它会转为向用户追问（多一轮交互）。",
-        "- mock 的偏好写入和读取用的是同一套规则，所以 full 的准确率由构造决定，接入真实模型后才能衡量抽取质量。",
+        *(
+            ["- mock 的偏好写入和读取用的是同一套规则，所以 full 的准确率由构造决定，接入真实模型后才能衡量抽取质量。"]
+            if meta["mock"]
+            else []
+        ),
         "",
         "字段级准确率（有记忆）：",
         "",
@@ -197,27 +228,57 @@ def main() -> None:
     ap.add_argument("--provider", default="mock")
     ap.add_argument("--model", default=None)
     ap.add_argument("--out", type=Path, default=None)
+    ap.add_argument("--name", default=None, help="results dir evals/results/<name> (rows saved as they finish; resumable)")
     args = ap.parse_args()
     scenarios = build_scenarios(args.n, args.seed)
 
     def make_model() -> Any:
         return get_chat_model(args.provider, args.model)
 
-    rows = [run_scenario(sc, make_model, mem) for sc in scenarios for mem in (True, False)]
+    rows_path = (RESULTS_DIR / args.name / "rows.jsonl") if args.name else None
+    rows: list[dict[str, Any]] = []
+    if rows_path is not None:
+        rows_path.parent.mkdir(parents=True, exist_ok=True)
+        if rows_path.exists():
+            rows = [json.loads(x) for x in rows_path.read_text(encoding="utf-8").splitlines() if x.strip()]
+            rows = [r for r in rows if not r.get("error")]  # errored rows are retried
+            rows_path.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    done = {(r["id"], r["memory"]) for r in rows}
+    stopped = None
+    for sc in scenarios:
+        for mem in (True, False):
+            if (sc.id, mem) in done:
+                continue
+            row = run_scenario(sc, make_model, mem)
+            if (marker := fatal_error(row.get("error"))) is not None:
+                stopped = marker
+                break
+            rows.append(row)
+            if rows_path is not None:
+                with rows_path.open("a", encoding="utf-8") as f:
+                    f.write(json.dumps(row, ensure_ascii=False) + "\n")
+        if stopped:
+            break
+    s = get_settings()
     meta = {
         "日期": datetime.now().isoformat(timespec="seconds"),
         "git commit": f"`{git_commit()}`",
-        "模型": f"{args.provider} / `{args.model or DEFAULT_MODELS[args.provider]}`",
+        "模型": f"{args.provider} / `{args.model or DEFAULT_MODELS[args.provider]}`"
+        + (f"（推理强度 {s.llm_thinking_level}）" if args.provider == "gemini" else ""),
         "场景数": f"{len(scenarios)}（三类各 1/3）",
         "seed": args.seed,
         "每组运行次数": 1,
         "mock": args.provider == "mock",
     }
     text = report(rows, meta)
+    if rows_path is not None:
+        (rows_path.parent / "report.md").write_text(text, encoding="utf-8")
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(text, encoding="utf-8")
     print(text)
+    if stopped:
+        raise SystemExit(f"stopped: non-retryable provider error ({stopped!r}); fix it and rerun the same command to resume")
 
 
 if __name__ == "__main__":
