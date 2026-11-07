@@ -2,8 +2,8 @@
 
 | 项 | 值 |
 |---|---|
-| 日期 | 2026-11-06T21:45:07 |
-| git commit | `d4bafe9` |
+| 日期 | 2026-11-07T17:04:30 |
+| git commit | `0cbfc03` |
 | 模型 | gemini / `gemini-3.8-flash`（推理强度 low） |
 | Judge | openai / `gpt-6.1-sol` |
 | 工具后端 | mock |
@@ -15,19 +15,20 @@
 
 | 指标 | full（完整系统） | no_revision（去掉回退） | baseline_catalog（单次生成，给完整目录，无校验无回退） |
 |---|---|---|---|
-| 运行完成率 | 28.6% | 0.0% | 0.0% |
-| 结构正确率 | 28.6% | 0.0% | 0.0% |
-| 硬约束通过率(可行样本) | 30.5% | 0.0% | 0.0% |
-| 实体幻觉率 | 0.0% | n/a | n/a |
-| 需求抽取字段准确率 | 100.0% | n/a | n/a |
-| 可行样本误报率 | 0.0% | n/a | n/a |
-| 模型估价偏差（相对目录价） | +0.0% | n/a | n/a |
-| 少报超过 10% 的计划数 | 0 | n/a | n/a |
-| 按模型估价判预算会改变结论的计划数 | 0 | n/a | n/a |
-| 合格计划质量分（Judge） | 81.10（n=40） | N/A（n=0） | N/A（n=0） |
-| 　丰富度 | 84.45（n=40） | N/A（n=0） | N/A（n=0） |
-| 　偏好符合度 | 85.47（n=40） | N/A（n=0） | N/A（n=0） |
-| 　合理性 | 71.92（n=40） | N/A（n=0） | N/A（n=0） |
+| 运行完成率 | 100.0% | 100.0% | 100.0% |
+| 结构正确率 | 100.0% | 100.0% | 100.0% |
+| 硬约束通过率(可行样本) | 93.9% | 77.1% | 59.5% |
+| 实体幻觉率 | 0.0% | 0.0% | 0.0% |
+| 需求抽取字段准确率 | 100.0% | 100.0% | n/a |
+| 不可行样本识别率 | 100.0% | 100.0% | n/a |
+| 可行样本误报率 | 3.8% | 3.8% | n/a |
+| 模型估价偏差（相对目录价） | -2.8% | -3.4% | -1.7% |
+| 少报超过 10% 的计划数 | 3 | 8 | 2 |
+| 按模型估价判预算会改变结论的计划数 | 0 | 1 | 0 |
+| 合格计划质量分（Judge） | 78.62（n=123） | 79.75（n=101） | 82.42（n=78） |
+| 　丰富度 | 83.49（n=123） | 83.50（n=101） | 87.63（n=78） |
+| 　偏好符合度 | 82.59（n=123） | 83.95（n=101） | 86.67（n=78） |
+| 　合理性 | 68.44（n=123） | 70.40（n=101） | 71.55（n=78） |
 
 > 质量分只对硬约束全部通过的计划打分（n = 参与评分的计划数），不通过的计划不打分；系统之间请看下面的配对比较。
 
@@ -35,23 +36,23 @@
 
 | 指标 | full（完整系统） | no_revision（去掉回退） | baseline_catalog（单次生成，给完整目录，无校验无回退） |
 |---|---|---|---|
-| 工具选择精确率 | 87.0% | n/a | n/a |
-| 工具选择召回率 | 28.6% | 0.0% | n/a |
-| 无效调用率 | 0.0% | n/a | n/a |
-| 重复调用率 | 0.0% | n/a | n/a |
-| Research 平均步数 | 0.89 | 0.00 | n/a |
-| 平均回退次数 | 0.01 | 0.00 | 0.00 |
-| 平均解析失败次数 | 0.00 | 0.00 | 0.00 |
+| 工具选择精确率 | 95.7% | 95.7% | n/a |
+| 工具选择召回率 | 100.0% | 100.0% | n/a |
+| 无效调用率 | 0.1% | 0.1% | n/a |
+| 重复调用率 | 0.0% | 0.0% | n/a |
+| Research 平均步数 | 3.33 | 3.34 | n/a |
+| 平均回退次数 | 0.27 | 0.00 | 0.00 |
+| 平均解析失败次数 | 0.01 | 0.01 | 0.00 |
 
 ## 效率指标
 
 | 指标 | full（完整系统） | no_revision（去掉回退） | baseline_catalog（单次生成，给完整目录，无校验无回退） |
 |---|---|---|---|
-| 平均 LLM 调用次数 | 2.48 | 1.00 | 1.00 |
-| 平均 token (输入+输出) | 5017 | 0.00 | 0.00 |
-| 平均估算费用 (USD) | 0.00697 | 0.00000 | 0.00000 |
-| 端到端耗时均值 (ms) | 35195 | 35614 | 35638 |
-| 端到端耗时 P95 (ms) | 43392 | 36777 | 36638 |
+| 平均 LLM 调用次数 | 8.19 | 7.57 | 1.00 |
+| 平均 token (输入+输出) | 25596 | 23312 | 18194 |
+| 平均估算费用 (USD) | 0.03473 | 0.03159 | 0.02008 |
+| 端到端耗时均值 (ms) | 46790 | 43933 | 15366 |
+| 端到端耗时 P95 (ms) | 90044 | 62121 | 22159 |
 
 ## 合格计划质量分：配对比较
 
@@ -59,9 +60,9 @@
 
 | 对比 (A vs B) | A | B | Δ (B−A) | 配对样本数 |
 |---|---|---|---|---|
-| full vs no_revision | N/A | N/A | N/A | 0 |
-| full vs baseline_catalog | N/A | N/A | N/A | 0 |
-| no_revision vs baseline_catalog | N/A | N/A | N/A | 0 |
+| full vs no_revision | 79.88 | 79.75 | -0.13 | 101 |
+| full vs baseline_catalog | 79.65 | 82.55 | +2.90 | 77 |
+| no_revision vs baseline_catalog | 79.68 | 82.57 | +2.89 | 72 |
 
 ## 稳定性（同一样本多次运行）
 
@@ -73,156 +74,31 @@
 
 | 系统 | 难度 | 硬约束通过率 | 合格计划质量分 | 平均 token |
 |---|---|---|---|---|
-| full | easy | 81.6% | 81.10（n=40） | 14333 |
-| full | medium | 0.0% | N/A（n=0） | 0.00 |
-| full | hard | 0.0% | N/A（n=0） | 0.00 |
-| no_revision | easy | 0.0% | N/A（n=0） | 0.00 |
-| no_revision | medium | 0.0% | N/A（n=0） | 0.00 |
-| no_revision | hard | 0.0% | N/A（n=0） | 0.00 |
-| baseline_catalog | easy | 0.0% | N/A（n=0） | 0.00 |
-| baseline_catalog | medium | 0.0% | N/A（n=0） | 0.00 |
-| baseline_catalog | hard | 0.0% | N/A（n=0） | 0.00 |
+| full | easy | 100.0% | 80.71（n=49） | 18076 |
+| full | medium | 100.0% | 79.56（n=48） | 23761 |
+| full | hard | 76.5% | 72.93（n=26） | 39063 |
+| no_revision | easy | 95.9% | 80.51（n=47） | 17893 |
+| no_revision | medium | 95.8% | 79.46（n=46） | 23317 |
+| no_revision | hard | 23.5% | 76.95（n=8） | 30890 |
+| baseline_catalog | easy | 81.6% | 81.94（n=40） | 17734 |
+| baseline_catalog | medium | 66.7% | 83.26（n=32） | 18239 |
+| baseline_catalog | hard | 17.6% | 81.18（n=6） | 18766 |
 
 ## 各节点耗时（ms）
 
-**full**：`chat` 26217 / P95 36420 · `cache_lookup` 0.23 / P95 0.30 · `research` 14094 / P95 19993 · `human_select` 0.14 / P95 0.30 · `itinerary` 16705 / P95 29003 · `budget` 0.28 / P95 0.70 · `validate` 0.36 / P95 0.60 · `finalize` 0.12 / P95 0.20 · `confirm` 0.10 / P95 0.10
-**no_revision**：`chat` 35533 / P95 36706
+**full**：`chat` 3184 / P95 4561 · `cache_lookup` 0.21 / P95 0.30 · `research` 14708 / P95 21551 · `human_select` 0.16 / P95 0.30 · `itinerary` 27462 / P95 67755 · `budget` 1266 / P95 6828 · `validate` 0.50 / P95 1.30 · `finalize` 0.11 / P95 0.20 · `confirm` 0.09 / P95 0.10
+**no_revision**：`chat` 3389 / P95 5035 · `cache_lookup` 0.21 / P95 0.30 · `research` 14995 / P95 21758 · `human_select` 0.18 / P95 0.30 · `itinerary` 24461 / P95 38503 · `budget` 1001 / P95 4208 · `validate` 0.38 / P95 0.60 · `finalize` 0.10 / P95 0.10 · `confirm` 0.09 / P95 0.10
 
 ## 违规类型（出现该违规的记录数）
 
-- **full**：无
-- **no_revision**：无
-- **baseline_catalog**：无
+- **full**：`over_budget` 17、`closed` 2
+- **no_revision**：`over_budget` 35、`closed` 8
+- **baseline_catalog**：`over_budget` 40、`closed` 30、`dietary` 2、`wrong_date` 1、`unknown_ref` 1
 
 ## full 系统失败样例
 
-- `s065`（easy，rep 0）：GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langchain_google_genai/chat_models.py", line 4188, in _generate
-    response: GenerateContentResponse = self.client.models.generate_content(
-                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6370, in generate_content
-    response = self._generate_content_with_continuation(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6211, in _generate_content_with_continuation
-    response = self._generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^
-google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/src/trip_agents/evals/systems.py", line 181, in run_one
-    state = graph.invoke(
-            ^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 4000, in invoke
-    for chunk in self.stream(
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3060, in stream
-    for _ in runner.tick(
-langchain_google_genai.chat_models.GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-During task with name 'chat' and id '47239d12-a94c-cece-649e-6f68048872db'
-
-- `s059`（easy，rep 0）：GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langchain_google_genai/chat_models.py", line 4188, in _generate
-    response: GenerateContentResponse = self.client.models.generate_content(
-                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6370, in generate_content
-    response = self._generate_content_with_continuation(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6211, in _generate_content_with_continuation
-    response = self._generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^
-google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/src/trip_agents/evals/systems.py", line 181, in run_one
-    state = graph.invoke(
-            ^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 4000, in invoke
-    for chunk in self.stream(
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3060, in stream
-    for _ in runner.tick(
-langchain_google_genai.chat_models.GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-During task with name 'chat' and id 'ec98bb8c-49e3-c620-4190-9f670721b16f'
-
-- `s063`（easy，rep 0）：GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langchain_google_genai/chat_models.py", line 4188, in _generate
-    response: GenerateContentResponse = self.client.models.generate_content(
-                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6370, in generate_content
-    response = self._generate_content_with_continuation(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6211, in _generate_content_with_continuation
-    response = self._generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^
-google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/src/trip_agents/evals/systems.py", line 181, in run_one
-    state = graph.invoke(
-            ^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 4000, in invoke
-    for chunk in self.stream(
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3060, in stream
-    for _ in runner.tick(
-langchain_google_genai.chat_models.GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-During task with name 'chat' and id '85ebafec-56dc-eb3e-a124-27e9c3302f84'
-
-- `s060`（easy，rep 0）：GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langchain_google_genai/chat_models.py", line 4188, in _generate
-    response: GenerateContentResponse = self.client.models.generate_content(
-                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6370, in generate_content
-    response = self._generate_content_with_continuation(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6211, in _generate_content_with_continuation
-    response = self._generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^
-google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/src/trip_agents/evals/systems.py", line 181, in run_one
-    state = graph.invoke(
-            ^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 4000, in invoke
-    for chunk in self.stream(
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3060, in stream
-    for _ in runner.tick(
-langchain_google_genai.chat_models.GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-During task with name 'chat' and id 'f8dca886-5a2a-f835-6e77-53bf705c77db'
-
-- `s061`（easy，rep 0）：GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langchain_google_genai/chat_models.py", line 4188, in _generate
-    response: GenerateContentResponse = self.client.models.generate_content(
-                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6370, in generate_content
-    response = self._generate_content_with_continuation(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/google/genai/models.py", line 6211, in _generate_content_with_continuation
-    response = self._generate_content(
-               ^^^^^^^^^^^^^^^^^^^^^^^
-google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/user/langgraph-trip-planner/src/trip_agents/evals/systems.py", line 181, in run_one
-    state = graph.invoke(
-            ^^^^^^^^^^^^^
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 4000, in invoke
-    for chunk in self.stream(
-  File "/home/user/langgraph-trip-planner/.venv/lib/python3.11/site-packages/langgraph/pregel/main.py", line 3060, in stream
-    for _ in runner.tick(
-langchain_google_genai.chat_models.GoogleRateLimitError: Error calling model 'gemini-3.8-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
-During task with name 'chat' and id '3bb8578d-6119-7b0d-9345-03c0a24b5a70'
-
+- `s154`（hard，rep 0）：over_budget
+- `s156`（hard，rep 0）：over_budget
+- `s151`（hard，rep 0）：closed, over_budget
+- `s170`（hard，rep 0）：over_budget
+- `s177`（hard，rep 0）：over_budget

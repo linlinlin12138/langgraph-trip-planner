@@ -2,17 +2,17 @@
  "metrics": {
   "full": {
    "completion_rate": {
-    "mean": 0.2857142857142857,
+    "mean": 1.0,
     "std": 0.0,
     "n_reps": 1.0
    },
    "structure_ok": {
-    "mean": 0.2857142857142857,
+    "mean": 1.0,
     "std": 0.0,
     "n_reps": 1.0
    },
    "hard_pass": {
-    "mean": 0.3053435114503817,
+    "mean": 0.9389312977099237,
     "std": 0.0,
     "n_reps": 1.0
    },
@@ -27,22 +27,22 @@
     "n_reps": 1.0
    },
    "infeasible_recall": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "infeasible_false_alarm": {
-    "mean": 0.0,
+    "mean": 0.03816793893129771,
     "std": 0.0,
     "n_reps": 1.0
    },
    "est_deviation": {
-    "mean": 0.0,
+    "mean": -0.02772046839819499,
     "std": 0.0,
     "n_reps": 1.0
    },
    "est_underreport": {
-    "mean": 0.0,
+    "mean": 3.0,
     "std": 0.0,
     "n_reps": 1.0
    },
@@ -52,37 +52,37 @@
     "n_reps": 1.0
    },
    "judge_total": {
-    "mean": 81.1025,
+    "mean": 78.61544715447157,
     "std": 0.0,
     "n_reps": 1.0
    },
    "judge_richness": {
-    "mean": 84.45,
+    "mean": 83.48780487804878,
     "std": 0.0,
     "n_reps": 1.0
    },
    "judge_preference": {
-    "mean": 85.475,
+    "mean": 82.59349593495935,
     "std": 0.0,
     "n_reps": 1.0
    },
    "judge_reasonable": {
-    "mean": 71.925,
+    "mean": 68.4390243902439,
     "std": 0.0,
     "n_reps": 1.0
    },
    "tool_precision": {
-    "mean": 0.8700000000000001,
+    "mean": 0.9571428571428572,
     "std": 0.0,
     "n_reps": 1.0
    },
    "tool_recall": {
-    "mean": 0.2857142857142857,
+    "mean": 1.0,
     "std": 0.0,
     "n_reps": 1.0
    },
    "invalid_call_rate": {
-    "mean": 0.0,
+    "mean": 0.0011135857461024498,
     "std": 0.0,
     "n_reps": 1.0
    },
@@ -92,139 +92,139 @@
     "n_reps": 1.0
    },
    "research_steps": {
-    "mean": 0.8928571428571429,
+    "mean": 3.3285714285714287,
     "std": 0.0,
     "n_reps": 1.0
    },
    "revisions": {
-    "mean": 0.014285714285714285,
+    "mean": 0.2714285714285714,
     "std": 0.0,
     "n_reps": 1.0
    },
    "parse_failures": {
-    "mean": 0.0,
+    "mean": 0.007142857142857143,
     "std": 0.0,
     "n_reps": 1.0
    },
    "llm_calls": {
-    "mean": 2.4785714285714286,
+    "mean": 8.185714285714285,
     "std": 0.0,
     "n_reps": 1.0
    },
    "tokens": {
-    "mean": 5016.685714285714,
+    "mean": 25596.47857142857,
     "std": 0.0,
     "n_reps": 1.0
    },
    "cost_usd": {
-    "mean": 0.0069738357142857125,
+    "mean": 0.034730678571428565,
     "std": 0.0,
     "n_reps": 1.0
    },
    "latency_mean_ms": {
-    "mean": 35195.04685714286,
+    "mean": 46790.086,
     "std": 0.0,
     "n_reps": 1.0
    },
    "latency_p95_ms": {
-    "mean": 43391.97,
+    "mean": 90043.54,
     "std": 0.0,
     "n_reps": 1.0
    }
   },
   "no_revision": {
    "completion_rate": {
-    "mean": 0.0,
+    "mean": 1.0,
     "std": 0.0,
     "n_reps": 1.0
    },
    "structure_ok": {
-    "mean": 0.0,
+    "mean": 1.0,
     "std": 0.0,
     "n_reps": 1.0
    },
    "hard_pass": {
-    "mean": 0.0,
+    "mean": 0.7709923664122137,
     "std": 0.0,
     "n_reps": 1.0
    },
    "hallucination_rate": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "extraction_acc": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "infeasible_recall": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "infeasible_false_alarm": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "est_deviation": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "est_underreport": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "budget_flip": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "judge_total": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "judge_richness": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "judge_preference": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "judge_reasonable": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "tool_precision": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
-   },
-   "tool_recall": {
     "mean": 0.0,
     "std": 0.0,
     "n_reps": 1.0
    },
+   "extraction_acc": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "infeasible_recall": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "infeasible_false_alarm": {
+    "mean": 0.03816793893129771,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "est_deviation": {
+    "mean": -0.034289140386349115,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "est_underreport": {
+    "mean": 8.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "budget_flip": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_total": {
+    "mean": 79.75049504950498,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_richness": {
+    "mean": 83.5049504950495,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_preference": {
+    "mean": 83.95049504950495,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "judge_reasonable": {
+    "mean": 70.39603960396039,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tool_precision": {
+    "mean": 0.9571428571428572,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
+   "tool_recall": {
+    "mean": 1.0,
+    "std": 0.0,
+    "n_reps": 1.0
+   },
    "invalid_call_rate": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 0.0011135857461024498,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "duplicate_call_rate": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "research_steps": {
-    "mean": 0.0,
+    "mean": 3.335714285714286,
     "std": 0.0,
     "n_reps": 1.0
    },
@@ -234,56 +234,56 @@
     "n_reps": 1.0
    },
    "parse_failures": {
-    "mean": 0.0,
+    "mean": 0.007142857142857143,
     "std": 0.0,
     "n_reps": 1.0
    },
    "llm_calls": {
-    "mean": 1.0,
+    "mean": 7.571428571428571,
     "std": 0.0,
     "n_reps": 1.0
    },
    "tokens": {
-    "mean": 0.0,
+    "mean": 23311.814285714285,
     "std": 0.0,
     "n_reps": 1.0
    },
    "cost_usd": {
-    "mean": 0.0,
+    "mean": 0.031586457142857134,
     "std": 0.0,
     "n_reps": 1.0
    },
    "latency_mean_ms": {
-    "mean": 35614.236428571436,
+    "mean": 43933.21585714285,
     "std": 0.0,
     "n_reps": 1.0
    },
    "latency_p95_ms": {
-    "mean": 36777.22,
+    "mean": 62120.82,
     "std": 0.0,
     "n_reps": 1.0
    }
   },
   "baseline_catalog": {
    "completion_rate": {
-    "mean": 0.0,
+    "mean": 1.0,
     "std": 0.0,
     "n_reps": 1.0
    },
    "structure_ok": {
-    "mean": 0.0,
+    "mean": 1.0,
     "std": 0.0,
     "n_reps": 1.0
    },
    "hard_pass": {
-    "mean": 0.0,
+    "mean": 0.5954198473282443,
     "std": 0.0,
     "n_reps": 1.0
    },
    "hallucination_rate": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 0.0004432624113475177,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "extraction_acc": {
     "mean": null,
@@ -301,39 +301,39 @@
     "n_reps": 0.0
    },
    "est_deviation": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": -0.016763043664577797,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "est_underreport": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 2.0,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "budget_flip": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 0.0,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_total": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 82.42051282051278,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_richness": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 87.62820512820512,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_preference": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 86.66666666666667,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "judge_reasonable": {
-    "mean": null,
-    "std": null,
-    "n_reps": 0.0
+    "mean": 71.55128205128206,
+    "std": 0.0,
+    "n_reps": 1.0
    },
    "tool_precision": {
     "mean": null,
@@ -376,22 +376,22 @@
     "n_reps": 1.0
    },
    "tokens": {
-    "mean": 0.0,
+    "mean": 18193.65,
     "std": 0.0,
     "n_reps": 1.0
    },
    "cost_usd": {
-    "mean": 0.0,
+    "mean": 0.020082899999999997,
     "std": 0.0,
     "n_reps": 1.0
    },
    "latency_mean_ms": {
-    "mean": 35638.433000000005,
+    "mean": 15365.937500000007,
     "std": 0.0,
     "n_reps": 1.0
    },
    "latency_p95_ms": {
-    "mean": 36637.52,
+    "mean": 22158.78,
     "std": 0.0,
     "n_reps": 1.0
    }
@@ -401,17 +401,17 @@
   "full": {
    "easy": {
     "completion_rate": {
-     "mean": 0.8163265306122449,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "structure_ok": {
-     "mean": 0.8163265306122449,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hard_pass": {
-     "mean": 0.8163265306122449,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
@@ -451,32 +451,32 @@
      "n_reps": 1.0
     },
     "judge_total": {
-     "mean": 81.1025,
+     "mean": 80.70816326530613,
      "std": 0.0,
      "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": 84.45,
+     "mean": 84.10204081632654,
      "std": 0.0,
      "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": 85.475,
+     "mean": 85.18367346938776,
      "std": 0.0,
      "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": 71.925,
+     "mean": 71.34693877551021,
      "std": 0.0,
      "n_reps": 1.0
     },
     "tool_precision": {
-     "mean": 0.8700000000000001,
+     "mean": 0.8775510204081635,
      "std": 0.0,
      "n_reps": 1.0
     },
     "tool_recall": {
-     "mean": 0.8163265306122449,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
@@ -491,7 +491,7 @@
      "n_reps": 1.0
     },
     "research_steps": {
-     "mean": 2.5510204081632653,
+     "mean": 3.122448979591837,
      "std": 0.0,
      "n_reps": 1.0
     },
@@ -506,261 +506,261 @@
      "n_reps": 1.0
     },
     "llm_calls": {
-     "mean": 5.224489795918367,
+     "mean": 6.244897959183674,
      "std": 0.0,
      "n_reps": 1.0
     },
     "tokens": {
-     "mean": 14333.387755102041,
+     "mean": 18075.85714285714,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.01992524489795918,
+     "mean": 0.02522775510204081,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 34584.26816326531,
+     "mean": 35317.14102040816,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 48256.48,
+     "mean": 48921.44,
      "std": 0.0,
      "n_reps": 1.0
     }
    },
    "medium": {
     "completion_rate": {
-     "mean": 0.0,
-     "std": 0.0,
-     "n_reps": 1.0
-    },
-    "structure_ok": {
-     "mean": 0.0,
-     "std": 0.0,
-     "n_reps": 1.0
-    },
-    "hard_pass": {
-     "mean": 0.0,
-     "std": 0.0,
-     "n_reps": 1.0
-    },
-    "hallucination_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "extraction_acc": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "infeasible_recall": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "infeasible_false_alarm": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "est_deviation": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "est_underreport": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "budget_flip": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "tool_precision": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "tool_recall": {
-     "mean": 0.0,
-     "std": 0.0,
-     "n_reps": 1.0
-    },
-    "invalid_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "duplicate_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "research_steps": {
-     "mean": 0.0,
-     "std": 0.0,
-     "n_reps": 1.0
-    },
-    "revisions": {
-     "mean": 0.0,
-     "std": 0.0,
-     "n_reps": 1.0
-    },
-    "parse_failures": {
-     "mean": 0.0,
-     "std": 0.0,
-     "n_reps": 1.0
-    },
-    "llm_calls": {
      "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
-    "tokens": {
+    "structure_ok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hard_pass": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "hallucination_rate": {
      "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "est_deviation": {
+     "mean": -0.0014492903653246928,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "est_underreport": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "budget_flip": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 79.55624999999999,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 83.35416666666667,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 83.625,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 70.33333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "invalid_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "duplicate_call_rate": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "research_steps": {
+     "mean": 3.392857142857143,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "revisions": {
+     "mean": 0.05357142857142857,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "parse_failures": {
+     "mean": 0.017857142857142856,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "llm_calls": {
+     "mean": 7.696428571428571,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tokens": {
+     "mean": 23760.714285714286,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.0,
+     "mean": 0.03242573214285715,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 35444.02357142857,
+     "mean": 44169.0505357143,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 36417.56,
+     "mean": 63845.84,
      "std": 0.0,
      "n_reps": 1.0
     }
    },
    "hard": {
     "completion_rate": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "structure_ok": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hard_pass": {
-     "mean": 0.0,
+     "mean": 0.7647058823529411,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hallucination_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "extraction_acc": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "infeasible_recall": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "infeasible_false_alarm": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.14705882352941177,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "est_deviation": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": -0.07763093886816928,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "est_underreport": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 3.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "budget_flip": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 72.93461538461538,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 82.57692307692308,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 75.8076923076923,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 59.46153846153846,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_recall": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "invalid_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0037593984962406013,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "duplicate_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "research_steps": {
      "mean": 0.0,
      "std": 0.0,
      "n_reps": 1.0
     },
+    "research_steps": {
+     "mean": 3.5142857142857142,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
     "revisions": {
-     "mean": 0.0,
+     "mean": 0.9428571428571428,
      "std": 0.0,
      "n_reps": 1.0
     },
@@ -770,27 +770,27 @@
      "n_reps": 1.0
     },
     "llm_calls": {
-     "mean": 1.0,
+     "mean": 11.685714285714285,
      "std": 0.0,
      "n_reps": 1.0
     },
     "tokens": {
-     "mean": 0.0,
+     "mean": 39062.57142857143,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.0,
+     "mean": 0.05172268571428573,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 35651.77428571428,
+     "mean": 67045.86571428573,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 36817.43,
+     "mean": 138586.83,
      "std": 0.0,
      "n_reps": 1.0
     }
@@ -799,29 +799,29 @@
   "no_revision": {
    "easy": {
     "completion_rate": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "structure_ok": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hard_pass": {
-     "mean": 0.0,
+     "mean": 0.9591836734693877,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hallucination_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "extraction_acc": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "infeasible_recall": {
      "mean": null,
@@ -829,67 +829,67 @@
      "n_reps": 0.0
     },
     "infeasible_false_alarm": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "est_deviation": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "est_underreport": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "budget_flip": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "tool_precision": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "tool_recall": {
      "mean": 0.0,
      "std": 0.0,
      "n_reps": 1.0
     },
+    "est_deviation": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "est_underreport": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "budget_flip": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 80.51276595744683,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 83.93617021276596,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 84.80851063829788,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 71.36170212765957,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 0.8775510204081635,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
     "invalid_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "duplicate_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "research_steps": {
-     "mean": 0.0,
+     "mean": 3.122448979591837,
      "std": 0.0,
      "n_reps": 1.0
     },
@@ -904,124 +904,124 @@
      "n_reps": 1.0
     },
     "llm_calls": {
-     "mean": 1.0,
+     "mean": 6.204081632653061,
      "std": 0.0,
      "n_reps": 1.0
     },
     "tokens": {
-     "mean": 0.0,
+     "mean": 17893.020408163266,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.0,
+     "mean": 0.024961204081632653,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 35591.851224489794,
+     "mean": 35258.07408163265,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 36927.75,
+     "mean": 50048.22,
      "std": 0.0,
      "n_reps": 1.0
     }
    },
    "medium": {
     "completion_rate": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "structure_ok": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hard_pass": {
-     "mean": 0.0,
+     "mean": 0.9583333333333334,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hallucination_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "extraction_acc": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "infeasible_recall": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "infeasible_false_alarm": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "est_deviation": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "est_underreport": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "budget_flip": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "tool_precision": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "tool_recall": {
      "mean": 0.0,
      "std": 0.0,
      "n_reps": 1.0
     },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "est_deviation": {
+     "mean": -0.0014372388588323461,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "est_underreport": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "budget_flip": {
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 79.45869565217393,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 83.06521739130434,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 83.71739130434783,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 70.17391304347827,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
     "invalid_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "duplicate_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "research_steps": {
-     "mean": 0.0,
+     "mean": 3.392857142857143,
      "std": 0.0,
      "n_reps": 1.0
     },
@@ -1031,129 +1031,129 @@
      "n_reps": 1.0
     },
     "parse_failures": {
-     "mean": 0.0,
+     "mean": 0.017857142857142856,
      "std": 0.0,
      "n_reps": 1.0
     },
     "llm_calls": {
-     "mean": 1.0,
+     "mean": 7.571428571428571,
      "std": 0.0,
      "n_reps": 1.0
     },
     "tokens": {
-     "mean": 0.0,
+     "mean": 23316.821428571428,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.0,
+     "mean": 0.03180396428571429,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 35631.07767857143,
+     "mean": 44199.57196428572,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 36789.17,
+     "mean": 57959.43,
      "std": 0.0,
      "n_reps": 1.0
     }
    },
    "hard": {
     "completion_rate": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "structure_ok": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hard_pass": {
-     "mean": 0.0,
+     "mean": 0.23529411764705882,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hallucination_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "extraction_acc": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "infeasible_recall": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "infeasible_false_alarm": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "est_deviation": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "est_underreport": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "budget_flip": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "tool_precision": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
-    },
-    "tool_recall": {
      "mean": 0.0,
      "std": 0.0,
      "n_reps": 1.0
     },
+    "extraction_acc": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "infeasible_false_alarm": {
+     "mean": 0.14705882352941177,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "est_deviation": {
+     "mean": -0.0860796026578965,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "est_underreport": {
+     "mean": 8.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "budget_flip": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_total": {
+     "mean": 76.95,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_richness": {
+     "mean": 83.5,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_preference": {
+     "mean": 80.25,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "judge_reasonable": {
+     "mean": 66.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_precision": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
+    "tool_recall": {
+     "mean": 1.0,
+     "std": 0.0,
+     "n_reps": 1.0
+    },
     "invalid_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0037593984962406013,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "duplicate_call_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "research_steps": {
-     "mean": 0.0,
+     "mean": 3.5428571428571427,
      "std": 0.0,
      "n_reps": 1.0
     },
@@ -1168,27 +1168,27 @@
      "n_reps": 1.0
     },
     "llm_calls": {
-     "mean": 1.0,
+     "mean": 9.485714285714286,
      "std": 0.0,
      "n_reps": 1.0
     },
     "tokens": {
-     "mean": 0.0,
+     "mean": 30890.114285714284,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.0,
+     "mean": 0.04051380000000001,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 35618.62971428572,
+     "mean": 55652.24457142857,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 36686.59,
+     "mean": 77615.31,
      "std": 0.0,
      "n_reps": 1.0
     }
@@ -1197,24 +1197,24 @@
   "baseline_catalog": {
    "easy": {
     "completion_rate": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "structure_ok": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hard_pass": {
-     "mean": 0.0,
+     "mean": 0.8163265306122449,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hallucination_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "extraction_acc": {
      "mean": null,
@@ -1232,39 +1232,39 @@
      "n_reps": 0.0
     },
     "est_deviation": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "est_underreport": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "budget_flip": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 81.93749999999999,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 88.85,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 85.575,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 70.175,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
@@ -1307,46 +1307,46 @@
      "n_reps": 1.0
     },
     "tokens": {
-     "mean": 0.0,
+     "mean": 17733.571428571428,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.0,
+     "mean": 0.018407612244897956,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 35751.46714285714,
+     "mean": 12674.346122448978,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 37068.7,
+     "mean": 17482.97,
      "std": 0.0,
      "n_reps": 1.0
     }
    },
    "medium": {
     "completion_rate": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "structure_ok": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hard_pass": {
-     "mean": 0.0,
+     "mean": 0.6666666666666666,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hallucination_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0010834236186348862,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "extraction_acc": {
      "mean": null,
@@ -1364,39 +1364,39 @@
      "n_reps": 0.0
     },
     "est_deviation": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "est_underreport": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "budget_flip": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 83.25625000000004,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 86.21875,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 88.5625,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 73.21875,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
@@ -1439,46 +1439,46 @@
      "n_reps": 1.0
     },
     "tokens": {
-     "mean": 0.0,
+     "mean": 18238.589285714286,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.0,
+     "mean": 0.020226875000000002,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 35574.214107142856,
+     "mean": 15551.085714285713,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 36637.52,
+     "mean": 22158.78,
      "std": 0.0,
      "n_reps": 1.0
     }
    },
    "hard": {
     "completion_rate": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "structure_ok": {
-     "mean": 0.0,
+     "mean": 1.0,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hard_pass": {
-     "mean": 0.0,
+     "mean": 0.17647058823529413,
      "std": 0.0,
      "n_reps": 1.0
     },
     "hallucination_rate": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "extraction_acc": {
      "mean": null,
@@ -1496,39 +1496,39 @@
      "n_reps": 0.0
     },
     "est_deviation": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": -0.04180181539312564,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "est_underreport": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 2.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "budget_flip": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 0.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_total": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 81.18333333333334,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_richness": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 87.0,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_preference": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 83.83333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "judge_reasonable": {
-     "mean": null,
-     "std": null,
-     "n_reps": 0.0
+     "mean": 71.83333333333333,
+     "std": 0.0,
+     "n_reps": 1.0
     },
     "tool_precision": {
      "mean": null,
@@ -1571,22 +1571,22 @@
      "n_reps": 1.0
     },
     "tokens": {
-     "mean": 0.0,
+     "mean": 18765.85714285714,
      "std": 0.0,
      "n_reps": 1.0
     },
     "cost_usd": {
-     "mean": 0.0,
+     "mean": 0.022197942857142855,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_mean_ms": {
-     "mean": 35582.93542857143,
+     "mean": 18837.92828571429,
      "std": 0.0,
      "n_reps": 1.0
     },
     "latency_p95_ms": {
-     "mean": 36483.37,
+     "mean": 23834.1,
      "std": 0.0,
      "n_reps": 1.0
     }
@@ -1596,46 +1596,78 @@
  "node_latency": {
   "full": {
    "chat": {
-    "mean": 26217.260714285716,
-    "p95": 36419.9
+    "mean": 3184.3478571428573,
+    "p95": 4561.4
    },
    "cache_lookup": {
-    "mean": 0.23499999999999993,
+    "mean": 0.2085714285714284,
     "p95": 0.3
    },
    "research": {
-    "mean": 14093.717499999999,
-    "p95": 19993.1
+    "mean": 14708.302142857141,
+    "p95": 21551.4
    },
    "human_select": {
-    "mean": 0.13749999999999998,
+    "mean": 0.15785714285714264,
     "p95": 0.3
    },
    "itinerary": {
-    "mean": 16705.11,
-    "p95": 29003.3
+    "mean": 27461.581428571422,
+    "p95": 67755.1
    },
    "budget": {
-    "mean": 0.27999999999999997,
-    "p95": 0.7
+    "mean": 1265.6135714285713,
+    "p95": 6827.7
    },
    "validate": {
-    "mean": 0.35750000000000015,
-    "p95": 0.6
+    "mean": 0.49928571428571394,
+    "p95": 1.3
    },
    "finalize": {
-    "mean": 0.12,
+    "mean": 0.11499999999999976,
     "p95": 0.2
    },
    "confirm": {
-    "mean": 0.10250000000000004,
+    "mean": 0.09071428571428551,
     "p95": 0.1
    }
   },
   "no_revision": {
    "chat": {
-    "mean": 35533.244285714296,
-    "p95": 36706.2
+    "mean": 3389.297142857142,
+    "p95": 5035.3
+   },
+   "cache_lookup": {
+    "mean": 0.21214285714285705,
+    "p95": 0.3
+   },
+   "research": {
+    "mean": 14995.492142857142,
+    "p95": 21758.3
+   },
+   "human_select": {
+    "mean": 0.17999999999999977,
+    "p95": 0.3
+   },
+   "itinerary": {
+    "mean": 24461.18642857142,
+    "p95": 38503.4
+   },
+   "budget": {
+    "mean": 1000.9285714285714,
+    "p95": 4207.8
+   },
+   "validate": {
+    "mean": 0.384285714285714,
+    "p95": 0.6
+   },
+   "finalize": {
+    "mean": 0.10499999999999976,
+    "p95": 0.1
+   },
+   "confirm": {
+    "mean": 0.0892857142857141,
+    "p95": 0.1
    }
   },
   "baseline_catalog": {}
@@ -1661,8 +1693,20 @@
   }
  },
  "violations": {
-  "full": {},
-  "no_revision": {},
-  "baseline_catalog": {}
+  "full": {
+   "over_budget": 17,
+   "closed": 2
+  },
+  "no_revision": {
+   "over_budget": 35,
+   "closed": 8
+  },
+  "baseline_catalog": {
+   "over_budget": 40,
+   "closed": 30,
+   "dietary": 2,
+   "wrong_date": 1,
+   "unknown_ref": 1
+  }
  }
 }
