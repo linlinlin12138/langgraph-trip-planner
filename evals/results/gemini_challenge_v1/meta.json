@@ -1,0 +1,24 @@
+{
+ "name": "gemini_challenge_v1",
+ "date": "2026-11-07T22:34:39",
+ "git_commit": "e59dbff",
+ "dataset": "evals/datasets/challenge/test_challenge.jsonl",
+ "split": "test",
+ "n_samples": 36,
+ "difficulty_filter": null,
+ "systems": [
+  "full",
+  "baseline_catalog"
+ ],
+ "repeats": 1,
+ "seed": 42,
+ "provider": "gemini",
+ "model": "gemini-3.8-flash",
+ "thinking_level": "low",
+ "tool_backend": "mock",
+ "judge": {
+  "provider": "openai",
+  "model": "gpt-6.1-sol"
+ },
+ "mock": false
+}
