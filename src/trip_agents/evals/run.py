@@ -95,6 +95,7 @@ def main(argv: list[str] | None = None) -> Path:
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--limit", type=int, default=0, help="first N samples only (0 = all)")
     ap.add_argument("--difficulty", default=None, help="only these difficulties, e.g. hard or medium,hard")
+    ap.add_argument("--ids", type=Path, default=None, help="JSON list of sample ids to run (e.g. a stability subset)")
     ap.add_argument("--provider", default=s.llm_provider)
     ap.add_argument("--model", default=s.llm_model or None)
     ap.add_argument("--judge-provider", default=None, help="default: same as --provider")
@@ -109,6 +110,9 @@ def main(argv: list[str] | None = None) -> Path:
         print("note: test split with the mock model -- fine for pipeline checks, but report numbers are not model quality.")
     dataset_path = args.dataset or DATASET_DIR / f"{args.split}.jsonl"
     samples = load(dataset_path)
+    if args.ids:
+        wanted = set(json.loads(args.ids.read_text(encoding="utf-8")))
+        samples = [x for x in samples if x.id in wanted]
     if args.difficulty:
         keep = set(args.difficulty.split(","))
         samples = [x for x in samples if x.difficulty in keep]
@@ -130,6 +134,7 @@ def main(argv: list[str] | None = None) -> Path:
         "split": args.split,
         "n_samples": len(samples),
         "difficulty_filter": args.difficulty,
+        "ids_file": str(args.ids) if args.ids else None,
         "systems": [x.name for x in systems],
         "repeats": args.repeats,
         "seed": args.seed,

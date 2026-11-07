@@ -69,7 +69,7 @@ def rules_only(run_dir: Path) -> int:
     return len(records)
 
 
-def rejudge(run_dir: Path, provider: str, model: str | None, *, workers: int = 4) -> tuple[int, int]:
+def rejudge(run_dir: Path, provider: str, model: str | None, *, workers: int = 4, only_missing: bool = False) -> tuple[int, int]:
     meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
     rec_path = run_dir / "records.jsonl"
     records = [RunRecord.model_validate_json(x) for x in rec_path.read_text(encoding="utf-8").splitlines() if x.strip()]
@@ -78,6 +78,8 @@ def rejudge(run_dir: Path, provider: str, model: str | None, *, workers: int = 4
     model_name = model or DEFAULT_MODELS[provider]
 
     def score(r: RunRecord) -> bool:
+        if only_missing and r.judge_total is not None:
+            return True  # keep the existing score (e.g. records copied from an earlier, already judged run)
         rescore_rules(r, gold)
         r.judge = r.judge_total = None
         if r.itinerary is None or not r.hard_pass:
@@ -106,13 +108,14 @@ def main() -> None:
     ap.add_argument("--judge-model", default=None)
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--rules-only", action="store_true", help="recompute rule-based fields only; no judge calls")
+    ap.add_argument("--only-missing", action="store_true", help="judge only records without a judge score; keep the others")
     args = ap.parse_args()
     if args.rules_only:
         print(f"re-scored rules for {rules_only(args.run_dir)} records; report: {args.run_dir / 'report.md'}")
         return
     if not args.judge_provider:
         ap.error("--judge-provider is required unless --rules-only")
-    done, skipped = rejudge(args.run_dir, args.judge_provider, args.judge_model, workers=args.workers)
+    done, skipped = rejudge(args.run_dir, args.judge_provider, args.judge_model, workers=args.workers, only_missing=args.only_missing)
     print(f"re-judged {done} records, skipped {skipped} (no stored plan); report: {args.run_dir / 'report.md'}")
 
 
