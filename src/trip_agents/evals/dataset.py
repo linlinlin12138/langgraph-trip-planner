@@ -42,7 +42,7 @@ class Sample(BaseModel):
     gold: TripRequest
     expected_tools: list[str]
     request_text: str
-    rewrite: Literal["template", "llm"]
+    rewrite: Literal["template", "llm", "llm_challenge"]  # llm_challenge: evals.challenge, human-reviewed, no back-check
     min_feasible_cost: float
     typical_cost: float
     # provenance of an LLM rewrite (rewriter / checker models, attempts); see evals/rewrite.py

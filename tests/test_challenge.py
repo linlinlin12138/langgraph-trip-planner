@@ -76,3 +76,9 @@ def test_must_visit_extraction_uses_the_lenient_rule() -> None:
     assert not extraction_accuracy(p, g)["must_visit"]
     p.hard.must_visit = ["兵马俑", "熊猫基地"]  # nickname that is neither
     assert not extraction_accuracy(p, g)["must_visit"]
+
+
+def test_rewritten_samples_round_trip(tmp_path: Path) -> None:
+    s = select(TEST)[0].model_copy(update={"request_text": "x", "rewrite": "llm_challenge", "rewrite_info": {"model": "m"}})
+    save([s], tmp_path / "c.jsonl")
+    assert load(tmp_path / "c.jsonl")[0].rewrite == "llm_challenge"
