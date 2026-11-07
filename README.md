@@ -203,11 +203,21 @@ data/sources/       抽取的开放数据候选（scripts/fetch_catalog_sources.
 - `LLM_PROVIDER`：`mock`、`openai`、`anthropic` 或 `gemini`
 - `LLM_MODEL`：模型名（留空用各家默认，Gemini 为 `gemini-3.8-flash`）
 - `LLM_THINKING_LEVEL`（默认 `low`）/ `LLM_THINKING_BUDGET`：Gemini 3+ / 2.5 的推理开销
-- `TOOL_BACKEND`：`mock` 或 `real`
+- `TOOL_BACKEND`：`mock` 或 `real`（real：天气用 Open-Meteo、路线用 OSRM，其余工具用固定目录；冒烟测试见下）
 - `TOOL_TRANSPORT`：`mcp` 或 `local`
 - `MAX_REVISIONS`：回退次数上限
 - `SEMANTIC_CACHE`：是否启用语义缓存
 - `PRICING_OVERRIDES`：模型单价。**不内置任何真实单价**，请对照官方价格页填写
+
+### real 后端冒烟测试
+
+在能访问公网的机器上运行（不需要 API key，端到端部分用 mock 模型，不花钱）：
+
+```bash
+uv run python scripts/smoke_real_backend.py
+```
+
+它会：(1) 分别以进程内和 MCP stdio 两种方式调用天气（Open-Meteo）和路线（OSRM），打印解析后的结果；(2) 检查超时、地点查不到、非法坐标、超出 16 天预报、参数非法等错误都以 observation（`ERROR: ...`）返回，程序不崩溃；(3) 用 mock 模型 + real 后端端到端跑两个请求，确认行程里的天气和路线来自真实接口。服务端限流（429）和网络问题记为 WARN 而不是 FAIL，稍后重跑即可；有 FAIL 时退出码为 1。加 `--no-mcp` 可以跳过 MCP 子进程。
 
 ## 里程碑
 
