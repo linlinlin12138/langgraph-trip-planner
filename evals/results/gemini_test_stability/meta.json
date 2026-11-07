@@ -1,0 +1,21 @@
+{
+ "name": "gemini_test_stability",
+ "date": "2026-11-07T23:28:32",
+ "git_commit": "211dd0f",
+ "dataset": "evals/datasets/test.jsonl",
+ "split": "test",
+ "n_samples": 40,
+ "difficulty_filter": null,
+ "ids_file": "evals/results/gemini_test_stability/ids.json",
+ "systems": [
+  "full"
+ ],
+ "repeats": 3,
+ "seed": 42,
+ "provider": "gemini",
+ "model": "gemini-3.8-flash",
+ "thinking_level": "low",
+ "tool_backend": "mock",
+ "judge": null,
+ "mock": false
+}
