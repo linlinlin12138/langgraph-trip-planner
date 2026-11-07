@@ -7,6 +7,10 @@ Session 2, same user, is one of:
   inherit    only city / date / days -> preferences + budget habit should carry over
   override   explicitly different pace and "什么都吃" -> the new statement must win
   past_trip  "像上次X那样" -> destination, length, party, budget from that trip
+  add_restriction  a NEW dietary restriction this time ("这次海鲜过敏") -> it must be applied, and the remembered
+             one must not be dropped (nothing revoked it), so gold = old | new. Memory errors are asymmetric:
+             override tests a relaxed restriction (an error makes the plan over-careful), add_restriction a new
+             one (an error can serve someone food they are allergic to), so both directions are measured.
 Gold for session 2 is derived from the scenario. Runs in auto mode (no human),
 so a system that lacks required info simply cannot plan -- that is the point.
 Requests are template-generated (``template_rewrite``), like the main dataset.
@@ -42,7 +46,9 @@ from trip_agents.observability.tracer import TraceRecorder
 from trip_agents.schemas import HardConstraints, SoftPreferences, TripRequest
 from trip_agents.tools.mock_backend import supported_cities
 
-Kind = Literal["inherit", "override", "past_trip"]
+Kind = Literal["inherit", "override", "past_trip", "add_restriction"]
+KINDS: tuple[Kind, ...] = ("inherit", "override", "past_trip", "add_restriction")
+_DIET_PHRASE = {"no_spicy": "这次有人完全吃不了辣", "no_seafood": "这次有人海鲜过敏"}
 FIELDS = ("destination", "days", "travelers", "budget_total", "dietary_restrictions", "pace", "hotel_tier")
 
 
@@ -53,6 +59,7 @@ class Scenario:
     s1_text: str
     s2_text: str
     gold2: TripRequest
+    gold1: TripRequest | None = None  # session 1, to spot stale memory
 
 
 def _diet_ok(city: str, diet: list[str]) -> bool:
@@ -61,10 +68,9 @@ def _diet_ok(city: str, diet: list[str]) -> bool:
 
 def build_scenarios(n: int, seed: int) -> list[Scenario]:
     rng = random.Random(seed)
-    kinds: list[Kind] = ["inherit", "override", "past_trip"]
     out = []
     for i in range(n):
-        kind = kinds[i % 3]
+        kind = KINDS[i % len(KINDS)]
         c1, c2 = rng.sample(supported_cities(), 2)
         diet = [d for d in [rng.choice(["no_spicy", "no_seafood"])] if _diet_ok(c1, [d]) and _diet_ok(c2, [d])]
         travelers = rng.choice([1, 2, 3])
@@ -109,7 +115,13 @@ def build_scenarios(n: int, seed: int) -> list[Scenario]:
                 new_pace = "packed" if pace == "relaxed" else "relaxed"
                 gold.hard.dietary_restrictions, gold.soft.pace = [], new_pace  # type: ignore[assignment]
                 text += "，这次什么都吃，" + ("行程紧凑一点" if new_pace == "packed" else "节奏轻松点")
-        out.append(Scenario(f"m{i:02d}", kind, s1_text, text, gold))
+            elif kind == "add_restriction":
+                options = [d for d in ("no_spicy", "no_seafood") if d not in diet and _diet_ok(c2, sorted({*diet, d}))]
+                if options:
+                    new = rng.choice(options)
+                    gold.hard = gold.hard.model_copy(update={"dietary_restrictions": sorted({*diet, new})})
+                    text += "，" + _DIET_PHRASE[new]
+        out.append(Scenario(f"m{i:02d}", kind, s1_text, text, gold, s1))
     return out
 
 
@@ -150,6 +162,9 @@ def _run_scenario(sc: Scenario, make_model: Any, with_memory: bool) -> dict[str,
     final = out.get("final")
     ev = evaluate_plan(final.itinerary if final else None, sc.gold2)
     acc = _field_acc(req, sc.gold2)
+    got_diet = set(req.hard.dietary_restrictions) if req is not None else set()
+    old_diet = set(sc.gold1.hard.dietary_restrictions) if sc.gold1 is not None else set()
+    new_diet = set(sc.gold2.hard.dietary_restrictions) - old_diet
     tr = tracer.finish()
     tr1 = t1.finish()
     costs = [tr1.cost_usd if with_memory else 0.0, tr.cost_usd]
@@ -160,6 +175,13 @@ def _run_scenario(sc: Scenario, make_model: Any, with_memory: bool) -> dict[str,
         "planned": final is not None,
         "fields": acc,
         "all_fields": all(acc.values()),
+        "extracted": req.model_dump(mode="json") if req is not None else None,
+        # stale memory (override): the remembered value survived although the user changed it this time
+        "stale_diet": bool(sc.kind == "override" and req is not None and old_diet and got_diet & old_diet),
+        "stale_pace": bool(sc.kind == "override" and req is not None and sc.gold1 is not None and req.soft.pace == sc.gold1.soft.pace),
+        # add_restriction: the new restriction missing (dangerous) / a remembered one dropped
+        "missed_new_restriction": bool(sc.kind == "add_restriction" and req is not None and new_diet - got_diet),
+        "dropped_old_restriction": bool(sc.kind == "add_restriction" and req is not None and old_diet - got_diet),
         "hard_pass": ev.hard_pass,
         "tokens": tr.input_tokens + tr.output_tokens,
         "session1_tokens": tr1.input_tokens + tr1.output_tokens,
@@ -181,7 +203,7 @@ def report(rows: list[dict[str, Any]], meta: dict[str, Any]) -> str:
     for r in rows:
         if not r.get("error"):
             groups[(r["kind"], r["memory"])].append(r)
-    for kind in ("inherit", "override", "past_trip"):
+    for kind in KINDS:
         for mem in (True, False):
             g = groups[(kind, mem)]
             if not g:
@@ -213,17 +235,41 @@ def report(rows: list[dict[str, Any]], meta: dict[str, Any]) -> str:
         "字段级准确率（有记忆）：",
         "",
     ]
-    for kind in ("inherit", "override", "past_trip"):
+    tail: list[str] = []
+    mem_rows = [r for r in rows if r["memory"] and not r.get("error")]
+    if mem_rows:
+        tail += ["", "字段级错误数（有记忆，第二次会话抽取结果和标准答案不一致的场景数）：", ""]
+        tail += ["| 场景 | " + " | ".join(FIELDS) + " |", "|---|" + "---|" * len(FIELDS)]
+        for kind in KINDS:
+            g = [r for r in mem_rows if r["kind"] == kind]
+            if g:
+                tail.append(f"| {kind}（{len(g)}） | " + " | ".join(str(sum(not r["fields"][f] for r in g)) for f in FIELDS) + " |")
+        ov = [r for r in mem_rows if r["kind"] == "override"]
+        ad = [r for r in mem_rows if r["kind"] == "add_restriction"]
+        tail += ["", "记忆错误的两个方向（有记忆）：", ""]
+        if ov:
+            tail.append(
+                f"- override（用户这次放宽了限制、改了节奏）：旧饮食限制残留 {sum(r.get('stale_diet', False) for r in ov)}/{len(ov)}，"
+                f"旧节奏残留 {sum(r.get('stale_pace', False) for r in ov)}/{len(ov)}。出错的代价：行程过于保守。"
+            )
+        if ad:
+            tail.append(
+                "- add_restriction（用户这次新增了饮食限制）："
+                f"**漏掉新限制 {sum(r.get('missed_new_restriction', False) for r in ad)}/{len(ad)}**，"
+                f"丢掉记忆里的旧限制 {sum(r.get('dropped_old_restriction', False) for r in ad)}/{len(ad)}。"
+                "出错的代价：可能给过敏的人安排不能吃的东西。标准答案是新旧限制的并集（用户没有撤销旧限制）。"
+            )
+    for kind in KINDS:
         g = groups[(kind, True)]
         if g:
             per = {f: sum(r["fields"][f] for r in g) / len(g) for f in FIELDS}
             lines.append(f"- {kind}：" + "，".join(f"{f} {v * 100:.0f}%" for f, v in per.items()))
-    return "\n".join(lines) + "\n"
+    return "\n".join(lines + tail) + "\n"
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--n", type=int, default=30)
+    ap.add_argument("--n", type=int, default=40, help="scenarios, split evenly over the 4 kinds")
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--provider", default="mock")
     ap.add_argument("--model", default=None)
@@ -265,7 +311,7 @@ def main() -> None:
         "git commit": f"`{git_commit()}`",
         "模型": f"{args.provider} / `{args.model or DEFAULT_MODELS[args.provider]}`"
         + (f"（推理强度 {s.llm_thinking_level}）" if args.provider == "gemini" else ""),
-        "场景数": f"{len(scenarios)}（三类各 1/3）",
+        "场景数": f"{len(scenarios)}（{len(KINDS)} 类各 1/{len(KINDS)}）",
         "seed": args.seed,
         "每组运行次数": 1,
         "mock": args.provider == "mock",

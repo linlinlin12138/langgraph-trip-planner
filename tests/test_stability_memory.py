@@ -68,3 +68,22 @@ def test_memory_eval_records_errors_instead_of_crashing() -> None:
 
     row = mem.run_scenario(sc, boom, True)
     assert "504" in row["error"] and row["id"] == sc.id
+
+
+def test_add_restriction_scenarios_and_both_error_directions() -> None:
+    import trip_agents.evals.memory_eval as mem
+
+    scs = mem.build_scenarios(40, 7)
+    assert Counter(s.kind for s in scs) == dict.fromkeys(mem.KINDS, 10)
+    adds = [s for s in scs if s.kind == "add_restriction"]
+    for s in adds:
+        old = set(s.gold1.hard.dietary_restrictions) if s.gold1 else set()
+        new = set(s.gold2.hard.dietary_restrictions)
+        assert old <= new  # nothing revoked: the remembered restriction stays in gold
+        if new - old:
+            assert any(p in s.s2_text for p in mem._DIET_PHRASE.values())
+    row = mem.run_scenario(adds[0], lambda: __import__("trip_agents.llm.mock", fromlist=["MockChatModel"]).MockChatModel(), True)
+    assert {"missed_new_restriction", "dropped_old_restriction", "stale_diet", "stale_pace"} <= row.keys()
+    ov = next(s for s in scs if s.kind == "override")
+    row2 = mem.run_scenario(ov, lambda: __import__("trip_agents.llm.mock", fromlist=["MockChatModel"]).MockChatModel(), True)
+    assert row2["stale_diet"] is False and row2["stale_pace"] is False  # the mock applies "这次什么都吃 / 节奏" correctly

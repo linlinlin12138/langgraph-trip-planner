@@ -49,7 +49,7 @@ eval-rejudge:
 	uv run python -m trip_agents.evals.rejudge $(RUN) $(ARGS)
 
 eval-memory:
-	uv run python -m trip_agents.evals.memory_eval --n 30 --out docs/eval/mock_memory.md
+	uv run python -m trip_agents.evals.memory_eval --n 40 --out docs/eval/mock_memory.md
 
 # ---- hand-written ReAct ------------------------------------------------------
 test-react:
