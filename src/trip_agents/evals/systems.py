@@ -31,6 +31,7 @@ from trip_agents.llm.context import render_context
 from trip_agents.llm.structured import invoke_structured
 from trip_agents.observability.tracer import TraceRecorder
 from trip_agents.schemas import BudgetReport, Itinerary, TripRequest
+from trip_agents.validation.names import matches_any
 
 BASELINE_SYSTEM = """你是旅行规划助手。根据用户的请求，直接输出完整的多日行程（Itinerary 结构）。
 每天包含景点和午餐、晚餐，给出时间、名称（ref_id 填景点或餐厅名称）和全体同行人的预计花费；hotel_id 填酒店名称。
@@ -116,6 +117,7 @@ class RunRecord(BaseModel):
     plan_total_model: float | None = None  # lodging + the model's est_cost of every activity
     plan_total_catalog: float | None = None  # the authoritative total the evaluation uses
     budget_flip: bool | None = None  # would the over-budget verdict differ if the model's estimates were trusted?
+    extracted: dict[str, Any] | None = None  # the system's extracted hard constraints (graph systems), for error listings
     node_ms: dict[str, float] = Field(default_factory=dict)
 
 
@@ -132,7 +134,10 @@ def extraction_accuracy(pred: TripRequest | None, gold: TripRequest) -> dict[str
         "budget_total": abs(p.budget_total - g.budget_total) <= 1,
         "travelers": p.travelers == g.travelers,
         "dietary_restrictions": set(p.dietary_restrictions) == set(g.dietary_restrictions),
-        "must_visit": set(p.must_visit) == set(g.must_visit),
+        # same rule as the must-visit check (validation/names.py): short names / aliases of the catalog name count
+        "must_visit": len(p.must_visit) == len(g.must_visit)
+        and all(matches_any(m, p.must_visit) for m in g.must_visit)
+        and all(matches_any(m, g.must_visit) for m in p.must_visit),
     }
 
 
@@ -185,6 +190,8 @@ def run_one(
             final = state.get("final")
             itinerary = final.itinerary if final else state.get("itinerary")
             rec.extraction = extraction_accuracy(state.get("request"), sample.gold)
+            if (req := state.get("request")) is not None:
+                rec.extracted = req.hard.model_dump(mode="json")
             rec.flagged_infeasible = (not final.feasible) if final else None
             rec.revisions = state.get("revision", 0)
             runtime_budget = state.get("budget")

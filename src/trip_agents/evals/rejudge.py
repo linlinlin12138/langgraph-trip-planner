@@ -17,7 +17,9 @@ import re
 import shutil
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from typing import Any
 
+from trip_agents.config import PROJECT_ROOT
 from trip_agents.evals.dataset import DATASET_DIR, load
 from trip_agents.evals.judge import judge_plan
 from trip_agents.evals.report import write_report
@@ -25,6 +27,14 @@ from trip_agents.evals.systems import RunRecord, set_cost_audit
 from trip_agents.evals.world import evaluate_plan
 from trip_agents.llm.factory import DEFAULT_MODELS, get_chat_model
 from trip_agents.schemas import BudgetReport, Itinerary, TripRequest
+
+
+def gold_for(meta: dict[str, Any]) -> dict[str, TripRequest]:
+    """Gold of the dataset the run actually used (``meta["dataset"]``), else the split's default file."""
+    path = PROJECT_ROOT / meta["dataset"] if meta.get("dataset") else DATASET_DIR / f"{meta['split']}.jsonl"
+    if not path.exists():
+        path = DATASET_DIR / f"{meta['split']}.jsonl"
+    return {s.id: s.gold for s in load(path)}
 
 
 def rescore_rules(r: RunRecord, gold: dict[str, TripRequest]) -> None:
@@ -49,7 +59,7 @@ def rules_only(run_dir: Path) -> int:
     meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
     rec_path = run_dir / "records.jsonl"
     records = [RunRecord.model_validate_json(x) for x in rec_path.read_text(encoding="utf-8").splitlines() if x.strip()]
-    gold = {s.id: s.gold for s in load(DATASET_DIR / f"{meta['split']}.jsonl")}
+    gold = gold_for(meta)
     for r in records:
         rescore_rules(r, gold)
         if not r.hard_pass:  # judge scores only exist for plans that pass the hard constraints
@@ -63,7 +73,7 @@ def rejudge(run_dir: Path, provider: str, model: str | None, *, workers: int = 4
     meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
     rec_path = run_dir / "records.jsonl"
     records = [RunRecord.model_validate_json(x) for x in rec_path.read_text(encoding="utf-8").splitlines() if x.strip()]
-    gold = {s.id: s.gold for s in load(DATASET_DIR / f"{meta['split']}.jsonl")}
+    gold = gold_for(meta)
     judge = get_chat_model(provider, model, temperature=0.0)  # type: ignore[arg-type]
     model_name = model or DEFAULT_MODELS[provider]
 

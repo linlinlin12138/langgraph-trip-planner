@@ -1,4 +1,4 @@
-.PHONY: install test lint typecheck check demo cli mock-data eval eval-dataset eval-rewrite eval-compare eval-memory eval-rejudge test-react compare-react mcp-server check-provider
+.PHONY: challenge install test lint typecheck check demo cli mock-data eval eval-dataset eval-rewrite eval-compare eval-memory eval-rejudge test-react compare-react mcp-server check-provider
 
 install:
 	uv sync --all-extras
@@ -35,6 +35,10 @@ eval-dataset:
 # make eval-rewrite ARGS="--rewriter-provider anthropic --rewriter-model <m> --checker-provider openai --checker-model <m>"
 eval-rewrite:
 	uv run python -m trip_agents.evals.rewrite $(ARGS)
+
+# challenge set (harder phrasings of 36 test samples): make challenge ARGS="select | rewrite | apply-review | compare <tmpl run> <challenge run>"
+challenge:
+	uv run python -m trip_agents.evals.challenge $(ARGS)
 
 # make eval-compare A=evals/runs/<a> B=evals/runs/<b>
 eval-compare:
