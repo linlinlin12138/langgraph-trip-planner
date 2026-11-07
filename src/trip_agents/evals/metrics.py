@@ -13,10 +13,12 @@ Repeats: each family is computed per repeat, then reported as mean ± std over r
 from __future__ import annotations
 
 import math
+import random
 import statistics
 from collections import defaultdict
 from collections.abc import Callable, Iterable, Sequence
 from itertools import combinations
+from typing import Any
 
 from trip_agents.evals.systems import SYSTEMS, RunRecord
 
@@ -218,3 +220,76 @@ def violation_counts(records: Sequence[RunRecord]) -> dict[str, int]:
         for v in set(r.violations):
             c[v] += 1
     return dict(sorted(c.items(), key=lambda kv: -kv[1]))
+
+
+# ----------------------------------------------------------------------------- paired analysis between systems
+JUDGE_DIMS = ("richness", "preference_fit", "reasonableness")
+
+
+def _by_key(records: Sequence[RunRecord]) -> dict[tuple[str, int], RunRecord]:
+    return {(r.sample_id, r.rep): r for r in records}
+
+
+def pass_flips(a: Sequence[RunRecord], b: Sequence[RunRecord]) -> tuple[int, int, int]:
+    """(only A passes, only B passes, paired feasible samples) over the same (sample, rep)."""
+    ka, kb = _by_key(a), _by_key(b)
+    keys = [k for k in ka.keys() & kb.keys() if ka[k].feasible_gold]
+    only_a = sum(ka[k].hard_pass and not kb[k].hard_pass for k in keys)
+    only_b = sum(kb[k].hard_pass and not ka[k].hard_pass for k in keys)
+    return only_a, only_b, len(keys)
+
+
+def bootstrap_ci(diffs: Sequence[float], n_boot: int = 5000, seed: int = 0, level: float = 0.95) -> tuple[float, float] | None:
+    """Percentile bootstrap CI of the mean of paired differences (fixed seed, reproducible)."""
+    if len(diffs) < 2:
+        return None
+    rng = random.Random(seed)
+    means = sorted(statistics.fmean(rng.choices(diffs, k=len(diffs))) for _ in range(n_boot))
+    lo = means[int((1 - level) / 2 * n_boot)]
+    hi = means[int((1 + level) / 2 * n_boot) - 1]
+    return lo, hi
+
+
+def paired_judge_diffs(a: Sequence[RunRecord], b: Sequence[RunRecord], n_boot: int = 5000, seed: int = 0) -> dict[str, Any] | None:
+    """B - A on samples where both plans were judged: total with bootstrap CI, and each sub-score."""
+    ka, kb = _by_key(a), _by_key(b)
+    keys = sorted(k for k in ka.keys() & kb.keys() if ka[k].judge_total is not None and kb[k].judge_total is not None)
+    if not keys:
+        return None
+    total = [kb[k].judge_total - ka[k].judge_total for k in keys]  # type: ignore[operator]
+    subs = {d: statistics.fmean(kb[k].judge[d] - ka[k].judge[d] for k in keys) for d in JUDGE_DIMS}  # type: ignore[index]
+    return {"n": len(keys), "delta": statistics.fmean(total), "ci": bootstrap_ci(total, n_boot, seed), "sub": subs}
+
+
+def failure_attribution(records: Sequence[RunRecord], max_revisions: int = 2) -> dict[str, int]:
+    """Why feasible samples failed: wrongly judged infeasible / revisions used up / other."""
+    out = {"误判不可行": 0, "回退耗尽": 0, "其他": 0}
+    for r in records:
+        if not r.feasible_gold or r.hard_pass:
+            continue
+        if r.flagged_infeasible:
+            out["误判不可行"] += 1  # the system told the user the budget can't work; no revision was tried
+        elif r.revisions >= max_revisions:
+            out["回退耗尽"] += 1  # includes the extra rule-only budget repair round
+        else:
+            out["其他"] += 1
+    return out
+
+
+def attraction_count(r: RunRecord) -> int:
+    if not r.itinerary:
+        return 0
+    return sum(a.get("kind") == "attraction" for d in r.itinerary.get("days", []) for a in d.get("activities", []))
+
+
+def passing_attractions(a: Sequence[RunRecord], b: Sequence[RunRecord]) -> dict[str, Any]:
+    """Mean attractions per passing plan: all passing plans of each system, and on samples both passed."""
+    ka, kb = _by_key(a), _by_key(b)
+    both = [k for k in ka.keys() & kb.keys() if ka[k].hard_pass and kb[k].hard_pass]
+    return {
+        "a_all": mean(attraction_count(r) for r in a if r.hard_pass),
+        "b_all": mean(attraction_count(r) for r in b if r.hard_pass),
+        "a_paired": mean(attraction_count(ka[k]) for k in both),
+        "b_paired": mean(attraction_count(kb[k]) for k in both),
+        "n_paired": len(both),
+    }

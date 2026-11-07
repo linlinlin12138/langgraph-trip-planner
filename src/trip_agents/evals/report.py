@@ -13,11 +13,16 @@ from typing import Any
 
 from trip_agents.evals.metrics import (
     FAMILIES,
+    JUDGE_DIMS,
     JUDGE_KEYS,
     METRICS,
+    failure_attribution,
     judged,
     node_latency,
     paired_judge,
+    paired_judge_diffs,
+    pass_flips,
+    passing_attractions,
     stability,
     summarize,
     violation_counts,
@@ -150,6 +155,7 @@ def render(meta: dict[str, Any], summary: dict[str, Any], records: list[RunRecor
                     lines.append(f"| {a} vs {b} | {ma:.2f} | {mb:.2f} | {mb - ma:+.2f} | {n} |")  # type: ignore[operator]
         lines.append("")
 
+    lines += analysis_lines(records)
     lines += [
         "## 稳定性（同一样本多次运行）",
         "",
@@ -195,6 +201,77 @@ def render(meta: dict[str, Any], summary: dict[str, Any], records: list[RunRecor
             f"- `{r.sample_id}`（{r.difficulty}，rep {r.rep}）：{', '.join(r.violations) or r.error or 'structure'}" for r in failures
         ]
     return "\n".join(lines) + "\n"
+
+
+def analysis_lines(records: list[RunRecord], max_revisions: int = 2) -> list[str]:
+    """Paired comparisons between systems, failure attribution and plan size -- reproducible from records."""
+    groups = by_system(records)
+    systems = list(groups)
+    lines: list[str] = []
+    if len(systems) > 1:
+        lines += [
+            "## 配对翻转（可行样本）",
+            "",
+            "同一样本、同一轮，只有一方通过硬约束的样本数。",
+            "",
+            "| 对比 (A vs B) | 只有 A 通过 | 只有 B 通过 | 配对样本数 |",
+            "|---|---|---|---|",
+        ]
+        for i, a in enumerate(systems):
+            for b in systems[i + 1 :]:
+                oa, ob, n = pass_flips(groups[a], groups[b])
+                lines.append(f"| {a} vs {b} | {oa} | {ob} | {n} |")
+        lines.append("")
+        judged = any(r.judge_total is not None for r in records)
+        if judged:
+            lines += [
+                "## 合格计划质量分：配对差值与 95% 置信区间",
+                "",
+                "两个系统都合格的样本上 B − A 的平均差值；置信区间为配对差值的 bootstrap（5000 次，seed=0）。",
+                "",
+                "| 对比 (A vs B) | 配对样本数 | Δ 总分 | 95% CI | Δ 丰富度 | Δ 偏好符合度 | Δ 合理性 |",
+                "|---|---|---|---|---|---|---|",
+            ]
+            for i, a in enumerate(systems):
+                for b in systems[i + 1 :]:
+                    d = paired_judge_diffs(groups[a], groups[b])
+                    if d is None:
+                        lines.append(f"| {a} vs {b} | 0 | N/A | N/A | N/A | N/A | N/A |")
+                        continue
+                    ci = f"[{d['ci'][0]:+.2f}, {d['ci'][1]:+.2f}]" if d["ci"] else "N/A"
+                    sub = " | ".join(f"{d['sub'][k]:+.2f}" for k in JUDGE_DIMS)
+                    lines.append(f"| {a} vs {b} | {d['n']} | {d['delta']:+.2f} | {ci} | {sub} |")
+            lines.append("")
+        lines += [
+            "## 合格计划的平均景点数",
+            "",
+            "“全部”是各自所有合格计划的平均；“配对”只算两个系统都合格的样本（排除了“一方只在容易样本上合格”的影响）。",
+            "",
+            "| 对比 (A vs B) | A 全部 | B 全部 | A 配对 | B 配对 | 配对样本数 |",
+            "|---|---|---|---|---|---|",
+        ]
+        for i, a in enumerate(systems):
+            for b in systems[i + 1 :]:
+                pa = passing_attractions(groups[a], groups[b])
+                cells = [fmt("x", pa[k]) for k in ("a_all", "b_all", "a_paired", "b_paired")]
+                lines.append(f"| {a} vs {b} | " + " | ".join(cells) + f" | {pa['n_paired']} |")
+        lines.append("")
+    graph = [s for s in systems if SYSTEMS.get(s) is not None and SYSTEMS[s].kind == "graph"]
+    if graph:
+        lines += [
+            "## 失败归因（可行样本）",
+            "",
+            f"误判不可行：系统判定预算不足（`flagged_infeasible`）但标准答案可行，没有尝试回退；"
+            f"回退耗尽：回退次数达到 {max_revisions}（含最后一轮纯规则修复）仍不通过；其他：其余情况。",
+            "",
+            "| 系统 | 失败数 | 误判不可行 | 回退耗尽 | 其他 |",
+            "|---|---|---|---|---|",
+        ]
+        for s in graph:
+            fa = failure_attribution(groups[s], max_revisions)
+            lines.append(f"| {s} | {sum(fa.values())} | {fa['误判不可行']} | {fa['回退耗尽']} | {fa['其他']} |")
+        lines.append("")
+    return lines
 
 
 def write_report(out: Path, meta: dict[str, Any], records: list[RunRecord]) -> Path:
