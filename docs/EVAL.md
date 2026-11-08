@@ -202,12 +202,21 @@ mock 模型是确定性的，所以稳定性恒为 1，标准差恒为 0。mock 
 - **人数和预算总是一起错（30 个需要沿用人数的场景里错 14 个，全部是 2–3 人被当成 1 人）**，past_trip 不受影响（人数直接取自历史行程）。原因（根据代码路径推断，Gemini 写进画像的原文没有保存，未直接验证）：画像只把同行人存成自由文本 `companions`（如“女朋友”“家人（3人）”），再由 `companions_to_travelers` 解析回人数，只认识“N人”、“独自”和情侣类说法；解析不出时人数为空，而 `RequestExtraction.to_request` 会把空人数**默认成 1**，不追问。预算按人数换算，所以跟着错。mock 写入的同行人格式恰好能被解析，所以 mock 全对。（已修复，见下文“修复后重跑”。）
 - **无记忆**：四类场景都缺预算或人数，自动模式下 0% 能直接规划（实际使用中会转为追问用户），这一列在跑之前就已知，只作参照。
 
-**修复后重跑（`gemini_memory_v2_add_restriction`，花费 $0.67，报告见 [`evals/results/gemini_memory_v2_add_restriction/report.md`](../evals/results/gemini_memory_v2_add_restriction/report.md)）**。修了两处记忆合并（`memory/ops.py`）：
+**修复后重跑（`gemini_memory_v2_add_restriction` $0.67 + `gemini_memory_v2_inherit_override` $1.25，报告见 [add_restriction](../evals/results/gemini_memory_v2_add_restriction/report.md)、[inherit / override](../evals/results/gemini_memory_v2_inherit_override/report.md)）**。修了两处记忆合并（`memory/ops.py`）：
 
 1. 饮食限制取并集：这次说的限制加到记忆里的限制上，只有“这次什么都吃”（`dietary_none`）才清空；
 2. 画像直接存人数：只在用户这次明确说了人数、且计划被确认时写入（不会把默认值写进去）；读取时先用存下的人数，再退回解析 `companions`；画像里有同行人但两者都得不到人数时，追问而不是默认 1 人。
 
-只重跑了 add_restriction 的有记忆条件（同样的 10 个场景、同 seed；无记忆条件不读记忆，结果不变）：**字段全对 0% → 100%，硬约束通过 10% → 100%，丢掉旧限制 10/10 → 0/10，漏掉新限制仍是 0/10**，人数错误 4/10 → 0/10。inherit 和 override 没有重跑，上表里它们的人数/预算错误是修复前的结果；人数修复对它们的效果未经真实模型验证（mock 下四类都是 100%，见 [`mock_memory.md`](eval/mock_memory.md)）。
+重跑了 inherit、override、add_restriction 三类的有记忆条件（和 v1 同样的场景、同 seed）。past_trip 没有重跑：它的人数取自历史行程，这条路径没有改动，v1 已是 100%。无记忆条件不读记忆，结果不变。
+
+| 场景（有记忆，每类 10 个） | 字段全对 v1 → v2 | 硬约束通过 v1 → v2 | 人数错误 v1 → v2 |
+|---|---|---|---|
+| inherit | 60% → **100%** | 100% → 100% | 4 → **0** |
+| override | 40% → **100%** | 100% → 100% | 6 → **0** |
+| past_trip（未重跑） | 100% | 100% | 0 |
+| add_restriction | 0% → **100%** | 10% → **100%** | 4 → **0** |
+
+add_restriction 里丢掉旧限制 10/10 → 0/10，漏掉新限制仍是 0/10；override 里旧值残留仍是 0/10（饮食、节奏都是）。修复后 40 个场景的有记忆条件全部字段正确。每类只有 10 个场景、各跑 1 次，样本量小。
 
 mock 结果见 [`mock_memory.md`](eval/mock_memory.md)；mock 的偏好写入和读取用的是同一套规则，只能验证记忆读写和优先级逻辑。
 
