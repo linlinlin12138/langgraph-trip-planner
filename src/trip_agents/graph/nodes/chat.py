@@ -21,7 +21,7 @@ from trip_agents.graph.prompts import CHAT_SYSTEM, FIELD_QUESTIONS
 from trip_agents.graph.state import TripState
 from trip_agents.llm.context import render_context
 from trip_agents.llm.structured import invoke_structured
-from trip_agents.memory.ops import apply_memory_defaults
+from trip_agents.memory.ops import apply_memory_defaults, travelers_unresolved
 from trip_agents.memory.store import MemoryManager
 from trip_agents.schemas import RequestExtraction, SkippedItem, TripRequest
 
@@ -82,6 +82,7 @@ def make_chat_node(deps: AgentDeps, options: GraphOptions):  # type: ignore[no-u
 
         # long-term memory fills only what the user did not say in this conversation
         merged, applied = extraction, dict(state.get("memory_defaults", {}))
+        ask_travelers = False
         mem = memory_manager(options)
         if mem is not None:
             user_id = state.get("user_id") or "anonymous"
@@ -89,9 +90,10 @@ def make_chat_node(deps: AgentDeps, options: GraphOptions):  # type: ignore[no-u
             past = mem.find_trip(user_id, extraction.past_trip_hint or extraction.destination) if extraction.refers_to_past_trip else None
             merged, new_applied = apply_memory_defaults(extraction, profile, past)
             applied = new_applied
+            ask_travelers = travelers_unresolved(merged, profile)
         ask_defaults = bool(applied) and options.human_in_loop and not state.get("defaults_confirmed")
 
-        missing = merged.missing_required()
+        missing = merged.missing_required() + (["travelers"] if ask_travelers else [])
         request: TripRequest | None = None
         if not missing:
             try:

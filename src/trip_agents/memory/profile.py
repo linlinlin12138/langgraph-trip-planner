@@ -26,6 +26,7 @@ FIELD_LABELS = {
     "pace": "节奏",
     "budget_per_person_per_day": "预算习惯（人均每天）",
     "companions": "同行人",
+    "travelers": "人数",
 }
 _VALIDATORS: dict[str, TypeAdapter[Any]] = {
     "dietary_restrictions": TypeAdapter(list[DietaryRestriction]),
@@ -87,6 +88,9 @@ class UserProfile(BaseModel):
     pace: TimedValue | None = None
     budget_per_person_per_day: TimedValue | None = None
     companions: TimedValue | None = None
+    # Party size as a number, written deterministically from a confirmed trip in which the user stated it
+    # (not by the LLM extraction): free-text ``companions`` such as "和爸妈" often can't be turned into a number.
+    travelers: TimedValue | None = None
 
     def get(self, name: str) -> Any:
         tv: TimedValue | None = getattr(self, name)
@@ -94,7 +98,7 @@ class UserProfile(BaseModel):
 
     def describe(self) -> list[str]:
         out = []
-        for f in PROFILE_FIELDS:
+        for f in (*PROFILE_FIELDS, "travelers"):
             tv: TimedValue | None = getattr(self, f)
             if tv is not None:
                 value = f"{tv.value:.0f} 元" if f == "budget_per_person_per_day" else pretty(f, tv.value)

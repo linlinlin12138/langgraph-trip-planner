@@ -275,8 +275,13 @@ def main() -> None:
     ap.add_argument("--model", default=None)
     ap.add_argument("--out", type=Path, default=None)
     ap.add_argument("--name", default=None, help="results dir evals/results/<name> (rows saved as they finish; resumable)")
+    ap.add_argument(
+        "--kinds", nargs="+", choices=KINDS, default=None, help="run only these scenario kinds (same ids / seed as the full set)"
+    )
+    ap.add_argument("--memory-only", action="store_true", help="skip the no_memory condition (it never reads memory)")
     args = ap.parse_args()
-    scenarios = build_scenarios(args.n, args.seed)
+    scenarios = [sc for sc in build_scenarios(args.n, args.seed) if args.kinds is None or sc.kind in args.kinds]
+    conditions = (True,) if args.memory_only else (True, False)
 
     def make_model() -> Any:
         return get_chat_model(args.provider, args.model)
@@ -292,7 +297,7 @@ def main() -> None:
     done = {(r["id"], r["memory"]) for r in rows}
     stopped = None
     for sc in scenarios:
-        for mem in (True, False):
+        for mem in conditions:
             if (sc.id, mem) in done:
                 continue
             row = run_scenario(sc, make_model, mem)
@@ -311,7 +316,10 @@ def main() -> None:
         "git commit": f"`{git_commit()}`",
         "模型": f"{args.provider} / `{args.model or DEFAULT_MODELS[args.provider]}`"
         + (f"（推理强度 {s.llm_thinking_level}）" if args.provider == "gemini" else ""),
-        "场景数": f"{len(scenarios)}（{len(KINDS)} 类各 1/{len(KINDS)}）",
+        "场景数": f"{len(scenarios)}（{len(KINDS)} 类各 1/{len(KINDS)}）"
+        if args.kinds is None
+        else f"{len(scenarios)}（只跑 {'、'.join(args.kinds)}；与 --n {args.n} 全集同 id、同 seed）",
+        **({"条件": "只跑有记忆"} if args.memory_only else {}),
         "seed": args.seed,
         "每组运行次数": 1,
         "mock": args.provider == "mock",

@@ -184,3 +184,32 @@ def test_no_store_or_disabled_means_no_memory() -> None:
     )
     out = g.invoke({"messages": [HumanMessage(content=text)], "user_id": "alice"})
     assert out["request"].hard.dietary_restrictions == ["no_seafood"]  # auto mode applies defaults without asking
+
+
+def test_new_restriction_is_added_to_remembered_ones() -> None:
+    ex = RequestExtraction(destination="成都", start_date=date(2027, 1, 1), days=2, budget_total=2000, dietary_restrictions=["no_spicy"])
+    merged, applied = apply_memory_defaults(ex, _profile(), None)
+    assert merged.dietary_restrictions == ["no_seafood", "no_spicy"]  # union, the remembered one is kept
+    assert "另加" in applied["dietary_restrictions"]
+    same, applied2 = apply_memory_defaults(ex.model_copy(update={"dietary_restrictions": ["no_seafood"]}), _profile(), None)
+    assert same.dietary_restrictions == ["no_seafood"] and "dietary_restrictions" not in applied2
+    none, _ = apply_memory_defaults(ex.model_copy(update={"dietary_restrictions": [], "dietary_none": True}), _profile(), None)
+    assert none.dietary_restrictions == []  # "这次什么都吃" still clears it
+
+
+def test_stored_party_size_beats_unparseable_companions() -> None:
+    from trip_agents.memory.ops import remember_travelers, travelers_unresolved
+    from trip_agents.memory.profile import TimedValue
+
+    p = _profile().model_copy(update={"companions": TimedValue(value="爸妈", updated_at=T0, source_thread="t", evidence="和爸妈")})
+    ex = RequestExtraction(destination="成都", start_date=date(2027, 1, 1), days=2)
+    merged, _ = apply_memory_defaults(ex, p, None)
+    assert merged.travelers is None and travelers_unresolved(merged, p)  # -> the chat node asks instead of assuming 1
+    req = RequestExtraction(destination="成都", start_date=date(2027, 1, 1), days=2, budget_total=3000, travelers=3).to_request()
+    p2, note = remember_travelers(p, {"extraction": RequestExtraction(travelers=3), "request": req}, thread_id="t2", now=T0)
+    assert p2.get("travelers") == 3 and note
+    merged2, _ = apply_memory_defaults(ex, p2, None)
+    assert merged2.travelers == 3 and merged2.budget_total == 3000 and not travelers_unresolved(merged2, p2)
+    # a default the user never stated is not remembered
+    p3, note3 = remember_travelers(p, {"extraction": RequestExtraction(), "request": req}, thread_id="t2", now=T0)
+    assert p3.get("travelers") is None and note3 is None

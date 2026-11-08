@@ -53,4 +53,5 @@ FIELD_QUESTIONS = {
     "start_date": "计划哪天出发？",
     "days": "打算玩几天？",
     "budget_total": "总预算大概多少（人民币）？",
+    "travelers": "这次一共几个人出行？",
 }
