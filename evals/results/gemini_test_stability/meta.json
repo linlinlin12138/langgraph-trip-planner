@@ -1,7 +1,7 @@
 {
  "name": "gemini_test_stability",
- "date": "2026-11-07T23:28:32",
- "git_commit": "211dd0f",
+ "date": "2026-11-07T23:39:46",
+ "git_commit": "a1d8b49",
  "dataset": "evals/datasets/test.jsonl",
  "split": "test",
  "n_samples": 40,
@@ -16,6 +16,9 @@
  "model": "gemini-3.8-flash",
  "thinking_level": "low",
  "tool_backend": "mock",
- "judge": null,
+ "judge": {
+  "provider": "openai",
+  "model": "gpt-6.1-sol"
+ },
  "mock": false
 }
